@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 import UserInfo from "../component/user/UserInfo";
-import Challenge from "../component/user/Challenge";
+import Challenge from "../component/main/Challenge";
 
 const MyUser = () => {
     return (
