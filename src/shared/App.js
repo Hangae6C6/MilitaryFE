@@ -7,7 +7,8 @@ import Detail from "../pages/Main";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import MyUser from "../pages/MyUser";
-import ChatBot from "../pages/ChatBot";
+import Chat from "../pages/ChatBot";
+import Test from "../pages/Test";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
       <Route exact path='/user/signup' component={SignUp}></Route>
       <Route exact path='/mypage' component={MyUser}></Route>
       {/* 챗봇페이지 라우팅, 컴포넌트 추후 수정 필요 */}
-      <Route exact path='/user/userdata' componenet={ChatBot}></Route>
+      <Route exact path='/user/userdata' componenet={Chat}></Route>
+      <Route exact path='/user/userdata' componenet={Test}></Route>
       </BrowserRouter>
     </div>
   );
