@@ -17,9 +17,9 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
-            <Route exact path="/postDetail" element={<Detail />}></Route>
-            <Route exact path="/user/login" element={<Login />}></Route>
-            <Route exact path="/user/signup" element={<SignUp />}></Route>
+            <Route exact path="/detail" element={<Detail />}></Route>
+            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/mypage" element={<MyUser />}></Route>
             {/* 챗봇페이지 라우팅, 컴포넌트 추후 수정 필요 */}
             <Route exact path="/user/userdata" element={<Chat />}></Route>
@@ -38,6 +38,7 @@ const DivBox = styled.div`
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  border: 1px solid black;
 `;
 
 const Background = styled.div`
@@ -45,7 +46,7 @@ const Background = styled.div`
   max-height: 100%;
   width: 100vw;
   height: 100vh;
-  background-color: black;
+
 `;
 
 export default App;
