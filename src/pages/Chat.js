@@ -1,11 +1,13 @@
+//YJ
+
 import React from "react";
 import styled from "styled-components";
 
-const Carousel = () => {
+const Chat = () => {
     return (
         <>
         </>
     )
 }
 
-export default Carousel;
+export default Chat;

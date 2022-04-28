@@ -1,11 +1,13 @@
+//YJ
+
 import React from "react";
 import styled from "styled-components";
 
-const JobSearch = () => {
+const Test = () => {
     return (
         <>
         </>
     )
 }
 
-export default JobSearch;
+export default Test;
