@@ -11,23 +11,22 @@ import Chat from "../pages/Chat";
 import Test from "../pages/Test";
 
 function App() {
-  return (
+  return (        <Background>
+          <DivBox>
     <Router>
       <Routes>
-        <Background>
-          <DivBox>
+
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/user/login" element={<Login />}></Route>
             <Route exact path="/user/signup" element={<SignUp />}></Route>
             <Route exact path="/mypage" element={<MyUser />}></Route>
-            {/* 챗봇페이지 라우팅, 컴포넌트 추후 수정 필요 */}
             <Route exact path="/user/userdata" element={<Chat />}></Route>
             <Route exact path="/user/userdata" element={<Test />}></Route>
-          </DivBox>
-        </Background>
+          
       </Routes>
-    </Router>
+    </Router></DivBox>
+        </Background>
   );
 }
 
@@ -39,7 +38,7 @@ const DivBox = styled.div`
   background-color: #ffffff;
 `;
 
-const Background = styled.body`
+const Background = styled.div`
   background-color: black;
 `;
 
