@@ -12,10 +12,10 @@ import Test from "../pages/Test";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Background>
-          <DivBox>
+    <Background>
+      <DivBox>
+        <Router>
+          <Routes>
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/user/login" element={<Login />}></Route>
@@ -24,14 +24,15 @@ function App() {
             {/* 챗봇페이지 라우팅, 컴포넌트 추후 수정 필요 */}
             <Route exact path="/user/userdata" element={<Chat />}></Route>
             <Route exact path="/user/userdata" element={<Test />}></Route>
-          </DivBox>
-        </Background>
-      </Routes>
-    </Router>
+          </Routes>
+        </Router>
+      </DivBox>
+    </Background>
   );
 }
 
 const DivBox = styled.div`
+  margin: 0px auto;
   max-width: 375px;
   max-height: 812px;
   width: 100%;
@@ -39,7 +40,11 @@ const DivBox = styled.div`
   background-color: #ffffff;
 `;
 
-const Background = styled.body`
+const Background = styled.div`
+  max-width:100%;
+  max-height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: black;
 `;
 
