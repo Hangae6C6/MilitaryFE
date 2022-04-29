@@ -11,35 +11,40 @@ import Chat from "../pages/Chat";
 import Test from "../pages/Test";
 
 function App() {
-  return (        <Background>
-          <DivBox>
-    <Router>
-      <Routes>
-
+  return (
+    <Background>
+      <DivBox>
+        <Router>
+          <Routes>
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/user/login" element={<Login />}></Route>
             <Route exact path="/user/signup" element={<SignUp />}></Route>
-            <Route exact path="/mypage" element={<MyUser />}></Route>
-            <Route exact path="/user/userdata" element={<Chat />}></Route>
+            <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/user/userdata" element={<Test />}></Route>
-          
-      </Routes>
-    </Router></DivBox>
-        </Background>
+            <Route exact path="/myPage" element={<MyUser />}></Route>
+          </Routes>
+        </Router>
+      </DivBox>
+    </Background>
   );
 }
 
 const DivBox = styled.div`
+  margin: 0px auto;
   max-width: 375px;
   max-height: 812px;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  border:1px solid black;
 `;
 
 const Background = styled.div`
-  background-color: black;
+  max-width:100%;
+  max-height: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
 `;
 
 export default App;

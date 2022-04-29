@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const UserInfo = () => {
+const Profile = () => {
     return (
         <>
         </>
     )
 }
 
-export default UserInfo;
+export default Profile;
