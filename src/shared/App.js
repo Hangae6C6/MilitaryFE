@@ -8,7 +8,7 @@ import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import MyUser from "../pages/MyUser";
 import Chat from "../pages/Chat";
-import Test from "../pages/Test";
+import BeginPage from "../pages/test/BeginPage";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/user/login" element={<Login />}></Route>
             <Route exact path="/user/signup" element={<SignUp />}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
-            <Route exact path="/main/chaltest" element={<Test />}></Route>
+            <Route exact path="/main/chaltest" element={<BeginPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
           </Routes>
         </Router>
