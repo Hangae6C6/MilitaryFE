@@ -11,7 +11,7 @@ import Profile from "../component/user/Profile";
 const MyUser = () => {
     return (
         <>
-        <Profile></Profile>
+        <Profile />
         <Footer />
         </>
     )

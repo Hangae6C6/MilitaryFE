@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/user/login" element={<Login />}></Route>
             <Route exact path="/user/signup" element={<SignUp />}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
-            <Route exact path="/user/userdata" element={<Test />}></Route>
+            <Route exact path="/main/chaltest" element={<Test />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
           </Routes>
         </Router>
@@ -31,7 +31,7 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: 0px auto;
+  margin: auto;
   max-width: 375px;
   max-height: 812px;
   width: 100%;

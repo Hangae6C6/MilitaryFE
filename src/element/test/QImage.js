@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TestChallengePage = () => {
+const QImage = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const TestChallengePage = () => {
     );
 };
 
-export default TestChallengePage;
+export default QImage;
