@@ -5,10 +5,16 @@ import styled from "styled-components";
 
 const Main = () => {
     return (
-        <>
-        hello
-        </>
-    )
+        <MainBox>
+            Main
+        </MainBox>
+    );
 }
 
 export default Main;
+
+const MainBox = styled.div`
+ background-color: orange;
+ width: 100%;
+ height: 100%;
+`;
