@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
@@ -41,5 +40,3 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 let store = (initialStore) => createStore(rootReducer, enhancer);
 
 export default store();
-=======
->>>>>>> 687e4e8a9ddeaabb1db908211a62e2084819b67f
