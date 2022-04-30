@@ -1,28 +1,38 @@
-//SY
+
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUp = () => {
+ 
   return (
     <Container>
       <Box2>
         <LoginInput
           // value={userName}
-          placeholder="아이디를 입력하세요"
+          placeholder="아이디"
           // onChange={(e) => {
           //   setUsername(e.target.value);
           // }}
         />
         <LoginInput
           // value={nickname}
-          placeholder="닉네임을 입력하세요"
+          placeholder="닉네임"
           // onChange={(e) => {
           //   setNickname(e.target.value);
           // }}
         />
         <LoginInput
           // value={pw}
-          placeholder="비밀번호를 입력하세요"
+          placeholder="비밀번호"
+          type="password"
+          // onChange={(e) => {
+          //   setPw(e.target.value);
+          // }}
+        />
+         <LoginInput
+          // value={passwordCheck}
+          placeholder="비밀번호 확인"
           type="password"
           // onChange={(e) => {
           //   setPw(e.target.value);
@@ -62,13 +72,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: space-around;
   border: 1px solid red;
 `;
 
 
 const Box2 = styled.div`
   margin-top: 70px;
+  display: grid;
   z-index: 10;
   border: 1px solid blue;
 `;

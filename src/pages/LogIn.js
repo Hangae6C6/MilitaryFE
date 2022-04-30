@@ -82,12 +82,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: space-around;
   border: 1px solid red;
 `;
 
 const Box2 = styled.div`
   margin-top: 60px;
+  display: grid;
   z-index: 10;
   border: 1px solid blue;
 `;
