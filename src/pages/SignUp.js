@@ -21,19 +21,18 @@ const SignUp = () => {
 
   // 닉네임 조건
   const isNickname = (nickname) => {
-    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,7}$/;
+    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,15}$/;
     return pattern.test(nickname); // 맞으면 true, 틀리면 false반환
   };
 
   // 비밀번호 조건
   const isPwd = (password) => {
     let pattern =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
+      /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
     return pattern.test(password); // 맞으면 true, 틀리면 false반환
   };
 
   const signup = () => {
-    //입력값 빠짐
     if (
       id === "" ||
       nickname === "" ||
@@ -67,8 +66,8 @@ const SignUp = () => {
       window.alert("비밀번호가 다릅니다.");
       return;
     }
-
-    dispatch(userActions.signupDB(id, nickname, password));
+    console.log(id, nickname, password);
+    dispatch(userActions.signupDB(id, password, nickname, passwordCheck));
   };
 
   return (

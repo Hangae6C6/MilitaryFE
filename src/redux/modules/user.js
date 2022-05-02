@@ -14,25 +14,28 @@ const initialState = {
   userId: "",
   userPw: "",
   userNick: "",
+  userPwCheck: "",
 };
 
-const signupDB = (id, password, nickname) => {
+const signupDB = (userId, userPw, userNick, userPwCheck) => {
+  console.log(userId, userPw, userNick, userPwCheck);
   return async function (dispatch, getState) {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/signUp",
+        url: "http://13.125.228.240/api/signUp",
         data: {
-          userId: id,
-          userPw: password,
-          userNick: nickname,
+          userId: userId,
+          userPw: userPw,
+          userNick: userNick,
+          userPwCheck: userPwCheck,
         },
       }).then((response) => {
         console.log(response);
       });
     } catch (err) {
       console.log(err);
-      window.alert("중복된 아이디입니다.");
+      window.alert("회원가입 실패");
     }
   };
 };
