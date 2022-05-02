@@ -10,6 +10,7 @@ import MyUser from "../pages/MyUser";
 import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
+import ResultPage from "../pages/test/ResultPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
+            <Route exact path="/main/preTest/result" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
           </Routes>
         </Router>
