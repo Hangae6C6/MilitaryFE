@@ -2,7 +2,25 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useDispatch, useSelector } from "react-redux";
+import { ActionCreators as userActions } from "../redux/modules/user";
+import { history } from "../redux/configureStore";
+import { KAKAO_AUTH_URL } from "../shared/auth";
+
 const Login = () => {
+  const dispatch = useDispatch();
+  const [email, setemail] = React.useState("");
+  const [password, setpassword] = React.useState("");
+  const warning = useSelector((state) => state.user.setwarning.text);
+
+  const login = () => {
+    if (email === "" || password === "") {
+      window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요!");
+      return;
+    }
+    dispatch(userActions.loginDB(email, password));
+  };
+  
   return (
     <Container>
       <Box2>
