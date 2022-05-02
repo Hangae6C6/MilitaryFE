@@ -4,41 +4,70 @@ import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as userActions } from "../redux/modules/user";
-import { history } from "../redux/configureStore";
-import { KAKAO_AUTH_URL } from "../shared/auth";
+import { KAKAO_AUTH_URL, NAVER_AUTH_URL, GOOGLE_AUTH_URL } from "../shared/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [email, setemail] = React.useState("");
-  const [password, setpassword] = React.useState("");
-  const warning = useSelector((state) => state.user.setwarning.text);
 
+  const [id, setId] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  //아이디 형식 확인
+  const isId = (id) => {
+    let pattern = /^[a-zA-z0-9]{4,12}$/;
+    return pattern.test(id); // 맞으면 true, 틀리면 false반환
+  };
+
+  // 비밀번호형식 확인
+  const isPwd = (password) => {
+    let pattern = /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
+    return pattern.test(password); // 맞으면 true, 틀리면 false반환
+  };
+
+  //로그인함수
   const login = () => {
-    if (email === "" || password === "") {
-      window.alert("아이디 혹은 비밀번호가 공란입니다! 입력해주세요!");
+    if (id === "" || password === "") {
+      window.alert("빈칸을 입력해주세요.");
       return;
     }
-    dispatch(userActions.loginDB(email, password));
+
+    if (!isId(id)) {
+      window.alert("잘못된 이메일 형식입니다.");
+      return;
+    }
+
+    if (!isPwd(password)) {
+      window.alert(
+        "비밀번호는 최소 8자, 하나 이상의 문자와 숫자로 입력해주세요."
+      );
+      return;
+    }
+
+    dispatch(userActions.loginDB(id, password));
   };
-  
+
   return (
     <Container>
       <Box2>
         <LoginInput
-          // value={userName}
-          // onChange={changeUserName}
+          value={id}
           placeholder="아이디를 입력하세요"
+          onChange={(e) => {
+            setId(e.target.value);
+          }}
         />
         <LoginInput
-          // value={pw}
-          // onChange={changePw}
+          value={password}
           placeholder="비밀번호를 입력하세요"
           type="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
         />
         <LoginButton
-        // onClick={() => {
-        //   login();
-        // }}
+          onClick={() => {
+            login();
+          }}
         >
           로그인
         </LoginButton>
@@ -49,28 +78,24 @@ const Login = () => {
         <SNSLoginButton
           size="12pt"
           onClick={() => {
-            window.location.href =
-              "https://kauth.kakao.com/oauth/authorize?client_id=86ffa531b8393f91f32230531adbfdff&redirect_uri=http://localhost:8080/login/kakao/callback&response_type=code";
+            window.location.href = KAKAO_AUTH_URL;
           }}
         >
           카카오 계정으로 로그인
         </SNSLoginButton>
         <SNSLoginButton1
           size="12pt"
-          
-        //   onClick={() => {
-        //     window.location.href =
-        //       "https://kauth.kakao.com/oauth/authorize?client_id=86ffa531b8393f91f32230531adbfdff&redirect_uri=http://localhost:8080/login/kakao/callback&response_type=code";
-        //   }}
+          onClick={() => {
+            window.location.href = NAVER_AUTH_URL;
+          }}
         >
           네이버 계정으로 로그인
         </SNSLoginButton1>
         <SNSLoginButton2
           size="12pt"
-        //   onClick={() => {
-        //     window.location.href =
-        //       "https://kauth.kakao.com/oauth/authorize?client_id=86ffa531b8393f91f32230531adbfdff&redirect_uri=http://localhost:8080/login/kakao/callback&response_type=code";
-        //   }}
+            onClick={() => {
+              window.location.href = GOOGLE_AUTH_URL;
+            }}
         >
           구글 계정으로 로그인
         </SNSLoginButton2>
@@ -194,7 +219,6 @@ const SNSLoginButton2 = styled.button`
     background-color: #f1f1f1;
   }
 `;
-
 
 const TextButton = styled.span`
   font-weight: bold;
