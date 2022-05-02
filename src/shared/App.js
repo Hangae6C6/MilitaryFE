@@ -14,18 +14,18 @@ import MyUser from "../pages/MyUser";
 import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
+import KakaoAuth from "./KakaoAuth"
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
   const token = getCookie("token");
   const router = useSelector((state) => state.router.location.pathname);
  
-  console.log(user, token);
+  console.log(token);
   console.log(router);
 
   useEffect(() => {
-    if (token && !user) {
+    if (token) {
       dispatch(userActions.loginCheckDB());
     }
   }, [router]);
@@ -39,6 +39,7 @@ function App() {
             <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/user/login" element={<Login />}></Route>
             <Route exact path="/user/signup" element={<SignUp />}></Route>
+            <Route path="/oauth/kakao/callback" exact component={KakaoAuth}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route

@@ -56,11 +56,10 @@ const loginDB = (id, password) => {
           userPw: password,
         },
       }).then((res) => {
-        const accessToken = res.data.logInToken;
+        const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        loginCheckDB();
-        document.location.href = "/";
+        document.location.href = "/user/login";
         
       });
     } catch (err) {
@@ -80,7 +79,6 @@ const loginCheckDB = () => {
     })
       .then((res) => {
         dispatch(setUser(res.data));
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -106,7 +104,7 @@ const kakaoLogin = (code) => {
         localStorage.setItem("userName", userName);
         dispatch(loginCheckDB());
         console.log("로그인 확인");
-        // window.location.replace("/"); 
+        window.location.replace("/"); 
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);
@@ -130,6 +128,7 @@ export default handleActions(
     [SET_USER]: (state, action) =>
       produce(state, (draft) => {
         draft.token = action.payload.token;
+        draft.user = action.payload.token.user;
         draft.is_login = true;
       }),
     [GET_USER]: (state, action) =>
