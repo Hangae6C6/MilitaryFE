@@ -5,13 +5,12 @@ import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const GET_SEARCH = "GET_SEARCH";
 
-const getSearch = createAction(GET_SEARCH, (challenge) => ({ challenge}));
+const getSearch = createAction(GET_SEARCH, (challenges) => ({ challenges}));
 
 const initialState = {
-  challenge: {
+  challenges: {
     challengeNum: "",
     challengeProgress: "",
-    challengeImage: "",
     challengeTitle: "",
     challengeViewcnt: "",
     challengeCnt: "",
@@ -42,7 +41,7 @@ export default handleActions(
     [GET_SEARCH]: (state, action) =>
       produce(state, (draft) => {
         console.log(draft);
-        draft.challenge = action.payload.challenge;
+        draft.challenges = action.payload.challenges;
       }),
   },
   initialState
