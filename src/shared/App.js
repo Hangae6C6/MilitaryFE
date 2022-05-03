@@ -16,6 +16,7 @@ import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import KakaoAuth from "./KakaoAuth"
 import Nav from "../component/Nav"
+import UserData from "../component/user/UserData";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
+            <Route exact path="/userdata" element={<UserData />}></Route>
             <Route path="/oauth/kakao/callback" exact component={KakaoAuth}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>

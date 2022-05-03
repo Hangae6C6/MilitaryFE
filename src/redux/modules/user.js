@@ -46,7 +46,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
 
 const loginDB = (id, password) => {
   console.log(id, password);
-  return async function (dispatch, getState, { history }) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "post",
