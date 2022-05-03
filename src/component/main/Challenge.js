@@ -11,7 +11,7 @@ const Challenge = () => {
   const [challengeContent, setChallengeContent] = React.useState("");
 
   const challengeType = challType[0];
-  console.log(challengeType);
+ 
 
   const options = ['공부', '운동', '자격증', '취업'];
   const challengeHandler = () => {
