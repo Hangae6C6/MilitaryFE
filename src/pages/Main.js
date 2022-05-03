@@ -2,11 +2,12 @@
 
 import React from "react";
 import styled from "styled-components";
+import Challenge from "../component/main/Challenge";
 
 const Main = () => {
     return (
         <MainBox>
-            Main
+        <Challenge />
         </MainBox>
     );
 }
