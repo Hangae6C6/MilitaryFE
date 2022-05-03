@@ -1,17 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as searchActions } from "../../redux/modules/modal";
+import { Box, Select } from "grommet";
 
 const UserData = () => {
   const dispatch = useDispatch();
-  const [startDate, setStartDate] = React.useState();
-  const [endDate, setEndDate] = React.useState();
-  const [armCategory, setArmCategory] = React.useState();
-  const [rank, setRank] = React.useState();
+  const [startDate, setStartDate] = React.useState("");
+  const [endDate, setEndDate] = React.useState("");
+  const [milCategory, setMilCategory] = React.useState("");
+  const [rank, setRank] = React.useState("");
+  const armCategory = milCategory[0];
+
+  const options = ['육군', '해군', '공군', '해병대', '특수부대'];
 
   const userDataHandler = () => {
-    dispatch(searchActions.addUserDataDB(startDate, endDate, armCategory, rank));
+    dispatch(
+      searchActions.addUserDataDB(startDate, endDate, armCategory, rank)
+    );
   };
 
   return (
@@ -33,14 +39,18 @@ const UserData = () => {
             setEndDate(e.target.value);
           }}
         />
-         <Inputs
-          value={armCategory}
-          placeholder="소속부대(ex.육,해,공군,해병대,특수부대)"
-          type="text"
-          onChange={(e) => {
-            setArmCategory(e.target.value);
-          }}
-        />
+   
+        <Box fill align="center" justify="start" pad="small" >
+          <Select
+            placeholder="소속부대를 선택해주세요"
+            value={milCategory}
+            multiple
+            options={options}
+            onChange={({ value: nextValue }) => setMilCategory(nextValue)}
+            clear
+          />
+        </Box>
+        
         <Inputs
           value={rank}
           placeholder="계급"
@@ -49,12 +59,7 @@ const UserData = () => {
             setRank(e.target.value);
           }}
         />
-        <Button
-          onClick={userDataHandler}
-        >
-          확인
-        </Button>
- 
+        <Button onClick={userDataHandler}>확인</Button>
       </Box2>
     </Container>
   );
@@ -111,4 +116,3 @@ const Button = styled.button`
     background-color: #eeeeee;
   }
 `;
-

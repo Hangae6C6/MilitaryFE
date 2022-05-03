@@ -15,6 +15,7 @@ import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import KakaoAuth from "./KakaoAuth"
+import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
 
@@ -22,7 +23,7 @@ function App() {
   const dispatch = useDispatch();
   const token = getCookie("token");
   const router = useSelector((state) => state.router.location.pathname);
-  
+
   useEffect(() => {
     if (token) {
       dispatch(userActions.loginCheckDB());
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/userdata" element={<UserData />}></Route>
             <Route path="/oauth/kakao/callback" exact component={KakaoAuth}></Route>
+            <Route path="/oauth/naver/callback" exact component={NaverAuth}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>

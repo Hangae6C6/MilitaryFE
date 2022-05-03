@@ -114,6 +114,34 @@ const kakaoLogin = (code) => {
   };
 };
 
+const NaverLogin = (code) => {
+  return function (dispatch, getState, { history }) {
+    console.log(code);
+    axios({
+      method: "get",
+      url: "http://13.125.228.240/api/naver/login",
+    })
+      .then((res) => {
+        // console.log("res", res);
+        const token = res.data.user.token;
+        const userId = res.data.user.userId;
+        const userName = res.data.user.userName;
+        console.log(userName);
+        localStorage.setItem("token", token);
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userName", userName);
+        dispatch(loginCheckDB());
+        console.log("로그인 확인");
+        window.location.replace("/"); 
+      })
+      .catch((err) => {
+        console.log("소셜로그인 에러", err);
+        window.alert("로그인에 실패하였습니다.");
+        // window.location.replace("/");
+      });
+  };
+};
+
 const logoutDB = () => {
   return function (dispatch, getState, { history }) {
     deleteCookie("token"); // 쿠키에서 토큰 삭제
@@ -155,6 +183,7 @@ const ActionCreators = {
   loginCheckDB,
   logoutDB,
   kakaoLogin,
+  NaverLogin,
 };
 
 export { ActionCreators };
