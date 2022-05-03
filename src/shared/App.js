@@ -15,6 +15,7 @@ import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import KakaoAuth from "./KakaoAuth"
+import Search from "./Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,11 +38,12 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/postDetail" element={<Detail />}></Route>
-            <Route exact path="/user/login" element={<Login />}></Route>
-            <Route exact path="/user/signup" element={<SignUp />}></Route>
+            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/signup" element={<SignUp />}></Route>
             <Route path="/oauth/kakao/callback" exact component={KakaoAuth}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
+            <Route exact path="/search" element={<Search />}></Route>
             <Route
               exact
               path="/main/preTest/question"
