@@ -9,7 +9,9 @@ const getSearch = createAction(GET_SEARCH, (challenges) => ({
   challenges,
 }));
 
-const initialState = {};
+const initialState = {
+  challenges: []
+};
 
 const searchDB = (keyword) => {
   return async function (dispatch, getState) {
@@ -31,7 +33,7 @@ export default handleActions(
   {
     [GET_SEARCH]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges = action.payload.challenges.data;
+        draft.challenges.unshift(action.payload.challenges.data) ;
       }),
   },
   initialState

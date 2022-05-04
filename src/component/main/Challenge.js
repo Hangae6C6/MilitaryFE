@@ -40,7 +40,6 @@ const Challenge = () => {
           <Select
             placeholder="챌린지 타입"
             value={challType}
-            multiple
             options={options}
             onChange={({ value: nextValue }) => setChallType(nextValue)}
             clear
