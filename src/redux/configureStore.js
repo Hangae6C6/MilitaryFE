@@ -2,15 +2,19 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
-
-import User from "./modules/user";
+import modal from "./modules/modal";
+import user from "./modules/user";
+import challenge from "./modules/challenge";
+import search from "./modules/search";
 
 
 export const history = createBrowserHistory();
 const rootReducer = combineReducers({
   //우리가 만든 리듀서 뭉치기
-  user: User,
-
+  user: user,
+  userdata: modal,
+  search: search,
+  challenge: challenge,
   router: connectRouter(history),
 });
 

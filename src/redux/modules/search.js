@@ -5,28 +5,19 @@ import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const GET_SEARCH = "GET_SEARCH";
 
-const getSearch = createAction(GET_SEARCH, (challenges) => ({ challenges}));
+const getSearch = createAction(GET_SEARCH, (challenges) => ({
+  challenges,
+}));
 
-const initialState = {
-  challenges: {
-    challengeNum: "",
-    challengeProgress: "",
-    challengeTitle: "",
-    challengeViewcnt: "",
-    challengeCnt: "",
-    challengeDate: "",
-  },
-};
+const initialState = {};
 
 const searchDB = (keyword) => {
-  console.log(keyword);
   return async function (dispatch, getState) {
     try {
       await axios({
         method: "get",
         url: `http://13.125.228.240/api/search?keyword=${keyword}`,
       }).then((response) => {
-        console.log(response);
         dispatch(getSearch(response));
       });
     } catch (err) {
@@ -40,15 +31,14 @@ export default handleActions(
   {
     [GET_SEARCH]: (state, action) =>
       produce(state, (draft) => {
-        console.log(draft);
-        draft.challenges = action.payload.challenges;
+        draft.challenges = action.payload.challenges.data;
       }),
   },
   initialState
 );
 
 const ActionCreators = {
-    searchDB
+  searchDB,
 };
 
 export { ActionCreators };
