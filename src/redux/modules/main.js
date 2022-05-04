@@ -3,44 +3,49 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
-const GET_SEARCH = "GET_SEARCH";
+const GET_POST = "main/GET";
 
-const getSearch = createAction(GET_SEARCH, (challenges) => ({
-  challenges,
+const getPost = createAction(GET_POST, (cards) => ({
+  cards,
 }));
 
 const initialState = {
-  challenges: []
+  cards: [],
 };
 
-const searchDB = (keyword) => {
+const getPostDB = () => {
   return async function (dispatch, getState) {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/search?keyword=${keyword}`,
+        url: "http://13.125.228.240/api/main",
+        // headers: {
+        //   Authorization: `Bearer ${getCookie("token")}`,
+        // },
       }).then((response) => {
-        dispatch(getSearch(response));
+        console.log(response);
+        dispatch(getPost(response.data));
       });
     } catch (err) {
       console.log(err);
-      window.alert("검색 실패");
+      window.alert("GET 요청 실패");
     }
   };
 };
 
 export default handleActions(
   {
-    [GET_SEARCH]: (state, action) =>
+    [GET_POST]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges.unshift(action.payload.challenges.data) ;
+        draft.cards = action.payload.cards;
       }),
   },
   initialState
 );
 
 const ActionCreators = {
-  searchDB,
+  getPostDB,
+  
 };
 
 export { ActionCreators };
