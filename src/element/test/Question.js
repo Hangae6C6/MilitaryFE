@@ -13,7 +13,7 @@ const Question = () => {
   const onIncrease = (e) => {
     setNum(num + 1);
     setType(
-      type.map((v, i) => v + qnaList(num - 1).choice[e.target.id][`type${i + 1}`])
+      type.map((v, i) => v + qnaList(num - 1).answer[e.target.id][`type${i + 1}`])
     );
     console.log(onIncrease);
   };
@@ -25,7 +25,7 @@ const Question = () => {
         <QText>{qnaList[num-1].q}</QText>
       </QDiv>
       <BWrap>
-        {qnaList[0].a.map((elem, i) => {
+        {qnaList[num-1].a.map((elem, i) => {
           return(
             <Button onClick={onIncrease} value={elem.answer} key={i} id={i}>
               {elem.answer}
