@@ -7,9 +7,11 @@ import { ActionCreators as postActions } from "../redux/modules/main";
 import { Box, Anchor, Text } from "grommet";
 
 const Main = () => {
+  
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
   console.log(cards);
+
 
   React.useEffect(() => {
     dispatch(postActions.getPostDB());

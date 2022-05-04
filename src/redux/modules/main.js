@@ -19,12 +19,12 @@ const getPostDB = () => {
       await axios({
         method: "get",
         url: "http://13.125.228.240/api/main",
-        headers: {
-          Authorization: `Bearer ${getCookie("token")}`,
-        },
+        // headers: {
+        //   Authorization: `Bearer ${getCookie("token")}`,
+        // },
       }).then((response) => {
         console.log(response);
-        dispatch(getPost(response));
+        dispatch(getPost(response.data));
       });
     } catch (err) {
       console.log(err);
@@ -37,7 +37,7 @@ export default handleActions(
   {
     [GET_POST]: (state, action) =>
       produce(state, (draft) => {
-        draft.card.unshift(action.payload.cards.data);
+        draft.cards = action.payload.cards;
       }),
   },
   initialState
@@ -45,6 +45,7 @@ export default handleActions(
 
 const ActionCreators = {
   getPostDB,
+  
 };
 
 export { ActionCreators };
