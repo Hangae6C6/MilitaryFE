@@ -10,16 +10,14 @@ const Question = () => {
   const [type, setType] = useState(new Array(9).fill(0));
 
   const steps = Math.floor((num / 9) * 100);
-//type=[0,0,0,0,0,0,0,0,0]
-
+  //type=[0,0,0,0,0,0,0,0,0]
 
   const onIncrease = (e, qIdx, idx) => {
-    
-   let result = [];
-    for (let i=0; i<e.length; i++){
-      for (let j=0; j <= type.length; j++){
-        if(e[i]===j){
-          type[j]++
+    let result = [];
+    for (let i = 0; i < e.length; i++) {
+      for (let j = 0; j <= type.length; j++) {
+        if (e[i] === j) {
+          type[j]++;
         }
       }
     }
@@ -27,33 +25,17 @@ const Question = () => {
     const resultNum = type.indexOf(Math.max(...type)) + 1;
 
     setNum(num + 1);
-
-    
-
-    
-    // setType(
-    //   type.map((v, i) => v + qnaList[num - 1].a[e.target.id][`type${i + 1}`]),
-    // );
-
-    // setType(
-    //   type.map(
-    //     (v, i) =>
-    //     //   // v + qnaList[num-1].a[e.target.id].type)
-    //     //   v[qnaList[i+1].a[e.target.id].type[i]] += 1
-    //   v+qnaList[i].a[e.target.id].type
-    //   )
-    // );
     console.log(resultNum);
   };
 
   const resultNum = type.indexOf(Math.max(...type)) + 1;
 
   if (num === 10) {
-    console.log(resultNum);
     history.push({
       pathname: `/main/preTest/${resultNum}`,
       state: { isUser: true },
     });
+    window.location.reload();
   }
 
   return (
@@ -66,7 +48,14 @@ const Question = () => {
       <BWrap>
         {qnaList[num - 1].a.map((elem, i) => {
           return (
-            <Button onClick={()=> {onIncrease(elem.type)}} value={elem.answer} key={i} id={i}>
+            <Button
+              onClick={() => {
+                onIncrease(elem.type);
+              }}
+              value={elem.answer}
+              key={i}
+              id={i}
+            >
               {elem.answer}
             </Button>
           );
