@@ -1,14 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Swim, Run, Book } from "grommet-icons";
-import {
-  Anchor,
-  Box,
-  Button,
-  Meter,
-  Text,
-  RoutedButton as GrommetRoutedButton,
-} from "grommet";
+import { Anchor, Box, Button, Text } from "grommet";
 import { history } from "../../redux/configureStore";
 const Card = (props) => {
   const cards = props.cards;
@@ -20,26 +13,11 @@ const Card = (props) => {
       justify="evenly"
       align="start"
       pad="medium"
-      wrap="true"
+      wrap={true}
       overflow="auto"
     >
       {cards.map((card, i) => (
-        <>
-          <Box align="center" pad="medium">
-            <Meter
-              size="medium"
-              type="semicircle"
-              background="light-2"
-              value={card.challengeProgress}
-            />
-            <Box margin={{ top: "-70px" }}>
-              <GrommetRoutedButton
-                color="dark-2"
-                label="챌린지 개설하기"
-                path="/creat/challenge"
-              />
-            </Box>
-          </Box>
+        <div key={card.challengeNum}>
           <Box
             pad="small"
             align="center"
@@ -64,7 +42,7 @@ const Card = (props) => {
               }}
             />
           </Box>
-        </>
+        </div>
       ))}
     </Box>
   );
