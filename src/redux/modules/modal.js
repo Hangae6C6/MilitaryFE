@@ -1,24 +1,25 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
-import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
+import { getCookie } from "../../shared/cookie";
 
-const ADD_USERDATA = "ADD_USERDATA";
+const ADD = "userdata/ADD";
 
-const addUserData = createAction(ADD_USERDATA, (userdata) => ({ userdata}));
+const addUserData = createAction(ADD, (userdata) => ({ userdata }));
 
 const initialState = {
-  userdata: {
-    startDate: "",
-    endDate: "",
-    armCategory: "",
-    rank: "",
-  },
+  userdata: [],
 };
 
-const addUserDataDB = (startDate, endDate, armCategory, rank) => {
-  console.log(startDate, endDate, armCategory, rank);
+const addUserDataDB = (startDate, endDate, armyCategory, rank) => {
+  console.log(startDate, endDate, armyCategory, rank);
   return async function (dispatch) {
+    let userdatas = {
+      startDate: startDate,
+      endDate: endDate,
+      armyCategory: armyCategory,
+      rank: rank,
+    };
     try {
       await axios({
         method: "post",
@@ -26,9 +27,12 @@ const addUserDataDB = (startDate, endDate, armCategory, rank) => {
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
+        data: {
+          ...userdatas
+        },
       }).then((response) => {
-        console.log(response);
-        // dispatch(addUserData(response));
+        console.log(response.data);
+        dispatch(addUserData(userdatas));
       });
     } catch (err) {
       console.log(err);
@@ -39,9 +43,8 @@ const addUserDataDB = (startDate, endDate, armCategory, rank) => {
 
 export default handleActions(
   {
-    [ADD_USERDATA]: (state, action) =>
+    [ADD]: (state, action) =>
       produce(state, (draft) => {
-        console.log(draft);
         draft.userdata.unshift(action.payload.userdata);
       }),
   },
@@ -49,7 +52,8 @@ export default handleActions(
 );
 
 const ActionCreators = {
-    addUserDataDB
+  addUserDataDB,
+  addUserData,
 };
 
 export { ActionCreators };

@@ -7,7 +7,7 @@ import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
 
 import Main from "../pages/Main";
-import Detail from "../pages/Main";
+import Detail from "../pages/Detail";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import MyUser from "../pages/MyUser";
@@ -19,6 +19,7 @@ import KakaoAuth from "./KakaoAuth"
 import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
+import Challenge from "../component/main/Challenge";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
+            <Route exact path="/creat/challenge" element={<Challenge />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>

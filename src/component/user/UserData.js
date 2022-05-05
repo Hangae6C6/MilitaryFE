@@ -12,6 +12,7 @@ const UserData = () => {
   const [rank, setRank] = React.useState("");
   const armCategory = milCategory[0];
 
+
   const options = ['육군', '해군', '공군', '해병대', '특수부대'];
 
   const userDataHandler = () => {
@@ -44,7 +45,6 @@ const UserData = () => {
           <Select
             placeholder="소속부대를 선택해주세요"
             value={milCategory}
-            multiple
             options={options}
             onChange={({ value: nextValue }) => setMilCategory(nextValue)}
             clear
