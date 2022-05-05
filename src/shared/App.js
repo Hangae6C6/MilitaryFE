@@ -30,7 +30,7 @@ function App() {
     if (token) {
       dispatch(userActions.loginCheckDB());
     }
-  }, []);
+  }, [router]);
 
   return (
     <Background>

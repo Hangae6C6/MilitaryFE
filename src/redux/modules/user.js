@@ -23,7 +23,7 @@ const initialState = {
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {
   console.log(userId, userPw, userNick, userPwCheck);
-  return async function (dispatch, getState) {
+  return async function (dispatch, getState, {history}) {
     try {
       await axios({
         method: "post",
@@ -35,7 +35,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then((response) => {
-        console.log(response);
+        history.push('/login');
       });
     } catch (err) {
       console.log(err);
