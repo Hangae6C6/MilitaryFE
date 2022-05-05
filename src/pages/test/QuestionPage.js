@@ -1,4 +1,5 @@
 import React from 'react';
+
 import AnswerBtn from '../../element/test/AnswerBtn';
 import NextBtn from '../../element/test/NextBtn';
 import Question from '../../element/test/Question';
@@ -9,14 +10,13 @@ const QuestionPage = () => {
     return (
         <div>
         <GoTest />
-        <Question>질문</Question>
-        <AnswerBtn>답1</AnswerBtn>
+        <Question />
         <NextBtn           
             onClick={() => {
             history.push("/main/preTest/result");
             window.location.reload();
           }}>다음</NextBtn>
-    
+
       </div>
     );
   };

@@ -1,7 +1,6 @@
 // 0.리더, 1.공무원, 2.경찰, 3.개발자, 4.예술가, 5.요리사, 6.기계공, 7.창업 8.의료계
 
-
-export const qnaList = [
+const qnaList = [
   {
     q: '1. 사격을 마친 당신, 탄피가 하나 없는데...',
     a: [
@@ -13,8 +12,8 @@ export const qnaList = [
   {
     q: '2. 행군을 할 때',
     a: [
-      { answer : 'a. 열심히 걷는다', type : [0,1,3,6]},
-      { answer : 'b. 적당히 걷닫가 아픈척 한다', type : [2,7]},
+      { answer : 'a. 열심히 걷는다', type : [0,1,6]},
+      { answer : 'b. 적당히 걷닫가 아픈척 한다', type : [2,3,7]},
       { answer : 'c. 기지를 발휘하여 자기열외를 한다', type : [4,5,8]},
     ]
   },
@@ -76,7 +75,7 @@ export const qnaList = [
   },
 ]
 
-export const infoList = [
+const infoList = [
   {
     name:'훈련조교',
     desc:'통찰력이 뛰어난 당신, 당신에게는 리더가 어울려요!'
@@ -114,3 +113,5 @@ export const infoList = [
     desc:'메스. 의료계통으로 나가보시는건 어떠세요?'
   },
 ]
+
+export {qnaList, infoList};
