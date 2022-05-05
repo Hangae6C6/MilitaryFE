@@ -25,12 +25,12 @@ function App() {
   const dispatch = useDispatch();
   const token = getCookie("token");
   const router = useSelector((state) => state.router.location.pathname);
-
+ 
   useEffect(() => {
     if (token) {
       dispatch(userActions.loginCheckDB());
     }
-  }, [router]);
+  }, []);
 
   return (
     <Background>
