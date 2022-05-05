@@ -23,6 +23,7 @@ const Question = () => {
         }
       }
     }
+    console.log(type);
     const resultNum = type.indexOf(Math.max(...type)) + 1;
 
     setNum(num + 1);
