@@ -14,10 +14,25 @@ const Question = () => {
 
 
   const onIncrease = (e, qIdx, idx) => {
+    
+   let result = [];
+    for (let i=0; i<e.length; i++){
+      for (let j=0; j <= type.length; j++){
+        if(e[i]===j){
+          type[j]++
+        }
+      }
+    }
+    const resultNum = type.indexOf(Math.max(...type)) + 1;
+
     setNum(num + 1);
-    setType(
-      type.map((v, i) => v + qnaList[num - 1].a[e.target.id][`type${i + 1}`]),
-    );
+
+    
+
+    
+    // setType(
+    //   type.map((v, i) => v + qnaList[num - 1].a[e.target.id][`type${i + 1}`]),
+    // );
 
     // setType(
     //   type.map(
@@ -27,7 +42,7 @@ const Question = () => {
     //   v+qnaList[i].a[e.target.id].type
     //   )
     // );
-    console.log(type);
+    console.log(resultNum);
   };
 
   const resultNum = type.indexOf(Math.max(...type)) + 1;
@@ -50,7 +65,7 @@ const Question = () => {
       <BWrap>
         {qnaList[num - 1].a.map((elem, i) => {
           return (
-            <Button onClick={onIncrease} value={elem.answer} key={i} id={i}>
+            <Button onClick={()=> {onIncrease(elem.type)}} value={elem.answer} key={i} id={i}>
               {elem.answer}
             </Button>
           );
