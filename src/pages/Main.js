@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../component/main/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getCookie } from "../shared/cookie";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { Box, Anchor, Text, Meter, Button } from "grommet";
 
@@ -10,15 +9,16 @@ const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
   const userId = useSelector((state) => state.user.user.userId);
-  const isLogin = useSelector((state) => state.user.is_login);
-  const token = getCookie("token");
   
-  if (isLogin) {
-    dispatch(postActions.getProgressDB(userId));
-  }
+  React.useEffect(() => {
+    if (userId) {
+      dispatch(postActions.getProgressDB(userId));
+    }
+  },[dispatch, userId]);
+
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
-  }, []);
+  }, [dispatch]);
 
   const totalProgressBar = useSelector(
     (state) => state.card.totalProgress.totalChallengeProgress

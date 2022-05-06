@@ -59,7 +59,7 @@ const loginDB = (id, password) => {
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        document.location.href = "/user/login";
+        document.location.href = "/";
       });
     } catch (err) {
       console.log(err);

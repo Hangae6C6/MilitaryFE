@@ -2,9 +2,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../redux/modules/user";
-import { KAKAO_AUTH_URL, NAVER_AUTH_URL, GOOGLE_AUTH_URL } from "../shared/auth";
+import {
+  KAKAO_AUTH_URL,
+  NAVER_AUTH_URL,
+  GOOGLE_AUTH_URL,
+} from "../shared/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -12,19 +16,16 @@ const Login = () => {
   const [id, setId] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  //아이디 형식 확인
   const isId = (id) => {
     let pattern = /^[a-zA-z0-9]{4,12}$/;
-    return pattern.test(id); // 맞으면 true, 틀리면 false반환
+    return pattern.test(id);
   };
 
-  // 비밀번호형식 확인
   const isPwd = (password) => {
     let pattern = /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
-    return pattern.test(password); // 맞으면 true, 틀리면 false반환
+    return pattern.test(password);
   };
 
-  //로그인함수
   const login = () => {
     if (id === "" || password === "") {
       window.alert("빈칸을 입력해주세요.");
@@ -93,9 +94,9 @@ const Login = () => {
         </SNSLoginButton1>
         <SNSLoginButton2
           size="12pt"
-            onClick={() => {
-              window.location.href = GOOGLE_AUTH_URL;
-            }}
+          onClick={() => {
+            window.location.href = GOOGLE_AUTH_URL;
+          }}
         >
           구글 계정으로 로그인
         </SNSLoginButton2>

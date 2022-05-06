@@ -4,7 +4,7 @@ import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const GET_POST = "GET_POST";
-const GET_PROGRESS = "GET_TOTALPROGRESS"
+const GET_PROGRESS = "GET_TOTALPROGRESS";
 
 const getPost = createAction(GET_POST, (cards) => ({
   cards,
@@ -15,9 +15,7 @@ const getProgress = createAction(GET_PROGRESS, (totalProgress) => ({
 
 const initialState = {
   cards: [],
-  totalProgress: {
-
-  },
+  totalProgress: {},
 };
 
 const getPostDB = () => {
@@ -37,7 +35,6 @@ const getPostDB = () => {
 };
 
 const getProgressDB = (userId) => {
-  console.log(userId);
   return async function (dispatch, getState) {
     try {
       await axios({
@@ -62,11 +59,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.cards = action.payload.cards;
       }),
-      [GET_PROGRESS]: (state, action) =>
+    [GET_PROGRESS]: (state, action) =>
       produce(state, (draft) => {
         draft.totalProgress = action.payload.totalProgress;
       }),
-
   },
   initialState
 );
@@ -74,7 +70,6 @@ export default handleActions(
 const ActionCreators = {
   getPostDB,
   getProgressDB,
-  
 };
 
 export { ActionCreators };

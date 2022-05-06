@@ -23,14 +23,14 @@ import Challenge from "../component/main/Challenge";
 
 function App() {
   const dispatch = useDispatch();
-  const token = getCookie("token");
   const router = useSelector((state) => state.router.location.pathname);
- 
+  
   useEffect(() => {
+    const token = getCookie("token");
     if (token) {
       dispatch(userActions.loginCheckDB());
     }
-  }, [router]);
+  }, [dispatch, router]);
 
   return (
     <Background>
