@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as searchActions } from "../../redux/modules/challenge";
 import { Box, Select } from 'grommet';
 
-const Challenge = () => {
+const ChallengeAdd = () => {
   const dispatch = useDispatch();
   const [challengeTitle, setChallengeTitle] = React.useState("");
   const [challType, setChallType] = React.useState("");
@@ -61,7 +61,7 @@ const Challenge = () => {
   );
 };
 
-export default Challenge;
+export default ChallengeAdd;
 
 const Container = styled.div`
   display: flex;

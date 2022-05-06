@@ -23,7 +23,7 @@ const getPostDB = () => {
     try {
       await axios({
         method: "get",
-        url: "http://15.164.211.53/api/main",
+        url: "http://13.125.228.240/api/main",
       }).then((response) => {
         dispatch(getPost(response.data));
       });
@@ -39,7 +39,7 @@ const getProgressDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `http://15.164.211.53/api/main/challenge?userId=${userId}`,
+        url: `http://13.125.228.240/api/main/challenge?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
