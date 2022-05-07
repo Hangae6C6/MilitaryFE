@@ -1,110 +1,70 @@
-import React from "react";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import styled from 'styled-components';
 import io from "socket.io-client";
-//3.34.98.31
+import { useSelector, useDispatch } from "react-redux";
+
 const socket = io.connect("http://hwanginho.shop/");
 
-const TextField = () => {
-  const [state, setState] = useState({ message: "", name: "" });
-  const [chat, setchat] = useState([]);
-  const [room, setRoom] = useState("");
+socket.emit("init", { name: "jaehoon" });
+
+const TextField = (props) => {
+  const [chatArr, setChatArr] = useState([]);
+  const [chat, setChat] = useState({ name: "", message: "" });
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    socket.on("message", ({ name, message }) => {
-      setchat([...chat, { name, message }]);
-    });
-  });
+    socket.on("receive message", (message) => {
+      setChatArr((chatArr) => chatArr.concat(message));
+    }); //receive message이벤트에 대한 콜백을 등록해줌
+  }, []);
 
-  const onTextChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
-  };
+  // useEffect(() => {
+  //   return () => {
+  // socket.close();
+  //   };
+  // }, []);
 
+  const buttonHandler = useCallback((info) => {
+    socket.emit("send message", { name: chat.name, message: chat.message });
+    console.log(info)
+    //버튼을 클릭했을 때 send message이벤트 발생
+  }, [chat]);
 
-  // const sendMessage = () => {
-  //   socket.emit("send_message", { message, room });
-  // };
-
-
-  const onMessageSubmit = (e) => {
-    e.preventDefault();
-    const { name, message } = state;
-    socket.emit("send_message", { name, message, room });
-    setState({ message: "", name });
-  };
-
-  const renderChat = () => {
-    return chat.map(({ name, message }, index) => (
-      <div key={index}>
-        <h3>
-          {name} : <span>{message}</span>
-        </h3>
-      </div>
-    ));
-  };
-
-  const joinRoom = () => {
-    if (room !== "") {
-      socket.emit("join_room", room);
-    }
-  };
+  const changeMessage = useCallback(
+    (e) => {
+      setChat({ name: chat.name, message: e.target.value });
+    },
+    [chat]
+  );
 
   return (
-    <div>
-      <form onSubmit={onMessageSubmit}>
-        <ChatDiv>{renderChat()}</ChatDiv>
-        <InputDiv>
-          <Input
-            onChange={(e) => {
-              setRoom(e.target.value);
-            }}
-          />
-          <SendButton
-            onClick={() => {
-              joinRoom();
-            }}
-          />
-          <Input
-            name="name"
-            onChange={(e) => onTextChange(e)}
-            value={state.name}
-            label="name"
-          />
-          <Input
-            name="message"
-            onChange={(e) => onTextChange(e)}
-            value={state.message}
-            label="Message"
-          />
-          <SendButton onClick={onMessageSubmit}/>
-        </InputDiv>
-      </form>
-    </div>
+    <Box>
+      <Grid className="Box">
+        <Grid>
+          {chatArr.map((ele, idx) => (
+            <div className="Chat" key={idx}>
+              <div>{userId}</div>
+              <div className="ChatLog">{ele.message}</div>
+            </div>
+          ))}
+        </Grid>
+        <Grid is_flex>
+          <Input placeholder="  내용" onChange={changeMessage}></Input>
+          <Button onClick={buttonHandler} width="130px">
+            등록
+          </Button>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
-const ChatDiv = styled.div`
-  height: 92%;
-  width: 100%;
-  background: #f3f3f3;
-`;
-
-const InputDiv = styled.div`
-  display: flex;
-`;
+const Box = styled.div`
+`
+const Grid = styled.div`
+`
 const Input = styled.input`
-  border: 1px solid #212122;
-  width: 90%;
-  height: 100%;
-  padding: 20px;
-`;
-const SendButton = styled.button`
-  width: 10%;
-  background-color: none;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 1px;
-  height: 55px;
-`;
-
+`
+const Button = styled.button`
+`
 export default TextField;
-export { socket };
