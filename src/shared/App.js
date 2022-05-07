@@ -19,12 +19,18 @@ import KakaoAuth from "./KakaoAuth"
 import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
-import ChallengeAdd from "../component/challenge/ChallengeAdd";
+import ChallengeTitle from "../component/challenge/ChallengeTitle";
+import ChallengeDate from "../component/challenge/ChallengeDate";
+import ChallengeType from "../component/challenge/ChallengeType";
+import ChallengeCreated from "../component/challenge/ChallengeCreated";
+import { createBrowserHistory } from "history";
+import ChallengeStep from "../component/challenge/ChallengeStep";
 
 function App() {
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
-  
+  const history = createBrowserHistory();
+
   useEffect(() => {
     const token = getCookie("token");
     if (token) {
@@ -35,7 +41,7 @@ function App() {
   return (
     <Background>
       <DivBox>
-        <Router>
+        <Router >
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/postDetail" element={<Detail />}></Route>
@@ -47,10 +53,17 @@ function App() {
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
-            <Route exact path="/challengeadd" element={<ChallengeAdd />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
+            
+           
+            <Route exact path="/challengeAdd/title" element={<ChallengeTitle /> } />
+            <Route exact path="/challengeAdd/date" element={<ChallengeDate /> } />
+            <Route exact path="/challengeAdd/type" element={<ChallengeType /> } />
+            <Route exact path="/challengeAdd/step" element={<ChallengeStep /> } />
+            <Route exact path="/challengeAdd/created" element={<ChallengeCreated /> } />
+        
           </Routes>
         </Router>
       </DivBox>
@@ -59,7 +72,7 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: auto;
+  margin: 20px auto;
   max-width: 375px;
   max-height: 812px;
   width: 100%;
@@ -70,8 +83,6 @@ const DivBox = styled.div`
 const Background = styled.div`
   max-width: 100%;
   max-height: 100%;
-  width: 100vw;
-  height: 100vh;
   background-color: #ffffff;
 `;
 
