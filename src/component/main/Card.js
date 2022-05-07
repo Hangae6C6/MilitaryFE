@@ -5,7 +5,7 @@ import { Anchor, Box, Button, Text } from "grommet";
 import { history } from "../../redux/configureStore";
 const Card = (props) => {
   const cards = props.cards;
-  console.log(cards);
+
 
   return (
     <Box

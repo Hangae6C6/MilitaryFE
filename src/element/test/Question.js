@@ -4,7 +4,6 @@ import { useState } from "react";
 import { qnaList } from "../../data/data";
 import { history } from "../../redux/configureStore";
 
-console.log(qnaList);
 const Question = () => {
   const [num, setNum] = useState(1);
   const [type, setType] = useState(new Array(9).fill(0));
@@ -21,7 +20,7 @@ const Question = () => {
         }
       }
     }
-    console.log(type);
+    
     const resultNum = type.indexOf(Math.max(...type)) + 1;
 
     setNum(num + 1);

@@ -2,24 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../component/main/Card";
 import { useDispatch, useSelector } from "react-redux";
-
 import { ActionCreators as postActions } from "../redux/modules/main";
-import {
-  Box,
-  Anchor,
-  Text,
-  Meter,
-  RoutedButton as GrommetRoutedButton,
-} from "grommet";
+import { Box, Anchor, Text, Meter, Button } from "grommet";
 
 const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
-  console.log(cards);
+  const userId = useSelector((state) => state.user.user.userId);
+  
+  React.useEffect(() => {
+    if (userId) {
+      dispatch(postActions.getProgressDB(userId));
+    }
+  },[dispatch, userId]);
 
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
-  }, []);
+  }, [dispatch]);
+
+  const totalProgressBar = useSelector(
+    (state) => state.card.totalProgress.totalChallengeProgress
+  );
 
   return (
     <MainBox>
@@ -31,26 +34,24 @@ const Main = () => {
           테스트 하러가기
         </Anchor>
       </Box>
-      {cards.map((card, i) => (
-        <div key={card.challengeNum}>
-          <Box align="center" pad="medium">
-            <Meter
-              size="medium"
-              type="semicircle"
-              background="light-2"
-              value={card.challengeProgress}
-            />
-            <Box margin={{ top: "-70px" }}>
-              <GrommetRoutedButton
-                value=""
-                color="dark-2"
-                label="챌린지 개설하기"
-                path="/creat/challenge"
-              />
-            </Box>
-          </Box>
-        </div>
-      ))}
+
+      <Box align="center" pad="medium">
+        <Meter
+          size="medium"
+          type="semicircle"
+          background="light-2"
+          value={totalProgressBar}
+        />
+        <Box margin={{ top: "-70px" }}>
+          <Button
+            value=""
+            color="dark-2"
+            label="챌린지 개설하기"
+            path="/creat/challenge"
+          />
+        </Box>
+      </Box>
+
       <Card cards={cards} />
     </MainBox>
   );

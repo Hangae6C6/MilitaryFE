@@ -23,7 +23,7 @@ const initialState = {
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {
   console.log(userId, userPw, userNick, userPwCheck);
-  return async function (dispatch, getState) {
+  return async function (dispatch, getState, {history}) {
     try {
       await axios({
         method: "post",
@@ -35,7 +35,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then((response) => {
-        console.log(response);
+        history.push('/login');
       });
     } catch (err) {
       console.log(err);
@@ -59,8 +59,7 @@ const loginDB = (id, password) => {
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        document.location.href = "/user/login";
-        
+        document.location.href = "/";
       });
     } catch (err) {
       console.log(err);
@@ -78,7 +77,7 @@ const loginCheckDB = () => {
       },
     })
       .then((res) => {
-        dispatch(setUser(res.data));
+        dispatch(getUser(res.data.user));
       })
       .catch((err) => {
         console.log(err);
@@ -104,7 +103,7 @@ const kakaoLogin = (code) => {
         localStorage.setItem("userName", userName);
         dispatch(loginCheckDB());
         console.log("로그인 확인");
-        window.location.replace("/"); 
+        window.location.replace("/");
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);
@@ -132,7 +131,7 @@ const NaverLogin = (code) => {
         localStorage.setItem("userName", userName);
         dispatch(loginCheckDB());
         console.log("로그인 확인");
-        window.location.replace("/"); 
+        window.location.replace("/");
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);
@@ -161,7 +160,6 @@ export default handleActions(
       }),
     [GET_USER]: (state, action) =>
       produce(state, (draft) => {
-        console.log(draft);
         draft.user = action.payload.user;
         draft.is_login = true;
       }),
