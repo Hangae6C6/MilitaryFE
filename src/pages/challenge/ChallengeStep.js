@@ -6,19 +6,21 @@ import { Box, Select, Meter } from "grommet";
 import { Close } from "grommet-icons";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { history } from "../../redux/configureStore";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
-import deleteIcon from "../../shared/icons/icnCloseBlack32.svg"
-import addIcon from "../../shared/icons/icnPlusBlack32.svg"
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
+import addIcon from "../../shared/icons/icnPlusBlack32.svg";
 
 const ChallengeStep = () => {
   return (
     <Container>
-         <div className="arrow"
-         onClick={()=>{
-            history.back();
-        }}>
-          <img src={gobackIcon} alt='goback'/>
-        </div>
+      <div
+        className="arrow"
+        onClick={() => {
+          history.back();
+        }}
+      >
+        <img src={gobackIcon} alt="goback" />
+      </div>
       <div className="top"></div>
       <div className="progressBar">
         <Meter
@@ -32,7 +34,9 @@ const ChallengeStep = () => {
         />
       </div>
       <div className="title">
+        <div id="type">공모전</div>
         <div className="title-text">목표를 위한 STEP</div>
+
         <textarea
           className="titleInput"
           //  value={title}
@@ -43,7 +47,7 @@ const ChallengeStep = () => {
       </div>
       <div className="boxes">
         <div className="delete-btn">
-        <img src={addIcon} alt='addIcon'/>
+          <img src={addIcon} alt="addIcon" />
         </div>
         <textarea
           className="step-input"
@@ -56,20 +60,16 @@ const ChallengeStep = () => {
       </div>
       <div className="box">
         <div className="delete-btns">
-          <img src={deleteIcon} alt='deleteIcon'/>
+          <img src={deleteIcon} alt="deleteIcon" />
         </div>
-        <div
-          className="step-inputs"
-        >하루에 책 2장씩 읽기</div>
+        <div className="step-inputs">하루에 책 2장씩 읽기</div>
         <div className="step-nums">1</div>
       </div>
       <div className="box">
         <div className="delete-btns">
-        <img src={deleteIcon} alt='deleteIcon'/>
+          <img src={deleteIcon} alt="deleteIcon" />
         </div>
-        <div
-          className="step-inputs"
-        >하루에 책 4장씩 읽기</div>
+        <div className="step-inputs">하루에 책 4장씩 읽기</div>
         <div className="step-nums">2</div>
       </div>
 
@@ -114,7 +114,16 @@ const Container = styled.div`
     min-height: 120px;
     width: 100%;
     border-bottom: 2px solid #3f3f3f;
-
+    #type {
+      position: absolute;
+      width: 78px;
+      height: 30px;
+      background-color: #3f3f3f;
+      color: #e5e5e5;
+      font-size: 24px;
+      text-align: center;
+      margin-left: 220px;
+    }
     .title-text {
       height: 35px;
       width: 230px;
