@@ -1,0 +1,36 @@
+
+@font-face {
+    font-family: Gmarket SansBold;
+    src: local("Gmarket SansBold"),
+    url("../../shared/fonts/GmarketSansTTFBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Gmarket SansMedium;
+    src: local("Gmarket SansMedium"),
+    url("../../shared/fonts/GmarketSansTTFMedium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Gmarket Sans;
+    src: local("Gmarket Sans"),
+    url("../../shared/fonts/GmarketSansTTFLight.ttf") format("truetype");
+}
+@font-face {
+    font-family: NanumSquare;
+    src: local("NanumSquare"),
+    url("../../shared/fonts/NanumSquare_acL.ttf") format("truetype");
+
+}
+@font-face {
+    font-family: NanumSquareBold;
+    src: local("NanumSquareBold"),
+    url("../../shared/fonts/NanumSquare_acEB.ttf") format("truetype");
+
+}
+@font-face {
+    font-family: NanumSquareMedium;
+    src: local("NanumSquareMedium"),
+    url("../../shared/fonts/NanumSquare_acB.ttf") format("truetype");
+
+}
