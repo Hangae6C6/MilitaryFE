@@ -19,12 +19,12 @@ import KakaoAuth from "./KakaoAuth"
 import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
-import ChallengeTitle from "../component/challenge/ChallengeTitle";
-import ChallengeDate from "../component/challenge/ChallengeDate";
-import ChallengeType from "../component/challenge/ChallengeType";
-import ChallengeCreated from "../component/challenge/ChallengeCreated";
+import ChallengeTitle from "../pages/challenge/ChallengeTitle";
+import ChallengeDate from "../pages/challenge/ChallengeDate";
+import ChallengeType from "../pages/challenge/ChallengeType";
+import ChallengeCreated from "../pages/challenge/ChallengeCreated";
 import { createBrowserHistory } from "history";
-import ChallengeStep from "../component/challenge/ChallengeStep";
+import ChallengeStep from "../pages/challenge/ChallengeStep";
 
 function App() {
   const dispatch = useDispatch();

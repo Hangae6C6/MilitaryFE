@@ -6,6 +6,8 @@ import { Box, Select, Meter } from "grommet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { history } from "../../redux/configureStore";
 
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
+
 const ChallengeTitle = () => {
   const dispatch = useDispatch();
 
@@ -32,7 +34,7 @@ const ChallengeTitle = () => {
           onClick={() => {
             window.location.pathname= "/";
           }}>
-        <ArrowBackIcon fontSize="large" />
+        <img src={gobackIcon} alt='goback'/>
       </div>
       <div className="top"></div>
       <div className="progressBar">
@@ -188,14 +190,14 @@ const Container = styled.div`
 const NextButton = styled.button`
   position: fixed;
   bottom: 6.1em;
-  width: 376px;
+   left: 16.1em;
+  width: 378px;
   height: 80px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
-  left:16.2em;
   background-color: #b2b2b2;
   border-top: 2px solid #3f3f3f;
   

@@ -6,18 +6,19 @@ import { Box, Select, Meter } from "grommet";
 import { Close } from "grommet-icons";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { history } from "../../redux/configureStore";
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
+import deleteIcon from "../../shared/icons/icnCloseBlack32.svg"
+import addIcon from "../../shared/icons/icnPlusBlack32.svg"
 
 const ChallengeStep = () => {
   return (
     <Container>
-      <div
-        className="arrow"
-        onClick={() => {
-          history.back();
-        }}
-      >
-        <ArrowBackIcon fontSize="large" />
-      </div>
+         <div className="arrow"
+         onClick={()=>{
+            history.back();
+        }}>
+          <img src={gobackIcon} alt='goback'/>
+        </div>
       <div className="top"></div>
       <div className="progressBar">
         <Meter
@@ -42,7 +43,7 @@ const ChallengeStep = () => {
       </div>
       <div className="boxes">
         <div className="delete-btn">
-          <Close color="#3f3f3f" />
+        <img src={addIcon} alt='addIcon'/>
         </div>
         <textarea
           className="step-input"
@@ -55,7 +56,7 @@ const ChallengeStep = () => {
       </div>
       <div className="box">
         <div className="delete-btns">
-          <Close color="#3f3f3f" />
+          <img src={deleteIcon} alt='deleteIcon'/>
         </div>
         <div
           className="step-inputs"
@@ -64,7 +65,7 @@ const ChallengeStep = () => {
       </div>
       <div className="box">
         <div className="delete-btns">
-          <Close color="#3f3f3f" />
+        <img src={deleteIcon} alt='deleteIcon'/>
         </div>
         <div
           className="step-inputs"
@@ -209,8 +210,8 @@ const Container = styled.div`
 const NextButton = styled.button`
   position: absolute;
   bottom: 6.1em;
-  left: 16.2em;
-  width: 376px;
+  left: 16.1em;
+  width: 378px;
   height: 80px;
   border: none;
   outline: none;
