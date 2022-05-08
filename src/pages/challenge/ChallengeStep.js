@@ -26,7 +26,7 @@ const ChallengeStep = () => {
         <Meter
           size="xsmall"
           height="67px"
-          width="359px"
+          width="375px"
           type="bar"
           background="#FAFAFA"
           color="#6dbb91"
@@ -56,8 +56,8 @@ const ChallengeStep = () => {
           maxLength="20"
           type="text"
         ></textarea>
-        <div className="step-num"></div>
       </div>
+   
       <div className="box">
         <div className="delete-btns">
           <img src={deleteIcon} alt="deleteIcon" />
@@ -88,13 +88,10 @@ export default ChallengeStep;
 
 const Container = styled.div`
   max-height: 812px;
-  max-width: 359px;
+  max-width: 375px;
   height: 812px;
   width: 100%;
-  box-sizing: border-box;
-  margin-left: 8px;
-  border-left: 2px solid #3f3f3f;
-  border-right: 2px solid #3f3f3f;
+  border: 2px solid #3f3f3f;
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -106,9 +103,9 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
   }
   .progressBar {
-    height: 66px;
+    height: 67px;
     width: 100%;
-    border-bottom: 3px solid #3f3f3f;
+    border-bottom: 2px solid #3f3f3f;
   }
   .title {
     min-height: 120px;
@@ -122,14 +119,15 @@ const Container = styled.div`
       color: #e5e5e5;
       font-size: 24px;
       text-align: center;
-      margin-left: 220px;
+      margin-left: 240px;
+      font-family: Gmarket Sans;
     }
     .title-text {
       height: 35px;
       width: 230px;
       font-size: 24px;
       color: #3f3f3f;
-      font-weight: 800;
+      font-family: Gmarket SansBold;
       margin: 40px 0px 0px 30px;
     }
     .titleInput {
@@ -142,17 +140,18 @@ const Container = styled.div`
       max-width: 295px;
       resize: none;
       font-size: 15px;
+      font-family: Gmarket Sans;
     }
   }
 
   .boxes {
     display: flex;
-    width: 357px;
+    width: 375px;
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btn {
       position: absolute;
-      margin: 10px 0px 0px 320px;
+      margin: 10px 0px 0px 330px;
       &:hover {
         cursor: pointer;
         color: #000;
@@ -167,30 +166,22 @@ const Container = styled.div`
       resize: none;
       margin: 50px 0 0 50px;
       font-size: 16px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-family: NanumSquare;
       text-align: center;
       ::placeholder {
         color: #d9d9d9;
         text-align: center;
       }
     }
-    .step-num {
-      position: absolute;
-      margin: 33px 0px 0px 20px;
-      font-size: 50px;
-      font-weight: 300;
-      font-weight: lighter;
-      color: #3f3f3f;
-    }
   }
   .box {
     display: flex;
-    width: 357px;
+    width: 375px;
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btns {
       position: absolute;
-      margin: 10px 0px 0px 320px;
+      margin: 10px 0px 0px 330px;
       &:hover {
         cursor: pointer;
         color: #000;
@@ -202,15 +193,14 @@ const Container = styled.div`
       max-width: 260px;
       margin: 50px 0 0 50px;
       font-size: 16px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-family: NanumSquareMedium;
       text-align: center;
     }
     .step-nums {
       position: absolute;
-      margin: 33px 0px 0px 20px;
+      margin: 25px 0px 0px 20px;
       font-size: 50px;
-      font-weight: 300;
-      font-weight: lighter;
+      font-family: Gmarket Sans;
       color: #3f3f3f;
     }
   }
@@ -218,18 +208,17 @@ const Container = styled.div`
 
 const NextButton = styled.button`
   position: absolute;
-  bottom: 6.1em;
-  left: 16.1em;
-  width: 378px;
+  bottom: 29mm;
+  width: 375px;
   height: 80px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
+  font-family: NanumSquareMedium;
   background-color: #b2b2b2;
   border-top: 2px solid #3f3f3f;
-
   &:hover {
     cursor: pointer;
     background-color: #3f3f3f;

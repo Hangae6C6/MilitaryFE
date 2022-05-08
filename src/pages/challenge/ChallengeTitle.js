@@ -41,7 +41,7 @@ const ChallengeTitle = () => {
         <Meter
           size="xsmall"
           height="67px"
-          width="359px"
+          width="375px"
           type="bar"
           background="#FAFAFA"
           color="#6dbb91"
@@ -62,7 +62,7 @@ const ChallengeTitle = () => {
         <textarea 
           className="input-area"
           //  value={title}
-          placeholder="우리가 누굽니까악"
+          placeholder="우리가 누굽니까악!"
           maxLength="10"
           type="text"
         ></textarea>
@@ -115,13 +115,11 @@ export default ChallengeTitle;
 
 const Container = styled.div`
   max-height: 812px;
-  max-width: 359px;
+  max-width: 375px;
   height: 812px;
   width: 100%;
-  box-sizing: border-box;
-  margin-left: 8px;
-  border-left: 2px solid #3f3f3f;
-  border-right: 2px solid #3f3f3f;
+  border: 2px solid #3f3f3f;
+
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -133,19 +131,21 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
   }
   .progressBar {
-    height: 66px;
+    height: 67px;
     width: 100%;
-    border-bottom: 3px solid #3f3f3f;
   }
   .title {
     min-height: 120px;
     width: 100%;
+    border-top: 2px solid #3f3f3f;
     border-bottom: 2px solid #3f3f3f;
+    
 
     .title-text {
       height: 35px;
       width: 130px;
       font-size: 24px;
+      font-family: Gmarket SansMedium;
       color: #3f3f3f;
       font-weight: 800;
       margin: 40px 0px 0px 30px;
@@ -160,6 +160,7 @@ const Container = styled.div`
       max-width: 295px;
       resize: none;
       font-size: 15px;
+      font-family: Gmarket Sans;
     }
   }
   .input-title {
@@ -169,9 +170,9 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
     .input-area {
       margin: 120px 66px;
-      font-weight: 800;
+      font-family: Gmarket SansBold;
       height: 38px;
-      width: 230px;
+      width: 280px;
       outline: none;
       border: 0px;
       resize: none;
@@ -180,7 +181,7 @@ const Container = styled.div`
       color: #3f3f3f;
       background-color: #f5f5f5;
       ::placeholder {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: Gmarket SansBold;
         color: #d9d9d9;
       }
     }
@@ -188,19 +189,18 @@ const Container = styled.div`
 
 `;
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 6.1em;
-   left: 16.1em;
-  width: 378px;
+  position: absolute;
+  bottom: 29mm;
+  width: 375px;
   height: 80px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
+  font-family: NanumSquareMedium;
   background-color: #b2b2b2;
   border-top: 2px solid #3f3f3f;
-  
   &:hover {
     cursor: pointer;
     background-color: #3f3f3f;

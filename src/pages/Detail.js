@@ -6,7 +6,7 @@ import DetailpageRank from "../component/detailpage/DetailpageRank";
 import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../shared/icons/icnShareBlack35.png";
 import typeImg from "../shared/images/workout.png";
-import personImg from "../shared/images/icnPersonGray36.png"
+import personImg from "../shared/images/icnPersonGray36.png";
 import { history } from "../redux/configureStore";
 import Challenge from "../redux/modules/challenge";
 
@@ -22,7 +22,7 @@ const Detail = () => {
         <div
           className="arrow"
           onClick={() => {
-            history.back();
+            window.location.pathname = "/";
           }}
         >
           <img src={gobackIcon} alt="goback" />
@@ -80,8 +80,7 @@ const Container = styled.div`
   max-width: 375px;
   height: 812px;
   width: 100%;
-  border-left: 2px solid #3f3f3f;
-  border-right: 2px solid #3f3f3f;
+  border: 2px solid #3f3f3f;
   .nav {
     width: 375px;
     height: 44px;
@@ -93,7 +92,7 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
     .arrow {
       position: absolute;
-      margin: 17px 0px 0px 30px;
+      margin: 17px 0px 0px 20px;
       cursor: pointer;
     }
     #share-icon {
@@ -121,7 +120,7 @@ const TitleBox = styled.div`
       font-size: 24px;
       font-weight: bold;
       padding-top: 36px;
-      /* font-family: Gmarket Sans; */
+      font-family: Gmarket SansBold;
     }
     #title-down {
       display: flex;
@@ -131,9 +130,10 @@ const TitleBox = styled.div`
         background-color: #3f3f3f;
         color: #ffffff;
         font-size: 20px;
-        /* font-family: Gmarket Sans; */
+        font-family: Gmarket Sans;
         text-align: center;
-        margin-left: 30px;
+        line-height: 30px;
+        margin-left: 20px;
       }
       #startDate {
         width: 73px;
@@ -141,13 +141,14 @@ const TitleBox = styled.div`
         background-color: #3f3f3f;
         color: #ffffff;
         font-size: 20px;
-        /* font-family: Gmarket Sans; */
+        font-family: Gmarket Sans;
+        line-height: 30px;
         text-align: center;
         margin-left: 10px;
       }
     }
   }
- 
+
   #image {
     max-width: 117px;
     max-height: 159px;
@@ -166,35 +167,41 @@ const ChallengeRoom = styled.div`
     border-bottom: 2px solid #3f3f3f;
     border-right: 2px solid #3f3f3f;
     background-color: #ffffff;
-    #imgWrap{
+    #imgWrap {
       padding-top: 10px;
     }
     #roomInfo {
       font-size: 20px;
-      font-weight: 700;
-      /* font-family: Gmarket Sans; */
+      font-family: Gmarket SansBold;
       color: #3f3f3f;
     }
     #infoDetail {
       font-size: 14px;
-      font-weight: 400;
-      /* font-family: NanumSquare; */
+      font-family: NanumSquare;
       color: #3f3f3f;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #3f3f3f;
+      color: #ffffff;
+      #roomInfo {
+        color: #ffffff;
+      }
     }
   }
 `;
 
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 6.1em;
-  left: 16.2em;
-  width: 379px;
+  position: absolute;
+  bottom: 29mm;
+  width: 375px;
   height: 80px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
+  font-family: NanumSquareMedium;
   background-color: #b2b2b2;
   border-top: 2px solid #3f3f3f;
   &:hover {

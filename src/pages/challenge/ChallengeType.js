@@ -21,7 +21,7 @@ const ChallengeType = () => {
         <Meter
           size="xsmall"
           height="67px"
-          width="359px"
+          width="375px"
           type="bar"
           background="#FAFAFA"
           color="#6dbb91"
@@ -86,13 +86,10 @@ export default ChallengeType;
 
 const Container = styled.div`
   max-height: 812px;
-  max-width: 359px;
+  max-width: 375px;
   height: 812px;
   width: 100%;
-  box-sizing: border-box;
-  margin-left: 8px;
-  border-left: 2px solid #3f3f3f;
-  border-right: 2px solid #3f3f3f;
+  border: 2px solid #3f3f3f;
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -104,9 +101,9 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
   }
   .progressBar {
-    height: 66px;
+    height: 67px;
     width: 100%;
-    border-bottom: 3px solid #3f3f3f;
+    border-bottom: 2px solid #3f3f3f;
   }
   .title {
     min-height: 120px;
@@ -118,7 +115,7 @@ const Container = styled.div`
       width: 130px;
       font-size: 24px;
       color: #3f3f3f;
-      font-weight: 800;
+      font-family: Gmarket SansBold;
       margin: 40px 0px 0px 30px;
     }
     .titleInput {
@@ -131,16 +128,18 @@ const Container = styled.div`
       max-width: 295px;
       resize: none;
       font-size: 15px;
+      font-family: Gmarket Sans;
     }
   }
   .boxes {
     display: flex;
-    width: 357px;
+    width: 377px;
     height: 127px;
     .box {
         text-align: center;
+        font-family: Gmarket SansMedium;
       padding-top: 55px;
-      width: 117px;
+      width: 124px;
       border-bottom: 2px solid #3f3f3f;
       border-right: 2px solid #3f3f3f;
       background-color: #ffffff;
@@ -153,19 +152,18 @@ const Container = styled.div`
 
 `;
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 6.1em;
-  left: 16.1em;
-  width: 378px;
+  position: absolute;
+  bottom: 29mm;
+  width: 375px;
   height: 80px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
+  font-family: NanumSquareMedium;
   background-color: #b2b2b2;
   border-top: 2px solid #3f3f3f;
-  
   &:hover {
     cursor: pointer;
     background-color: #3f3f3f;

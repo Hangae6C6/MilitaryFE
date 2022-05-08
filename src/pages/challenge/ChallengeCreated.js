@@ -13,7 +13,7 @@ const ChallengeCreated = () => {
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = "/";
+            window.location.pathname = "/postdetail";
           }}
         >
           시작하기
@@ -42,10 +42,10 @@ export default ChallengeCreated;
 
 const Container = styled.div`
   max-height: 812px;
-  max-width: 359px;
+  max-width: 375px;
   height: 812px;
   width: 100%;
-  box-sizing: border-box;
+  border: 4px solid #3f3f3f;
 
   .top {
     width: 375px;
@@ -53,12 +53,12 @@ const Container = styled.div`
   }
   .second-box {
     width: 287px;
-    height: 45px;
-    /* font-family: Garket sans-serif; */
+    height: 44px;
+    font-family: Gmarket SansBold;
     font-size: 28px;
     color: #3f3f3f;
     font-weight: bold;
-    margin: 26px 55px 0px;
+    margin: 26px 45px 0px;
   }
   .third-box {
     margin: 16px 20px 0px;
@@ -66,7 +66,7 @@ const Container = styled.div`
   .fourth-box {
     width: 290px;
     height: 31px;
-    /* font-family: NanumSquare; */
+    font-family: NanumSquare;
     font-weight: 700;
     margin: 16px 47px 0px;
   }
@@ -81,7 +81,7 @@ const Container = styled.div`
       font-size: 18px;
       font-weight: bold;
       padding-top: 20px;
-      /* font-family: Gmarket Sans; */
+      font-family: Gmarket SansBold;
       border-bottom: 2px solid #3f3f3f;
       text-align: center;
     }
@@ -116,15 +116,15 @@ const Container = styled.div`
 
 const NextButton = styled.button`
   position: absolute;
-  width: 80px;
+  width: 100px;
   height: 30px;
   border: none;
   outline: none;
   color: #6dbb91;
-  /* font-family: Noto Sans; */
+  font-family: Gmarket SansMedium;
   font-size: 18px;
   font-weight: 600;
-  margin: 64px 0px 0px 284px;
+  margin: 64px 0px 0px 264px;
   background-color: #ffffff;
 
   &:hover {
