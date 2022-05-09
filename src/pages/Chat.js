@@ -5,7 +5,7 @@ import React from "react";
 import styled from "styled-components";
 
 import ChatHeader from "../element/chat/ChatHeader";
-import TextField from "../element/chat/TextField";
+import TextField from "../element/chat/TextField2";
 
 const Chat = () => {
   return (
