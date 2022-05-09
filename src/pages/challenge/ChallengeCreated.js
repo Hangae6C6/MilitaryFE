@@ -13,7 +13,7 @@ const ChallengeCreated = () => {
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = "/postdetail";
+            window.location.pathname = "/detailpage";
           }}
         >
           시작하기

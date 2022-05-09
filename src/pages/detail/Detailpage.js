@@ -1,14 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import DetailpageTitle from "../component/detailpage/DetailpageTitle";
-import DetailpageRank from "../component/detailpage/DetailpageRank";
-import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
-import shareIcon from "../shared/icons/icnShareBlack35.png";
-import typeImg from "../shared/images/workout.png";
-import personImg from "../shared/images/icnPersonGray36.png";
-import { history } from "../redux/configureStore";
-import Challenge from "../redux/modules/challenge";
+import DetailpageStep from "../../component/detailpage/DetailpageStep";
+import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import shareIcon from "../../shared/icons/icnShareBlack35.png";
+import typeImg from "../../shared/images/workout.png";
+import personImg from "../../shared/images/icnPersonGray36.png";
+import { history } from "../../redux/configureStore";
+import Challenge from "../../redux/modules/challenge";
 
 const Detail = () => {
   // const location = useLocation();
@@ -16,7 +16,7 @@ const Detail = () => {
   // console.log(post);
 
   return (
-    <Container>
+    <Container >
       <div className="nav"></div>
       <div className="top">
         <div
@@ -66,9 +66,9 @@ const Detail = () => {
           <div id="Infodetail">남은 자리</div>
         </div>
       </ChallengeRoom>
-      <DetailpageTitle />
-      <DetailpageRank />
-      <NextButton>지금 시작하기</NextButton>
+      <DetailpageProgress  />
+      <DetailpageStep />
+      <NextButton>채팅하기</NextButton>
     </Container>
   );
 };
@@ -76,11 +76,13 @@ const Detail = () => {
 export default Detail;
 
 const Container = styled.div`
-  max-height: 812px;
+  display: block;
+  max-height: 100%;
   max-width: 375px;
-  height: 812px;
+  height: 100%;
   width: 100%;
   border: 2px solid #3f3f3f;
+ 
   .nav {
     width: 375px;
     height: 44px;
@@ -181,8 +183,8 @@ const ChallengeRoom = styled.div`
       color: #3f3f3f;
     }
     &:hover {
-      cursor: pointer;
-      background-color: #3f3f3f;
+    
+      background-color: #6DBB91;
       color: #ffffff;
       #roomInfo {
         color: #ffffff;
@@ -192,7 +194,7 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: absolute;
+  position: table-row;
   bottom: 29mm;
   width: 375px;
   height: 80px;
@@ -203,7 +205,7 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  border-top: 2px solid #3f3f3f;
+  /* border-top: 2px solid #3f3f3f; */
   &:hover {
     cursor: pointer;
     background-color: #3f3f3f;

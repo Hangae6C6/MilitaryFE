@@ -7,7 +7,7 @@ import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
 
 import Main from "../pages/Main";
-import Detail from "../pages/Detail";
+import Detailpage from "../pages/detail/Detailpage";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import MyUser from "../pages/MyUser";
@@ -25,6 +25,7 @@ import ChallengeType from "../pages/challenge/ChallengeType";
 import ChallengeCreated from "../pages/challenge/ChallengeCreated";
 import { createBrowserHistory } from "history";
 import ChallengeStep from "../pages/challenge/ChallengeStep";
+import DetailpageRank from "../pages/detail/DetailpageRank"
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,6 @@ function App() {
         <Router >
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
-            <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/userdata" element={<UserData />}></Route>
@@ -57,13 +57,15 @@ function App() {
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
             
+            <Route exact path="/detailpage" element={<Detailpage />}></Route>
+            <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
            
             <Route exact path="/challengeAdd/title" element={<ChallengeTitle /> } />
             <Route exact path="/challengeAdd/date" element={<ChallengeDate /> } />
             <Route exact path="/challengeAdd/type" element={<ChallengeType /> } />
             <Route exact path="/challengeAdd/step" element={<ChallengeStep /> } />
             <Route exact path="/challengeAdd/created" element={<ChallengeCreated /> } />
-        
+
           </Routes>
         </Router>
       </DivBox>

@@ -9,15 +9,15 @@ const DetailpageTitle = () => {
         <div id="title">느리게 살기 챌린지</div>
       </div>
       <Astep>
-        <div id="stepTitle">첫째날 책 100장 까지 읽기</div>
+        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
         <div id="checkBox"></div>
       </Astep>
       <Astep>
-        <div id="stepTitle">둘째날 책 200장 까지 읽기</div>
+        <div id="stepTitle">땡땡책 200쪽 까지 읽기</div>
         <div id="checkBox"></div>
       </Astep>
       <Astep>
-        <div id="stepTitle">셋째날 책 끝 까지 다 읽기</div>
+        <div id="stepTitle">땡땡책 다 읽기</div>
         <div id="checkBox"></div>
       </Astep>
     </ChallengeName>
@@ -27,6 +27,7 @@ const DetailpageTitle = () => {
 export default DetailpageTitle;
 
 const ChallengeName = styled.div`
+display: table-row;
   #top {
     width: 375px;
     height: 80px;
