@@ -8,6 +8,18 @@ import { history } from "../../redux/configureStore";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
 
 const ChallengeDate = (props) => {
+  const dispatch = useDispatch();
+  const [participant, SetParticipant] = React.useState("");
+  const [startDate, SetStartDate] = React.useState("");
+  const [endDate, SetEndDate] = React.useState("");
+
+  const challengeDateHandler = () => {
+    dispatch(searchActions.addTitleDB(participant, startDate, endDate));
+  };
+
+  const challenge = useSelector((state)=> state.challenge);
+  console.log(challenge);
+
     return (
         <Container>
         <div className="arrow"
@@ -32,10 +44,13 @@ const ChallengeDate = (props) => {
           <div className="title-text">참여 인원수</div>
           <textarea
             className="titleInput"
-            //  value={title}
+            value={participant}
             placeholder="00"
             maxLength="2"
             type="text"
+            onChange={(e) => {
+              SetParticipant(e.target.value);
+            }}
           ></textarea>
           <div className="small-text">명</div>
         </div>
@@ -43,10 +58,13 @@ const ChallengeDate = (props) => {
           <div className="title-text">시작일</div>
           <textarea
             className="titleInput"
-            //  value={title}
+            value={startDate}
             placeholder="05-14-2022"
             maxLength="10"
             type="text"
+            onChange={(e) => {
+              SetStartDate(e.target.value);
+            }}
           ></textarea>
           <div className="from-text">부터</div>
         </div>
@@ -54,16 +72,20 @@ const ChallengeDate = (props) => {
           <div className="title-text">종료일</div>
           <textarea
             className="titleInput"
-            //  value={title}
+            value={endDate}
             placeholder="05-15-2022"
             maxLength="10"
             type="text"
+            onChange={(e) => {
+              SetEndDate(e.target.value);
+            }}
           ></textarea>
            <div className="until-text">까지</div>
         </div>
         <NextButton
         onClick={()=>{
-            window.location.pathname= "challengeadd/type";
+          challengeDateHandler();
+            // window.location.pathname= "challengeadd/type";
         }}
         >다음</NextButton>
 

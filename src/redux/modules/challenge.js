@@ -3,35 +3,69 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
-const ADD_CHALLENGE = "ADD_CHALLENGE";
+const ADD_TITLE = "ADD_TITLE";
 
-const addChallenge = createAction(ADD_CHALLENGE, (challenge) => ({ challenge}));
+const addChallenge = createAction(ADD_TITLE, (challengeTitle) => ({ challengeTitle }));
 
 const initialState = {
-  challenge: []
+  challenges: [{
+    challengeNum:"",
+    challengeTitle:"",
+    challengeType:"",
+    challengeContent:"",
+    challengeProgress:"",
+    challengeCnt:"",
+    challengeDate:"",
+    steps: [
+    { 
+        stepNum:"",
+
+        isChecked:false,
+    },
+   ]
+}]
 };
 
-const addChallengeDB = (challengeTitle, challengeType, challengeContent) => {
-  console.log(challengeTitle, challengeType, challengeContent);
+const addTitleDB = (challengeTitle) => {
+  console.log(challengeTitle);
   return async function (dispatch) {
-    let challenges = {
-      challengeTitle: "",
-      challengeType: "",
-      challengeContent: "",
-    };
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/challenge",
+        url: "http://13.125.228.240/api/challenge1",
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
         data: {
-          ...challenges
+          challengeTitle: challengeTitle
         },
       }).then((response) => {
         console.log(response);
-        dispatch(addChallenge(challenges));
+        dispatch(addChallenge({challengeTitle}));
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("챌린지 개설 실패");
+    }
+  };
+};
+
+const addDateDB = (challengeTitle) => {
+  console.log(challengeTitle);
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "post",
+        url: "http://13.125.228.240/api/challenge2",
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+        data: {
+          challengeTitle: challengeTitle
+        },
+      }).then((response) => {
+        console.log(response.data);
+        dispatch(addChallenge(challengeTitle));
       });
     } catch (err) {
       console.log(err);
@@ -42,17 +76,17 @@ const addChallengeDB = (challengeTitle, challengeType, challengeContent) => {
 
 export default handleActions(
   {
-    [ADD_CHALLENGE]: (state, action) =>
+    [ADD_TITLE]: (state, action) =>
       produce(state, (draft) => {
-        console.log(draft);
-        draft.challenge.unshift(action.payload.challenge);
+        draft.challenges.challeunshift(action.payload.challengeTitle) ;
       }),
   },
   initialState
 );
 
 const ActionCreators = {
-    addChallengeDB
+    addTitleDB,
+    addDateDB,
 };
 
 export { ActionCreators };

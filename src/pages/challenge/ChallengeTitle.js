@@ -6,35 +6,29 @@ import { Box, Select, Meter } from "grommet";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { history } from "../../redux/configureStore";
 
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 
 const ChallengeTitle = () => {
   const dispatch = useDispatch();
+  const challenge = useSelector((state) => state.challenge.challenges)
+  console.log(challenge);
 
   const [challengeTitle, setChallengeTitle] = React.useState("");
-  const [challType, setChallType] = React.useState("");
-  const [challengeContent, setChallengeContent] = React.useState("");
-
-  const challengeType = challType[0];
-
-  const options = ["공부", "운동", "자격증", "취업"];
+  console.log(challengeTitle);
   const challengeHandler = () => {
-    dispatch(
-      searchActions.addChallengeDB(
-        challengeTitle,
-        challengeType,
-        challengeContent
-      )
-    );
+    dispatch(searchActions.addTitleDB(challengeTitle));
+    // window.location.pathname = "challengeadd/date";
   };
 
   return (
     <Container>
-      <div className="arrow"
-          onClick={() => {
-            window.location.pathname= "/";
-          }}>
-        <img src={gobackIcon} alt='goback'/>
+      <div
+        className="arrow"
+        onClick={() => {
+          window.location.pathname = "/";
+        }}
+      >
+        <img src={gobackIcon} alt="goback" />
       </div>
       <div className="top"></div>
       <div className="progressBar">
@@ -59,18 +53,22 @@ const ChallengeTitle = () => {
         ></textarea>
       </div>
       <div className="input-title">
-        <textarea 
+        <textarea
           className="input-area"
-          //  value={title}
+          value={challengeTitle}
           placeholder="우리가 누굽니까악!"
           maxLength="10"
           type="text"
+          onChange={(e) => {
+            setChallengeTitle(e.target.value);
+          }}
         ></textarea>
       </div>
 
       <NextButton
         onClick={() => {
-          window.location.pathname= "challengeadd/date";
+          challengeHandler();
+          
         }}
       >
         다음
@@ -139,7 +137,6 @@ const Container = styled.div`
     width: 100%;
     border-top: 2px solid #3f3f3f;
     border-bottom: 2px solid #3f3f3f;
-    
 
     .title-text {
       height: 35px;
@@ -186,7 +183,6 @@ const Container = styled.div`
       }
     }
   }
-
 `;
 const NextButton = styled.button`
   position: absolute;
