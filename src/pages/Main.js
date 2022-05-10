@@ -9,12 +9,12 @@ const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
   const userId = useSelector((state) => state.user.user.userId);
-  
+
   React.useEffect(() => {
     if (userId) {
       dispatch(postActions.getProgressDB(userId));
     }
-  },[dispatch, userId]);
+  }, [dispatch, userId]);
 
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
@@ -47,7 +47,13 @@ const Main = () => {
             value=""
             color="dark-2"
             label="챌린지 개설하기"
-            path="/creat/challenge"
+            onClick={() => {
+              if (userId) {
+                window.location.pathname = "/challenge";
+              } else {
+                window.location.pathname = "/signup";
+              }
+            }}
           />
         </Box>
       </Box>

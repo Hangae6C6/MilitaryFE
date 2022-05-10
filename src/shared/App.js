@@ -7,7 +7,7 @@ import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
 
 import Main from "../pages/Main";
-import Detail from "../pages/Detail";
+import Detailpage from "../pages/detail/Detailpage";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import MyUser from "../pages/MyUser";
@@ -19,12 +19,14 @@ import KakaoAuth from "./KakaoAuth"
 import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
-import ChallengeAdd from "../component/challenge/ChallengeAdd";
+import Challenge from "../pages/Challenge";
+import DetailpageRank from "../pages/detail/DetailpageRank"
+import Link from "../pages/Link";
 
 function App() {
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
-  
+
   useEffect(() => {
     const token = getCookie("token");
     if (token) {
@@ -35,10 +37,9 @@ function App() {
   return (
     <Background>
       <DivBox>
-        <Router>
+        <Router >
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
-            <Route exact path="/postDetail" element={<Detail />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/userdata" element={<UserData />}></Route>
@@ -47,10 +48,17 @@ function App() {
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
-            <Route exact path="/challengeadd" element={<ChallengeAdd />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
+            <Route exact path="/link" element={<Link />}></Route>
+            
+            <Route exact path="/detailpage" element={<Detailpage />}></Route>
+            <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
+           
+            <Route exact path="/challenge" element={<Challenge /> } />
+          
+
           </Routes>
         </Router>
       </DivBox>
@@ -59,20 +67,17 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: auto;
+  margin: 20px auto;
   max-width: 375px;
   max-height: 812px;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
-  overflow: auto;
+  /* border: 1px solid black; */
 `;
 
 const Background = styled.div`
   max-width: 100%;
   max-height: 100%;
-  width: 100vw;
-  height: 100vh;
   background-color: #ffffff;
 `;
 

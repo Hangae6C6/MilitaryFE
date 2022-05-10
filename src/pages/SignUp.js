@@ -27,8 +27,7 @@ const SignUp = () => {
 
   // 비밀번호 조건
   const isPwd = (password) => {
-    let pattern =
-      /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
+    let pattern = /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
     return pattern.test(password); // 맞으면 true, 틀리면 false반환
   };
 
@@ -115,7 +114,9 @@ const SignUp = () => {
           계정이 이미 있으신가요? {"  "}
           <TextButton
             size="12pt"
-            //   onClick={onClickModal}
+            onClick={() => {
+              window.location.pathname="/login";
+            }}
           >
             로그인
           </TextButton>

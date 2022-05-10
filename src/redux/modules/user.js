@@ -90,10 +90,10 @@ const kakaoLogin = (code) => {
     console.log(code);
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/kakao/login",
+      url: "http://13.125.228.240/api",
     })
       .then((res) => {
-        // console.log("res", res);
+         console.log("res", res);
         const token = res.data.user.token;
         const userId = res.data.user.userId;
         const userName = res.data.user.userName;
