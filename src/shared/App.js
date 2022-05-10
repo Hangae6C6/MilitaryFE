@@ -20,14 +20,12 @@ import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
 import Challenge from "../pages/Challenge";
-import { createBrowserHistory } from "history";
 import DetailpageRank from "../pages/detail/DetailpageRank"
 import Link from "../pages/Link";
 
 function App() {
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
-  const history = createBrowserHistory();
 
   useEffect(() => {
     const token = getCookie("token");

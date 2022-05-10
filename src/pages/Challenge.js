@@ -2,11 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as searchActions } from "../redux/modules/challenge";
-import { Box, Select, Meter } from "grommet";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { history } from "../redux/configureStore";
-
-import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
 import Title from "../component/challenge/Title";
 import Date from "../component/challenge/Date";
 import Type from "../component/challenge/Type";
