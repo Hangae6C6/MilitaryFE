@@ -97,10 +97,10 @@ const ChatBody = styled.div`
 `;
 const ChatFoot = styled.div``;
 const You = styled.div`
-  justify-content: flex-start;
+  position:left;
 `;
 const Other = styled.div`
-  justify-content: flex-end;
+  position: right;
 `;
 
 export default TextBoxes;
