@@ -85,7 +85,7 @@ export default handleActions(
   {
     [ADD_TITLE]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges.challeunshift(action.payload.challengeTitle) ;
+        draft.challenges.challege.unshift(action.payload.challengeTitle) ;
       }),
   },
   initialState
