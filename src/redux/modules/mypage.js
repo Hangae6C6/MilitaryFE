@@ -56,7 +56,7 @@ export default handleActions(
         }),
         [GET_CHALLENGE]:(state, action) => 
         produce(state, (draft) => {
-            draft.list = action.payload.myList;
+            draft.list = action.payload.list;
         })
     },
     initialState
