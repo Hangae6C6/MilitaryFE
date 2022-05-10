@@ -1,31 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as searchActions } from "../../redux/modules/challenge";
-import { Box, Select, Meter } from "grommet";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { history } from "../../redux/configureStore";
+import React from 'react';
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
+import { Meter } from "grommet";
+import styled from 'styled-components';
 
-const ChallengeDate = (props) => {
-  const dispatch = useDispatch();
-  const [participant, SetParticipant] = React.useState("");
-  const [startDate, SetStartDate] = React.useState("");
-  const [endDate, SetEndDate] = React.useState("");
-
-  const challengeDateHandler = () => {
-    dispatch(searchActions.addTitleDB(participant, startDate, endDate));
-  };
-
-  const challenge = useSelector((state)=> state.challenge);
-  console.log(challenge);
-
+const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onParticipantChange, onBack}) => {
     return (
         <Container>
-        <div className="arrow"
-         onClick={()=>{
-            history.back();
-        }}>
+         <div className="arrow"
+         onClick={onBack}>
           <img src={gobackIcon} alt='goback'/>
         </div>
         <div className="top"></div>
@@ -48,9 +30,7 @@ const ChallengeDate = (props) => {
             placeholder="00"
             maxLength="2"
             type="text"
-            onChange={(e) => {
-              SetParticipant(e.target.value);
-            }}
+            onChange={e => onParticipantChange(e.target.value)}
           ></textarea>
           <div className="small-text">명</div>
         </div>
@@ -63,7 +43,7 @@ const ChallengeDate = (props) => {
             maxLength="10"
             type="text"
             onChange={(e) => {
-              SetStartDate(e.target.value);
+              onStartChange(e.target.value);
             }}
           ></textarea>
           <div className="from-text">부터</div>
@@ -77,31 +57,21 @@ const ChallengeDate = (props) => {
             maxLength="10"
             type="text"
             onChange={(e) => {
-              SetEndDate(e.target.value);
+              onEndChange(e.target.value);
             }}
           ></textarea>
            <div className="until-text">까지</div>
         </div>
-        <NextButton
-        onClick={()=>{
-          challengeDateHandler();
-            // window.location.pathname= "challengeadd/type";
-        }}
-        >다음</NextButton>
-
-      </Container>
+        </Container>
+       
     );
 };
 
-export default ChallengeDate;
+export default Date;
+
 
 const Container = styled.div`
-  max-height: 812px;
-  max-width: 375px;
-  height: 812px;
-  width: 100%;
-  
-  border: 2px solid #3f3f3f;
+
 
   .arrow{
     position: absolute;
@@ -178,21 +148,3 @@ const Container = styled.div`
 
 `;
 
-const NextButton = styled.button`
-  position: absolute;
-  bottom: 29mm;
-  width: 375px;
-  height: 80px;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
-  border-top: 2px solid #3f3f3f;
-  &:hover {
-    cursor: pointer;
-    background-color: #3f3f3f;
-  }
-`;

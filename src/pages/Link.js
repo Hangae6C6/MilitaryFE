@@ -1,19 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as searchActions } from "../../redux/modules/challenge";
-import { Box, Select, Meter } from "grommet";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { history } from "../../redux/configureStore";
-import img from "../../shared/images/imgChallengeCompleted335.png";
+import img from "../shared/images/imgChallengeCompleted335.png";
 
-const ChallengeCreated = () => {
+const Link = () => {
   return (
     <Container>
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = "/detailpage";
+            window.location.pathname = "/Link";
           }}
         >
           시작하기
@@ -38,7 +33,7 @@ const ChallengeCreated = () => {
   );
 };
 
-export default ChallengeCreated;
+export default Link;
 
 const Container = styled.div`
   max-height: 812px;

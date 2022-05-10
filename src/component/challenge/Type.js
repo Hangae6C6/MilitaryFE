@@ -1,19 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as searchActions } from "../../redux/modules/challenge";
-import { Box, Select, Meter } from "grommet";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { history } from "../../redux/configureStore";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
+import React from 'react';
+import styled from 'styled-components';
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import { Meter } from "grommet";
 
-const ChallengeType = () => {
-  return (
-    <Container>
+
+const Type = ({type, onBack}) => {
+    return (
+        <Container>
         <div className="arrow"
-         onClick={()=>{
-            history.back();
-        }}>
+         onClick={onBack}>
           <img src={gobackIcon} alt='goback'/>
         </div>
       <div className="top"></div>
@@ -71,25 +66,15 @@ const ChallengeType = () => {
           <text>기타</text>
         </div>
       </div>
-      <NextButton
-        onClick={() => {
-          window.location.pathname = "challengeadd/step";
-        }}
-      >
-        다음
-      </NextButton>
+      
     </Container>
   );
 };
 
-export default ChallengeType;
+export default Type;
 
 const Container = styled.div`
-  max-height: 812px;
-  max-width: 375px;
-  height: 812px;
-  width: 100%;
-  border: 2px solid #3f3f3f;
+
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -150,22 +135,4 @@ const Container = styled.div`
     }
   }
 
-`;
-const NextButton = styled.button`
-  position: absolute;
-  bottom: 29mm;
-  width: 375px;
-  height: 80px;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
-  border-top: 2px solid #3f3f3f;
-  &:hover {
-    cursor: pointer;
-    background-color: #3f3f3f;
-  }
 `;

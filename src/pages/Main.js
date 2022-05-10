@@ -49,7 +49,7 @@ const Main = () => {
             label="챌린지 개설하기"
             onClick={() => {
               if (userId) {
-                window.location.pathname = "/challengeadd/title";
+                window.location.pathname = "/challenge";
               } else {
                 window.location.pathname = "/signup";
               }

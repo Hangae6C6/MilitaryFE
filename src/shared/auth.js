@@ -1,5 +1,5 @@
 const KAKAO_CLIENT_ID = "c1ba7eb9cd1e7e5b3b927bed7774ebfc";
-const KAKAO_REDIRECT_URL = "http://13.125.228.240/api/kakao";
+const KAKAO_REDIRECT_URL = "http://13.125.228.240/api/main";
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_url=${KAKAO_REDIRECT_URL}&response_type=code`;
 
 

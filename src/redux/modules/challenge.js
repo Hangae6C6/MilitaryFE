@@ -19,12 +19,19 @@ const initialState = {
     steps: [
     { 
         stepNum:"",
-
         isChecked:false,
     },
    ]
 }]
 };
+
+// const addTitle = title => {
+//   dispatch(addTitle(title));
+// }
+
+// const createChallenge = () => {
+//   dispatch(addChallenge());
+// }
 
 const addTitleDB = (challengeTitle) => {
   console.log(challengeTitle);

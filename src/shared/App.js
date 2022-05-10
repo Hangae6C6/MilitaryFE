@@ -19,13 +19,10 @@ import KakaoAuth from "./KakaoAuth"
 import NaverAuth from "./NaverAuth";
 import Nav from "../component/Nav"
 import UserData from "../component/user/UserData";
-import ChallengeTitle from "../pages/challenge/ChallengeTitle";
-import ChallengeDate from "../pages/challenge/ChallengeDate";
-import ChallengeType from "../pages/challenge/ChallengeType";
-import ChallengeCreated from "../pages/challenge/ChallengeCreated";
+import Challenge from "../pages/Challenge";
 import { createBrowserHistory } from "history";
-import ChallengeStep from "../pages/challenge/ChallengeStep";
 import DetailpageRank from "../pages/detail/DetailpageRank"
+import Link from "../pages/Link";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,15 +53,13 @@ function App() {
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage" element={<MyUser />}></Route>
+            <Route exact path="/link" element={<Link />}></Route>
             
             <Route exact path="/detailpage" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
            
-            <Route exact path="/challengeAdd/title" element={<ChallengeTitle /> } />
-            <Route exact path="/challengeAdd/date" element={<ChallengeDate /> } />
-            <Route exact path="/challengeAdd/type" element={<ChallengeType /> } />
-            <Route exact path="/challengeAdd/step" element={<ChallengeStep /> } />
-            <Route exact path="/challengeAdd/created" element={<ChallengeCreated /> } />
+            <Route exact path="/challenge" element={<Challenge /> } />
+          
 
           </Routes>
         </Router>

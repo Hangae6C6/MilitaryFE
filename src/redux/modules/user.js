@@ -90,7 +90,7 @@ const kakaoLogin = (code) => {
     console.log(code);
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/kakao",
+      url: "http://13.125.228.240/api",
     })
       .then((res) => {
          console.log("res", res);
