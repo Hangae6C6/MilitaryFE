@@ -86,29 +86,23 @@ const loginCheckDB = () => {
 };
 
 const kakaoLogin = (code) => {
-  return function (dispatch, getState, { history }) {
-    console.log(code);
-    axios({
-      method: "get",
-      url: "http://13.125.228.240/api",
-    })
+  return async function (dispatch, getState, { history }) {
+    axios
+      .get(`http://13.125.228.240/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
-         console.log("res", res);
-        const token = res.data.user.token;
-        const userId = res.data.user.userId;
-        const userName = res.data.user.userName;
-        console.log(userName);
-        localStorage.setItem("token", token);
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userName", userName);
+        const token = res.data.token;
+        // const userId = res.data.userId;
+        // const userName = res.data.userNick;
+        setCookie("token", token);
+        // setCookie("userId", userId);
+        // setCookie("userName", userName);
         dispatch(loginCheckDB());
         console.log("로그인 확인");
-        window.location.replace("/");
+        window.location.pathname="/";
       })
       .catch((err) => {
-        console.log("소셜로그인 에러", err);
-        window.alert("로그인에 실패하였습니다.");
-        // window.location.replace("/");
+        window.alert("소셜 로그인에 실패하였습니다.", err);
+        //  window.location.pathname="/login";
       });
   };
 };
@@ -135,7 +129,7 @@ const NaverLogin = (code) => {
       })
       .catch((err) => {
         console.log("소셜로그인 에러", err);
-        window.alert("로그인에 실패하였습니다.");
+        window.alert("소셜 로그인에 실패하였습니다.");
         // window.location.replace("/");
       });
   };

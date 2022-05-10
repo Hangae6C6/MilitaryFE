@@ -5,6 +5,10 @@ import { Meter } from "grommet";
 
 
 const Type = ({type, onBack}) => {
+const types = ["취업", "공모전", "자격증", "독서", "운동", "외국어", "직업탐색", "자기개발", "기타"]
+
+
+
     return (
         <Container>
         <div className="arrow"
@@ -33,40 +37,13 @@ const Type = ({type, onBack}) => {
           type="text"
         ></textarea>
       </div>
-      <div className="boxes">
+        {types.map((cur,i)=> 
+      <Boxes>
         <div className="box">
-          <text>취업</text>
+          <text key={i}>{cur}</text>
         </div>
-        <div className="box">
-          <text>공모전</text>
-        </div>
-        <div className="box">
-          <text>자격증</text>
-        </div>
-      </div>
-      <div className="boxes">
-        <div className="box">
-          <text>독서</text>
-        </div>
-        <div className="box">
-          <text>운동</text>
-        </div>
-        <div className="box">
-          <text>외국어</text>
-        </div>
-      </div>
-      <div className="boxes">
-        <div className="box">
-          <text>직업탐색</text>
-        </div>
-        <div className="box">
-          <text>자기개발</text>
-        </div>
-        <div className="box">
-          <text>기타</text>
-        </div>
-      </div>
-      
+        </Boxes>
+        )}
     </Container>
   );
 };
@@ -116,14 +93,16 @@ const Container = styled.div`
       font-family: Gmarket Sans;
     }
   }
-  .boxes {
-    display: flex;
+  
+  `;
+  const Boxes = styled.div`
     width: 377px;
-    height: 127px;
+    height: 381px;
     .box {
-        text-align: center;
-        font-family: Gmarket SansMedium;
+      text-align: center;
+      font-family: Gmarket SansMedium;
       padding-top: 55px;
+      height: 127px;
       width: 124px;
       border-bottom: 2px solid #3f3f3f;
       border-right: 2px solid #3f3f3f;
@@ -133,6 +112,6 @@ const Container = styled.div`
           background-color: #6dbb91;
       }
     }
-  }
-
-`;
+  
+  `; 
+   

@@ -8,7 +8,7 @@ const Link = () => {
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = "/Link";
+            window.location.pathname = "/detailPage";
           }}
         >
           시작하기

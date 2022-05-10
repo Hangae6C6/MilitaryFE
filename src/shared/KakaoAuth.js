@@ -7,10 +7,10 @@ const KakaoAuth = (props) => {
 
   // 인가코드
   let code = new URL(window.location.href).searchParams.get("code");
-
-  React.useEffect(async () => {
-    await dispatch(userActions.kakaoLogin(code));
-  }, []);
+  console.log(code);
+  React.useEffect(() => {
+     dispatch(userActions.kakaoLogin(code));
+  }, [dispatch, code]);
 
   return null;
 };
