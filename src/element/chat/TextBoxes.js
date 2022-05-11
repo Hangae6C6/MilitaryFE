@@ -115,7 +115,7 @@ const Wrap = styled.div`
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 80%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   overflow: auto;
