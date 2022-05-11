@@ -3,9 +3,7 @@ import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import { Meter } from "grommet";
 
-const Type = ({ subject, onBack, onTypeChange }) => {
-
-  console.log(subject);
+const Type = ({ onBack, onTypeChange }) => {
   const types = [
     "취업",
     "공모전",
@@ -46,8 +44,12 @@ const Type = ({ subject, onBack, onTypeChange }) => {
       </div>
       <Boxes>
         {types.map((cur, i) => (
-          <div className="box" key={cur + i} index={i}
-          onClick={(cur, i) => onTypeChange(cur)}
+          <div
+            className="box"
+            key={cur + i}
+            onClick={() => {
+              onTypeChange(cur);
+            }}
           >
             <p>{cur}</p>
           </div>
@@ -109,7 +111,6 @@ const Boxes = styled.div`
   justify-content: start;
   width: 378px;
   max-height: 381px;
-  
 
   .box {
     position: relative;

@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useEffect, useState}from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
 import addIcon from "../../shared/icons/icnPlusBlack32.svg";
 
 import { Meter } from "grommet";
+const dispatch = useDispatch();
+
+const steps = useSelector((state)=>state);
+
 
 const Plan = ({ plan, onBack }) => {
   return (
@@ -31,7 +36,6 @@ const Plan = ({ plan, onBack }) => {
 
         <textarea
           className="titleInput"
-          //  value={title}
           placeholder="쉽게 시작할 수 있는 할일을 적고 실천한다면 &#13;&#10;큰 목표를 이룰 수 있지 말입니다"
           maxLength="0"
           type="text"
@@ -43,20 +47,31 @@ const Plan = ({ plan, onBack }) => {
         </div>
         <textarea
           className="step-input"
-          //  value={title}
-          placeholder="ex) 하루에 책 2장씩 읽기"
+          // value={step}
+          placeholder="ex) 코드책 50쪽 까지 읽기"
           maxLength="20"
           type="text"
         ></textarea>
       </div>
+
       <Wrap>
-        <div className="box">
-          <div className="step-nums">1</div>
-          <div className="step-inputs">하루에 책 2장씩 읽기</div>
-          <div className="delete-btns">
-            <img src={deleteIcon} alt="deleteIcon" />
-          </div>
-        </div>
+        {steps.map((step, idx) => {
+          const lastItem = idx === steps.length - 1;
+          return (
+            <div
+              className="box"
+              // key={word.id}
+              // word_obj={word}
+              // ref={lastItem ? setTarget : null}
+            >
+              <div className="step-nums">1</div>
+              <div className="step-inputs">하루에 책 2장씩 읽기</div>
+              <div className="delete-btns">
+                <img src={deleteIcon} alt="deleteIcon" />
+              </div>
+            </div>
+          );
+        })}
       </Wrap>
     </Container>
   );
@@ -153,7 +168,7 @@ const Container = styled.div`
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btns {
-      margin: 10px 10px 0 0;
+      margin: 10px 0 0 8px;
 
       &:hover {
         cursor: pointer;

@@ -16,11 +16,16 @@ const Challenge = () => {
   const [participant, setParticipant] = React.useState("");
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
-  const [types, setTypes] = React.useState("");
+  const [type, setType] = React.useState("");
   const [plan, setPlan] = React.useState("");
 
 
-  console.log(participant, startDate, endDate);
+  console.log(type)
+
+  const typeChangeHandler = (cur) => {
+    setType(cur);
+
+  }
 
   const challengeHandler = () => {
     setStep((prevStep) => prevStep + 1);
@@ -48,8 +53,7 @@ const Challenge = () => {
       )}
       {step === 2 && (
         <Type
-          type={types}
-          onTypeChange={setTypes}
+          onTypeChange={typeChangeHandler}
           onBack={() => setStep((prevStep) => prevStep - 1)}
         />
       )}
