@@ -8,10 +8,16 @@ import { ActionCreators as userAction } from "../../redux/modules/user";
 //이미지/아이디/군종/닉네임/계급/계급딱지/디데이
 const Mine = () => {
   const dispatch = useDispatch();
-  console.log(useSelector((state) => state.user.user.userID))
-  const userIDForBinding = useSelector((state) => state.user.user.userID);
-  const userNickForBinding = useSelector((state) => state.user.user.userNick)
+  console.log(useSelector((state) => state.user));
+  const userIDForBinding = useSelector((state) => state.user.user.userId);
+  const userNickForBinding = useSelector((state) => state.user.user.userNick);
+  const userCategoryForBinding = useSelector((state) => state.mypage.myInfo.category);
+  const userRankForBinding = useSelector((state)=>state.mypage.myInfo.rank);
  
+  React.useEffect(() => {
+    dispatch(mypageAction.getInfoDB());
+  }, [dispatch]);
+  
   return (
     <>
       <MyPage>마이페이지</MyPage>
@@ -21,11 +27,11 @@ const Mine = () => {
         </ImgDiv>
         <PDiv>
           <ProfList>{userIDForBinding}</ProfList>
-          <ProfList>육군</ProfList>
+          <ProfList>{userCategoryForBinding}</ProfList>
           <ProfList>{userNickForBinding}</ProfList>
         </PDiv>
         <RankDiv>
-          <ProfList>병장</ProfList>
+          <ProfList>{userRankForBinding}</ProfList>
           <RankImg />
           <ProfList>D-000</ProfList>
         </RankDiv>
