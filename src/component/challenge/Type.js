@@ -1,16 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import { Meter } from "grommet";
 
+const Type = ({ subject, onBack, onTypeChange }) => {
 
-const Type = ({type, onBack}) => {
-    return (
-        <Container>
-        <div className="arrow"
-         onClick={onBack}>
-          <img src={gobackIcon} alt='goback'/>
-        </div>
+  console.log(subject);
+  const types = [
+    "취업",
+    "공모전",
+    "자격증",
+    "독서",
+    "운동",
+    "외국어",
+    "직업탐색",
+    "자기개발",
+    "기타",
+  ];
+
+  return (
+    <Container>
+      <div className="arrow" onClick={onBack}>
+        <img src={gobackIcon} alt="goback" />
+      </div>
       <div className="top"></div>
       <div className="progressBar">
         <Meter
@@ -27,46 +39,20 @@ const Type = ({type, onBack}) => {
         <div className="title-text">챌린지 주제</div>
         <textarea
           className="titleInput"
-          //  value={title}
           placeholder="이번 챌린지의 주제를 아래에서 &#13;&#10;선택합니다"
           maxLength="0"
           type="text"
         ></textarea>
       </div>
-      <div className="boxes">
-        <div className="box">
-          <text>취업</text>
-        </div>
-        <div className="box">
-          <text>공모전</text>
-        </div>
-        <div className="box">
-          <text>자격증</text>
-        </div>
-      </div>
-      <div className="boxes">
-        <div className="box">
-          <text>독서</text>
-        </div>
-        <div className="box">
-          <text>운동</text>
-        </div>
-        <div className="box">
-          <text>외국어</text>
-        </div>
-      </div>
-      <div className="boxes">
-        <div className="box">
-          <text>직업탐색</text>
-        </div>
-        <div className="box">
-          <text>자기개발</text>
-        </div>
-        <div className="box">
-          <text>기타</text>
-        </div>
-      </div>
-      
+      <Boxes>
+        {types.map((cur, i) => (
+          <div className="box" key={cur + i} index={i}
+          onClick={(cur, i) => onTypeChange(cur)}
+          >
+            <p>{cur}</p>
+          </div>
+        ))}
+      </Boxes>
     </Container>
   );
 };
@@ -74,7 +60,6 @@ const Type = ({type, onBack}) => {
 export default Type;
 
 const Container = styled.div`
-
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -116,23 +101,30 @@ const Container = styled.div`
       font-family: Gmarket Sans;
     }
   }
-  .boxes {
-    display: flex;
-    width: 377px;
-    height: 127px;
-    .box {
-        text-align: center;
-        font-family: Gmarket SansMedium;
-      padding-top: 55px;
-      width: 124px;
-      border-bottom: 2px solid #3f3f3f;
-      border-right: 2px solid #3f3f3f;
-      background-color: #ffffff;
-      &:hover {
-          cursor: pointer;
-          background-color: #6dbb91;
-      }
+`;
+
+const Boxes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 378px;
+  max-height: 381px;
+  
+
+  .box {
+    position: relative;
+    font-family: Gmarket SansMedium;
+    padding-top: 55px;
+    text-align: center;
+    height: 96px;
+    width: 123.7px;
+    border-bottom: 2px solid #3f3f3f;
+    border-right: 2px solid #3f3f3f;
+    background-color: #ffffff;
+    margin-right: 0px;
+    &:hover {
+      cursor: pointer;
+      background-color: #6dbb91;
     }
   }
-
 `;

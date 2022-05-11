@@ -15,12 +15,12 @@ import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
-import KakaoAuth from "./KakaoAuth"
+import KakaoAuth from "./KakaoAuth";
 import NaverAuth from "./NaverAuth";
-import Nav from "../component/Nav"
+import Nav from "../component/Nav";
 import UserData from "../component/user/UserData";
 import Challenge from "../pages/Challenge";
-import DetailpageRank from "../pages/detail/DetailpageRank"
+import DetailpageRank from "../pages/detail/DetailpageRank";
 import Link from "../pages/Link";
 
 function App() {
@@ -43,8 +43,8 @@ function App() {
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/userdata" element={<UserData />}></Route>
-            <Route path="/oauth/kakao/callback" exact component={KakaoAuth}></Route>
-            <Route path="/oauth/naver/callback" exact component={NaverAuth}></Route>
+            <Route path="/api/auth/kakao/callback" exact element={<KakaoAuth />} />
+            <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
@@ -69,7 +69,7 @@ function App() {
 const DivBox = styled.div`
   margin: 20px auto;
   max-width: 375px;
-  max-height: 812px;
+  max-height: 100vh;
   width: 100%;
   height: 100%;
   /* border: 1px solid black; */

@@ -5,7 +5,7 @@ import { ActionCreators as searchActions } from "../redux/modules/challenge";
 import Title from "../component/challenge/Title";
 import Date from "../component/challenge/Date";
 import Type from "../component/challenge/Type";
-import Plan from "../component/challenge/Plan"
+import Plan from "../component/challenge/Plan";
 
 const Challenge = () => {
   const dispatch = useDispatch();
@@ -16,16 +16,19 @@ const Challenge = () => {
   const [participant, setParticipant] = React.useState("");
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
-  const [type, setType] = React.useState("");
+  const [types, setTypes] = React.useState("");
   const [plan, setPlan] = React.useState("");
+
+
+  console.log(participant, startDate, endDate);
 
   const challengeHandler = () => {
     setStep((prevStep) => prevStep + 1);
 
     // check if it's the final step
     if (step === 3) {
-    //   dispatch(searchActions.addTitle({challengeTitle}));
-    window.location.pathname = "/link";
+      //   dispatch(searchActions.addTitle({challengeTitle}));
+      window.location.pathname = "/link";
     }
   };
 
@@ -43,8 +46,16 @@ const Challenge = () => {
           onBack={() => setStep((prevStep) => prevStep - 1)}
         />
       )}
-      {step === 2 && <Type type={type} onClick={()=>{}} onBack={() => setStep((prevStep) => prevStep - 1)}/>}
-      {step === 3 && <Plan  Plan={plan} onClick={()=>{}} onBack={() => setStep((prevStep) => prevStep - 1)}/>}
+      {step === 2 && (
+        <Type
+          type={types}
+          onTypeChange={setTypes}
+          onBack={() => setStep((prevStep) => prevStep - 1)}
+        />
+      )}
+      {step === 3 && (
+        <Plan Plan={plan} onBack={() => setStep((prevStep) => prevStep - 1)} />
+      )}
 
       <NextButton
         onClick={() => {
@@ -62,7 +73,7 @@ export default Challenge;
 const Container = styled.div`
   max-height: 812px;
   max-width: 375px;
-  height: 812px;
+  height: 100%;
   width: 100%;
   border: 2px solid #3f3f3f;
 `;

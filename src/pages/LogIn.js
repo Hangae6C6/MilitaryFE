@@ -76,13 +76,8 @@ const Login = () => {
         <Text bold margin="20px 5px 5px 5px" size="12pt" color="#868e96">
           소셜 계정으로 로그인
         </Text>
-        <SNSLoginButton
-          size="12pt"
-          onClick={() => {
-            window.location.href = KAKAO_AUTH_URL;
-          }}
-        >
-          카카오 계정으로 로그인
+        <SNSLoginButton size="12pt">
+          <a href={KAKAO_AUTH_URL}>카카오 계정으로 로그인</a>
         </SNSLoginButton>
         <SNSLoginButton1
           size="12pt"
