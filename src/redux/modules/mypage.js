@@ -1,6 +1,7 @@
 //5번 마이페이지 관련
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import { getCookie, setCookie } from "../../shared/cookie";
 import axios from "axios";
 
 //Action Types
@@ -13,29 +14,37 @@ const getChallenge = createAction(GET_CHALLENGE, (Clist) => ({ Clist }));
 
 //Initial State
 const initialState = {
-  myInfo: null,
+  myInfo: [{
+    category:"",
+    dday:"",
+    rank:"",
+}],
   list: [],
 };
 
 //middleware actions
-const getInfoDB = (userID) => {
+const getInfoDB = () => {
   return function (dispatch) {
-    axios.post(
-      "http://13.125.228.240/api/login"
-        .getInfo(userID)
-        .then((res) => {
-          dispatch(getInfo(res.data));
-        })
-        .catch((err) => {
-          console.log(err, "에러");
-        })
-    );
+    axios({
+      method: "get",
+      url: "http://13.125.228.240/api/myPage/userProfile",
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        dispatch(getInfo(res.data.user));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
 const getChallengeDB = (userID) => {
   return function (dispatch) {
-    "http://13.125.228.240/api/login"
+    "http://13.125.228.240/"
       .getChallenge(userID)
       .then((res) => {
         const list = res.data;
