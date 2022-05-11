@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import ScrollToBottom from "react-scroll-to-bottom";
@@ -8,6 +8,21 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const nowTime = moment().format("kk:mm");
+  const chatWindow = useRef();
+
+  // const scrollToBottom = () => {
+  //   if(msgBoxRef.current) {
+  //     msgBoxRef.current.scrollTop = msgBoxRef.current.scrollHeight;
+  //   }
+  // }
+  const moveScroll = useCallback(() => { 
+    if (chatWindow.current) {
+      chatWindow.current.scrollTo({
+        top: chatWindow.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
   const onLeft = () => {
     console.log("5");
@@ -28,6 +43,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
+      moveScroll();
     }
   };
 
@@ -41,35 +57,35 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   }, [socket]);
 
   return (
-    <div>
+    <Wrap>
       <ChatBody>
-        <ScrollToBottom>
-          {messageList.map((messageContent, idx) =>
-            userName === messageContent.author ? (
+        {messageList.map((messageContent, idx) =>
+          userName === messageContent.author ? (
+            <ScrollToBottom>
               <You key={idx}>
                 <MsgDiv>
                   <Author>{messageContent.author}</Author>
                   <MyMsgBox>{messageContent.message}</MyMsgBox>
                 </MsgDiv>
-                <div>{messageContent.time}</div>
+                <Time>{messageContent.time}</Time>
               </You>
-            ) : (
-              <Other key={idx}>
-                <MsgDiv>
-                  <Author>{messageContent.author}</Author>
-                  <YourMsgBox>{messageContent.message}</YourMsgBox>
-                </MsgDiv>
-                <div>{messageContent.time}</div>
-              </Other>
-            )
-          )}
-        </ScrollToBottom>
+            </ScrollToBottom>
+          ) : (
+            <Other key={idx}>
+              <MsgDiv>
+                <Author>{messageContent.author}</Author>
+                <YourMsgBox>{messageContent.message}</YourMsgBox>
+              </MsgDiv>
+              <Time>{messageContent.time}</Time>
+            </Other>
+          )
+        )}
       </ChatBody>
       <ChatFoot>
-        <input
+        <Input
           type="text"
           value={currentMessage}
-          placeholder="hey..."
+          placeholder="내용을 입력해주세요"
           onChange={(e) => {
             setCurrentMessage(e.target.value);
           }}
@@ -77,8 +93,8 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
             e.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={sendMessage}>send</button>
-        <button
+        <SendBtn onClick={sendMessage}>send</SendBtn>
+        {/* <button
           onClick={() => {
             onLeft();
             history.push("/");
@@ -86,29 +102,34 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
           }}
         >
           exit
-        </button>
+        </button> */}
       </ChatFoot>
-    </div>
+    </Wrap>
   );
 };
+const Wrap = styled.div`
+  width: 100%;
+  height: 812px;
+  /* overflow:scroll; */
+`;
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 90%;
+  height: 80%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
 `;
 const ChatFoot = styled.div`
-position: inherit;
-width: 100%;
-bottom:2px;
+  position: inherit;
+  width: 100%;
+  top: 91.38%;
 `;
 const You = styled.div`
-  width: 50%;
+  width: 90%;
   padding: 0.3rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: flex-start;
   margin-top: 0.5rem;
 `;
@@ -122,14 +143,29 @@ const Other = styled.div`
 `;
 const MsgDiv = styled.div`
   display: grid;
+  overflow-y:auto;
 `;
 const Author = styled.p`
-padding: 0;
-margin: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 22px;
-`
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+`;
+const Time = styled.p`
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.24px;
+
+  /* Gray500 */
+
+  color: #656565;
+`;
 const MyMsgBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -164,5 +200,21 @@ const YourMsgBox = styled.div`
   color: #ffffff;
   /* Black */
   border: 3px solid #3f3f3f;
+`;
+const Input = styled.input`
+  width: 300px;
+  height: 70px;
+  background-color: #fff;
+  border: 3px solid #000000;
+  box-sizing: border-box;
+`;
+const SendBtn = styled.button`
+  width: 75px;
+  height: 70px;
+  background-color: #6dbb91;
+  border: 3px solid black;
+  &:hover {
+    background-color: #fff;
+  }
 `;
 export default TextBoxes;

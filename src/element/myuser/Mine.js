@@ -8,7 +8,7 @@ import { ActionCreators as userAction } from "../../redux/modules/user";
 //이미지/아이디/군종/닉네임/계급/계급딱지/디데이
 const Mine = () => {
   const dispatch = useDispatch();
-  console.log(useSelector((state) => state.user.user.userID))
+  console.log(useSelector((state) => state.mypage))
   const userIDForBinding = useSelector((state) => state.user.user.userID);
   const userNickForBinding = useSelector((state) => state.user.user.userNick)
  
