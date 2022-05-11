@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import {history} from '../../redux/configureStore'
 
 const EditBtn = ({children}) => {
     const [userInfo, setUserInfo] = useState({
         nickname:'',
         password:'',
         passwordCheck:'',
-    })
-    const [warning, setWarning] = useState({
-        password:'',
-        passwordCheck:'',
-        nickname:'',
     })
 
     return (
@@ -28,6 +24,7 @@ color:#ffffff;
 text-align: center;
 vertical-align: middle;
 margin: 1px;
+box-sizing: border-box;
 `
 
 
