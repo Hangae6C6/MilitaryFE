@@ -91,11 +91,8 @@ const kakaoLogin = (code) => {
       .get(`http://13.125.228.240/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
-        // const userId = res.data.userId;
-        // const userName = res.data.userNick;
         setCookie("token", token);
-        // setCookie("userId", userId);
-        // setCookie("userName", userName);
+  
         dispatch(loginCheckDB());
         console.log("로그인 확인");
         window.location.pathname="/";
@@ -107,29 +104,25 @@ const kakaoLogin = (code) => {
   };
 };
 
-const NaverLogin = (code) => {
+const NaverLogin = (code, state) => {
   return function (dispatch, getState, { history }) {
-    console.log(code);
+    console.log(code, state);
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/naver/login",
+      url: `http://3.34.98.31/api/naver?code=${code}`,
     })
       .then((res) => {
-        // console.log("res", res);
-        const token = res.data.user.token;
-        const userId = res.data.user.userId;
-        const userName = res.data.user.userName;
-        console.log(userName);
-        localStorage.setItem("token", token);
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userName", userName);
+        console.log(res);
+        const token = res.data.token;
+        setCookie("token", token);
+  
         dispatch(loginCheckDB());
-        console.log("로그인 확인");
-        window.location.replace("/");
+        console.log("서버 네이버 로그인 확인");
+        // window.location.replace("/");
       })
       .catch((err) => {
-        console.log("소셜로그인 에러", err);
-        window.alert("소셜 로그인에 실패하였습니다.");
+        console.log("네이버 소셜로그인 에러 서버", err);
+        window.alert("리덕스 소셜 로그인에 실패하였습니다.");
         // window.location.replace("/");
       });
   };

@@ -44,7 +44,7 @@ function App() {
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/userdata" element={<UserData />}></Route>
             <Route path="/api/auth/kakao/callback" exact element={<KakaoAuth />} />
-            <Route path="/auth/naver/callback" exact element={<NaverAuth />}></Route>
+            <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
             <Route exact path="/detail/chat" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
@@ -69,7 +69,7 @@ function App() {
 const DivBox = styled.div`
   margin: 20px auto;
   max-width: 375px;
-  max-height: 812px;
+  max-height: 100vh;
   width: 100%;
   height: 100%;
   /* border: 1px solid black; */
@@ -78,6 +78,8 @@ const DivBox = styled.div`
 const Background = styled.div`
   max-width: 100%;
   max-height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #ffffff;
 `;
 
