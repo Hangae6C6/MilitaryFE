@@ -73,11 +73,16 @@ const DivBox = styled.div`
   width: 100%;
   height: 100%;
   /* border: 1px solid black; */
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* overflow-y: auto; */
 `;
 
 const Background = styled.div`
   max-width: 100%;
   max-height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #ffffff;
 `;
 
