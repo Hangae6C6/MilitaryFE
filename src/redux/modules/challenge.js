@@ -5,25 +5,34 @@ import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const ADD_TITLE = "ADD_TITLE";
 
-const addChallenge = createAction(ADD_TITLE, (challengeTitle) => ({ challengeTitle }));
+const addChallenge = createAction(ADD_TITLE, (challenge) => ({ challenge }));
 
 const initialState = {
-  challenges: [{
-    challengeNum:"",
-    challengeTitle:"",
-    challengeType:"",
-    challengeContent:"",
-    challengeProgress:"",
-    challengeCnt:"",
-    challengeDate:"",
-    steps: [
-    { 
-        stepNum:"",
-        isChecked:false,
-    },
-   ]
-}]
+challenges: [
+
+  {steps:[{
+    
+    isChecked: false,
+  }
+        
+  ]}
+]
 };
+// challenges: [{
+//   challengeNum:"",
+//   challengeTitle:"",
+//   challengeType:"",
+//   challengeContent:"",
+//   challengeProgress:"",
+//   challengeCnt:"",
+//   challengeDate:"",
+//   steps: [
+//   { 
+//       stepNum:"",
+//       isChecked:false,
+//   },
+//  ]
+// }]
 
 // const addTitle = title => {
 //   dispatch(addTitle(title));
@@ -85,7 +94,7 @@ export default handleActions(
   {
     [ADD_TITLE]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges.challege.unshift(action.payload.challengeTitle) ;
+        draft.challenges = action.payload.challenge ;
       }),
   },
   initialState
@@ -94,6 +103,7 @@ export default handleActions(
 const ActionCreators = {
     addTitleDB,
     addDateDB,
+    addChallenge,
 };
 
 export { ActionCreators };

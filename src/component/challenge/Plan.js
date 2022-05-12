@@ -6,12 +6,16 @@ import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
 import addIcon from "../../shared/icons/icnPlusBlack32.svg";
 
 import { Meter } from "grommet";
-const dispatch = useDispatch();
-
-const steps = useSelector((state)=>state);
 
 
 const Plan = ({ plan, onBack }) => {
+const dispatch = useDispatch();
+const [target, setTarget] = React.useState(null);
+const steps = useSelector((state) => state.challenges);
+
+console.log(steps);
+
+
   return (
     <Container>
       <div className="arrow" onClick={onBack}>
@@ -56,13 +60,13 @@ const Plan = ({ plan, onBack }) => {
 
       <Wrap>
         {steps.map((step, idx) => {
-          const lastItem = idx === steps.length - 1;
+          const lastStep = idx === steps.length - 1;
+          console.log(lastStep);
           return (
             <div
               className="box"
-              // key={word.id}
-              // word_obj={word}
-              // ref={lastItem ? setTarget : null}
+              key={step.id}
+              ref={lastStep ? setTarget : null}
             >
               <div className="step-nums">1</div>
               <div className="step-inputs">하루에 책 2장씩 읽기</div>

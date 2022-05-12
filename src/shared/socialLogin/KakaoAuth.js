@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ActionCreators as userActions } from "../redux/modules/user";
+import { ActionCreators as userActions } from "../../redux/modules/user";
 
 const KakaoAuth = (props) => {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import {
   KAKAO_AUTH_URL,
   NAVER_AUTH_URL,
   GOOGLE_AUTH_URL,
-} from "../shared/auth";
+} from "../shared/socialLogin/auth";
 
 const Login = () => {
   const dispatch = useDispatch();

@@ -34,7 +34,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userNick: userNick,
           userPwCheck: userPwCheck,
         },
-      }).then((response) => {
+      }).then(() => {
         history.push("/login");
       });
     } catch (err) {
@@ -108,7 +108,7 @@ const NaverLogin = (code, state) => {
   return function (dispatch, getState, { history }) {
     console.log(code, state);
     axios
-      .get("http://3.34.98.31/api/auth/naver")
+      .get(`http://3.34.98.31/api/auth/naver?code=${code}&state=${state}`)
 
       .then((res) => {
         console.log(res);

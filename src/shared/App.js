@@ -15,8 +15,8 @@ import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
-import KakaoAuth from "./KakaoAuth";
-import NaverAuth from "./NaverAuth";
+import KakaoAuth from "./socialLogin/KakaoAuth";
+import NaverAuth from "./socialLogin/NaverAuth";
 import Nav from "../component/Nav";
 import UserData from "../component/user/UserData";
 import Challenge from "../pages/Challenge";
@@ -57,7 +57,6 @@ function App() {
             <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
            
             <Route exact path="/challenge" element={<Challenge /> } />
-          
 
           </Routes>
         </Router>
@@ -67,15 +66,13 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: 20px auto;
+  margin: 51px auto;
   max-width: 375px;
-  max-height: 100vh;
+  max-height: 812px;
   width: 100%;
-  height: 100%;
-  /* border: 1px solid black; */
+  height: 100vh;
+  /* border: 1px solid black;  */
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  /* overflow-y: auto; */
 `;
 
 const Background = styled.div`

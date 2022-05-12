@@ -83,7 +83,7 @@ const Container = styled.div`
 `;
 const NextButton = styled.button`
   position: absolute;
-  bottom: 29mm;
+  bottom: 21mm;
   width: 375px;
   height: 80px;
   border: none;
