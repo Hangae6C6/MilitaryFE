@@ -5,12 +5,14 @@ import { getCookie, setCookie } from "../../shared/cookie";
 import axios from "axios";
 
 //Action Types
-const GET_INFO = "GET_INFO";
-const GET_CHALLENGE = "GET_CHALLENGE";
+const GET_CATEGORY = "GET_CATEGORY";
+const GET_RANK = "GET_RANK";
+const GET_DDAY = "GET_DDAY";
 
 //Action Creators
-const getInfo = createAction(GET_INFO, (myInfo) => ({ myInfo }));
-const getChallenge = createAction(GET_CHALLENGE, (Clist) => ({ Clist }));
+const getCategory = createAction(GET_CATEGORY, (category) => ({ category }));
+const getRank = createAction(GET_RANK, (rank) => ({ rank }));
+const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
 
 //Initial State
 const initialState = {
@@ -23,18 +25,18 @@ const initialState = {
 };
 
 //middleware actions
-const getInfoDB = () => {
+const getCateDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/myPage/userProfile",
+      url: "http://13.125.228.240/api/userData",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
     })
       .then((res) => {
         console.log(res)
-        dispatch(getInfo(res.data.user));
+        dispatch(getCategory(res.data.category));
       })
       .catch((err) => {
         console.log(err);
@@ -42,38 +44,66 @@ const getInfoDB = () => {
   };
 };
 
-const getChallengeDB = (userID) => {
+const getRankDB = () => {
   return function (dispatch) {
-    "http://13.125.228.240/"
-      .getChallenge(userID)
+    axios({
+      method: "get",
+      url: "http://13.125.228.240/api/userData",
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
       .then((res) => {
-        const list = res.data;
-        dispatch(getChallenge(list));
+        console.log(res)
+        dispatch(getRank(res.data.rank));
       })
       .catch((err) => {
-        console.log(err, "에러");
+        console.log(err);
       });
   };
 };
 
+const getDdayDB = () => {
+  return function (dispatch) {
+    axios({
+      method: "get",
+      url: "http://13.125.228.240/api/userData",
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        dispatch(getDDay(res.data.dday));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 //Reducer
 export default handleActions(
     {
-        [GET_INFO]:(state, action) => 
+        [GET_CATEGORY]:(state, action) => 
         produce(state, (draft) => {
-            draft.myInfo = action.payload.myInfo;
+            draft.category = action.payload.category;
         }),
-        [GET_CHALLENGE]:(state, action) => 
+        [GET_RANK]:(state, action) => 
         produce(state, (draft) => {
-            draft.list = action.payload.list;
+            draft.rank = action.payload.rank;
+        }),
+        [GET_DDAY]:(state, action) => 
+        produce(state, (draft) => {
+            draft.dday = action.payload.dday;
         })
     },
     initialState
 )
 //Action Creator Export
 const ActionCreators = {
-    getInfoDB,
-    getChallengeDB
+    getCateDB,
+    getRankDB,
+    getDdayDB,
 };
 
 export {ActionCreators};
