@@ -18,7 +18,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
             width="375px"
             type="bar"
             background="#FAFAFA"
-            color="#6dbb91"
+            color="#1FB57E"
             value={70}
           />
         </div>
@@ -81,23 +81,23 @@ const Container = styled.div`
   .top {
     height: 44px;
     width: 100%;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
   }
   .progressBar {
     height: 67px;
     width: 100%;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
   }
   .title {
     min-height: 120px;
     width: 100%;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
 
     .title-text {
       height: 35px;
       width: 130px;
       font-size: 24px;
-      color: #3f3f3f;
+      color: #151419;
       font-family: Gmarket SansBold;
       margin: 40px 0px 0px 30px;
     }

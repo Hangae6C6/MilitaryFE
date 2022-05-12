@@ -4,43 +4,23 @@ import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const ADD_TITLE = "ADD_TITLE";
+const ADD_STEP = "ADD_STEP";
 
-const addChallenge = createAction(ADD_TITLE, (challenge) => ({ challenge }));
+const addChallenge = createAction(ADD_TITLE, (challenge) => challenge);
+const addStep = createAction(ADD_STEP, (step) => step);
 
 const initialState = {
-challenges: [
-
-  {steps:[{
-    
-    isChecked: false,
-  }
-        
-  ]}
-]
+  challenges: 
+    {
+      challengeTitle: "hh",
+      challengeLimitNum: "11",
+      challengeStartDate: "11",
+      challengeEndDate: "11",
+      challengeType: "1",
+      steps: [{stepContent: "11", isChecked: false }],
+    },
+ 
 };
-// challenges: [{
-//   challengeNum:"",
-//   challengeTitle:"",
-//   challengeType:"",
-//   challengeContent:"",
-//   challengeProgress:"",
-//   challengeCnt:"",
-//   challengeDate:"",
-//   steps: [
-//   { 
-//       stepNum:"",
-//       isChecked:false,
-//   },
-//  ]
-// }]
-
-// const addTitle = title => {
-//   dispatch(addTitle(title));
-// }
-
-// const createChallenge = () => {
-//   dispatch(addChallenge());
-// }
 
 const addTitleDB = (challengeTitle) => {
   console.log(challengeTitle);
@@ -48,16 +28,16 @@ const addTitleDB = (challengeTitle) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/challenge1",
+        url: "http://13.125.228.240/api/challenge",
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
         data: {
-          challengeTitle: challengeTitle
+          challengeTitle: challengeTitle,
         },
       }).then((response) => {
         console.log(response);
-        dispatch(addChallenge({challengeTitle}));
+        dispatch(addChallenge({ challengeTitle }));
       });
     } catch (err) {
       console.log(err);
@@ -77,7 +57,7 @@ const addDateDB = (challengeTitle) => {
           Authorization: `Bearer ${getCookie("token")}`,
         },
         data: {
-          challengeTitle: challengeTitle
+          challengeTitle: challengeTitle,
         },
       }).then((response) => {
         console.log(response.data);
@@ -94,16 +74,22 @@ export default handleActions(
   {
     [ADD_TITLE]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges = action.payload.challenge ;
+        console.log(action)
+        draft.challenges = action.payload.challenge;
+      }),
+    [ADD_STEP]: (state, action) =>
+      produce(state, (draft) => {
+        draft.challenges = action.payload.challenges;
       }),
   },
   initialState
 );
 
 const ActionCreators = {
-    addTitleDB,
-    addDateDB,
-    addChallenge,
+  addTitleDB,
+  addDateDB,
+  addChallenge,
+  addStep,
 };
 
 export { ActionCreators };

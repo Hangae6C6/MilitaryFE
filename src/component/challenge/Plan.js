@@ -4,16 +4,14 @@ import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
 import addIcon from "../../shared/icons/icnPlusBlack32.svg";
-
+import { ActionCreators as challengeStepActions } from "../../redux/modules/challenge";
 import { Meter } from "grommet";
 
 
-const Plan = ({ plan, onBack }) => {
-const dispatch = useDispatch();
+const Plan = ({ content, onContentChange, addStepHandler, onBack }) => {
 const [target, setTarget] = React.useState(null);
-const steps = useSelector((state) => state.challenges);
-
-console.log(steps);
+const stepList = useSelector((state) => state.challenge.challenges);
+console.log(stepList);
 
 
   return (
@@ -29,7 +27,7 @@ console.log(steps);
           width="375px"
           type="bar"
           background="#FAFAFA"
-          color="#6dbb91"
+          color="#1FB57E"
           value={90}
         />
       </div>
@@ -46,21 +44,22 @@ console.log(steps);
         ></textarea>
       </div>
       <div className="boxes">
-        <div className="delete-btn">
+        <div className="delete-btn"  onClick={addStepHandler}> 
           <img src={addIcon} alt="addIcon" />
         </div>
         <textarea
           className="step-input"
-          // value={step}
+          value={content}
           placeholder="ex) 코드책 50쪽 까지 읽기"
           maxLength="20"
           type="text"
+          onChange={e => onContentChange(e.target.value)}
         ></textarea>
       </div>
 
       <Wrap>
-        {steps.map((step, idx) => {
-          const lastStep = idx === steps.length - 1;
+        {stepList?.steps.map((step, idx) => {
+          const lastStep = idx === stepList.length - 1;
           console.log(lastStep);
           return (
             <div
@@ -68,8 +67,8 @@ console.log(steps);
               key={step.id}
               ref={lastStep ? setTarget : null}
             >
-              <div className="step-nums">1</div>
-              <div className="step-inputs">하루에 책 2장씩 읽기</div>
+              <div className="step-nums">{idx+1}</div>
+              <div className="step-inputs">{step.stepContent}</div>
               <div className="delete-btns">
                 <img src={deleteIcon} alt="deleteIcon" />
               </div>

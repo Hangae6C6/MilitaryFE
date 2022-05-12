@@ -1,12 +1,13 @@
 import React from "react";
 import { Meter } from "grommet";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import titleImage from "../../shared/images/Group 1924.png";
 import styled from "styled-components";
 
-const Title = ({title, onChange}) => {
+const Title = ({ title, onChange }) => {
   return (
     <Container>
-    <div
+      <div
         className="arrow"
         onClick={() => {
           window.location.pathname = "/";
@@ -16,16 +17,16 @@ const Title = ({title, onChange}) => {
       </div>
       <div className="top"></div>
       <div className="progressBar">
-        <Meter 
+        <Meter
           size="xsmall"
           height="67px"
           width="375px"
           type="bar"
           background="#FAFAFA"
-          color="#6dbb91"
+          color="#1FB57E"
           value={50}
         />
-        </div>
+      </div>
       <div className="title">
         <div className="title-text">챌린지 이름</div>
         <textarea
@@ -39,11 +40,14 @@ const Title = ({title, onChange}) => {
         <textarea
           className="input-area"
           value={title}
-          placeholder="우리가 누굽니까악!"
+          placeholder="챌린지 이름을 작성합니다"
           maxLength="10"
           type="text"
-          onChange={e => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         ></textarea>
+      </div>
+      <div id="image">
+        <img src={titleImage} alt="img" width="245" height="267" />
       </div>
     </Container>
   );
@@ -52,7 +56,6 @@ const Title = ({title, onChange}) => {
 export default Title;
 
 const Container = styled.div`
-
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -61,7 +64,7 @@ const Container = styled.div`
   .top {
     height: 44px;
     width: 100%;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
   }
   .progressBar {
     height: 67px;
@@ -70,15 +73,15 @@ const Container = styled.div`
   .title {
     min-height: 120px;
     width: 100%;
-    border-top: 2px solid #3f3f3f;
-    border-bottom: 2px solid #3f3f3f;
+    border-top: 2px solid #151419;
+    border-bottom: 2px solid #151419;
 
     .title-text {
       height: 35px;
       width: 130px;
       font-size: 24px;
       font-family: Gmarket SansMedium;
-      color: #3f3f3f;
+      color: #151419;
       font-weight: 800;
       margin: 40px 0px 0px 30px;
     }
@@ -96,26 +99,27 @@ const Container = styled.div`
     }
   }
   .input-title {
-    height: 280px;
+    height: 127px;
     width: 100%;
-    background-color: #f5f5f5;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
     .input-area {
-      margin: 120px 66px;
-      font-family: Gmarket SansBold;
+      margin: 45px;
+      font-family: Gmarket Sans;
       height: 38px;
       width: 280px;
       outline: none;
       border: 0px;
       resize: none;
-      position: center;
-      font-size: 28px;
-      color: #3f3f3f;
-      background-color: #f5f5f5;
+      text-align: center;
+      font-size: 18px;
+      color: #151419;
       ::placeholder {
-        font-family: Gmarket SansBold;
+        font-family: Gmarket Sans;
         color: #d9d9d9;
       }
     }
+  }
+  #image{
+    margin: 84px 0 0 110px;
   }
 `;
