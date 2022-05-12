@@ -17,26 +17,26 @@ const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
 //Initial State
 const initialState = {
   myInfo: [{
-    category:"",
-    dday:"",
+    armyCategory:"",
     rank:"",
+    dday:0,
 }],
-  list: [],
 };
 
 //middleware actions
-const getCateDB = () => {
+const getCateDB = (id) => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/userData",
+      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
     })
       .then((res) => {
         console.log(res)
-        dispatch(getCategory(res.data.category));
+        dispatch(getCategory(res.armyCategroy));
+        dispatch(getRank(res.rank));
       })
       .catch((err) => {
         console.log(err);
@@ -44,49 +44,50 @@ const getCateDB = () => {
   };
 };
 
-const getRankDB = () => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: "http://13.125.228.240/api/userData",
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        console.log(res)
-        dispatch(getRank(res.data.rank));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+// const getRankDB = (id) => {
+//   return function (dispatch) {
+//     axios({
+//       method: "get",
+//       url: `http://13.125.228.240/api/userProfile?userId=${id}`,
+//       headers: {
+//         Authorization: `Bearer ${getCookie("token")}`,
+//       },
+//     })
+//       .then((res) => {
+//         console.log(res)
+//         dispatch(getRank(res.data.rank));
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
+// };
 
-const getDdayDB = () => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: "http://13.125.228.240/api/userData",
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        console.log(res)
-        dispatch(getDDay(res.data.dday));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+// const getDdayDB = (id) => {
+//   return function (dispatch) {
+//     axios({
+//       method: "get",
+//       url: `http://13.125.228.240/api/userProfile?userId=${id}`,
+//       headers: {
+//         Authorization: `Bearer ${getCookie("token")}`,
+//       },
+//     })
+//       .then((res) => {
+//         console.log(res)
+//         dispatch(getDDay(res.data.dday));
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
+// };
+
 //Reducer
 export default handleActions(
     {
         [GET_CATEGORY]:(state, action) => 
         produce(state, (draft) => {
-            draft.category = action.payload.category;
+            draft.armyCategroy = action.payload.armyCategroy;
         }),
         [GET_RANK]:(state, action) => 
         produce(state, (draft) => {
@@ -102,8 +103,8 @@ export default handleActions(
 //Action Creator Export
 const ActionCreators = {
     getCateDB,
-    getRankDB,
-    getDdayDB,
+    // getRankDB,
+    // getDdayDB,
 };
 
 export {ActionCreators};
