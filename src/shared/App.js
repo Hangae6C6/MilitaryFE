@@ -50,7 +50,7 @@ function App() {
             <Route exact path="/search" element={<Nav />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
-            <Route exact path="/myPage" element={<MyUser />}></Route>
+            <Route exact path="/myPage/:id" element={<MyUser />}></Route>
             <Route exact path="/link" element={<Link />}></Route>
             
             <Route exact path="/detailpage" element={<Detailpage />}></Route>
@@ -67,15 +67,13 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: 20px auto;
+  margin: 50px auto;
   max-width: 375px;
-  max-height: 100vh;
+  max-height: 812px;
   width: 100%;
   height: 100%;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  /* overflow-y: auto; */
 `;
 
 const Background = styled.div`

@@ -17,13 +17,13 @@ const initialState = {
     userId: "",
     userPw: "",
     userNick: "",
+    is_login: false,
   },
-  is_login: false,
 };
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {
   console.log(userId, userPw, userNick, userPwCheck);
-  return async function (dispatch, getState, {history}) {
+  return async function (dispatch, getState, { history }) {
     try {
       await axios({
         method: "post",
@@ -35,7 +35,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then((response) => {
-        history.push('/login');
+        history.push("/login");
       });
     } catch (err) {
       console.log(err);
@@ -92,10 +92,10 @@ const kakaoLogin = (code) => {
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);
-  
+
         dispatch(loginCheckDB());
         console.log("로그인 확인");
-        window.location.pathname="/";
+        window.location.pathname = "/";
       })
       .catch((err) => {
         window.alert("소셜 로그인에 실패하였습니다.", err);
@@ -115,7 +115,7 @@ const NaverLogin = (code, state) => {
         console.log(res);
         const token = res.data.token;
         setCookie("token", token);
-  
+
         dispatch(loginCheckDB());
         console.log("서버 네이버 로그인 확인");
         // window.location.replace("/");
