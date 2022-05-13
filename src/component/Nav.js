@@ -6,9 +6,6 @@ import { ActionCreators as searchActions } from "../redux/modules/search";
 const Nav = () => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = React.useState("");
-  const searchResult = useSelector((state) => state.search.challenges);
-  
-  console.log(searchResult);
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));

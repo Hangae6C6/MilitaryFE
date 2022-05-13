@@ -1,19 +1,18 @@
-import React, {useEffect, useState}from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
 import addIcon from "../../shared/icons/icnPlusBlack32.svg";
-import { ActionCreators as challengeStepActions } from "../../redux/modules/challenge";
 import { Meter } from "grommet";
 
-
-const Plan = ({ content, onContentChange, addStepHandler, onBack }) => {
-const [target, setTarget] = React.useState(null);
-const stepList = useSelector((state) => state.challenge.challenges);
-console.log(stepList);
-
-
+const Plan = ({
+  steps,
+  content,
+  onContentChange,
+  addStepHandler,
+  deleteStepHandler,
+  onBack,
+}) => {
   return (
     <Container>
       <div className="arrow" onClick={onBack}>
@@ -44,33 +43,31 @@ console.log(stepList);
         ></textarea>
       </div>
       <div className="boxes">
-        <div className="delete-btn"  onClick={addStepHandler}> 
+        <div className="delete-btn" onClick={addStepHandler}>
           <img src={addIcon} alt="addIcon" />
         </div>
         <textarea
           className="step-input"
           value={content}
           placeholder="ex) 코드책 50쪽 까지 읽기"
-          maxLength="20"
+          maxLength="15"
           type="text"
-          onChange={e => onContentChange(e.target.value)}
+          onChange={(e) => onContentChange(e.target.value)}
         ></textarea>
       </div>
 
       <Wrap>
-        {stepList?.steps.map((step, idx) => {
-          const lastStep = idx === stepList.length - 1;
-          console.log(lastStep);
+        {[...steps].reverse().map((step, idx) => {
           return (
-            <div
-              className="box"
-              key={step.id}
-              ref={lastStep ? setTarget : null}
-            >
-              <div className="step-nums">{idx+1}</div>
+            <div className="box" key={step + idx}>
+              <div className="step-nums">{step.stepNum}</div>
               <div className="step-inputs">{step.stepContent}</div>
               <div className="delete-btns">
-                <img src={deleteIcon} alt="deleteIcon" />
+                <img
+                  src={deleteIcon}
+                  alt="deleteIcon"
+                  onClick={() => deleteStepHandler(step.stepNum)}
+                />
               </div>
             </div>
           );

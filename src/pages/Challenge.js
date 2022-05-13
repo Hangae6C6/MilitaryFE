@@ -8,10 +8,8 @@ import Type from "../component/challenge/Type";
 import Plan from "../component/challenge/Plan";
 
 const Challenge = () => {
+  const userId = useSelector((state) => state.user.user.userId);
   const dispatch = useDispatch();
-  const challenge = useSelector((state) => state.challenge.challenges);
-  // const preStep = useSelector((state) =>state.challenge.challenges.steps);
-  console.log(challenge);
   const [step, setStep] = React.useState(0);
   const [title, setTitle] = React.useState("");
   const [participant, setParticipant] = React.useState("");
@@ -19,24 +17,29 @@ const Challenge = () => {
   const [endDate, setEndDate] = React.useState("");
   const [type, setType] = React.useState("");
   const [stepContent, setStepContent] = React.useState("");
+  const [stepIndex, setStepIndex] = React.useState(1);
+  const [steps, setSteps] = React.useState([]);
+  const challengeId = Math.random().toString(36).substring(2, 11);
 
-  console.log(stepContent);
-  
   const addStepHandler = () => {
-    const preSteps = {stepContent: stepContent, isChecked: false };
-    const newChallenge = {
-      challengeTitle: title,
-      challengeLimitNum: participant,
-      challengeStartDate: startDate,
-      challengeEndDate: endDate,
-      challengeType: type,
-       steps : [{...preSteps, preSteps}]
+    setStepIndex(stepIndex + 1);
+    setSteps((prevSteps) => [
+      ...prevSteps,
+      { stepNum: stepIndex, stepContent: stepContent, isChecked: false },
+    ]);
+    setStepContent("");
+  };
+   
+  
+  const deleteStepHandler = (Num) => {
+    for(let i=0; i<steps.length; i++){
+      if(Num !== steps[i].stepNum){
+        setSteps((prevSteps) => [...prevSteps.steps[i]])
+      } else{
+        console.log("삭제 실패")
       }
+    }
 
-      console.log(newChallenge);
-
-    // const newStep = { ...step, stepContent: stepContent, isChecked: false };
-    dispatch(challengeActions.addChallenge(newChallenge));
   };
 
   const typeChangeHandler = (cur) => {
@@ -46,10 +49,20 @@ const Challenge = () => {
   const challengeHandler = () => {
     setStep((prevStep) => prevStep + 1);
 
-    // check if it's the final step
     if (step === 3) {
-      //   dispatch(challengeActions.addTitle({challengeTitle}));
-      window.location.pathname = "/link";
+      const newChallenge = {
+        challengeId: challengeId,
+        challengeTitle: title,
+        challengeLimitNum: participant,
+        challengeStartDate: startDate,
+        challengeEndDate: endDate,
+        challengeType: type,
+        steps:steps
+
+      }
+      console.log(newChallenge);
+      // dispatch(challengeActions.addChallengeDB(newChallenge));
+      window.location.pathname = `/link/${challengeId}`;
     }
   };
 
@@ -75,10 +88,11 @@ const Challenge = () => {
       )}
       {step === 3 && (
         <Plan
-          // steps={challenge}
+          steps={steps}
           content={stepContent}
           onContentChange={setStepContent}
           addStepHandler={addStepHandler}
+          deleteStepHandler={deleteStepHandler}
           onBack={() => setStep((prevStep) => prevStep - 1)}
         />
       )}

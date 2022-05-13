@@ -54,7 +54,7 @@ export default DetailpageRank;
 
 const Container = styled.div`
   display: block;
-  max-height: 100%;
+  max-height: 100vh;
   max-width: 375px;
   height: 100%;
   width: 100%;

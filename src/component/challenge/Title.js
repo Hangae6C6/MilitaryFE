@@ -104,7 +104,7 @@ const Container = styled.div`
     border-bottom: 2px solid #151419;
     .input-area {
       margin: 45px;
-      font-family: Gmarket Sans;
+      font-family: Gmarket SansMedium;
       height: 38px;
       width: 280px;
       outline: none;
