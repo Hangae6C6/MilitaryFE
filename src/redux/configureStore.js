@@ -8,6 +8,7 @@ import challenge from "./modules/challenge";
 import search from "./modules/search";
 import main from "./modules/main";
 import mypage from './modules/mypage'
+import detail from "./modules/detail";
 
 
 export const history = createBrowserHistory();
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   challenge: challenge,
   card: main,
   mypage:mypage,
+  // detail:detail,
   router: connectRouter(history),
 });
 

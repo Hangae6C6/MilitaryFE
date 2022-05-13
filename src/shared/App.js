@@ -50,7 +50,7 @@ function App() {
             <Route exact path="/search" element={<Nav />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
-            <Route exact path="/myPage" element={<MyUser />}></Route>
+            <Route exact path="/myPage/:id" element={<MyUser />}></Route>
             <Route exact path="/link" element={<Link />}></Route>
             
             <Route exact path="/detailpage" element={<Detailpage />}></Route>
@@ -66,12 +66,12 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: 51px auto;
+  margin: 50px auto;
   max-width: 375px;
-  max-height: 100%;
+  max-height: 812px;
   width: 100%;
-  height: 100vh;
-  /* border: 1px solid black;  */
+  height: 100%;
+  border: 1px solid black;
   border-radius: 3px;
 `;
 

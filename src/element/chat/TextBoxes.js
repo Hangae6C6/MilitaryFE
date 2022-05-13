@@ -115,15 +115,19 @@ const Wrap = styled.div`
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 80%;
+  height: 72%;
   display: flex;
   flex-direction: column;
   overflow: auto;
 `;
 const ChatFoot = styled.div`
-  position: inherit;
+  max-width: 375px;
   width: 100%;
-  top: 91.38%;
+  height: 70px;
+  top: 730px;
+  position: absolute;
+  z-index: 999;
+  display: flex;
 `;
 const You = styled.div`
   width: 90%;
