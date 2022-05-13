@@ -2,9 +2,18 @@ import React from "react";
 import {useParams} from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionCreators as postActions } from "../redux/modules/main";
 
 const Link = () => {
-  const {challengeId} = useParams();
+  const dispatch = useDispatch();
+  const cards = useSelector((state) => state.card.cards);
+  let challengeId = cards[cards.length -1].challengeNum;
+
+  React.useEffect(() => {
+    dispatch(postActions.getPostDB());
+  }, [dispatch]);
+
 
 
 

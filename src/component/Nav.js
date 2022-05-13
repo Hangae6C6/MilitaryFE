@@ -9,6 +9,7 @@ const Nav = () => {
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
+    window.location.pathname="/"
   };
 
   return (

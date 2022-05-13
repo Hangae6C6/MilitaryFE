@@ -1,11 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import img from "../../shared/images/workout.png";
 
-const MyCallenge = () => {
+const MyCallenge = ({ user, cards }) => {
+  console.log(cards)
   return (
     <>
       <Container>
+        {cards.map((card, idx) => {
+          return (
+          <div id="box" key={card+idx}>
+            <img src={img} alt="img" height="52px" width="52px" />
+            <div id="type">
+              <p id="p">{card.challengeType}</p>
+            </div>
+            <div id="title">{card.challengeTitle}</div>
+            <div id="count">84명 참여중</div>
+          </div>);
+        })}
+
         <div id="box">
           <img src={img} alt="img" height="52px" width="52px" />
           <div id="type">
@@ -22,6 +36,7 @@ const MyCallenge = () => {
           <div id="title">책 100권 읽기</div>
           <div id="count">84명 참여중</div>
         </div>
+
         <div id="box">
           <img src={img} alt="img" height="52px" width="52px" />
           <div id="type">
@@ -33,7 +48,18 @@ const MyCallenge = () => {
       </Container>
 
       <AddButton>
-        <div id="button">챌린지 개설하기</div>
+        <div
+          id="button"
+          onClick={() => {
+            if (user.userId) {
+              window.location.pathname = "/challenge";
+            } else {
+              window.location.pathname = "/login";
+            }
+          }}
+        >
+          챌린지 개설하기
+        </div>
       </AddButton>
     </>
   );
@@ -42,6 +68,7 @@ const MyCallenge = () => {
 export default MyCallenge;
 
 const Container = styled.div`
+  overflow: hidden;
   display: flex;
   height: 130px;
   #box {
@@ -49,7 +76,7 @@ const Container = styled.div`
     height: 130px;
     width: 125px;
     border-right: 2px solid #151419;
-    border-bottom: 2px solid #151419;
+    /* border-bottom: 2px solid #151419; */
     margin-right: -2px;
     #type {
       #p {
@@ -59,8 +86,8 @@ const Container = styled.div`
         color: #ffffff;
         background-color: #151419;
         height: 26x;
-        width: 45px;
-        margin: 0 5px 0 38px;
+        width: 100px;
+        margin: 0 5px 0 10px;
       }
     }
     #title {
@@ -77,23 +104,22 @@ const Container = styled.div`
       color: #151419;
       font-family: Gmarket SansMedium;
       margin: -10px 0 0 3px;
-  
     }
     cursor: pointer;
     &:hover {
-      background-color: #1FB57E;
+      background-color: #1fb57e;
       color: #151419;
-      #title{
-        color:#ffffff;
+      #title {
+        color: #ffffff;
       }
     }
   }
-
-  
 `;
 const AddButton = styled.div`
-  height: 73px;
+  height: 92px;
   border-bottom: 2px solid #151419;
+  border-top: 2px solid #151419;
+
   #button {
     padding-top: 13px;
     text-align: center;
@@ -106,9 +132,8 @@ const AddButton = styled.div`
     margin: 18px 0 0 40px;
     cursor: pointer;
     &:hover {
-      background-color: #B62323;
+      background-color: #b62323;
       color: #151419;
     }
   }
-  
 `;
