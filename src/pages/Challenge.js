@@ -113,13 +113,13 @@ export default Challenge;
 const Container = styled.div`
   max-height: 812px;
   max-width: 375px;
-  height: 812px;
+  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
 `;
 const NextButton = styled.button`
   position: absolute;
-  bottom: 21mm;
+  bottom: 21.2mm;
   width: 375px;
   height: 80px;
   border: none;

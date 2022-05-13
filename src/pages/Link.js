@@ -1,14 +1,19 @@
 import React from "react";
+import {useParams} from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
 
 const Link = () => {
+  const {challengeId} = useParams();
+
+
+
   return (
     <Container>
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = "/detailPage";
+            window.location.pathname = `/detailPage/${challengeId}`;
           }}
         >
           시작하기

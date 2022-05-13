@@ -45,15 +45,15 @@ function App() {
             <Route exact path="/userdata" element={<UserData />}></Route>
             <Route path="/api/auth/kakao/callback" exact element={<KakaoAuth />} />
             <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
-            <Route exact path="/detail/chat" element={<Chat />}></Route>
+            <Route exact path="/detail/chat/:challengeId" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
             <Route exact path="/search" element={<Nav />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
-            <Route exact path="/link" element={<Link />}></Route>
+            <Route exact path="/link/:challengeId" element={<Link />}></Route>
             
-            <Route exact path="/detailpage" element={<Detailpage />}></Route>
+            <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
            
             <Route exact path="/challenge" element={<Challenge /> } />
@@ -71,7 +71,6 @@ const DivBox = styled.div`
   max-height: 812px;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   border-radius: 3px;
 `;
 
