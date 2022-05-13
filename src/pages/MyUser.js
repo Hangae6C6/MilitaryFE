@@ -5,6 +5,7 @@
 import React from "react";
 import styled from "styled-components";
 import Footer from "../component/Footer";
+import Navigation from "../component/Navigation";
 
 import Profile from "../component/user/Profile";
 
@@ -13,6 +14,7 @@ const MyUser = () => {
         <>
         <Profile />
         <Footer />
+        <Navigation />
         </>
     )
 }

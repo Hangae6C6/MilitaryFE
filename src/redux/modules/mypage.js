@@ -16,7 +16,7 @@ const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
 
 //Initial State
 const initialState = {
-  myInfo: [{
+  userdata: [{
     armyCategory:"",
     rank:"",
     dday:0,
@@ -34,9 +34,9 @@ const getCateDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res)
-        dispatch(getCategory(res.armyCategroy));
-        dispatch(getRank(res.rank));
+        console.log(res.data.userdata)
+        dispatch(getCategory(res.userdata));
+        dispatch(getRank(res.userdata));
       })
       .catch((err) => {
         console.log(err);

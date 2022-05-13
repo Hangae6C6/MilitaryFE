@@ -8,14 +8,15 @@ import { ActionCreators as userAction } from "../../redux/modules/user";
 //이미지/아이디/군종/닉네임/계급/계급딱지/디데이
 const Mine = (props) => {
   const dispatch = useDispatch();
-  console.log(useSelector((state) => state));
+  // console.log(useSelector((state) => state));
   const userIDForBinding = useSelector((state) => state.user.user.userId);
+  console.log(userIDForBinding);
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
   const userCategoryForBinding = useSelector(
-    (state) => state.mypage.myInfo.armyCategory
+    (state) => state.mypage.userdata.armyCategory
   );
-  const userRankForBinding = useSelector((state) => state.mypage.myInfo.rank);
-  const userDDayForBinding = useSelector((state) => state.mypage.myInfo.dday);
+  const userRankForBinding = useSelector((state) => state.mypage.rank);
+  const userDDayForBinding = useSelector((state) => state.mypage.dday);
 
   React.useEffect(() => {
     dispatch(mypageAction.getCateDB(userIDForBinding));

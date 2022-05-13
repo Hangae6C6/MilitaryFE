@@ -4,6 +4,7 @@ import Card from "../component/main/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { Box, Anchor, Text, Meter, Button } from "grommet";
+import Navigation from "../component/Navigation";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -57,8 +58,9 @@ const Main = () => {
           />
         </Box>
       </Box>
-
+      <Navigation userId={userId} />
       <Card cards={cards} />
+      
     </MainBox>
   );
 };
