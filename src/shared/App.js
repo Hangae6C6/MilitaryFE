@@ -51,7 +51,7 @@ function App() {
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
-            <Route exact path="/link/" element={<Link />}></Route>
+            <Route exact path="/link" element={<Link />}></Route>
             
             <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>

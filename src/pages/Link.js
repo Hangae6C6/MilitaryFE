@@ -7,14 +7,10 @@ import { ActionCreators as postActions } from "../redux/modules/main";
 
 const Link = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.card.cards);
-  let challengeId = cards[cards.length -1].challengeNum;
-
+  
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
-  }, [dispatch]);
-
-
+  }, []);
 
 
   return (
@@ -22,7 +18,7 @@ const Link = () => {
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = `/detailPage/${challengeId}`;
+            window.location.pathname = `/detailPage/:51`;
           }}
         >
           시작하기
