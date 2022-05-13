@@ -32,6 +32,7 @@ const Challenge = () => {
    
   
   const deleteStepHandler = (Num) => {
+    
     for(let i=0; i<steps.length; i++){
       if(Num !== steps[i].stepNum){
         setSteps((prevSteps) => [...prevSteps.steps[i]])
@@ -51,7 +52,6 @@ const Challenge = () => {
 
     if (step === 3) {
       const newChallenge = {
-        challengeId: challengeId,
         challengeTitle: title,
         challengeLimitNum: participant,
         challengeStartDate: startDate,
@@ -61,8 +61,8 @@ const Challenge = () => {
 
       }
       console.log(newChallenge);
-      // dispatch(challengeActions.addChallengeDB(newChallenge));
-      window.location.pathname = `/link/${challengeId}`;
+      dispatch(challengeActions.addChallengeDB(newChallenge));
+      // window.location.pathname = "/link/";
     }
   };
 

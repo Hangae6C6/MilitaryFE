@@ -1,48 +1,97 @@
 import React from "react";
 import styled from "styled-components";
-import img from "../../shared/images/workout.png";
-
-const MyCallenge = () => {
+import img from "../../shared/images/workout.png"
+const HotChallenge = () => {
   return (
-    <>
-      <Container>
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
+    <Container>
+      <UpperBox>
+        <div id="title">
+          <div id="title-text"> HOT 챌린지</div>
         </div>
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-      </Container>
+      </UpperBox>
+      <MiddleBox>
+        <div id="card">운동</div>
+        <div id="card">독서</div>
 
-      <AddButton>
-        <div id="button">챌린지 개설하기</div>
-      </AddButton>
-    </>
+        <div id="card">어학</div>
+        <div id="card">자격증</div>
+
+        <div id="card">코딩</div>
+
+      </MiddleBox>
+      <LowerBox>
+      <div id="box">
+          <img src={img} alt="img" height="52px" width="52px" />
+          <div id="type">
+            <p id="p">운동</p>
+          </div>
+          <div id="title">책 100권 읽기</div>
+          <div id="count">84명 참여중</div>
+        </div>
+
+        <div id="box">
+          <img src={img} alt="img" height="52px" width="52px" />
+          <div id="type">
+            <p id="p">운동</p>
+          </div>
+          <div id="title">책 100권 읽기</div>
+          <div id="count">84명 참여중</div>
+        </div>
+
+        <div id="box">
+          <img src={img} alt="img" height="52px" width="52px" />
+          <div id="type">
+            <p id="p">운동</p>
+          </div>
+          <div id="title">책 100권 읽기</div>
+          <div id="count">84명 참여중</div>
+        </div>
+      </LowerBox>
+    </Container>
   );
 };
 
-export default MyCallenge;
+export default HotChallenge;
 
-const Container = styled.div`
-  display: flex;
+const Container = styled.div``;
+
+const UpperBox = styled.div`
+  width: 375px;
+  height: 79px;
+  background-color: #b62323;
+  border-bottom: 2px solid #151419;
+  #title {
+    padding: 30px 0 0 30px;
+    #title-text {
+      color: #ffffff;
+      font-size: 24px;
+      font-family: Gmarket SansBold;
+    }
+  }
+`;
+
+const MiddleBox = styled.div`
+display: flex;
+  height: 47px;
+  border-bottom: #151419 2px solid;
+  #card {
+    text-align: center;
+    width: 60px;
+    height: 20px;
+    border: 1px solid #151419;
+    font-size: 18px;
+    font-family: Gmarket SansMedium;
+    margin: 10px 0 0 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #151419;
+      color: #ffffff;
+    }
+  }
+`;
+
+const LowerBox = styled.div`
+ display: flex;
   height: 130px;
   #box {
     text-align: center;
@@ -88,27 +137,4 @@ const Container = styled.div`
       }
     }
   }
-
-  
-`;
-const AddButton = styled.div`
-  height: 73px;
-  border-bottom: 2px solid #151419;
-  #button {
-    padding-top: 13px;
-    text-align: center;
-    width: 298px;
-    height: 43px;
-    background-color: #151419;
-    color: #ffffff;
-    font-size: 24px;
-    font-family: Gmarket SansBold;
-    margin: 18px 0 0 40px;
-    cursor: pointer;
-    &:hover {
-      background-color: #B62323;
-      color: #151419;
-    }
-  }
-  
 `;

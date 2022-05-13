@@ -6,7 +6,8 @@ import { ActionCreators as postActions } from "../redux/modules/main";
 import { Meter } from "grommet";
 import Navigation from "../component/Navigation";
 import MyCallenge from "../component/main/MyCallenge";
-
+import HotChallenge from "../component/main/HotChallenge";
+import icon from "../shared/images/mainIcon.png"
 const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
@@ -33,6 +34,10 @@ const Main = () => {
         <div id="sub-title">곧 있으면 절반을 달성하지 말입니다.</div>
       </div>
 
+      <div id="icon">
+        <img src={icon} alt="icon"/>
+      </div>
+
       <div id="progressBar">
         <Meter
           size="large"
@@ -49,6 +54,8 @@ const Main = () => {
         <p id="p">참여중 챌린지</p>
       </div>
       <MyCallenge />
+      <HotChallenge />
+      <Navigation />
     </Container>
     // <MainBox>
     //   <Box height="100px" width="200px" margin={{ left: "20px" }}>
@@ -114,6 +121,10 @@ const Container = styled.div`
       color: #ffffff;
       font-family: Gmarket Sansmedium;
     }
+  }
+  #icon{
+    position: absolute;
+    margin: -15px 0 0px 125px;
   }
   #progressBar {
     margin-bottom: -3px;
