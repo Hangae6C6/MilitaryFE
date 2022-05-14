@@ -3,9 +3,11 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
-const ADD_TITLE = "ADD_TITLE";
+const ADD_CHALLENGE = "ADD_CHALLENGE";
+const ADD_NUMBER ="ADD_NUMBER";
 
-const addChallenge = createAction(ADD_TITLE, (challenge) => challenge);
+const addChallenge = createAction(ADD_CHALLENGE, (challenge) => challenge);
+const addChallengeNum = createAction(ADD_NUMBER, (challengeNum) => challengeNum);
 
 
 const initialState = {
@@ -27,6 +29,7 @@ const addChallengeDB = (challenges) => {
         },
       }).then((response) => {
         console.log(response);
+        dispatch()
       });
     } catch (err) {
       console.log(err);
@@ -39,10 +42,15 @@ const addChallengeDB = (challenges) => {
 
 export default handleActions(
   {
-    [ADD_TITLE]: (state, action) =>
+    [ADD_CHALLENGE]: (state, action) =>
       produce(state, (draft) => {
         console.log(action)
         draft.challenges = action.payload.challenge;
+      }),
+      [ADD_NUMBER]: (state, action) =>
+      produce(state, (draft) => {
+        console.log(action)
+        draft.challenges = action.payload.challengeNum;
       }),
    
   },
@@ -51,7 +59,7 @@ export default handleActions(
 
 const ActionCreators = {
   addChallengeDB,
-  addChallenge,
+  addChallengeNum,
 
 };
 

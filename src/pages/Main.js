@@ -12,6 +12,7 @@ const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
   const userId = useSelector((state) => state.user.user.userId);
+  const user= useSelector((state) => state.user.user);
 
   React.useEffect(() => {
     if (userId) {
@@ -30,7 +31,7 @@ const Main = () => {
   return (
     <Container>
       <div id="top-box">
-        <div id="main-title">안녕하십니까, 안이태 병장님!</div>
+        <div id="main-title">안녕하십니까, {user.userNick} 병장님!</div>
         <div id="sub-title">곧 있으면 절반을 달성하지 말입니다.</div>
       </div>
 
@@ -53,46 +54,10 @@ const Main = () => {
       <div id="my-challenge">
         <p id="p">참여중 챌린지</p>
       </div>
-      <MyCallenge />
+      <MyCallenge user={user} cards={cards}/>
       <HotChallenge />
       <Navigation />
     </Container>
-    // <MainBox>
-    //   <Box height="100px" width="200px" margin={{ left: "20px" }}>
-    //     <Text size="large" margin={{ top: "50px" }}>
-    //       안녕하십니까?
-    //     </Text>
-    //     <Anchor color="accent-4" href="/main/preTest/question">
-    //       테스트 하러가기
-    //     </Anchor>
-    //   </Box>
-
-    //   <Box align="center" pad="medium">
-    //     <Meter
-    //       size="medium"
-    //       type="semicircle"
-    //       background="light-2"
-    //       value={totalProgressBar}
-    //     />
-    //     <Box margin={{ top: "-70px" }}>
-    //       <Button
-    //         value=""
-    //         color="dark-2"
-    //         label="챌린지 개설하기"
-    //         onClick={() => {
-    //           if (userId) {
-    //             window.location.pathname = "/challenge";
-    //           } else {
-    //             window.location.pathname = "/signup";
-    //           }
-    //         }}
-    //       />
-    //     </Box>
-    //   </Box>
-    //   <Card cards={cards} />
-
-    //   <Navigation userId={userId} />
-    // </MainBox>
   );
 };
 
@@ -115,7 +80,7 @@ const Container = styled.div`
       font-family: Gmarket SansBold;
     }
     #sub-title {
-      padding: 10px 0 0 15px;
+      margin: 22px;
       height: 30px;
       font-size: 16px;
       color: #ffffff;
@@ -133,11 +98,11 @@ const Container = styled.div`
     border-bottom: 2px solid #151419;
     border-top: 2px solid #151419;
     height: 77px;
-    font-size: 22px;
+    font-size: 26px;
     color: #151419;
     font-family: Gmarket SansBold;
     #p {
-      margin: 40px 0 0 15px;
+      margin: 30px 0 0 15px;
     }
   }
 `;

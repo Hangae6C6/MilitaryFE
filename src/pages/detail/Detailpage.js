@@ -1,5 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { ActionCreators as postActions } from "../../redux/modules/main";
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
@@ -8,15 +10,28 @@ import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import typeImg from "../../shared/images/workout.png";
 import personImg from "../../shared/images/icnPersonGray36.png";
 import { history } from "../../redux/configureStore";
-import Challenge from "../../redux/modules/challenge";
 
 const Detail = () => {
-  // const location = useLocation();
-  // const post = location.state.card;
-  // console.log(post);
+  const dispatch = useDispatch();
+  const cards = useSelector((state) => state.card.cards);
+  const user = useSelector((state) => state.user.user);
+  let { challengeId } = useParams();
+  let id = challengeId;
 
+  React.useEffect(() => {
+    dispatch(postActions.getPostDB());
+  
+  }, [dispatch]);
+  console.log(cards);
+ 
+  let card = {};
+  for (let i = 1; i < cards.lenghth; i++) {
+    if (id === cards[i].challengeNum) {
+      card = cards[i];
+  }
+}console.log(card)
   return (
-    <Container >
+    <Container>
       <div className="nav"></div>
       <div className="top">
         <div
@@ -66,9 +81,15 @@ const Detail = () => {
           <div id="Infodetail">남은 자리</div>
         </div>
       </ChallengeRoom>
-      <DetailpageProgress  />
+      <DetailpageProgress />
       <DetailpageStep />
-      <NextButton>채팅하기</NextButton>
+      <NextButton  onClick={() => {
+            if (user.userId) {
+              window.location.pathname = `/detail/chat/${id}`;
+            } else {
+              window.location.pathname = "/login";
+            }
+          }}>채팅하기</NextButton>
     </Container>
   );
 };
@@ -82,7 +103,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   border: 2px solid #3f3f3f;
- 
+
   .nav {
     width: 375px;
     height: 44px;
@@ -183,8 +204,7 @@ const ChallengeRoom = styled.div`
       color: #3f3f3f;
     }
     &:hover {
-    
-      background-color: #6DBB91;
+      background-color: #6dbb91;
       color: #ffffff;
       #roomInfo {
         color: #ffffff;
@@ -194,8 +214,8 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: table-row;
-  bottom: 29mm;
+  position: relative;
+  bottom: 9.6mm;
   width: 375px;
   height: 80px;
   border: none;
@@ -205,9 +225,9 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  /* border-top: 2px solid #3f3f3f; */
+  border-top: 2px solid #151419;
   &:hover {
     cursor: pointer;
-    background-color: #3f3f3f;
+    background-color: #151419;
   }
 `;

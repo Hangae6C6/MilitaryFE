@@ -62,7 +62,7 @@ const Challenge = () => {
       }
       console.log(newChallenge);
       dispatch(challengeActions.addChallengeDB(newChallenge));
-      // window.location.pathname = "/link/";
+      window.location.pathname = "/link/";
     }
   };
 
