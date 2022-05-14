@@ -7,7 +7,7 @@ const ADD_CHALLENGE = "ADD_CHALLENGE";
 const ADD_NUMBER ="ADD_NUMBER";
 
 const addChallenge = createAction(ADD_CHALLENGE, (challenge) => challenge);
-const addChallengeNum = createAction(ADD_NUMBER, (challengeNum) => challengeNum);
+const getChallengeNum = createAction(ADD_NUMBER, (challengeNum) => challengeNum);
 
 
 const initialState = {
@@ -28,8 +28,9 @@ const addChallengeDB = (challenges) => {
           challenges,
         },
       }).then((response) => {
-        console.log(response);
-        dispatch()
+        dispatch(getChallengeNum(response.data.challengeNum));
+        const challengeId = response.data.challengeNum;
+        window.location.pathname = `/link/${challengeId}`;
       });
     } catch (err) {
       console.log(err);
@@ -50,7 +51,7 @@ export default handleActions(
       [ADD_NUMBER]: (state, action) =>
       produce(state, (draft) => {
         console.log(action)
-        draft.challenges = action.payload.challengeNum;
+        draft.challengeId = action.payload;
       }),
    
   },
@@ -59,7 +60,7 @@ export default handleActions(
 
 const ActionCreators = {
   addChallengeDB,
-  addChallengeNum,
+  getChallengeNum,
 
 };
 

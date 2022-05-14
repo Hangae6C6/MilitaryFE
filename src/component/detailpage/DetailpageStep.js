@@ -31,10 +31,10 @@ display: table-row;
   #top {
     width: 375px;
     height: 80px;
-    background-color: #6dbb91;
-    border-bottom: 2px solid #3f3f3f;
+    background-color: #1FB57E;
+    border-bottom: 2px solid #151419;
     #title {
-      color: #3f3f3f;
+      color: #151419;
       font-size: 24px;
       font-family: Gmarket SansBold;
       padding: 35px 0 0 36px;
@@ -45,11 +45,11 @@ display: table-row;
 const Astep = styled.div`
   width: 375px;
   height: 62px;
-  border-bottom: 2px solid #3f3f3f;
+  border-bottom: 2px solid #151419;
   display: flex;
   #stepTitle {
     font-family: NanumSquareMedium;
-    color: #3f3f3f;
+    color: #151419;
     font-size: 16px;
     width: 280px;
     height: 22px;
@@ -59,10 +59,10 @@ const Astep = styled.div`
     width: 22px;
     height: 22px;
     margin: 20px 20px 0 10px;
-    border: 1px solid #3f3f3f;
+    border: 1px solid #151419;
     &:hover{
         cursor: pointer;
-        background-color: #3f3f3f;
+        background-color: #151419;
     }
   }
 `;

@@ -2,15 +2,10 @@ import React from "react";
 import {useParams} from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
-import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as postActions } from "../redux/modules/main";
+
 
 const Link = () => {
-  const dispatch = useDispatch();
-  
-  React.useEffect(() => {
-    dispatch(postActions.getPostDB());
-  }, []);
+const {challengeId} = useParams();
 
 
   return (
@@ -18,7 +13,7 @@ const Link = () => {
       <div className="top">
         <NextButton
           onClick={() => {
-            window.location.pathname = `/detailPage/:51`;
+            window.location.pathname = `/detailPage/${challengeId}`;
           }}
         >
           시작하기

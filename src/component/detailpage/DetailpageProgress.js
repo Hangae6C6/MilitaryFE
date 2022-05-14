@@ -8,7 +8,7 @@ const DetailpageProgress = () => {
         window.location.pathname= "/detailpage/rank";
       }}>
       <div id="firstBox">
-        <div id="stepNum"><p style={{color:"#6DBB91"}}>07</p><p>/08</p></div>
+        <div id="stepNum"><p style={{color:"#1FB57E"}}>07</p><p>/08</p></div>
         <div id="myRank">1st</div>
       </div>
       <div id="proBar">
@@ -18,7 +18,7 @@ const DetailpageProgress = () => {
           width="300px"
           type="bar"
           background="#FAFAFA"
-          color="#6dbb91"
+          color="#1FB57E"
           value={80}
         />
       </div>
@@ -35,7 +35,7 @@ export default DetailpageProgress;
 const Container = styled.div`
   width: 375px;
   height: 219px;
-  border-bottom: 2px solid #3f3f3f;
+  border-bottom: 2px solid #151419;
   
   #firstBox{
       width: 300px;
@@ -59,7 +59,7 @@ const Container = styled.div`
   #proBar{
       width: 300px;
       height: 20px;
-      border: 2px solid #3f3f3f;
+      border: 2px solid #151419;
       margin-left: 37px;
   }
   #secBox{
@@ -71,7 +71,7 @@ const Container = styled.div`
   }
   &:hover{
         cursor: pointer;
-        background-color: #3f3f3f;
+        background-color: #151419;
         #myRank{
             color:#ffffff;
         }

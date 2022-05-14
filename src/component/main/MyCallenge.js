@@ -4,7 +4,7 @@ import styled from "styled-components";
 import img from "../../shared/images/workout.png";
 
 const MyCallenge = ({ user, cards }) => {
- 
+
   return (
     <>
       <Container>
@@ -70,14 +70,13 @@ export default MyCallenge;
 const Container = styled.div`
   overflow: hidden;
   display: flex;
-  height: 130px;
+ 
   #box {
     text-align: center;
     height: 130px;
-    width: 125px;
-    border-right: 2px solid #151419;
-    /* border-bottom: 2px solid #151419; */
-    margin-right: -2px;
+    width: 121px;
+    border: 2px solid #151419;
+    /* border-left: 1px solid #151419; */
     #type {
       #p {
         border: #151419 1px solid;

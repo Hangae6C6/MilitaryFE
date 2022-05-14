@@ -58,7 +58,7 @@ const Container = styled.div`
   max-width: 375px;
   height: 100%;
   width: 100%;
-  border: 2px solid #3f3f3f;
+  border: 2px solid #151419;
  
   .nav {
     width: 375px;
@@ -67,8 +67,8 @@ const Container = styled.div`
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #3f3f3f;
-    border-bottom: 2px solid #3f3f3f;
+    border-top: 2px solid #151419;
+    border-bottom: 2px solid #151419;
     .arrow {
       position: absolute;
       margin: 17px 0px 0px 20px;
@@ -87,9 +87,9 @@ const ChallengeName = styled.div`
   #top {
     width: 375px;
     height: 80px;
-    border-bottom: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
     #title {
-      color: #3f3f3f;
+      color: #151419;
       font-size: 24px;
       font-family: Gmarket SansBold;
       padding: 35px 0 0 36px;
@@ -100,11 +100,11 @@ const ChallengeName = styled.div`
 const Astep = styled.div`
   width: 375px;
   height: 62px;
-  border-bottom: 2px solid #3f3f3f;
+  border-bottom: 2px solid #151419;
   display: flex;
   #stepTitle {
     font-family: NanumSquareMedium;
-    color: #3f3f3f;
+    color: #151419;
     font-size: 16px;
     width: 280px;
     height: 22px;
@@ -114,10 +114,10 @@ const Astep = styled.div`
     width: 22px;
     height: 22px;
     margin: 20px 20px 0 10px;
-    border: 1px solid #3f3f3f;
+    border: 1px solid #151419;
     &:hover{
         cursor: pointer;
-        background-color: #3f3f3f;
+        background-color: #151419;
     }
   }
 `;
@@ -134,9 +134,9 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  /* border-top: 2px solid #3f3f3f; */
+  /* border-top: 2px solid #151419; */
   &:hover {
     cursor: pointer;
-    background-color: #3f3f3f;
+    background-color: #151419;
   }
 `;

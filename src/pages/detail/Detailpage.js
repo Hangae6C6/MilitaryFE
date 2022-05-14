@@ -22,7 +22,7 @@ const Detail = () => {
     dispatch(postActions.getPostDB());
   
   }, [dispatch]);
-  console.log(cards);
+
  
   let card = {};
   for (let i = 1; i < cards.lenghth; i++) {
@@ -102,7 +102,7 @@ const Container = styled.div`
   max-width: 375px;
   height: 100%;
   width: 100%;
-  border: 2px solid #3f3f3f;
+  border: 2px solid #151419;
 
   .nav {
     width: 375px;
@@ -111,8 +111,8 @@ const Container = styled.div`
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #3f3f3f;
-    border-bottom: 2px solid #3f3f3f;
+    border-top: 2px solid #151419;
+    border-bottom: 2px solid #151419;
     .arrow {
       position: absolute;
       margin: 17px 0px 0px 20px;
@@ -130,7 +130,7 @@ const TitleBox = styled.div`
   width: 375px;
   height: 159px;
   display: flex;
-  border-bottom: 2px solid #3f3f3f;
+  border-bottom: 2px solid #151419;
   #title {
     width: 242px;
     height: 159px;
@@ -138,7 +138,7 @@ const TitleBox = styled.div`
     #title-up {
       width: 237px;
       height: 45px;
-      color: #3f3f3f;
+      color: #151419;
       text-align: center;
       font-size: 24px;
       font-weight: bold;
@@ -150,10 +150,10 @@ const TitleBox = styled.div`
       #type {
         width: 73px;
         height: 30px;
-        background-color: #3f3f3f;
+        background-color: #151419;
         color: #ffffff;
         font-size: 20px;
-        font-family: Gmarket Sans;
+        font-family: Gmarket Sansmedium;
         text-align: center;
         line-height: 30px;
         margin-left: 20px;
@@ -161,10 +161,10 @@ const TitleBox = styled.div`
       #startDate {
         width: 73px;
         height: 30px;
-        background-color: #3f3f3f;
+        background-color: #151419;
         color: #ffffff;
         font-size: 20px;
-        font-family: Gmarket Sans;
+        font-family: Gmarket Sansmedium;
         line-height: 30px;
         text-align: center;
         margin-left: 10px;
@@ -187,8 +187,8 @@ const ChallengeRoom = styled.div`
     text-align: center;
     display: grid;
     width: 125px;
-    border-bottom: 2px solid #3f3f3f;
-    border-right: 2px solid #3f3f3f;
+    border-bottom: 2px solid #151419;
+    border-right: 2px solid #151419;
     background-color: #ffffff;
     #imgWrap {
       padding-top: 10px;
@@ -196,15 +196,15 @@ const ChallengeRoom = styled.div`
     #roomInfo {
       font-size: 20px;
       font-family: Gmarket SansBold;
-      color: #3f3f3f;
+      color: #151419;
     }
     #infoDetail {
       font-size: 14px;
       font-family: NanumSquare;
-      color: #3f3f3f;
+      color: #151419;
     }
     &:hover {
-      background-color: #6dbb91;
+      background-color: #1FB57E;
       color: #ffffff;
       #roomInfo {
         color: #ffffff;

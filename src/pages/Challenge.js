@@ -8,7 +8,6 @@ import Type from "../component/challenge/Type";
 import Plan from "../component/challenge/Plan";
 
 const Challenge = () => {
-  const userId = useSelector((state) => state.user.user.userId);
   const dispatch = useDispatch();
   const [step, setStep] = React.useState(0);
   const [title, setTitle] = React.useState("");
@@ -19,7 +18,6 @@ const Challenge = () => {
   const [stepContent, setStepContent] = React.useState("");
   const [stepIndex, setStepIndex] = React.useState(1);
   const [steps, setSteps] = React.useState([]);
-  const challengeId = Math.random().toString(36).substring(2, 11);
 
   const addStepHandler = () => {
     setStepIndex(stepIndex + 1);
@@ -29,18 +27,15 @@ const Challenge = () => {
     ]);
     setStepContent("");
   };
-   
-  
+
   const deleteStepHandler = (Num) => {
-    
-    for(let i=0; i<steps.length; i++){
-      if(Num !== steps[i].stepNum){
-        setSteps((prevSteps) => [...prevSteps.steps[i]])
-      } else{
-        console.log("삭제 실패")
+    for (let i = 0; i < steps.length; i++) {
+      if (Num !== steps[i].stepNum) {
+        setSteps((prevSteps) => [...prevSteps.steps[i]]);
+      } else {
+        console.log("삭제 실패");
       }
     }
-
   };
 
   const typeChangeHandler = (cur) => {
@@ -57,12 +52,10 @@ const Challenge = () => {
         challengeStartDate: startDate,
         challengeEndDate: endDate,
         challengeType: type,
-        steps:steps
+        steps: steps,
+      };
 
-      }
-      console.log(newChallenge);
       dispatch(challengeActions.addChallengeDB(newChallenge));
-      window.location.pathname = "/link/";
     }
   };
 
