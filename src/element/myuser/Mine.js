@@ -9,7 +9,7 @@ import { ActionCreators as userAction } from "../../redux/modules/user";
 const Mine = (props) => {
   const dispatch = useDispatch();
   // console.log(useSelector((state) => state));
-  const userIDForBinding = useSelector((state) => state.user.user.userId);
+  const userIDForBinding = useSelector((state) => state.user.user.userId);//dispatch중복돼서 useEffect중복되면서 일어나는 문제
   console.log(userIDForBinding);
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
   const userCategoryForBinding = useSelector(
@@ -19,6 +19,7 @@ const Mine = (props) => {
   const userDDayForBinding = useSelector((state) => state.mypage.dday);
 
   React.useEffect(() => {
+    console.log(userIDForBinding)//여기서 리렌더링할때마다 dispatch중복호출, 호출할때 유저아이디있을때만 호출 가능
     dispatch(mypageAction.getCateDB(userIDForBinding));
   }, [dispatch]);
 
@@ -51,8 +52,12 @@ const Wrap = styled.div`
 const MyPage = styled.p`
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
+  align-items: center;
   margin: 0;
-  padding: 10px;
+  padding: 32.5px 0;
+  border-top: 2px solid #151419;
+  border-bottom: 2px solid #151419;
 `;
 
 const ImgDiv = styled.div`

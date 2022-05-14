@@ -51,11 +51,10 @@ function App() {
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
-            <Route exact path="/link" element={<Link />}></Route>
+            <Route exact path="/link/:challengeId" element={<Link />}></Route>
             
             <Route exact path="/detailpage" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
-           
             <Route exact path="/challenge" element={<Challenge /> } />
 
           </Routes>
@@ -71,7 +70,7 @@ const DivBox = styled.div`
   max-height: 812px;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 3px;
 `;
 

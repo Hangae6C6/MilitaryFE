@@ -34,7 +34,8 @@ const getCateDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res.data.userdata)
+        console.log(res)
+        console.log(id)//id
         dispatch(getCategory(res.userdata));
         dispatch(getRank(res.userdata));
       })
