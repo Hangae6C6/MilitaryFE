@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
-import { history } from '../../redux/configureStore';
+import React from "react";
+import styled from "styled-components";
+import { history } from "../../redux/configureStore";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
-
+import { useParams } from "react-router-dom";
 const DetailpageRank = () => {
-    return (
-
-        <Container>
-          <div className="nav"></div>
+  const { challengeId } = useParams();
+  return (
+    <Container>
+      <div className="nav"></div>
       <div className="top">
         <div
           className="arrow"
           onClick={() => {
-            history.back();
+            window.location.pathname = `/detailpage/${challengeId}`;
           }}
         >
           <img src={gobackIcon} alt="goback" />
@@ -23,34 +23,36 @@ const DetailpageRank = () => {
         </div>
       </div>
 
-            
-<ChallengeName  >
-     
-      <div id="top">
-        <div id="title">챌린지 달성 순위</div>
-      </div>
-      <Astep>
-        <div id="stepTitle">이범규</div>
-        <div id="checkBox"></div>
-      </Astep>
-      <Astep>
-        <div id="stepTitle">신용재</div>
-        <div id="checkBox"></div>
-      </Astep>
-      <Astep>
-        <div id="stepTitle">이국주</div>
-        <div id="checkBox"></div>
-      </Astep>
-    </ChallengeName>
+      <ChallengeName>
+        <div id="top">
+          <div id="title">챌린지 달성 순위</div>
+        </div>
+        <Astep>
+          <div id="stepTitle">이범규</div>
+          <div id="checkBox"></div>
+        </Astep>
+        <Astep>
+          <div id="stepTitle">신용재</div>
+          <div id="checkBox"></div>
+        </Astep>
+        <Astep>
+          <div id="stepTitle">이국주</div>
+          <div id="checkBox"></div>
+        </Astep>
+      </ChallengeName>
 
-    <NextButton>지금 시작하기</NextButton>
-        </Container>
-        
-    );
+      <NextButton
+        onClick={() => {
+          window.location.pathname = `/detail/chat/${challengeId}`;
+        }}
+      >
+        지금 시작하기
+      </NextButton>
+    </Container>
+  );
 };
 
 export default DetailpageRank;
-
 
 const Container = styled.div`
   display: block;
@@ -59,7 +61,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   border: 2px solid #151419;
- 
+
   .nav {
     width: 375px;
     height: 44px;
@@ -81,7 +83,6 @@ const Container = styled.div`
     }
   }
 `;
-
 
 const ChallengeName = styled.div`
   #top {
@@ -115,9 +116,9 @@ const Astep = styled.div`
     height: 22px;
     margin: 20px 20px 0 10px;
     border: 1px solid #151419;
-    &:hover{
-        cursor: pointer;
-        background-color: #151419;
+    &:hover {
+      cursor: pointer;
+      background-color: #151419;
     }
   }
 `;

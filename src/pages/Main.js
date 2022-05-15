@@ -11,9 +11,8 @@ import icon from "../shared/images/mainIcon.png"
 const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
-  const userId = useSelector((state) => state.user.user.userId);
   const user= useSelector((state) => state.user.user);
-
+  const userId = user.userId;
   React.useEffect(() => {
     if (userId) {
       dispatch(postActions.getProgressDB(userId));

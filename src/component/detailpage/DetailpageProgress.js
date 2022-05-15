@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Meter } from "grommet";
+import {useParams} from "react-router-dom"
 
 const DetailpageProgress = () => {
+  const {challengeId} = useParams();
   return (
     <Container onClick={() => {
-        window.location.pathname= "/detailpage/rank";
+        window.location.pathname= `/detailpage/rank/${challengeId}`;
       }}>
       <div id="firstBox">
         <div id="stepNum"><p style={{color:"#1FB57E"}}>07</p><p>/08</p></div>
@@ -19,7 +21,7 @@ const DetailpageProgress = () => {
           type="bar"
           background="#FAFAFA"
           color="#1FB57E"
-          value={80}
+          value={40}
         />
       </div>
       <div id="secBox">

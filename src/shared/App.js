@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/link/:challengeId" element={<Link />}></Route>
             
             <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
-            <Route exact path="/detailpage/rank" element={<DetailpageRank />}></Route>
+            <Route exact path="/detailpage/rank/:challengeId" element={<DetailpageRank />}></Route>
            
             <Route exact path="/challenge" element={<Challenge /> } />
 

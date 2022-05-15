@@ -13,23 +13,17 @@ import { history } from "../../redux/configureStore";
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.card.cards);
-  const user = useSelector((state) => state.user.user);
   let { challengeId } = useParams();
-  let id = challengeId;
-
+  const cardList = useSelector((state) => state.card.cards);
+  const user = useSelector((state) => state.user.user);
+  const card = cardList.filter((value) => value.challengeNum == challengeId);
+  
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
-  
+    
   }, [dispatch]);
-
- 
-  let card = {};
-  for (let i = 1; i < cards.lenghth; i++) {
-    if (id === cards[i].challengeNum) {
-      card = cards[i];
-  }
-}console.log(card)
+  
+  console.log(card)
   return (
     <Container>
       <div className="nav"></div>
@@ -48,10 +42,10 @@ const Detail = () => {
       </div>
       <TitleBox>
         <div id="title">
-          <div id="title-up">느리게 살기 챌린지</div>
+          <div id="title-up">{card.challengeTitle}</div>
           <div id="title-down">
-            <div id="type">공모전</div>
-            <div id="startDate">5/10~</div>
+            <div id="type">{card.challengeType}</div>
+            <div id="startDate">{card.challengeStartDate}~</div>
           </div>
         </div>
         <div id="image">
@@ -85,7 +79,7 @@ const Detail = () => {
       <DetailpageStep />
       <NextButton  onClick={() => {
             if (user.userId) {
-              window.location.pathname = `/detail/chat/${id}`;
+              window.location.pathname = `/detail/chat/${challengeId}`;
             } else {
               window.location.pathname = "/login";
             }
