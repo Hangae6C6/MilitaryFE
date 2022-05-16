@@ -88,14 +88,14 @@ const Login = () => {
           로그인
         </LoginButton>
 
-        <SNSLoginButton
+        <SNSLoginBtn
           size="12pt"
           onClick={() => {
             window.location.href = KAKAO_AUTH_URL;
           }}
         >
           카카오 로그인
-        </SNSLoginButton>
+        </SNSLoginBtn>
         <SNSLoginButton1
           size="12pt"
           onClick={() => {
@@ -152,10 +152,13 @@ const Container = styled.div`
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
+    background-color: #ffffff;
+
     #p {
-      font-size: 32px;
+      font-size: 34px;
       font-family: Gmarket SansBold;
       margin: 65px auto;
+      color: #151419;
     }
   }
 `;
@@ -171,7 +174,7 @@ const LoginInput = styled.input`
   outline: none;
   border-right: none;
   border-left: none;
-  border-top: 2px soild #141519;
+  border-top: 2px solid #141519;
   border-bottom: none;
   box-sizing: border-box;
   font-size: 16px;
@@ -182,33 +185,32 @@ const LoginButton = styled.button`
   height: 62px;
   border-right: none;
   border-left: none;
-  border-top: 2px soild #141519;
+  border-top: 2px solid #141519;
   outline: none;
-  font-size: 16px;
+  font-size: 22px;
   font-family: Gmarket SansMedium;
-  background-color: #141519;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #B62323;
   &:hover {
     cursor: pointer;
-    background-color: #3f3f3f;
+    background-color: #B62323;
+    color: #ffffff;
   }
 `;
 
-const SNSLoginButton = styled.button`
+const SNSLoginBtn = styled.button`
   width: 100%;
   height: 62px;
-  border-radius: 0px;
-  padding: auto;
   box-sizing: border-box;
   border-right: none;
   border-left: none;
-  border-top: none;
-  border-bottom: 2px soild #141519;
+  border-top: 2px solid #141519;
+  border-bottom: 2px solid #141519;
   outline: none;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #ffd43b;
   font-family: Gmarket SansMedium;
+  background-color: #ffd43b;
+  margin-top:43px;
 
   &:hover {
     cursor: pointer;
@@ -219,16 +221,13 @@ const SNSLoginButton = styled.button`
 const SNSLoginButton1 = styled.button`
   width: 100%;
   height: 62px;
-  border-radius: 0px;
-  padding: auto;
   box-sizing: border-box;
   border-right: none;
   border-left: none;
   border-top: none;
-  border-bottom: 2px soild #141519;
+  border-bottom: 2px solid #141519;
   outline: none;
   font-size: 16px;
-  font-weight: bold;
   background-color: #03c75a;
   font-family: Gmarket SansMedium;
 
@@ -241,16 +240,13 @@ const SNSLoginButton1 = styled.button`
 const SNSLoginButton2 = styled.button`
   width: 100%;
   height: 62px;
-  border-radius: 0px;
-  padding: auto;
   box-sizing: border-box;
   border-right: none;
   border-left: none;
   border-top: none;
-  border-bottom: 2px soild #141519;
+  border-bottom: 2px solid #141519;
   outline: none;
   font-size: 16px;
-  font-weight: bold;
   background-color: #e4e8eb;
   font-family: Gmarket SansMedium;
 

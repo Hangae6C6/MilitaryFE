@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
-import { useDispatch, useSelector } from "react-redux";
+import UserData from "../component/user/UserData";
+import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../redux/modules/user";
+import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -65,12 +66,27 @@ const SignUp = () => {
       window.alert("비밀번호가 다릅니다.");
       return;
     }
-    console.log(id, nickname, password);
+
     dispatch(userActions.signupDB(id, password, nickname, passwordCheck));
+
   };
 
   return (
     <Container>
+      <div className="nav"></div>
+      <div className="top">
+        <div
+          className="arrow"
+          onClick={() => {
+            window.location.pathname = "/login";
+          }}
+        >
+          <img src={gobackIcon} alt="goback" />
+        </div>
+      </div>
+      <div id="title-box">
+        <p id="p">필승 챌린지</p>
+      </div>
       <Box2>
         <LoginInput
           value={id}
@@ -102,87 +118,93 @@ const SignUp = () => {
             setPasswordCheck(e.target.value);
           }}
         />
-        <LoginButton
-          onClick={() => {
-            signup();
-          }}
-        >
-          회원가입
-        </LoginButton>
-
-        <Text bold margin="10px 10px 5px 142px" color="#868e96" size="12pt">
-          계정이 이미 있으신가요? {"  "}
-          <TextButton
-            size="12pt"
-            onClick={() => {
-              window.location.pathname="/login";
-            }}
-          >
-            로그인
-          </TextButton>
-        </Text>
       </Box2>
+
+
+      <NextButton
+        onClick={() => {
+          signup();
+        }}
+      >
+        회원가입
+      </NextButton>
     </Container>
   );
 };
 
 export default SignUp;
 
-const Text = styled.div`
-  color: "#222831";
-  size: "14px";
-`;
-
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border: 1px solid red;
+  display: block;
+  max-height: 812px;
+  max-width: 375px;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #151419;
+  .nav {
+    width: 375px;
+    height: 44px;
+  }
+  .top {
+    height: 69px;
+    width: 375px;
+    border-top: 2px solid #151419;
+  }
+  .arrow {
+    position: absolute;
+    margin: 17px 0px 0px 20px;
+    cursor: pointer;
+  }
+  #title-box {
+    width: 375px;
+    height: 89px;
+    display: flex;
+    border-top: 2px solid #151419;
+    background-color: #b62323;
+
+    #p {
+      font-size: 32px;
+      font-family: Gmarket SansBold;
+      margin: 30px auto;
+      color: #ffffff;
+    }
+  }
 `;
 
 const Box2 = styled.div`
-  margin-top: 70px;
+  height: 250px;
   display: grid;
-  z-index: 10;
-  border: 1px solid blue;
 `;
 
 const LoginInput = styled.input`
-  width: 340px;
-  height: 48px;
-  border-radius: 0px;
+  width: 100%;
+  height: 62px;
   padding: 16px;
-  margin: 5px;
+  outline: none;
+  border-right: none;
+  border-left: none;
+  border-top: 2px soild #141519;
+  border-bottom: none;
   box-sizing: border-box;
-  border: 1px solid #dcdddd;
   font-size: 16px;
-
-  &:hover {
-  }
+  font-family: Gmarket SansMedium;
 `;
 
-const LoginButton = styled.button`
-  width: 340px;
-  height: 48px;
-  border-radius: 0px;
-  padding: auto;
-  margin: 5px;
+const NextButton = styled.button`
+  position: absolute;
+  bottom: 21.2mm;
+  width: 375px;
+  height: 80px;
   border: none;
   outline: none;
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 18px;
   font-weight: bold;
-  background-color: #ffd43b;
+  font-family: NanumSquareMedium;
+  background-color: #b2b2b2;
+  border-top: 2px solid #151419;
   &:hover {
     cursor: pointer;
-    background-color: #ffd43b;
-  }
-`;
-
-const TextButton = styled.span`
-  font-weight: bold;
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
+    background-color: #151419;
   }
 `;
