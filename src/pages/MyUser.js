@@ -12,7 +12,6 @@ import Profile from "../component/user/Profile";
 const MyUser = () => {
     return (
         <Wrap>
-        <Box />
         <Profile />
         <Footer />
         <Navigation />
@@ -27,8 +26,4 @@ const Wrap = styled.div`
   border: 2px solid #151419;
 `;
 
-const Box = styled.div`
-width: 100px;
-height:44px;
-`
 export default MyUser;
