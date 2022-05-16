@@ -14,15 +14,15 @@ import { history } from "../../redux/configureStore";
 const Detail = () => {
   const dispatch = useDispatch();
   let { challengeId } = useParams();
-  const cardList = useSelector((state) => state.card.cards);
-  const user = useSelector((state) => state.user.user);
-  const card = cardList.filter((value) => value.challengeNum == challengeId);
   
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
-    
   }, [dispatch]);
   
+
+  const cardList = useSelector((state) => state.card.cards);
+  const user = useSelector((state) => state.user.user);
+  const card = cardList.filter((value) => value.challengeNum == challengeId);
   console.log(card)
   return (
     <Container>
@@ -42,10 +42,10 @@ const Detail = () => {
       </div>
       <TitleBox>
         <div id="title">
-          <div id="title-up">{card.challengeTitle}</div>
+          <div id="title-up">{card[0] && card[0].challengeTitle}</div>
           <div id="title-down">
-            <div id="type">{card.challengeType}</div>
-            <div id="startDate">{card.challengeStartDate}~</div>
+            <div id="type">{card[0] && card[0].challengeType}</div>
+            <div id="startDate">{card[0] && card[0].challengeStartDate}~</div>
           </div>
         </div>
         <div id="image">
