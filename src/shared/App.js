@@ -18,7 +18,7 @@ import ResultPage from "../pages/test/ResultPage";
 import KakaoAuth from "./socialLogin/KakaoAuth";
 import NaverAuth from "./socialLogin/NaverAuth";
 import Nav from "../component/Nav";
-import UserData from "../component/user/UserData";
+import UserData from "../pages/UserData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
 import Link from "../pages/Link";

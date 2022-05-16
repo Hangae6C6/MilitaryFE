@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import UserData from "../component/user/UserData";
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";

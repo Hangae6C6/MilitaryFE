@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as searchActions } from "../../redux/modules/modal";
+import { ActionCreators as searchActions } from "../redux/modules/modal";
 import { Select, DateInput } from "grommet";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
 
 
 const UserData = () => {
@@ -104,6 +104,7 @@ const UserData = () => {
         size={"medium"}
       />
     </Box2>
+    <NextButton>등록하기</NextButton>
     </Container>
     
   );
@@ -158,5 +159,24 @@ const Box2 = styled.div`
     width: 100%;
     border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
+  }
+`;
+
+const NextButton = styled.button`
+  position: absolute;
+  bottom: 21.2mm;
+  width: 375px;
+  height: 80px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: NanumSquareMedium;
+  background-color: #b2b2b2;
+  border-top: 2px solid #151419;
+  &:hover {
+    cursor: pointer;
+    background-color: #151419;
   }
 `;
