@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { ActionCreators as mypageAction } from "../../redux/modules/mypage";
-import { ActionCreators as userAction } from "../../redux/modules/user";
+import user, { ActionCreators as userAction } from "../../redux/modules/user";
 
 //이미지/아이디/군종/닉네임/계급/계급딱지/디데이
 const Mine = (props) => {
@@ -13,15 +13,18 @@ const Mine = (props) => {
   console.log(userIDForBinding);
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
   const userCategoryForBinding = useSelector(
-    (state) => state.mypage.userdata.armyCategory
+    (state) => state.mypage.armyCategory
   );
   const userRankForBinding = useSelector((state) => state.mypage.rank);
+  console.log(userRankForBinding);
   const userDDayForBinding = useSelector((state) => state.mypage.dday);
 
   React.useEffect(() => {
-    console.log(userIDForBinding)//여기서 리렌더링할때마다 dispatch중복호출, 호출할때 유저아이디있을때만 호출 가능
-    dispatch(mypageAction.getCateDB(userIDForBinding));
-  }, [dispatch]);
+    if(userIDForBinding && userIDForBinding.length){
+      console.log(userIDForBinding)//여기서 리렌더링할때마다 dispatch중복호출, 호출할때 유저아이디있을때만 호출 가능
+    dispatch(mypageAction.getCateDB(userIDForBinding));//redux 디스패치 중복, if(id)
+    }
+  });
 
   return (
     <>
