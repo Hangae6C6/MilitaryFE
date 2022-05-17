@@ -12,10 +12,6 @@ const Question = () => {
   const step = Math.floor((num / 9) * 100);
   //type=[0,0,0,0,0,0,0,0,0]
 
-  const Image = ({ image }) => {
-    return <img src={image} />;
-  };
-
   const onIncrease = (e, qIdx, idx) => {
     let result = [];
     for (let i = 0; i < e.length; i++) {
@@ -37,7 +33,7 @@ const Question = () => {
   if (num === 10) {
     history.push({
       pathname: `/main/preTest/${resultNum}`,
-      state: { isUser: true },
+      state: {resultNum},
     });
     window.location.reload();
   }

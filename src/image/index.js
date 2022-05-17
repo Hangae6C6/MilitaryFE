@@ -11,6 +11,7 @@ import first from "./first.png";
 import second from "./second.png";
 import third from "./third.png";
 import fourth from "./fourth.png";
+import officer from './officer.png'
 export {
   alarm,
   bullet,
@@ -25,4 +26,5 @@ export {
   second,
   third,
   fourth,
+  officer,
 };

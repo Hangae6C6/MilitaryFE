@@ -24,7 +24,26 @@ const initialState = {
 };
 
 //middleware actions
-const getCateDB = (id) => {
+const getRankDB = (id) => {
+  return function (dispatch) {
+    axios({
+      method: "get",
+      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        dispatch(getRank(res.data.userdata.rank));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+const getCategoryDB = (id) => {
   return function (dispatch) {
     axios({
       method: "get",
@@ -36,7 +55,25 @@ const getCateDB = (id) => {
       .then((res) => {
         console.log(res)
         dispatch(getCategory(res.data.userdata.armyCategory));
-        dispatch(getRank(res.data.userdata.rank));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+const getDDayDB = (id) => {
+  return function (dispatch) {
+    axios({
+      method: "get",
+      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        dispatch(getCategory(res));
       })
       .catch((err) => {
         console.log(err);
@@ -64,9 +101,9 @@ export default handleActions(
 )
 //Action Creator Export
 const ActionCreators = {
-    getCateDB,
-    // getRankDB,
-    // getDdayDB,
+    getRankDB,
+    getCategoryDB,
+    getDDayDB,
 };
 
 export {ActionCreators};

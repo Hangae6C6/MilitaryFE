@@ -16,6 +16,7 @@ text-align: center;
 line-height: 48px;
 background-color: #151419;
 color: #ffffff;
+cursor: pointer;
 `
 
 export default NextBtn;

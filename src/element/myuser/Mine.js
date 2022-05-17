@@ -15,18 +15,20 @@ const Mine = (props) => {
   // console.log(useSelector((state) => state));
   const userIDForBinding = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
+  console.log(useSelector((state) => state.mypage.armyCategroy));
   const userCategoryForBinding = useSelector(
-    (state) => state.mypage.armyCategory
+    (state) => state.mypage.armyCategroy
   );
   console.log(userCategoryForBinding);
   const userRankForBinding = useSelector((state) => state.mypage.rank);
-  console.log(useSelector((state) => state.mypage));
+
   const userDDayForBinding = useSelector((state) => state.mypage.dday);
 
   React.useEffect(() => {
     if (userIDForBinding && userIDForBinding.length) {
-      console.log(userIDForBinding); //여기서 리렌더링할때마다 dispatch중복호출, 호출할때 유저아이디있을때만 호출 가능
-      dispatch(mypageAction.getCateDB(userIDForBinding)); //redux 디스패치 중복, if(id)
+      console.log(userIDForBinding);
+      dispatch(mypageAction.getRankDB(userIDForBinding));
+      dispatch(mypageAction.getCategoryDB(userIDForBinding));
     }
   });
 
@@ -47,12 +49,12 @@ const Mine = (props) => {
         </ImgDiv> */}
         <PDiv>
           <Ddaydiv>D-{userDDayForBinding}</Ddaydiv>
-          <ProfList>{userCategoryForBinding}</ProfList>
+
           <NameDiv>
             <DivDiv>
-              <p padding="0" margin="0">
+              <P padding="0" margin="0">
                 {userNickForBinding}
-              </p>
+              </P>
               <RankImg
                 src={
                   userRankForBinding === "이병"
@@ -66,6 +68,7 @@ const Mine = (props) => {
               />
             </DivDiv>
           </NameDiv>
+          <ProfList>{userCategoryForBinding}</ProfList>
         </PDiv>
         {/* <ProfList>{userRankForBinding}</ProfList> */}
         {/* <ProfList>{userIDForBinding}</ProfList> */}
@@ -133,6 +136,7 @@ const Ddaydiv = styled.div`
 
 const ProfList = styled.p`
   margin: 5px;
+  text-align: left;
 `;
 
 const NameDiv = styled.div`
@@ -145,6 +149,11 @@ const DivDiv = styled.div`
   display: flex;
 `;
 
+const P = styled.p`
+margin: 20px 0 0 0;
+padding: 0;
+`
+
 const RankDiv = styled.div`
   margin: 0 auto;
 `;
@@ -154,7 +163,7 @@ const RankImg = styled.div`
   width: 28px;
   height: 34px;
   background-size: cover;
-  margin: 34px 0 0 10px;
+  margin: 20px 0 0 10px;
 `;
 
 export default Mine;
