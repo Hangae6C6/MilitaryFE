@@ -11,26 +11,21 @@ const DescTxt = () => {
 
   return (
     <div>
-      <DescDiv>
         <DescP>
-          {dataInfoList[resultIdx].name}
-          <br />
           {dataInfoList[resultIdx].desc}
         </DescP>
-      </DescDiv>
     </div>
   );
 };
 
-const DescDiv = styled.div`
-  width: 95%;
-  height: 100%;
-  background-color: aliceblue;
-`;
 
 const DescP = styled.p`
+  width: 100%;
+  height: 100%;
   margin: 0;
-  padding: 15px;
+  padding: 20px 0;
+  font-weight:600;
+  font-size:18px;
 `;
 
 export default DescTxt;
