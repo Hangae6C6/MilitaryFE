@@ -1,9 +1,8 @@
 import React from "react";
 import { history } from "../../redux/configureStore";
-import NextBtn from "../../element/test/NextBtn";
+import styled from "styled-components";
 import GoTest from "../../element/test/GoTest";
 import Wrap from '../../element/test/Wrap'
-
 
 const BeginPage = () => {
 
@@ -14,11 +13,20 @@ const BeginPage = () => {
             onClick={() => {
             history.push("/main/preTest/question");
             window.location.reload();
-          }}>다음</NextBtn>
+          }}>시작하기</NextBtn>
     </Wrap>
   );
 };
 
+const NextBtn = styled.div`
+width: 100%;
+height: 50px;
+text-align: center;
+line-height: 48px;
+background-color: #151419;
+color: #ffffff;
+cursor: pointer;
+`
 
 
 export default BeginPage;
