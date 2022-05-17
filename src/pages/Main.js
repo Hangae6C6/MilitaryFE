@@ -23,6 +23,7 @@ const Main = () => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
+
   const totalProgressBar = useSelector(
     (state) => state.card.totalProgress.totalChallengeProgress
   );
