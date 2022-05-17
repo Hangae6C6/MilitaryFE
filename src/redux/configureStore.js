@@ -10,8 +10,8 @@ import main from "./modules/main";
 import mypage from './modules/mypage'
 import detail from "./modules/detail";
 
-
 export const history = createBrowserHistory();
+
 const rootReducer = combineReducers({
   //우리가 만든 리듀서 뭉치기
   user: user,

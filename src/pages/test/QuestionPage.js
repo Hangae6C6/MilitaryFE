@@ -1,24 +1,28 @@
-import React from 'react';
-
-import AnswerBtn from '../../element/test/AnswerBtn';
-import NextBtn from '../../element/test/NextBtn';
-import Question from '../../element/test/Question';
-import GoTest from '../../element/test/GoTest';
+import React from "react";
+import styled from "styled-components";
+import Question from "../../element/test/Question";
+import Wrap from "../../element/test/Wrap";
+import { ReactComponent as Back } from "../../image/back.svg";
 import { history } from "../../redux/configureStore";
 
 const QuestionPage = () => {
-    return (
-        <div>
-        <GoTest />
-        <Question />
-        <NextBtn           
-            onClick={() => {
-            history.push("/main/preTest/result");
-            window.location.reload();
-          }}>다음</NextBtn>
+  return (
+    <Wrap>
+      <Question />
+    </Wrap>
+  );
+};
 
-      </div>
-    );
-  };
+const GoTest = styled.div`
+height: 70px;
+width: 90px;
+margin: 30px 0;
+border-top: 2px solid #151419;
+border-bottom: 2px solid #151419;
+border-right: 2px solid #151419;
+&:hover {
+  background-color: #1FB57E;
+}
+`
 
 export default QuestionPage;

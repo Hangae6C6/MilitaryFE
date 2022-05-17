@@ -9,12 +9,19 @@ import TextField from "../element/chat/TextField";
 
 const Chat = () => {
   return (
-    <>
-    <ChatHeader>대화방</ChatHeader>
-    <TextField></TextField>
-    </>
+    <Wrap>
+      <ChatHeader>대화방</ChatHeader>
+      <TextField></TextField>
+    </Wrap>
   );
 };
 
+const Wrap = styled.div`
+  max-height: 812px;
+  max-width: 375px;
+  height: 812px;
+  width: 100%;
+  border: 2px solid #151419;
+`;
 
 export default Chat;

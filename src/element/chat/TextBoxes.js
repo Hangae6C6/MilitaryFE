@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { usePrompt } from "./blocker";
 import { history } from "../../redux/configureStore";
 
 const TextBoxes = ({ setRoom, socket, userName, room }) => {
@@ -10,12 +11,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   const nowTime = moment().format("kk:mm");
   const chatWindow = useRef();
 
-  // const scrollToBottom = () => {
-  //   if(msgBoxRef.current) {
-  //     msgBoxRef.current.scrollTop = msgBoxRef.current.scrollHeight;
-  //   }
-  // }
-  const moveScroll = useCallback(() => { 
+  const moveScroll = useCallback(() => {
     if (chatWindow.current) {
       chatWindow.current.scrollTo({
         top: chatWindow.current.scrollHeight,
@@ -24,11 +20,26 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
     }
   }, []);
 
+ 
+  // const MyComponent = () => {
+  //   const formIsDirty = true; // Condition to trigger the prompt.
+  //   usePrompt( 'Leave screen?', formIsDirty );
+  //   return (
+  //     socket.on("leave_room", () => {
+  //       console.log("6");
+  //       setMessageList(messageList.concat(`${userName} disconnected`));
+  //     })
+  //   );
+  // };
+
+  // useEffect(() => {
+  //   MyComponent()
+  // }, []);
+
   const onLeft = () => {
-    console.log("5");
-    socket.emit("unconnect", () => {
+    socket.on("leave_room", () => {
       console.log("6");
-      setMessageList(messageList.concat(`${userName} joined`));
+      setMessageList(messageList.concat(`${userName} disconnected`));
     });
   };
 
@@ -51,13 +62,16 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
-    socket.on("unconnect", (data) => {
+    socket.on('msg', (data) => {
+      setMessageList((list) => [...list, data])
+    })
+    socket.on("leave_room", (data) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
 
   return (
-    <Wrap>
+    <Wrap >
       <ChatBody>
         {messageList.map((messageContent, idx) =>
           userName === messageContent.author ? (
@@ -147,7 +161,7 @@ const Other = styled.div`
 `;
 const MsgDiv = styled.div`
   display: grid;
-  overflow-y:auto;
+  overflow-y: auto;
 `;
 const Author = styled.p`
   padding: 0;

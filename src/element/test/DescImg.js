@@ -15,10 +15,11 @@ const DescImg = (props) => {
 };
 
 const DescriptImage = styled.div`
-height:360px;
+height:375px;
+width: 100%;
 background-image: url("${(props) => props.src}");
 background-size: cover;
-margin: 4px;
+border-bottom: 2px solid #151419;
 `
 
 export default DescImg;
