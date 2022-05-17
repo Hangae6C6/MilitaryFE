@@ -62,12 +62,12 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
+    socket.on('msg', (data) => {
+      setMessageList((list) => [...list, data])
+    })
     socket.on("leave_room", (data) => {
       setMessageList((list) => [...list, data]);
     });
-    // return () => {
-    //   socket.disconnect();
-    // }
   }, [socket]);
 
   return (
@@ -108,7 +108,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
           }}
         />
         <SendBtn onClick={sendMessage}>send</SendBtn>
-        <button
+        {/* <button
           onClick={() => {
             onLeft();
             history.push("/");
@@ -116,7 +116,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
           }}
         >
           exit
-        </button>
+        </button> */}
       </ChatFoot>
     </Wrap>
   );

@@ -31,7 +31,7 @@ const Main = () => {
         <Text size="large" margin={{ top: "50px" }}>
           안녕하십니까?
         </Text>
-        <Anchor color="accent-4" href="/main/preTest/question">
+        <Anchor color="accent-4" href="/main/preTest">
           테스트 하러가기
         </Anchor>
       </Box>
