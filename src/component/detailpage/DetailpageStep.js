@@ -13,11 +13,11 @@ const DetailpageTitle = () => {
         <div id="checkBox"></div>
       </Astep>
       <Astep>
-        <div id="stepTitle">땡땡책 200쪽 까지 읽기</div>
+        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
         <div id="checkBox"></div>
       </Astep>
       <Astep>
-        <div id="stepTitle">땡땡책 다 읽기</div>
+        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
         <div id="checkBox"></div>
       </Astep>
     </ChallengeName>

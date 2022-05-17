@@ -19,7 +19,9 @@ const Navigation = ({userId}) => {
           />
         </Home>
         <Search>
-          <SearchIcn src={searchIcn} />
+          <SearchIcn src={searchIcn} onClick={()=>{
+            window.location.pathname="/search"
+          }}/>
         </Search>
         <Mypage>
           <MypageIcn
@@ -62,14 +64,17 @@ const Mypage = styled.div`
 `;
 const HomeIcn = styled.img`
   margin: auto;
+  cursor: pointer;
   &:hover {
     fill: red;
   }
 `;
 const SearchIcn = styled.img`
   margin: auto;
+  cursor: pointer;
 `;
 const MypageIcn = styled.img`
   margin: auto;
+  cursor: pointer;
 `;
 export default Navigation;
