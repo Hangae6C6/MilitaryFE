@@ -10,7 +10,7 @@ const GET_RANK = "GET_RANK";
 const GET_DDAY = "GET_DDAY";
 
 //Action Creators
-const getCategory = createAction(GET_CATEGORY, (category) => ({ category }));
+const getCategory = createAction(GET_CATEGORY, (armyCategory) => ({ armyCategory }));
 const getRank = createAction(GET_RANK, (rank) => ({ rank }));
 const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
 
@@ -34,9 +34,9 @@ const getCateDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res.data.userdata)
-        dispatch(getCategory(res.userdata));
-        dispatch(getRank(res.userdata));
+        console.log(res)
+        dispatch(getCategory(res.data.userdata.armyCategory));
+        dispatch(getRank(res.data.userdata.rank));
       })
       .catch((err) => {
         console.log(err);
@@ -44,50 +44,12 @@ const getCateDB = (id) => {
   };
 };
 
-// const getRankDB = (id) => {
-//   return function (dispatch) {
-//     axios({
-//       method: "get",
-//       url: `http://13.125.228.240/api/userProfile?userId=${id}`,
-//       headers: {
-//         Authorization: `Bearer ${getCookie("token")}`,
-//       },
-//     })
-//       .then((res) => {
-//         console.log(res)
-//         dispatch(getRank(res.data.rank));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
-// const getDdayDB = (id) => {
-//   return function (dispatch) {
-//     axios({
-//       method: "get",
-//       url: `http://13.125.228.240/api/userProfile?userId=${id}`,
-//       headers: {
-//         Authorization: `Bearer ${getCookie("token")}`,
-//       },
-//     })
-//       .then((res) => {
-//         console.log(res)
-//         dispatch(getDDay(res.data.dday));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
 //Reducer
 export default handleActions(
     {
         [GET_CATEGORY]:(state, action) => 
         produce(state, (draft) => {
-            draft.armyCategroy = action.payload.armyCategroy;
+            draft.armyCategroy = action.payload.armyCategory;
         }),
         [GET_RANK]:(state, action) => 
         produce(state, (draft) => {

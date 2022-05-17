@@ -1,24 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NextBtn = (props) => {
-    const {onClick, children} = props;
+const NextBtn = ({children}) => {
     return (
-        <React.Fragment>
-            <NextButton onClick={onClick}>{children}</NextButton>
-        </React.Fragment>
+        <div>
+            <Next>{children}</Next>
+        </div>
     );
 };
 
-
-const NextButton = styled.div`
-width:100%;
-background-color: bisque;
-cursor: pointer;
+const Next = styled.div`
+width: 100%;
+height: 50px;
 text-align: center;
-align-items: center;
-padding:10px 0;
-border-radius: 20px;
-`;
+line-height: 48px;
+background-color: #151419;
+color: #ffffff;
+`
 
 export default NextBtn;

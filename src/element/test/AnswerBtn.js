@@ -11,10 +11,8 @@ const AnswerBtn = ({children}) => {
 
 
 const Answer = styled.div`
-height: 40px;
-width: 90%;
-background-color: beige;
-display: inline-block;
-margin: 5px;
+height: 100px;
+background: #FFFFFF;
+border-bottom: 2px solid #151419;
 `
 export default AnswerBtn;

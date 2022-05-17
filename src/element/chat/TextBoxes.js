@@ -26,9 +26,9 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
 
   const onLeft = () => {
     console.log("5");
-    socket.emit("unconnect", () => {
+    socket.emit("leave_room", () => {
       console.log("6");
-      setMessageList(messageList.concat(`${userName} joined`));
+      setMessageList(messageList.concat(`${userName} disconnected`));
     });
   };
 

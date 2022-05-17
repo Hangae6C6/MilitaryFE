@@ -12,7 +12,7 @@ const GoTest = () => {
 };
 
 const GotestDiv = styled.div`
-
+  border-bottom: 2px solid #151419;
 `
 
 const GoTestP = styled.p`
