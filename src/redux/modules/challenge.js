@@ -13,7 +13,6 @@ const initialState = {
 }
 
 const addChallengeDB = (challenges) => {
-  console.log(challenges);
   return async function (dispatch) {
     try {
       await axios({
@@ -37,10 +36,8 @@ const addChallengeDB = (challenges) => {
 };
 
 const getChallengeDetailDB = (challengeNum) => {
-  console.log(challengeNum)
   return async function (dispatch, getState) {
     try {
-      console.log(challengeNum);
       await axios({
         method: "get",
         url: `http://13.125.228.240/api/challengeDetail?challengeNum=${challengeNum}`,
@@ -63,7 +60,7 @@ export default handleActions(
   {
     [ADD_CHALLENGE]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges= action.payload.Challenge;
+        draft.challenges= action.payload.challenge;
       }),
       [ADD_NUMBER]: (state, action) =>
       produce(state, (draft) => {

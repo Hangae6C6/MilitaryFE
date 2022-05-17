@@ -3,20 +3,22 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
 
-const GET_DETAILS = "GET_DETAILS";
+const POST_DETAIL = "POST_DETAIL";
 
-const getChallengeDetail = createAction(GET_DETAILS, (challenges) => ({
+const getChallengeDetail = createAction(POST_DETAIL, (challenges) => ({
   challenges,
 }));
 
-const initialState = [];
+const initialState = {
+  userChallengeDetail: []
+};
 
-const getChallengeDetailDB = (userId) => {
+const getUserChallengeDetailDB = (userId, challengeId) => {
   return async function (dispatch, getState) {
     try {
       await axios({
-        method: "get",
-        url: `http://13.125.228.240/api/detailPage/challengeDetail?${userId}`,
+        method: "post",
+        url: `http://13.125.228.240/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -32,9 +34,9 @@ const getChallengeDetailDB = (userId) => {
 
 export default handleActions(
   {
-    [GET_DETAILS]: (state, action) =>
+    [POST_DETAIL]: (state, action) =>
       produce(state, (draft) => {
-        draft = action.payload.challenges;
+        draft.userChallengeDetail = action.payload.challenges;
       }),
 
   },
@@ -42,7 +44,7 @@ export default handleActions(
 );
 
 const ActionCreators = {
-getChallengeDetailDB,
+getUserChallengeDetailDB,
 };
 
 export { ActionCreators };

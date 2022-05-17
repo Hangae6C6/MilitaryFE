@@ -6,6 +6,8 @@ import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import { useParams } from "react-router-dom";
 const DetailpageRank = () => {
   const { challengeId } = useParams();
+
+
   return (
     <Container>
       <div className="nav"></div>
