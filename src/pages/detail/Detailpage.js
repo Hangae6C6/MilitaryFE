@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as postActions } from "../../redux/modules/main";
+import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
+
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
@@ -9,21 +11,27 @@ import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import typeImg from "../../shared/images/workout.png";
 import personImg from "../../shared/images/icnPersonGray36.png";
-import { history } from "../../redux/configureStore";
+import { getCookie } from "../../shared/cookie";
 
 const Detail = () => {
   const dispatch = useDispatch();
   let { challengeId } = useParams();
-  
-  React.useEffect(() => {
-    dispatch(postActions.getPostDB());
-  }, [dispatch]);
-  
-
   const cardList = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const card = cardList.filter((value) => value.challengeNum == challengeId);
-  console.log(card)
+  const token = getCookie("token");
+
+  React.useEffect(() => {
+    dispatch(postActions.getPostDB());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      if (challengeId)
+        dispatch(challengeActions.getChallengeDetailDB(challengeId));
+    }, 0);
+  }, [dispatch, challengeId]);
+
   return (
     <Container>
       <div className="nav"></div>
@@ -64,8 +72,8 @@ const Detail = () => {
           <div id="imgWrap">
             <img src={personImg} alt="typeImg" width="36" height="36" />
           </div>
-          <div id="roomInfo">3개</div>
-          <div id="Infodetail">하루 평균 달성</div>
+          <div id="roomInfo">D-22</div>
+          <div id="Infodetail">남은 기간</div>
         </div>
         <div className="box">
           <div id="imgWrap">
@@ -77,13 +85,23 @@ const Detail = () => {
       </ChallengeRoom>
       <DetailpageProgress />
       <DetailpageStep />
-      <NextButton  onClick={() => {
-            if (user.userId) {
-              window.location.pathname = `/detail/chat/${challengeId}`;
-            } else {
-              window.location.pathname = "/login";
-            }
-          }}>채팅하기</NextButton>
+      {!token ? (
+        <NextButton
+          onClick={() => {
+            window.location.pathname = "/login";
+          }}
+        >
+          참여하기
+        </NextButton>
+      ) : (
+        <NextButton
+          onClick={() => {
+            window.location.pathname = `/detail/chat/${challengeId}`;
+          }}
+        >
+          채팅하기
+        </NextButton>
+      )}
     </Container>
   );
 };
@@ -198,7 +216,7 @@ const ChallengeRoom = styled.div`
       color: #151419;
     }
     &:hover {
-      background-color: #1FB57E;
+      background-color: #1fb57e;
       color: #ffffff;
       #roomInfo {
         color: #ffffff;

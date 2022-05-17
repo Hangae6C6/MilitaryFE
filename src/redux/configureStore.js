@@ -20,6 +20,8 @@ const rootReducer = combineReducers({
   challenge: challenge,
   card: main,
   mypage:mypage,
+  challengeDetail:detail,
+
   // detail:detail,
   router: connectRouter(history),
 });

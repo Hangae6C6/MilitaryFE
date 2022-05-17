@@ -11,19 +11,20 @@ const initialState = {
   userdata: [],
 };
 
-const addUserDataDB = (startDate, endDate, armyCategory, rank) => {
-  console.log(startDate, endDate, armyCategory, rank);
+const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
+  console.log(userId, startDate, endDate, armyCategory, rank);
   return async function (dispatch) {
     let userdatas = {
-      startDate: startDate,
-      endDate: endDate,
-      armyCategory: armyCategory,
-      rank: rank,
+      userId,
+      startDate,
+      endDate,
+      armyCategory,
+      rank,
     };
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/modal/userdata",
+        url: `http://13.125.228.240/api/modal/userdata?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

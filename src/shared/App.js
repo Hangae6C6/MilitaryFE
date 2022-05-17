@@ -9,7 +9,8 @@ import { getCookie } from "./cookie";
 import Main from "../pages/Main";
 import Detailpage from "../pages/detail/Detailpage";
 import Login from "../pages/LogIn";
-import SignUp from "../pages/SignUp";
+import SignUp from "../pages/signup/SignUp";
+import SignupDone from "../pages/signup/SignupDone";
 import MyUser from "../pages/MyUser";
 import Chat from "../pages/Chat";
 import BeginPage from "../pages/test/BeginPage";
@@ -18,7 +19,7 @@ import ResultPage from "../pages/test/ResultPage";
 import KakaoAuth from "./socialLogin/KakaoAuth";
 import NaverAuth from "./socialLogin/NaverAuth";
 import Nav from "../component/Nav";
-import SignupData from "../pages/SignupData";
+import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
 import Link from "../pages/Link";
@@ -42,7 +43,8 @@ function App() {
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
-            <Route exact path="/signupdata" element={<SignupData />}></Route>
+            <Route exact path="/signupdata/:id" element={<SignupData />}></Route>
+            <Route exact path="/signupdone" element={<SignupDone />}></Route>
             <Route path="/api/auth/kakao/callback" exact element={<KakaoAuth />} />
             <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
             <Route exact path="/detail/chat/:challengeId" element={<Chat />}></Route>

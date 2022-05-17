@@ -104,14 +104,7 @@ const Login = () => {
         >
           네이버 로그인
         </SNSLoginButton1>
-        <SNSLoginButton2
-          size="12pt"
-          onClick={() => {
-            window.location.href = GOOGLE_AUTH_URL;
-          }}
-        >
-          구글 로그인
-        </SNSLoginButton2>
+    
       </Box2>
       <NextButton
         onClick={() => {
@@ -136,6 +129,7 @@ const Container = styled.div`
   .nav {
     width: 375px;
     height: 44px;
+    background-color: #151419;
   }
   .top {
     height: 69px;
@@ -204,13 +198,13 @@ const SNSLoginBtn = styled.button`
   box-sizing: border-box;
   border-right: none;
   border-left: none;
-  border-top: 2px solid #141519;
+  border-top: none;
   border-bottom: 2px solid #141519;
   outline: none;
   font-size: 16px;
   font-family: Gmarket SansMedium;
   background-color: #ffd43b;
-  margin-top:43px;
+ 
 
   &:hover {
     cursor: pointer;

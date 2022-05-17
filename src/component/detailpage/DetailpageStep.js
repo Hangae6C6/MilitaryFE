@@ -32,6 +32,7 @@ display: table-row;
     width: 375px;
     height: 80px;
     background-color: #1FB57E;
+    border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
     #title {
       color: #151419;

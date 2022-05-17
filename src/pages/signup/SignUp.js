@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { ActionCreators as userActions } from "../redux/modules/user";
-import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
+import { ActionCreators as userActions } from "../../redux/modules/user";
+import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -67,7 +67,9 @@ const SignUp = () => {
     }
 
     dispatch(userActions.signupDB(id, password, nickname, passwordCheck));
-
+    setTimeout(()=> {
+      window.location.pathname=`/signupData/${id}`;
+    },1000)
   };
 
   return (

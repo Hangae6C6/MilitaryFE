@@ -1,18 +1,16 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
-import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
+import { getCookie } from "../../shared/cookie";
 
 const ADD_CHALLENGE = "ADD_CHALLENGE";
 const ADD_NUMBER ="ADD_NUMBER";
 
 const addChallenge = createAction(ADD_CHALLENGE, (challenge) => challenge);
-const getChallengeNum = createAction(ADD_NUMBER, (challengeNum) => challengeNum);
-
 
 const initialState = {
   challenges: []
-};
+}
 
 const addChallengeDB = (challenges) => {
   console.log(challenges);
@@ -28,7 +26,6 @@ const addChallengeDB = (challenges) => {
           challenges,
         },
       }).then((response) => {
-        dispatch(getChallengeNum(response.data.challengeNum));
         const challengeId = response.data.challengeNum;
         window.location.pathname = `/link/${challengeId}`;
       });
@@ -39,18 +36,37 @@ const addChallengeDB = (challenges) => {
   };
 };
 
+const getChallengeDetailDB = (challengeNum) => {
+  console.log(challengeNum)
+  return async function (dispatch, getState) {
+    try {
+      console.log(challengeNum);
+      await axios({
+        method: "get",
+        url: `http://13.125.228.240/api/challengeDetail?challengeNum=${challengeNum}`,
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        dispatch(addChallenge(response.data));
+      });
+    } catch (err) {
+      console.log(err);
+ 
+    }
+  };
+};
+
 
 
 export default handleActions(
   {
     [ADD_CHALLENGE]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action)
-        draft.challenges = action.payload.challenge;
+        draft.challenges= action.payload.Challenge;
       }),
       [ADD_NUMBER]: (state, action) =>
       produce(state, (draft) => {
-        console.log(action)
         draft.challengeId = action.payload;
       }),
    
@@ -60,7 +76,7 @@ export default handleActions(
 
 const ActionCreators = {
   addChallengeDB,
-  getChallengeNum,
+ getChallengeDetailDB,
 
 };
 
