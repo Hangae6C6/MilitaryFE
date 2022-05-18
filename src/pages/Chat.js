@@ -10,16 +10,15 @@ import TextField from "../element/chat/TextField";
 const Chat = () => {
   return (
     <Wrap>
-      <ChatHeader>대화방</ChatHeader>
+      <ChatHeader>CHATTING</ChatHeader>
       <TextField></TextField>
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
-  max-height: 812px;
+height: 100vh;
   max-width: 375px;
-  height: 812px;
   width: 100%;
   border: 2px solid #151419;
 `;

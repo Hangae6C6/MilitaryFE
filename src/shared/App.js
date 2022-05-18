@@ -36,7 +36,6 @@ function App() {
   }, [dispatch, router]);
 
   return (
-    <Background>
       <DivBox>
         <Router >
           <Routes>
@@ -63,25 +62,15 @@ function App() {
           </Routes>
         </Router>
       </DivBox>
-    </Background>
   );
 }
 
 const DivBox = styled.div`
-  margin: 50px auto;
+  margin: 0 40% 0 60%;
   max-width: 375px;
-  max-height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  border-radius: 3px;
-`;
-
-const Background = styled.div`
-  max-width: 100%;
-  max-height: 100%;
-  width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
 `;
 
 export default App;

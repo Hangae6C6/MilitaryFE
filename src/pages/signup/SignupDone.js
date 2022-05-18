@@ -29,9 +29,8 @@ const SignupDone = () => {
 export default SignupDone;
 
 const Container = styled.div`
-  max-height: 812px;
+height: 100vh;
   max-width: 375px;
-  height: 812px;
   width: 100%;
   border: 4px solid #151419;
   .nav {

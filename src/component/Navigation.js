@@ -6,7 +6,7 @@ import mypageIcn from "../shared/icons/Mypage.svg";
 
 import { history } from "../redux/configureStore";
 
-const Navigation = ({userId}) => {
+const Navigation = ({ userId }) => {
   return (
     <Nav>
       <Wrap>
@@ -19,9 +19,12 @@ const Navigation = ({userId}) => {
           />
         </Home>
         <Search>
-          <SearchIcn src={searchIcn} onClick={()=>{
-            window.location.pathname="/search"
-          }}/>
+          <SearchIcn
+            src={searchIcn}
+            onClick={() => {
+              window.location.pathname = "/search";
+            }}
+          />
         </Search>
         <Mypage>
           <MypageIcn
@@ -44,9 +47,9 @@ const Nav = styled.div`
 const Wrap = styled.div`
   max-width: 375px;
   width: 100%;
-  height: 84px;
-  top: 82%;
-  position: absolute;
+  height: 70px;
+  bottom: 0;
+  position: fixed;
   background-color: whitesmoke;
   z-index: 999;
   display: grid;
@@ -63,18 +66,18 @@ const Mypage = styled.div`
   margin: auto;
 `;
 const HomeIcn = styled.img`
-  margin: auto;
+  width: 50%;
   cursor: pointer;
   &:hover {
     fill: red;
   }
 `;
 const SearchIcn = styled.img`
-  margin: auto;
+  width: 50%;
   cursor: pointer;
 `;
 const MypageIcn = styled.img`
-  margin: auto;
+  width: 50%;
   cursor: pointer;
 `;
 export default Navigation;

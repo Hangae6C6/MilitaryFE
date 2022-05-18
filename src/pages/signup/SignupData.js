@@ -117,9 +117,8 @@ const UserData = () => {
 export default UserData;
 const Container = styled.div`
   display: block;
-  max-height: 812px;
   max-width: 375px;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
   .nav {

@@ -122,8 +122,8 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   );
 };
 const Wrap = styled.div`
+height: 100vh;
   width: 100%;
-  height: 812px;
   /* overflow:scroll; */
 `;
 
@@ -138,7 +138,7 @@ const ChatFoot = styled.div`
   max-width: 375px;
   width: 100%;
   height: 70px;
-  top: 730px;
+  bottom: 0;
   position: absolute;
   z-index: 999;
   display: flex;
