@@ -83,15 +83,18 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
                 </MsgDiv>
                 <Time>{messageContent.time}</Time>
               </You>
-            </ScrollToBottom>
+              </ScrollToBottom>
           ) : (
             <Other key={idx}>
+              <ScrollToBottom>
               <MsgDiv>
                 <Author>{messageContent.author}</Author>
                 <YourMsgBox>{messageContent.message}</YourMsgBox>
               </MsgDiv>
               <Time>{messageContent.time}</Time>
+              </ScrollToBottom>
             </Other>
+            
           )
         )}
       </ChatBody>
@@ -129,7 +132,7 @@ height: 100vh;
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 72%;
+  height: 83%;
   display: flex;
   flex-direction: column;
   overflow: auto;
