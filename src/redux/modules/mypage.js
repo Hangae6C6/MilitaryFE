@@ -15,12 +15,11 @@ const getRank = createAction(GET_RANK, (rank) => ({ rank }));
 const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
 
 //Initial State
-const initialState = {
-  userdata: [{
+const initialState = 
+  {
     armyCategory:"",
     rank:"",
-    dday:0,
-}],
+    dday:'',
 };
 
 //middleware actions
@@ -73,7 +72,7 @@ const getDDayDB = (id) => {
     })
       .then((res) => {
         console.log(res)
-        dispatch(getCategory(res));
+        dispatch(getDDay(res.data.userdata.endDate));
       })
       .catch((err) => {
         console.log(err);
@@ -86,7 +85,7 @@ export default handleActions(
     {
         [GET_CATEGORY]:(state, action) => 
         produce(state, (draft) => {
-            draft.armyCategroy = action.payload.armyCategory;
+            draft.armyCategory = action.payload.armyCategory;
         }),
         [GET_RANK]:(state, action) => 
         produce(state, (draft) => {
@@ -95,7 +94,7 @@ export default handleActions(
         [GET_DDAY]:(state, action) => 
         produce(state, (draft) => {
             draft.dday = action.payload.dday;
-        })
+        }),
     },
     initialState
 )

@@ -16,20 +16,21 @@ const Mine = (props) => {
   // console.log(useSelector((state) => state));
   const userId = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
-  console.log(useSelector((state) => state.mypage.armyCategroy));
+  console.log(useSelector((state) => state.mypage.armyCategory));
   const userCategoryForBinding = useSelector(
-    (state) => state.mypage.armyCategroy
+    (state) => state.mypage.armyCategory
   );
   console.log(userCategoryForBinding);
   const userRankForBinding = useSelector((state) => state.mypage.rank);
-
-  const userDDayForBinding = useSelector((state) => state.mypage.dday);
+  const userEndDay = useSelector((state) => state.mypage);
+  console.log(userEndDay);
 
   React.useEffect(() => {
     if (userId && userId.length) {
       console.log(userId);
       dispatch(mypageAction.getRankDB(userId));
       dispatch(mypageAction.getCategoryDB(userId));
+      dispatch(mypageAction.getDDayDB(userId));
     }
   });
 
@@ -53,7 +54,7 @@ const Mine = (props) => {
           <ProfImg />
         </ImgDiv> */}
         <PDiv>
-          <Ddaydiv>D-{userDDayForBinding}</Ddaydiv>
+          {/* <Ddaydiv>D-{userDDayForBinding}</Ddaydiv> */}
           <NameDiv>
             <DivDiv>
               <P padding="0" margin="0">

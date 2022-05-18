@@ -17,16 +17,18 @@ const Navigation = ({ userId }) => {
               history.push("/");
             }}
           />
+          <P>홈</P>
         </Home>
-        <Search>
+        <Home>
           <SearchIcn
             src={searchIcn}
             onClick={() => {
               window.location.pathname = "/search";
             }}
           />
-        </Search>
-        <Mypage>
+          <P>검색</P>
+        </Home>
+        <Home>
           <MypageIcn
             src={mypageIcn}
             onClick={(id) => {
@@ -34,7 +36,8 @@ const Navigation = ({ userId }) => {
               window.location.reload();
             }}
           />
-        </Mypage>
+          <P>마이페이지</P>
+        </Home>
       </Wrap>
     </Nav>
   );
@@ -58,19 +61,18 @@ const Wrap = styled.div`
 
 const Home = styled.div`
   margin: auto;
+  text-align: center;
 `;
-const Search = styled.div`
-  margin: auto;
-`;
-const Mypage = styled.div`
-  margin: auto;
-`;
+
+const P = styled.p`
+font-size: 10px;
+padding: 0;
+margin: 0;
+text-align: center;
+`
 const HomeIcn = styled.img`
   width: 50%;
   cursor: pointer;
-  &:hover {
-    fill: red;
-  }
 `;
 const SearchIcn = styled.img`
   width: 50%;
