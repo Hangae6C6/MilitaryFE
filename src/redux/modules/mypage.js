@@ -8,11 +8,13 @@ import axios from "axios";
 const GET_CATEGORY = "GET_CATEGORY";
 const GET_RANK = "GET_RANK";
 const GET_DDAY = "GET_DDAY";
+const DDAY = 'DDAY';
 
 //Action Creators
 const getCategory = createAction(GET_CATEGORY, (armyCategory) => ({ armyCategory }));
 const getRank = createAction(GET_RANK, (rank) => ({ rank }));
-const getDDay = createAction(GET_DDAY, (dday) => ({ dday }));
+const getEndDay = createAction(GET_DDAY, (dday) => ({ dday }));
+const getDDay = createAction(DDAY, (endDate) => ({ endDate }));
 
 //Initial State
 const initialState = 
@@ -61,6 +63,25 @@ const getCategoryDB = (id) => {
   };
 };
 
+const DdayDB = (id, dday) => {
+  return function (dispatch) {
+    axios({
+      method: 'get',
+      url:`http://3.34.98.31/api/endDay?userId=${id}&endDate=${dday}`,
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+    .then((res) => {
+      console.log(res)
+      dispatch(getDDay(res.data.msg));
+    })
+    .catch((err)=> {
+      console.log(err);
+    })
+  }
+}
+
 const getDDayDB = (id) => {
   return function (dispatch) {
     axios({
@@ -72,7 +93,7 @@ const getDDayDB = (id) => {
     })
       .then((res) => {
         console.log(res)
-        dispatch(getDDay(res.data.userdata.endDate));
+        dispatch(getEndDay(res.data.userdata.endDate));
       })
       .catch((err) => {
         console.log(err);
@@ -95,6 +116,10 @@ export default handleActions(
         produce(state, (draft) => {
             draft.dday = action.payload.dday;
         }),
+        [DDAY]:(state, action) => 
+        produce(state, (draft) => {
+            draft.endDate = action.payload.endDate;
+        }),
     },
     initialState
 )
@@ -103,6 +128,7 @@ const ActionCreators = {
     getRankDB,
     getCategoryDB,
     getDDayDB,
+    DdayDB,
 };
 
 export {ActionCreators};
