@@ -104,7 +104,6 @@ const Challenge = () => {
 export default Challenge;
 
 const Container = styled.div`
-  max-height: 812px;
   max-width: 375px;
   height: 100vh;
   width: 100%;

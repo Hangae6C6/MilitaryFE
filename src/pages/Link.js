@@ -41,9 +41,8 @@ const {challengeId} = useParams();
 export default Link;
 
 const Container = styled.div`
-  max-height: 812px;
+height: 100vh;
   max-width: 375px;
-  height: 812px;
   width: 100%;
   border: 4px solid #3f3f3f;
 

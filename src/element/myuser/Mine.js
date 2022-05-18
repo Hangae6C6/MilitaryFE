@@ -6,6 +6,7 @@ import { ReactComponent as Back } from "../../image/back.svg";
 import { ReactComponent as Write } from "../../image/write.svg";
 import { ActionCreators as mypageAction } from "../../redux/modules/mypage";
 import user, { ActionCreators as userAction } from "../../redux/modules/user";
+import { history } from "../../redux/configureStore";
 
 import { first, second, third, fourth } from "../../image/index";
 
@@ -13,33 +14,38 @@ import { first, second, third, fourth } from "../../image/index";
 const Mine = (props) => {
   const dispatch = useDispatch();
   // console.log(useSelector((state) => state));
-  const userIDForBinding = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
+  const userId = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
-  console.log(useSelector((state) => state.mypage.armyCategroy));
+  console.log(useSelector((state) => state.mypage.armyCategory));
   const userCategoryForBinding = useSelector(
-    (state) => state.mypage.armyCategroy
+    (state) => state.mypage.armyCategory
   );
   console.log(userCategoryForBinding);
   const userRankForBinding = useSelector((state) => state.mypage.rank);
-
-  const userDDayForBinding = useSelector((state) => state.mypage.dday);
+  const userEndDay = useSelector((state) => state.mypage);
+  console.log(userEndDay);
 
   React.useEffect(() => {
-    if (userIDForBinding && userIDForBinding.length) {
-      console.log(userIDForBinding);
-      dispatch(mypageAction.getRankDB(userIDForBinding));
-      dispatch(mypageAction.getCategoryDB(userIDForBinding));
+    if (userId && userId.length) {
+      console.log(userId);
+      dispatch(mypageAction.getRankDB(userId));
+      dispatch(mypageAction.getCategoryDB(userId));
+      dispatch(mypageAction.getDDayDB(userId));
     }
   });
 
   return (
     <>
       <MyPage>
-        <BackDiv>
+        <BackDiv onClick={()=>{history.back()}}>
           <Back />
         </BackDiv>
-        <MyP>마이페이지</MyP>
-        <WriteDiv>
+        <MyP>
+          마이페이지
+        </MyP>
+        <WriteDiv onClick={() => {
+            history.push(`/myPage/userProfile/${userId}`);
+          }}>
           <Write />
         </WriteDiv>
       </MyPage>
@@ -48,8 +54,7 @@ const Mine = (props) => {
           <ProfImg />
         </ImgDiv> */}
         <PDiv>
-          <Ddaydiv>D-{userDDayForBinding}</Ddaydiv>
-
+          {/* <Ddaydiv>D-{userDDayForBinding}</Ddaydiv> */}
           <NameDiv>
             <DivDiv>
               <P padding="0" margin="0">
@@ -71,7 +76,7 @@ const Mine = (props) => {
           <ProfList>{userCategoryForBinding}</ProfList>
         </PDiv>
         {/* <ProfList>{userRankForBinding}</ProfList> */}
-        {/* <ProfList>{userIDForBinding}</ProfList> */}
+        {/* <ProfList>{userId}</ProfList> */}
 
         <RankDiv></RankDiv>
       </Wrap>
@@ -87,7 +92,8 @@ const MyPage = styled.div`
   text-align: center;
   align-content: center;
   border-bottom: 2px solid #151419;
-  display: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const BackDiv = styled.div`
@@ -101,11 +107,12 @@ const MyP = styled.div`
   display: inline-block;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 5px 0;
 `;
 
 const WriteDiv = styled.div`
   display: inline-block;
+  cursor: pointer;
 `;
 
 const ImgDiv = styled.div`
@@ -150,9 +157,9 @@ const DivDiv = styled.div`
 `;
 
 const P = styled.p`
-margin: 20px 0 0 0;
-padding: 0;
-`
+  margin: 20px 0 0 0;
+  padding: 0;
+`;
 
 const RankDiv = styled.div`
   margin: 0 auto;
