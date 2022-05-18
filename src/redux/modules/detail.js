@@ -13,12 +13,31 @@ const initialState = {
   userChallengeDetail: []
 };
 
-const getUserChallengeDetailDB = (userId, challengeId) => {
+const postUserChallengeDetailDB = (userId, challengeId) => {
   return async function (dispatch, getState) {
     try {
       await axios({
         method: "post",
         url: `http://13.125.228.240/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        dispatch(getChallengeDetail(response.data));
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("challengeDetail GET 요청 실패");
+    }
+  };
+};
+
+const getUserChallengeDetailDB = (challengeId) => {
+  return async function (dispatch, getState) {
+    try {
+      await axios({
+        method: "get",
+        url: `http://3.34.98.31/api/challengeJoin?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -44,6 +63,7 @@ export default handleActions(
 );
 
 const ActionCreators = {
+postUserChallengeDetailDB,
 getUserChallengeDetailDB,
 };
 

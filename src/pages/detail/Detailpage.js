@@ -36,7 +36,7 @@ const Detail = () => {
 
   const userChallengeDataHandler = () => {
     console.log(userId, challengeId)
-    dispatch(userChallengeDataActions.getUserChallengeDetailDB(userId, challengeId))
+    dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId))
   }
 
   

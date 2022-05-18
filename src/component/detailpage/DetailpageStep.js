@@ -4,38 +4,34 @@ import "./DetailFont.css";
 
 const DetailpageStep = ({ steps }) => {
   const [isChecked, setIsChecked] = React.useState(false);
-  console.log(isChecked);
-  const checkedHandler = () => {
+
+  const checkedHandler = (stepKey) => {
+
     if (isChecked === true) {
       setIsChecked(false);
     } else {
       setIsChecked(true);
     }
   };
-  console.log(steps);
-
-  // steps = [
-  //   { stepContent: "안녕하세요" },
-  //   { stepContent: "안녕하신가요" },
-  //   { stepContent: "안녕하세요3" },
-  // ];
 
   return (
     <ChallengeName>
       <div id="top">
         <div id="title">느리게 살기 챌린지</div>
       </div>
-      {steps && steps.map((step, idx) => {
-        <Astep key={step + idx}>
-          <div id="stepTitle">{step.stepContent}</div>
-          <div
-            id="checkBox"
-            onClick={() => {
-              checkedHandler();
-            }}
-          ></div>
-        </Astep>;
-      })}
+      {steps &&
+        steps.map((step, idx) => (
+          <Astep key={step+idx}>
+            <div id="idx-num">{step.stepNum}</div>
+            <div id="stepTitle">{step.stepContent}</div>
+            <div
+              id={step.isChecked ? "checkedBox" : "emptyBox"}
+              onClick={() => {
+                checkedHandler(step.stepNum);
+              }}
+            ></div>
+          </Astep>
+        ))}
     </ChallengeName>
   );
 };
@@ -64,6 +60,12 @@ const Astep = styled.div`
   height: 62px;
   border-bottom: 2px solid #151419;
   display: flex;
+  #idx-num {
+    font-family: NanumSquareMedium;
+    color: #151419;
+    font-size: 18px;
+    margin: 20px 0 0 26px;
+  }
   #stepTitle {
     font-family: NanumSquareMedium;
     color: #151419;
@@ -72,14 +74,22 @@ const Astep = styled.div`
     height: 22px;
     margin: 20px 0 0 26px;
   }
-  #checkBox {
+  #emptyBox {
     width: 22px;
     height: 22px;
     margin: 20px 20px 0 10px;
     border: 1px solid #151419;
+    background-color: #ffffff;
     &:hover {
       cursor: pointer;
-      background-color: #151419;
     }
+  }
+  #checkedBox {
+    width: 22px;
+    height: 22px;
+    margin: 20px 20px 0 10px;
+    border: 1px solid #151419;
+    background-color: #151419;
+    cursor: pointer;
   }
 `;

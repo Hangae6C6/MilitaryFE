@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const DetailpageProgress = () => {
   const token = getCookie("token");
   const { challengeId } = useParams();
-
+  
   return (
     <>
       {!token ? (

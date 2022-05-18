@@ -4,47 +4,27 @@ import styled from "styled-components";
 import img from "../../shared/images/workout.png";
 
 const MyCallenge = ({ user, cards }) => {
-
   return (
     <>
       <Container>
         {cards.map((card, idx) => {
           return (
-          <div id="box" key={card+idx}>
-            <img src={img} alt="img" height="52px" width="52px" />
-            <div id="type">
-              <p id="p">{card.challengeType}</p>
+            <div
+              id="box"
+              key={card + idx}
+              onClick={() => {
+                window.location.pathname = `/detailpage/${card.challengeNum}`;
+              }}
+            >
+              <img src={img} alt="img" height="52px" width="52px" />
+              <div id="type">
+                <p id="p">{card.challengeType}</p>
+              </div>
+              <div id="title">{card.challengeTitle}</div>
+              <div id="count">{card.challengeCnt}명 참여중</div>
             </div>
-            <div id="title">{card.challengeTitle}</div>
-            <div id="count">84명 참여중</div>
-          </div>);
+          );
         })}
-
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
       </Container>
 
       <AddButton>
@@ -70,7 +50,7 @@ export default MyCallenge;
 const Container = styled.div`
   overflow: hidden;
   display: flex;
- 
+
   #box {
     text-align: center;
     height: 130px;

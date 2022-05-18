@@ -4,9 +4,17 @@ import { history } from "../../redux/configureStore";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionCreators as getUserChallengeActions} from "../../redux/modules/detail";
 const DetailpageRank = () => {
+  const dispatch = useDispatch();
   const { challengeId } = useParams();
+  const joinList = useSelector((state)=>state.challengeDetail.userChallengeDetail.joinlist)
+  console.log(joinList)
 
+  React.useEffect(()=> {
+    dispatch(getUserChallengeActions.getUserChallengeDetailDB(challengeId))
+  },[dispatch, challengeId])
 
   return (
     <Container>
@@ -48,7 +56,7 @@ const DetailpageRank = () => {
           window.location.pathname = `/detail/chat/${challengeId}`;
         }}
       >
-        지금 시작하기
+        채팅하기
       </NextButton>
     </Container>
   );
@@ -137,7 +145,7 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  /* border-top: 2px solid #151419; */
+  border-bottom: 2px solid #151419;
   &:hover {
     cursor: pointer;
     background-color: #151419;

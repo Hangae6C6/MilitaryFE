@@ -4,17 +4,33 @@ import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import { Meter } from "grommet";
 
 const Type = ({ onBack, onTypeChange }) => {
-  const types = [
-    "취업",
-    "공모전",
-    "자격증",
-    "독서",
-    "운동",
-    "외국어",
-    "직업탐색",
-    "자기개발",
-    "기타",
-  ];
+  const [types, setTypes] = React.useState([
+    { id: 0, type: "취업", isChecked: false },
+    { id: 1, type: "공모전", isChecked: false },
+    { id: 2, type: "자격증", isChecked: false },
+    { id: 3, type: "독서", isChecked: false },
+    { id: 4, type: "운동", isChecked: false },
+    { id: 5, type: "외국어", isChecked: false },
+    { id: 6, type: "직업탐색", isChecked: false },
+    { id: 7, type: "자기개발", isChecked: false },
+    { id: 8, type: "기타", isChecked: false },
+  ]);
+
+  const checkedHandler = (id) => {
+    for(let i=0; i<types.length; i++){
+      if (id === types[i].id){
+          if(types[i].isChecked === true){
+            types[i].isChecked = false
+          }else{
+            types[i].isChecked = true;
+          }
+        }else{
+          types[i].isChecked = false;
+        }
+      }
+      setTypes((prevTypes) =>[...prevTypes]);
+  };
+
 
   return (
     <Container>
@@ -43,15 +59,16 @@ const Type = ({ onBack, onTypeChange }) => {
         ></textarea>
       </div>
       <Boxes>
-        {types.map((cur, i) => (
+        {types && types.map((cur, i) => (
           <div
-            className="box"
-            key={cur + i}
+            className={cur.isChecked ? "checked" : "unChecked"}
+            key={cur.type + i}
             onClick={() => {
-              onTypeChange(cur);
+              checkedHandler(cur.id);
+              onTypeChange(cur.type);
             }}
           >
-            <p>{cur}</p>
+            <p>{cur.type}</p>
           </div>
         ))}
       </Boxes>
@@ -112,7 +129,7 @@ const Boxes = styled.div`
   width: 378px;
   max-height: 381px;
 
-  .box {
+  .unChecked {
     position: relative;
     font-family: Gmarket SansMedium;
     padding-top: 55px;
@@ -125,7 +142,21 @@ const Boxes = styled.div`
     margin-right: 0px;
     &:hover {
       cursor: pointer;
-      background-color: #1FB57E;
+      background-color: #1fb57e;
     }
+  }
+
+  .checked {
+    position: relative;
+    font-family: Gmarket SansMedium;
+    padding-top: 55px;
+    text-align: center;
+    height: 96px;
+    width: 123.7px;
+    border-bottom: 2px solid #151419;
+    border-right: 2px solid #151419;
+    background-color: #1fb57e;
+    margin-right: 0px;
+    cursor: pointer;
   }
 `;

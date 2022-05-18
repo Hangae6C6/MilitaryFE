@@ -36,10 +36,7 @@ const Card = (props) => {
                 size="small"
                 label="참여"
                 onClick={() => {
-                  history.push({
-                    pathname: `/detail/${card.challengeNum}`,
-                    state: { card: card },
-                  });
+                  window.location.pathname = `/detailpage/${card.challengeNum}`;
                 }}
               />
             </Box>
@@ -53,5 +50,5 @@ const Card = (props) => {
 export default Card;
 
 const Container = styled.div`
-height: 200px;
+  height: 200px;
 `;
