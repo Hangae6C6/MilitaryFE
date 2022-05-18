@@ -38,16 +38,16 @@ const Navigation = ({userId}) => {
 };
 const Nav = styled.div`
   margin: auto;
-  display: grid;
+
 `;
 
 const Wrap = styled.div`
   max-width: 375px;
   width: 100%;
   height: 84px;
-  top: 82%;
   position: absolute;
   background-color: whitesmoke;
+  bottom: 0;
   z-index: 999;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

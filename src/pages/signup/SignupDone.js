@@ -50,7 +50,7 @@ const Container = styled.div`
     display: flex;
     border-top: 4px solid #151419;
     border-bottom: 4px solid #151419;
-    background-color: #1FB57E;
+
 
     #p {
       font-size: 34px;
@@ -87,7 +87,7 @@ const NextButton = styled.button`
   height: 80px;
   border: none;
   outline: none;
-  color: #151419;
+  color:  #1FB57E;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;

@@ -3,9 +3,9 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
 
-const POST_DETAIL = "POST_DETAIL";
+const GET_DETAIL = "GET_DETAIL";
 
-const getChallengeDetail = createAction(POST_DETAIL, (challenges) => ({
+const getChallengeDetail = createAction(GET_DETAIL, (challenges) => ({
   challenges,
 }));
 
@@ -53,7 +53,7 @@ const getUserChallengeDetailDB = (challengeId) => {
 
 export default handleActions(
   {
-    [POST_DETAIL]: (state, action) =>
+    [GET_DETAIL]: (state, action) =>
       produce(state, (draft) => {
         draft.userChallengeDetail = action.payload.challenges;
       }),

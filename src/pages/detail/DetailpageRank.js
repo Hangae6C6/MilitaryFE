@@ -5,16 +5,18 @@ import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as getUserChallengeActions} from "../../redux/modules/detail";
+import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
 const DetailpageRank = () => {
   const dispatch = useDispatch();
   const { challengeId } = useParams();
-  const joinList = useSelector((state)=>state.challengeDetail.userChallengeDetail.joinlist)
-  console.log(joinList)
+  const joinList = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.joinlist
+  );
+  console.log(joinList);
 
-  React.useEffect(()=> {
-    dispatch(getUserChallengeActions.getUserChallengeDetailDB(challengeId))
-  },[dispatch, challengeId])
+  React.useEffect(() => {
+    dispatch(getUserChallengeActions.getUserChallengeDetailDB(challengeId));
+  }, [dispatch, challengeId]);
 
   return (
     <Container>

@@ -1,17 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import "./DetailFont.css";
 
 const DetailpageStep = ({ steps }) => {
-  const [isChecked, setIsChecked] = React.useState(false);
-
-  const checkedHandler = (stepKey) => {
-
-    if (isChecked === true) {
-      setIsChecked(false);
-    } else {
-      setIsChecked(true);
-    }
+const dispatch = useDispatch();
+  const checkedHandler = (stepNumber) => {
+    dispatch()
   };
 
   return (
