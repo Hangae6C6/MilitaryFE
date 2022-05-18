@@ -6,7 +6,7 @@ import "./DetailFont.css";
 const DetailpageStep = ({ steps }) => {
 const dispatch = useDispatch();
   const checkedHandler = (stepNumber) => {
-    dispatch()
+    // dispatch()
   };
 
   return (

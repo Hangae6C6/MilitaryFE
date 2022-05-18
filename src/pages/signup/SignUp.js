@@ -21,7 +21,7 @@ const SignUp = () => {
 
   // 닉네임 조건
   const isNickname = (nickname) => {
-    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,15}$/;
+    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
     return pattern.test(nickname); // 맞으면 true, 틀리면 false반환
   };
 
