@@ -9,8 +9,6 @@ const Profile = () => {
     return (
         <>
         <Mine />
-        <EditBtn>수정하기</EditBtn>
-        <TestResult />
         <Challenges />
         </>
     )

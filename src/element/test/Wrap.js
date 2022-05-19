@@ -12,9 +12,8 @@ const Wrap = ({children}) => {
 };
 
 const Wrapper = styled.div`
-  max-height: 812px;
+height: 100vh;
   max-width: 375px;
-  height: 812px;
   width: 100%;
   border: 2px solid #151419;
 `

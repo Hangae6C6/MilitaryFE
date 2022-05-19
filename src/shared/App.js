@@ -23,6 +23,7 @@ import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
 import Link from "../pages/Link";
+import MyEdit from "../pages/MyEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,6 @@ function App() {
   }, [dispatch, router]);
 
   return (
-    <Background>
       <DivBox>
         <Router >
           <Routes>
@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
             <Route exact path="/link/:challengeId" element={<Link />}></Route>
-            
+            <Route exact path="/myPage/userProfile/:userId" element={<MyEdit />}></Route>
             <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank/:challengeId" element={<DetailpageRank />}></Route>
            
@@ -63,25 +63,15 @@ function App() {
           </Routes>
         </Router>
       </DivBox>
-    </Background>
   );
 }
 
 const DivBox = styled.div`
-  margin: 50px auto;
+  margin: 0 40% 0 60%;
   max-width: 375px;
-  max-height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  border-radius: 3px;
-`;
-
-const Background = styled.div`
-  max-width: 100%;
-  max-height: 100%;
-  width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
 `;
 
 export default App;
