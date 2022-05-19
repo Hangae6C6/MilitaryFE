@@ -14,11 +14,12 @@ const Main = () => {
   const user = useSelector((state) => state.user.user);
   const userId = user.userId;
 
-  const propgressbar = useSelector(
+  const progressbar = useSelector(
     (state) => state.card.totalProgress.totalChallengeProgress
   );
-  const score = propgressbar + "%";
-
+  const score = progressbar + "";
+  
+  console.log();
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
