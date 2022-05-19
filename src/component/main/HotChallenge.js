@@ -1,7 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import img from "../../shared/images/workout.png"
+import { ActionCreators as postActions } from "../../redux/modules/main";
+import { ActionCreators as searchActions } from "../../redux/modules/search";
+
 const HotChallenge = ({cards}) => {
+const dispatch = useDispatch();
+  const veiwCountHandlerInHot = (challengeId, challengeCnt) =>{
+    dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
+  }
+  const searchTypeHandler = (type) => {
+    dispatch(searchActions.searchDB(type));
+    setTimeout(()=>{
+      window.location.pathname=`/search/${type}`;
+    },0)
+  }
+
+  const list = cards.filter((card, idx) => {
+  
+  })
 
   return (
     <Container>
@@ -11,18 +29,26 @@ const HotChallenge = ({cards}) => {
         </div>
       </UpperBox>
       <MiddleBox>
-        <div id="card">운동</div>
-        <div id="card">독서</div>
-
-        <div id="card">어학</div>
-        <div id="card">자격증</div>
-
-        <div id="card">코딩</div>
-
+      {cards?.map((card, idx) => {
+          return (
+            <div
+              id="card"
+              key={card + idx}
+              onClick={() => {
+                searchTypeHandler(card.challengeType);
+              }}
+            >
+              {card.challengeType}
+            </div>
+          );
+        })}
       </MiddleBox>
       <LowerBox>
       {cards && cards.map((result, idx) => (
-          <div id="box" key={result+idx}>
+          <div id="box" key={result+idx}
+          onClick={() => {
+            veiwCountHandlerInHot(result.challengeNum, result.challengeCnt);
+          }}>
           <img src={img} alt="img" height="52px" width="52px" />
           <div id="type">
             <p id="p">{result.challengeType}</p>
@@ -57,12 +83,14 @@ const UpperBox = styled.div`
 `;
 
 const MiddleBox = styled.div`
-display: flex;
+  display: flexbox;
   height: 47px;
   border-bottom: #151419 2px solid;
+  overflow: hidden;
   #card {
+    overflow: hidden;
     text-align: center;
-    width: 60px;
+    width: 80px;
     height: 20px;
     border: 1px solid #151419;
     font-size: 18px;

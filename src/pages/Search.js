@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { ActionCreators as searchActions } from "../redux/modules/search";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import searchIcon from "../shared/icons/SearchIcon.png";
@@ -9,12 +10,28 @@ import img from "../shared/images/workout.png";
 import goback from "../shared/icons/icnBackNormalBlack35.svg";
 
 const Nav = () => {
+  const  {type}  = useParams("");
   const dispatch = useDispatch();
   const [keyword, setKeyword] = React.useState("");
   const results = useSelector((state) => state.search.challenges);
+  const cards = useSelector((state) => state.card.cards);
+  console.log(type)
+  
+  React.useEffect(() => {
+    dispatch(postActions.getPostDB());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    dispatch(searchActions.searchDB(type));
+  },[dispatch, type])
+
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
   };
+  const searchTypeHandler = (challengetype) => {
+    
+    dispatch(searchActions.searchDB(challengetype));
+  }
   const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
@@ -51,13 +68,19 @@ const Nav = () => {
         </div>
       </UpperBox>
       <MiddleBox>
-        <div id="card">운동</div>
-        <div id="card">독서</div>
-
-        <div id="card">어학</div>
-        <div id="card">자격증</div>
-
-        <div id="card">코딩</div>
+        {cards?.map((card, idx) => {
+          return (
+            <div
+              id="card"
+              key={card + idx}
+              onClick={() => {
+                searchTypeHandler(card.challengeType);
+              }}
+            >
+              {card.challengeType}
+            </div>
+          );
+        })}
       </MiddleBox>
       <LowerBox>
         {results.map((card, idx) => {
@@ -112,8 +135,8 @@ const Container = styled.div`
     .arrow {
       margin: 5px 0px 0px 20px;
       cursor: pointer;
-      #goback{
-      margin:0 0px 10px -10px;
+      #goback {
+        margin: 0 0px 10px -10px;
       }
     }
     #inputBox {
@@ -149,12 +172,14 @@ const UpperBox = styled.div`
 `;
 
 const MiddleBox = styled.div`
-  display: flex;
+  display: flexbox;
   height: 47px;
   border-bottom: #151419 2px solid;
+  overflow: hidden;
   #card {
+    overflow: hidden;
     text-align: center;
-    width: 60px;
+    width: 80px;
     height: 20px;
     border: 1px solid #151419;
     font-size: 18px;

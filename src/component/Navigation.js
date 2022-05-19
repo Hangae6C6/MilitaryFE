@@ -23,7 +23,7 @@ const Navigation = ({ userId }) => {
           <SearchIcn
             src={searchIcn}
             onClick={() => {
-              window.location.pathname = "/search";
+              window.location.pathname = "/search/기타";
             }}
           />
           <P>검색</P>

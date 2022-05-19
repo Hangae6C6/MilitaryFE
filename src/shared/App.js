@@ -49,7 +49,7 @@ function App() {
             <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
             <Route exact path="/detail/chat/:challengeId" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
-            <Route exact path="/search" element={<Search />}></Route>
+            <Route exact path="/search/:type" element={<Search />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
