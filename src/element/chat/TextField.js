@@ -3,7 +3,7 @@ import styled from "styled-components";
 import io from "socket.io-client";
 import TextBoxes from "./TextBoxes";
 
-const socket = io.connect("http://3.34.98.31/");
+const socket = io.connect("http://13.125.228.240/");
 
 const TextField = (props) => {
   const [userName, setUsername] = useState("");
