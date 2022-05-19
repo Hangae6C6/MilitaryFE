@@ -31,9 +31,8 @@ const Title = ({ title, onChange }) => {
         <div className="title-text">챌린지 이름</div>
         <textarea
           className="sub-title"
-          placeholder="챌린지 이름은 변경이 어렵지만 &#13;&#10;재미있는 이름이 시선을 확~ 끌지말입니다!"
-          maxLength="20"
-          type="text"
+          placeholder="다른이의 시선을 사로잡을수 있는 &#13;&#10;챌린지 이름은 최대한 간결하게!"
+          maxLength="0"
         ></textarea>
       </div>
       <div className="input-title">
@@ -41,7 +40,7 @@ const Title = ({ title, onChange }) => {
           className="input-area"
           value={title}
           placeholder="챌린지 이름을 작성합니다"
-          maxLength="10"
+          maxLength="8"
           type="text"
           onChange={(e) => onChange(e.target.value)}
         ></textarea>
@@ -95,7 +94,7 @@ const Container = styled.div`
       max-width: 295px;
       resize: none;
       font-size: 15px;
-      font-family: Gmarket Sans;
+      font-family: Gmarket SansMedium;
     }
   }
   .input-title {

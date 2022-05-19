@@ -2,15 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as searchActions } from "../redux/modules/search";
+import { ActionCreators as postActions } from "../redux/modules/main";
 import searchIcon from "../shared/icons/SearchIcon.png";
 import logo from "../shared/images/Hand-logo.png";
 import img from "../shared/images/workout.png";
+import goback from "../shared/icons/icnBackNormalBlack35.svg";
+
 const Nav = () => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = React.useState("");
   const results = useSelector((state) => state.search.challenges);
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
+  };
+  const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
+    dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
 
   return (
@@ -20,6 +26,14 @@ const Nav = () => {
       </div>
       <div className="top">
         <div className="arrow">
+          <div
+            id="goback"
+            onClick={() => {
+              window.location.pathname = "/";
+            }}
+          >
+            <img src={goback} alt="goback" />
+          </div>
           <img src={searchIcon} alt="search" width="33px" height="33px" />
         </div>
         <input
@@ -46,19 +60,24 @@ const Nav = () => {
         <div id="card">코딩</div>
       </MiddleBox>
       <LowerBox>
-        {results.map((result, idx) => {
-          <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">{result.challengeType}</p>
-          </div>
-          <div id="title">{result.challengeTitle}</div>
-          <div id="count">{result.challengeCnt}명 참여중</div>
-        </div>
-
+        {results.map((card, idx) => {
+          return (
+            <div
+              id="box"
+              key={card + idx}
+              onClick={() => {
+                veiwCountHandlerInSearch(card.challengeNum, card.challengeCnt);
+              }}
+            >
+              <img src={img} alt="img" height="64px" width="64px" />
+              <div id="type">
+                <p id="p">{card.challengeType}</p>
+              </div>
+              <div id="title">{card.challengeTitle}</div>
+              <div id="count">{card.challengeCnt}명 참여중</div>
+            </div>
+          );
         })}
-        
-
       </LowerBox>
 
       <NextButton onClick={searchHandler}>검색하기</NextButton>
@@ -91,8 +110,11 @@ const Container = styled.div`
     background-color: #1fb57e;
 
     .arrow {
-      margin: 50px 0px 0px 20px;
+      margin: 5px 0px 0px 20px;
       cursor: pointer;
+      #goback{
+      margin:0 0px 10px -10px;
+      }
     }
     #inputBox {
       width: 300px;
@@ -168,24 +190,25 @@ const LowerBox = styled.div`
         color: #ffffff;
         background-color: #151419;
         height: 26x;
-        width: 45px;
-        margin: 0 5px 0 38px;
+        width: 80px;
+        margin: 0px 5px 0 20px;
       }
     }
     #title {
       width: 120px;
-      height: 30px;
+      height: 20px;
       font-size: 16px;
       color: #1fb57e;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 10px 0 0 2px;
+      margin: 5px 0 0 2px;
+      overflow: hidden;
     }
     #count {
       font-size: 14px;
       color: #151419;
       font-family: Gmarket SansMedium;
-      margin: -10px 0 0 3px;
+      margin: 0px 0 0 3px;
     }
     cursor: pointer;
     &:hover {

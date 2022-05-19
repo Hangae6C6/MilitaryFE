@@ -1,9 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import img from "../../shared/images/workout.png";
+import { ActionCreators as postActions } from "../../redux/modules/main";
 
 const MyCallenge = ({ user, cards }) => {
+  const dispatch = useDispatch();
+
+  const veiwCountHandler = (challengeId, challengeCnt) => {
+    dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
+  };
   return (
     <>
       <Container>
@@ -13,7 +19,7 @@ const MyCallenge = ({ user, cards }) => {
               id="box"
               key={card + idx}
               onClick={() => {
-                window.location.pathname = `/detailpage/${card.challengeNum}`;
+                veiwCountHandler(card.challengeNum, card.challengeCnt);
               }}
             >
               <img src={img} alt="img" height="64px" width="64px" />
@@ -65,24 +71,25 @@ const Container = styled.div`
         color: #ffffff;
         background-color: #151419;
         height: 26x;
-        width: 100px;
-        margin: 5px 5px 0 10px;
+        width: 80px;
+        margin: 0px 5px 0 20px;
       }
     }
     #title {
       width: 120px;
-      height: 30px;
+      height: 20px;
       font-size: 16px;
-      color: #151419;
+      color: #1fb57e;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 15px 0 0 2px;
+      margin: 10px 0 0 2px;
+      overflow: hidden;
     }
     #count {
       font-size: 14px;
       color: #151419;
       font-family: Gmarket SansMedium;
-      margin: -10px 0 0 3px;
+      margin: 5px 0 0 3px;
     }
     cursor: pointer;
     &:hover {
@@ -108,10 +115,10 @@ const AddButton = styled.div`
     color: #151419;
     font-size: 24px;
     font-family: Gmarket SansBold;
- 
+
     cursor: pointer;
     &:hover {
-      background-color:  #151419;
+      background-color: #151419;
       color: #ffffff;
     }
   }

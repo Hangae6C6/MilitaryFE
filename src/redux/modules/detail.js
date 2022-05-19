@@ -37,7 +37,7 @@ const getChallengeDetailDB = (challengeId) => {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/challengeJoin?challengeNum=${challengeId}`,
+        url: `http://13.125.228.240/api/challengeJoinBychallengeNum?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

@@ -2,27 +2,37 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as postActions } from "../redux/modules/main";
-import { Meter } from "grommet";
+import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
+
 import Navigation from "../component/Navigation";
 import MyCallenge from "../component/main/MyCallenge";
 import HotChallenge from "../component/main/HotChallenge";
 import icon from "../shared/images/mainIcon.png";
 import logo from "../shared/images/Hand-logo.png";
+
 const Main = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
+  const myChallenges = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.joinlist_id
+  );
   const userId = user.userId;
 
   const progressbar = useSelector(
     (state) => state.card.totalProgress.totalChallengeProgress
   );
-  const score = progressbar + "";
-  
-  console.log();
+  const score = progressbar + "%";
+
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
+
+  React.useEffect(() => {
+    if (userId) {
+      dispatch(userChallengeDetailActions.getUserChallengeDetailDB(userId));
+    }
+  }, [dispatch, userId]);
 
   React.useEffect(() => {
     if (userId) {
@@ -37,7 +47,7 @@ const Main = () => {
       </div>
       <div id="top-box">
         <div id="main-title"> {user.userNick} 병장님!</div>
-        <div id="sub-title"></div>
+        <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
       </div>
       <ProgressBarWrap>
         <div id="progressBar" width={score} />
@@ -51,8 +61,8 @@ const Main = () => {
         <p id="p">참여중 챌린지</p>
       </div>
       <MyCallenge user={user} cards={cards} />
-      <HotChallenge />
-      <Navigation userId={userId}/>
+      <HotChallenge cards={cards} />
+      <Navigation userId={userId} />
     </Container>
   );
 };
@@ -60,9 +70,7 @@ const Main = () => {
 export default Main;
 const Container = styled.div`
   position: relative;
-  max-height: 100%;
   max-width: 375px;
-  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
   .nav {
@@ -80,7 +88,7 @@ const Container = styled.div`
     #main-title {
       padding: 50px 0 0 15px;
       height: 35px;
-      font-size: 44px;
+      font-size: 36px;
       color: #151419;
       font-family: Gmarket SansBold;
     }

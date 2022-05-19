@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import ScrollToBottom from "react-scroll-to-bottom";
-import { usePrompt } from "./blocker";
 import { history } from "../../redux/configureStore";
 
 const TextBoxes = ({ setRoom, socket, userName, room }) => {

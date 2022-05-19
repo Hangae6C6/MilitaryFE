@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import img from "../../shared/images/workout.png"
-const HotChallenge = () => {
+const HotChallenge = ({cards}) => {
+
   return (
     <Container>
       <UpperBox>
@@ -20,32 +21,17 @@ const HotChallenge = () => {
 
       </MiddleBox>
       <LowerBox>
-      <div id="box">
+      {cards && cards.map((result, idx) => (
+          <div id="box" key={result+idx}>
           <img src={img} alt="img" height="52px" width="52px" />
           <div id="type">
-            <p id="p">운동</p>
+            <p id="p">{result.challengeType}</p>
           </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
+          <div id="title">{result.challengeTitle}</div>
+          <div id="count">{result.challengeCnt}명 참여중</div>
         </div>
 
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
+        ))}
       </LowerBox>
     </Container>
   );
@@ -91,8 +77,12 @@ display: flex;
 `;
 
 const LowerBox = styled.div`
- display: flex;
-  height: 130px;
+   display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 378px;
+  max-height: 381px;
+
   #box {
     text-align: center;
     height: 130px;
@@ -100,6 +90,7 @@ const LowerBox = styled.div`
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
     margin-right: -2px;
+    cursor: pointer;
     #type {
       #p {
         border: #151419 1px solid;
@@ -108,8 +99,8 @@ const LowerBox = styled.div`
         color: #ffffff;
         background-color: #151419;
         height: 26x;
-        width: 45px;
-        margin: 0 5px 0 38px;
+        width: 80px;
+        margin: 0px 5px 0 20px;
       }
     }
     #title {
@@ -120,6 +111,7 @@ const LowerBox = styled.div`
       font-family: Gmarket SansBold;
       border: 3px;
       margin: 10px 0 0 2px;
+      overflow: hidden;
     }
     #count {
       font-size: 14px;
@@ -128,12 +120,13 @@ const LowerBox = styled.div`
       margin: -10px 0 0 3px;
   
     }
-    cursor: pointer;
     &:hover {
-      background-color: #1FB57E;
+      background-color: #1fb57e;
+      border-left: 2px solid #151419;
+      margin: 0 -2px 0 -2px;
       color: #151419;
-      #title{
-        color:#ffffff;
+      #title {
+        color: #ffffff;
       }
     }
   }

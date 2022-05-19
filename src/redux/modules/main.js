@@ -53,6 +53,27 @@ const getProgressDB = (userId) => {
   };
 };
 
+const addVeiwCountDB = (challengeId, challengeCnt) => {
+  console.log(challengeId, challengeCnt);
+  return async function (dispatch, getState) {
+    try {
+      await axios({
+        method: "post",
+        url: `http://13.125.228.240/api/categoryClick?challengeNum=${challengeId}`,
+        data: {
+          challengeCnt,
+        },
+      }).then((response) => {
+        console.log(response);
+        window.location.pathname = `/detailpage/${challengeId}`;
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("challengeDetail GET 요청 실패");
+    }
+  };
+};
+
 export default handleActions(
   {
     [GET_POST]: (state, action) =>
@@ -70,6 +91,7 @@ export default handleActions(
 const ActionCreators = {
   getPostDB,
   getProgressDB,
+  addVeiwCountDB,
 };
 
 export { ActionCreators };
