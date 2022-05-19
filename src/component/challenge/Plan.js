@@ -6,6 +6,7 @@ import addIcon from "../../shared/icons/icnPlusBlack32.svg";
 import { Meter } from "grommet";
 
 const Plan = ({
+  type,
   steps,
   content,
   onContentChange,
@@ -32,7 +33,7 @@ const Plan = ({
       </div>
 
       <div className="title">
-        <div id="type">공모전</div>
+        <div id="type">{type}</div>
         <div className="title-text">목표를 위한 STEP</div>
 
         <textarea
@@ -57,10 +58,10 @@ const Plan = ({
       </div>
 
       <Wrap>
-        {[...steps].reverse().map((step, idx) => {
+        {[...steps].map((step, idx) => {
           return (
             <div className="box" key={step + idx}>
-              <div className="step-nums">{step.stepNum}</div>
+              <div className="step-nums">{idx + 1}</div>
               <div className="step-inputs">{step.stepContent}</div>
               <div className="delete-btns">
                 <img
@@ -101,14 +102,14 @@ const Container = styled.div`
     border-bottom: 2px solid #3f3f3f;
     #type {
       position: absolute;
-      width: 78px;
+      width: 100px;
       height: 30px;
       background-color: #3f3f3f;
       color: #e5e5e5;
       font-size: 24px;
       text-align: center;
       margin-left: 240px;
-      font-family: Gmarket Sans;
+      font-family: Gmarket SansMedium;
     }
     .title-text {
       height: 35px;
@@ -168,7 +169,7 @@ const Container = styled.div`
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btns {
-      margin: 10px 0 0 8px;
+      margin: 10px 0 0 0px;
 
       &:hover {
         cursor: pointer;
@@ -177,15 +178,15 @@ const Container = styled.div`
     }
     .step-inputs {
       height: 30px;
-      width: 260px;
+      width: 240px;
       max-width: 260px;
-      margin: 50px 0 0 10px;
+      margin: 50px 0 0 -5px;
       font-size: 16px;
       font-family: NanumSquareMedium;
       text-align: center;
     }
     .step-nums {
-      width: 22px;
+      width: 60px;
       height: 69px;
       margin: 30px 0px 0px 30px;
       font-size: 50px;

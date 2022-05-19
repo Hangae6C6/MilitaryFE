@@ -21,7 +21,7 @@ const SignUp = () => {
 
   // 닉네임 조건
   const isNickname = (nickname) => {
-    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,15}$/;
+    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
     return pattern.test(nickname); // 맞으면 true, 틀리면 false반환
   };
 
@@ -121,7 +121,7 @@ const SignUp = () => {
         />
       </Box2>
 
-
+        <div id="empty"/>
       <NextButton
         onClick={() => {
           signup();
@@ -144,11 +144,14 @@ const Container = styled.div`
   .nav {
     width: 375px;
     height: 44px;
+    background-color: #151419;
+    
   }
   .top {
     height: 69px;
     width: 375px;
     border-top: 2px solid #151419;
+ 
   }
   .arrow {
     position: absolute;
@@ -157,17 +160,21 @@ const Container = styled.div`
   }
   #title-box {
     width: 375px;
-    height: 89px;
+    height: 160px;
     display: flex;
     border-top: 2px solid #151419;
-    background-color: #b62323;
 
     #p {
       font-size: 32px;
       font-family: Gmarket SansBold;
-      margin: 30px auto;
-      color: #ffffff;
+      margin: 60px auto;
+      color: #151419;
     }
+  }
+
+  #empty {
+    width: 100%;
+    border-top: #151419 2px solid;
   }
 `;
 
@@ -197,14 +204,15 @@ const NextButton = styled.button`
   height: 80px;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: #1FB57E;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
+  background-color:#ffffff;
   border-top: 2px solid #151419;
   &:hover {
     cursor: pointer;
-    background-color: #151419;
+    color: #ffffff;
+    background-color:#1FB57E;
   }
 `;

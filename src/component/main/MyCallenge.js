@@ -4,47 +4,27 @@ import styled from "styled-components";
 import img from "../../shared/images/workout.png";
 
 const MyCallenge = ({ user, cards }) => {
-
   return (
     <>
       <Container>
         {cards.map((card, idx) => {
           return (
-          <div id="box" key={card+idx}>
-            <img src={img} alt="img" height="52px" width="52px" />
-            <div id="type">
-              <p id="p">{card.challengeType}</p>
+            <div
+              id="box"
+              key={card + idx}
+              onClick={() => {
+                window.location.pathname = `/detailpage/${card.challengeNum}`;
+              }}
+            >
+              <img src={img} alt="img" height="64px" width="64px" />
+              <div id="type">
+                <p id="p">{card.challengeType}</p>
+              </div>
+              <div id="title">{card.challengeTitle}</div>
+              <div id="count">{card.challengeCnt}명 참여중</div>
             </div>
-            <div id="title">{card.challengeTitle}</div>
-            <div id="count">84명 참여중</div>
-          </div>);
+          );
         })}
-
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
-
-        <div id="box">
-          <img src={img} alt="img" height="52px" width="52px" />
-          <div id="type">
-            <p id="p">운동</p>
-          </div>
-          <div id="title">책 100권 읽기</div>
-          <div id="count">84명 참여중</div>
-        </div>
       </Container>
 
       <AddButton>
@@ -70,10 +50,10 @@ export default MyCallenge;
 const Container = styled.div`
   overflow: hidden;
   display: flex;
- 
+
   #box {
     text-align: center;
-    height: 130px;
+    height: 159px;
     width: 121px;
     border: 2px solid #151419;
     /* border-left: 1px solid #151419; */
@@ -86,17 +66,17 @@ const Container = styled.div`
         background-color: #151419;
         height: 26x;
         width: 100px;
-        margin: 0 5px 0 10px;
+        margin: 5px 5px 0 10px;
       }
     }
     #title {
       width: 120px;
       height: 30px;
       font-size: 16px;
-      color: #1fb57e;
+      color: #151419;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 10px 0 0 2px;
+      margin: 15px 0 0 2px;
     }
     #count {
       font-size: 14px;
@@ -115,24 +95,24 @@ const Container = styled.div`
   }
 `;
 const AddButton = styled.div`
-  height: 92px;
+  height: 85px;
   border-bottom: 2px solid #151419;
   border-top: 2px solid #151419;
 
   #button {
-    padding-top: 13px;
     text-align: center;
-    width: 298px;
-    height: 43px;
-    background-color: #151419;
-    color: #ffffff;
+    width: 100%;
+    height: 55px;
+    background-color: #ffffff;
+    padding-top: 30px;
+    color: #151419;
     font-size: 24px;
     font-family: Gmarket SansBold;
-    margin: 18px 0 0 40px;
+ 
     cursor: pointer;
     &:hover {
-      background-color: #b62323;
-      color: #151419;
+      background-color:  #151419;
+      color: #ffffff;
     }
   }
 `;

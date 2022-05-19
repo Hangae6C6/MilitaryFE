@@ -1,37 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import "./DetailFont.css";
 
-const DetailpageTitle = () => {
+const DetailpageStep = ({ steps }) => {
+const dispatch = useDispatch();
+  const checkedHandler = (stepNumber) => {
+    // dispatch()
+  };
+
   return (
     <ChallengeName>
       <div id="top">
         <div id="title">느리게 살기 챌린지</div>
       </div>
-      <Astep>
-        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
-        <div id="checkBox"></div>
-      </Astep>
-      <Astep>
-        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
-        <div id="checkBox"></div>
-      </Astep>
-      <Astep>
-        <div id="stepTitle">땡땡책 100쪽 까지 읽기</div>
-        <div id="checkBox"></div>
-      </Astep>
+      {steps &&
+        steps.map((step, idx) => (
+          <Astep key={step+idx}>
+            <div id="idx-num">{step.stepNum}</div>
+            <div id="stepTitle">{step.stepContent}</div>
+            <div
+              id={step.isChecked ? "checkedBox" : "emptyBox"}
+              onClick={() => {
+                checkedHandler(step.stepNum);
+              }}
+            ></div>
+          </Astep>
+        ))}
     </ChallengeName>
   );
 };
 
-export default DetailpageTitle;
+export default DetailpageStep;
 
 const ChallengeName = styled.div`
-display: table-row;
+  display: table-row;
   #top {
     width: 375px;
     height: 80px;
-    background-color: #1FB57E;
+    background-color: #1fb57e;
     border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
     #title {
@@ -48,6 +55,12 @@ const Astep = styled.div`
   height: 62px;
   border-bottom: 2px solid #151419;
   display: flex;
+  #idx-num {
+    font-family: NanumSquareMedium;
+    color: #151419;
+    font-size: 18px;
+    margin: 20px 0 0 26px;
+  }
   #stepTitle {
     font-family: NanumSquareMedium;
     color: #151419;
@@ -56,14 +69,22 @@ const Astep = styled.div`
     height: 22px;
     margin: 20px 0 0 26px;
   }
-  #checkBox {
+  #emptyBox {
     width: 22px;
     height: 22px;
     margin: 20px 20px 0 10px;
     border: 1px solid #151419;
-    &:hover{
-        cursor: pointer;
-        background-color: #151419;
+    background-color: #ffffff;
+    &:hover {
+      cursor: pointer;
     }
+  }
+  #checkedBox {
+    width: 22px;
+    height: 22px;
+    margin: 20px 20px 0 10px;
+    border: 1px solid #151419;
+    background-color: #151419;
+    cursor: pointer;
   }
 `;

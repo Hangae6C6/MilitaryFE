@@ -25,7 +25,7 @@ const searchDB = (keyword) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("검색 실패");
+      window.alert("입력하신 키워드와 관련된 챌린지가 없습니다");
     }
   };
 };
@@ -34,7 +34,7 @@ export default handleActions(
   {
     [GET_SEARCH]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges.unshift(action.payload.challenges.data) ;
+        draft.challenges.unshift(...action.payload.challenges.data) ;
       }),
   },
   initialState

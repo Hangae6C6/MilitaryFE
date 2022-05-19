@@ -58,13 +58,13 @@ const Container = styled.div``;
 const UpperBox = styled.div`
   width: 375px;
   height: 79px;
-  background-color: #b62323;
+  background-color: #ffffff;
   border-bottom: 2px solid #151419;
   #title {
-    padding: 30px 0 0 30px;
+    padding: 30px 0 0 15px;
     #title-text {
-      color: #ffffff;
-      font-size: 24px;
+      color: #b62323;
+      font-size: 26px;
       font-family: Gmarket SansBold;
     }
   }
