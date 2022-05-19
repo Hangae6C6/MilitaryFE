@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { ActionCreators as postActions } from "../../redux/modules/main";
 import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
+import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
@@ -16,21 +16,31 @@ import { getCookie } from "../../shared/cookie";
 const Detail = () => {
   const dispatch = useDispatch();
   let { challengeId } = useParams();
-  const cardList = useSelector((state) => state.card.cards);
+  const card = useSelector((state) => state.challenge.challenges);
   const user = useSelector((state) => state.user.user);
-  const card = cardList.filter((value) => value.challengeNum == challengeId);
+  const userId = user.userId;
   const token = getCookie("token");
+  const spots = card.challengeLimitNum - card.challengeCnt;
+  const steps = card.steps;
+  const [isPart, setIsPart] = React.useState(false);
+
+  let endDate = card.challengeEndDate;
+  let endDay = new Date(endDate); 
+  let now = new Date(); 
+  let distance = endDay - now;
+  let dDay = Math.floor(distance / (1000 * 60 * 60 * 24));
 
   React.useEffect(() => {
-    dispatch(postActions.getPostDB());
-  }, [dispatch]);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      if (challengeId)
-        dispatch(challengeActions.getChallengeDetailDB(challengeId));
-    }, 0);
+    dispatch(challengeActions.getChallengeDetailDB(challengeId));
   }, [dispatch, challengeId]);
+
+  const userChallengeDataHandler = () => {
+    console.log(userId, challengeId)
+    dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId))
+  }
+
+  
+
 
   return (
     <Container>
@@ -50,10 +60,9 @@ const Detail = () => {
       </div>
       <TitleBox>
         <div id="title">
-          <div id="title-up">{card[0] && card[0].challengeTitle}</div>
+          <div id="title-up">{card.challengeTitle}</div>
           <div id="title-down">
-            <div id="type">{card[0] && card[0].challengeType}</div>
-            <div id="startDate">{card[0] && card[0].challengeStartDate}~</div>
+            <div id="type">{card.challengeType}</div>
           </div>
         </div>
         <div id="image">
@@ -65,26 +74,26 @@ const Detail = () => {
           <div id="imgWrap">
             <img src={personImg} alt="personImg" width="36" height="36" />
           </div>
-          <div id="roomInfo">12명</div>
+          <div id="roomInfo">{card.challengeCnt}명</div>
           <div id="Infodetail">참가자</div>
         </div>
         <div className="box">
           <div id="imgWrap">
             <img src={personImg} alt="typeImg" width="36" height="36" />
           </div>
-          <div id="roomInfo">D-22</div>
+          <div id="roomInfo">D-{dDay}</div>
           <div id="Infodetail">남은 기간</div>
         </div>
         <div className="box">
           <div id="imgWrap">
             <img src={personImg} alt="typeImg" width="36" height="36" />
           </div>
-          <div id="roomInfo">3자리</div>
+          <div id="roomInfo">{spots}자리</div>
           <div id="Infodetail">남은 자리</div>
         </div>
       </ChallengeRoom>
-      <DetailpageProgress />
-      <DetailpageStep />
+      <DetailpageProgress   />
+      <DetailpageStep steps={steps}/>
       {!token ? (
         <NextButton
           onClick={() => {
@@ -96,12 +105,14 @@ const Detail = () => {
       ) : (
         <NextButton
           onClick={() => {
-            window.location.pathname = `/detail/chat/${challengeId}`;
+            userChallengeDataHandler()
+            // window.location.pathname = `/detail/chat/${challengeId}`;
           }}
         >
-          채팅하기
+          참여하기
         </NextButton>
       )}
+   
     </Container>
   );
 };
@@ -112,13 +123,15 @@ const Container = styled.div`
   display: block;
   max-height: 100%;
   max-width: 375px;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
+  position: relative;
 
   .nav {
     width: 375px;
     height: 44px;
+    background-color: #151419;
   }
   .top {
     height: 69px;
@@ -143,6 +156,7 @@ const TitleBox = styled.div`
   height: 159px;
   display: flex;
   border-bottom: 2px solid #151419;
+  
   #title {
     width: 242px;
     height: 159px;
@@ -160,7 +174,7 @@ const TitleBox = styled.div`
     #title-down {
       display: flex;
       #type {
-        width: 73px;
+        width: 100px;
         height: 30px;
         background-color: #151419;
         color: #ffffff;
@@ -168,19 +182,9 @@ const TitleBox = styled.div`
         font-family: Gmarket Sansmedium;
         text-align: center;
         line-height: 30px;
-        margin-left: 20px;
+        margin-left: 60px;
       }
-      #startDate {
-        width: 73px;
-        height: 30px;
-        background-color: #151419;
-        color: #ffffff;
-        font-size: 20px;
-        font-family: Gmarket Sansmedium;
-        line-height: 30px;
-        text-align: center;
-        margin-left: 10px;
-      }
+  
     }
   }
 
@@ -226,8 +230,8 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: relative;
-  bottom: 9.6mm;
+  position: fixed;
+  bottom: 0;
   width: 375px;
   height: 80px;
   border: none;
@@ -243,3 +247,5 @@ const NextButton = styled.button`
     background-color: #151419;
   }
 `;
+
+  

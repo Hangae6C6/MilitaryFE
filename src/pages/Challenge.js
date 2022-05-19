@@ -18,7 +18,7 @@ const Challenge = () => {
   const [stepContent, setStepContent] = React.useState("");
   const [stepIndex, setStepIndex] = React.useState(1);
   const [steps, setSteps] = React.useState([]);
-
+ 
   const addStepHandler = () => {
     setStepIndex(stepIndex + 1);
     setSteps((prevSteps) => [
@@ -29,13 +29,8 @@ const Challenge = () => {
   };
 
   const deleteStepHandler = (Num) => {
-    for (let i = 0; i < steps.length; i++) {
-      if (Num !== steps[i].stepNum) {
-        setSteps((prevSteps) => [...prevSteps.steps[i]]);
-      } else {
-        console.log("삭제 실패");
-      }
-    }
+  const preSteps = steps.filter(step => step.stepNum !== Num);
+  setSteps(preSteps);
   };
 
   const typeChangeHandler = (cur) => {
@@ -54,7 +49,6 @@ const Challenge = () => {
         challengeType: type,
         steps: steps,
       };
-
       dispatch(challengeActions.addChallengeDB(newChallenge));
     }
   };
@@ -81,6 +75,7 @@ const Challenge = () => {
       )}
       {step === 3 && (
         <Plan
+          type={type}
           steps={steps}
           content={stepContent}
           onContentChange={setStepContent}
@@ -111,7 +106,7 @@ const Container = styled.div`
 `;
 const NextButton = styled.button`
   position: absolute;
-  bottom: 21.2mm;
+  bottom: 0;
   width: 375px;
   height: 80px;
   border: none;

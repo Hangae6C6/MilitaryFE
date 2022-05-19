@@ -39,7 +39,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
           <textarea
             className="titleInput"
             value={startDate}
-            placeholder="05-14-2022"
+            placeholder="01-01-2022"
             maxLength="10"
             type="text"
             onChange={(e) => {
@@ -53,7 +53,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
           <textarea
             className="titleInput"
             value={endDate}
-            placeholder="05-15-2022"
+            placeholder="12-31-2022"
             maxLength="10"
             type="text"
             onChange={(e) => {
