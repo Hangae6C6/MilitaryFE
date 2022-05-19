@@ -14,10 +14,10 @@ const Main = () => {
   const user = useSelector((state) => state.user.user);
   const userId = user.userId;
 
-  const score = useSelector(
+  const propgressbar = useSelector(
     (state) => state.card.totalProgress.totalChallengeProgress
   );
-
+  const score = propgressbar + "%";
 
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
@@ -39,7 +39,7 @@ const Main = () => {
         <div id="sub-title"></div>
       </div>
       <ProgressBarWrap>
-        <div id="progressBar" width={score + "%"} />
+        <div id="progressBar" width={score} />
 
         <div id="icon">
           <img src={icon} alt="icon" />
