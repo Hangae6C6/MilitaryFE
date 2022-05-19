@@ -9,12 +9,14 @@ const GET_CATEGORY = "GET_CATEGORY";
 const GET_RANK = "GET_RANK";
 const GET_DDAY = "GET_DDAY";
 const DDAY = 'DDAY';
+const EDIT_NICK = 'EDIT_NICK'
 
 //Action Creators
 const getCategory = createAction(GET_CATEGORY, (armyCategory) => ({ armyCategory }));
 const getRank = createAction(GET_RANK, (rank) => ({ rank }));
 const getEndDay = createAction(GET_DDAY, (dday) => ({ dday }));
 const getDDay = createAction(DDAY, (endDate) => ({ endDate }));
+const editNick = createAction(EDIT_NICK, (nick) => ({ nick }));
 
 //Initial State
 const initialState = 
@@ -101,6 +103,25 @@ const getDDayDB = (id) => {
   };
 };
 
+const EditNickDB = (nick) => {
+  return function (dispatch,getState) {
+    axios({
+      method:'post',
+      url:'',
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    })
+    .then(() => {
+      const nick = getState().user.user.userNick;
+      dispatch(editNick(nick))
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+}
+}
+
 //Reducer
 export default handleActions(
     {
@@ -129,6 +150,7 @@ const ActionCreators = {
     getCategoryDB,
     getDDayDB,
     DdayDB,
+    EditNickDB,
 };
 
 export {ActionCreators};

@@ -14,7 +14,7 @@ const Navigation = ({ userId }) => {
           <HomeIcn
             src={homeIcn}
             onClick={() => {
-              history.push("/");
+              window.location.pathname = "/";
             }}
           />
           <P>홈</P>
@@ -31,7 +31,7 @@ const Navigation = ({ userId }) => {
         <Home>
           <MypageIcn
             src={mypageIcn}
-            onClick={(id) => {
+            onClick={() => {
               history.push(`/mypage/${userId}`);
               window.location.reload();
             }}

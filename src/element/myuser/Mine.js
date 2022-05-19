@@ -42,7 +42,8 @@ const Mine = (props) => {
           마이페이지
         </MyP>
         <WriteDiv onClick={() => {
-            history.push(`/myPage/userProfile/${userId}`);
+            // history.push(`/myPage/userProfile/${userId}`);
+            window.location.pathname = `/myPage/userProfile/${userId}`;
           }}>
           <Write />
         </WriteDiv>
