@@ -2,6 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
+import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
 const ADD_CHALLENGE = "ADD_CHALLENGE";
 const ADD_NUMBER ="ADD_NUMBER";
@@ -12,7 +13,7 @@ const initialState = {
   challenges: []
 }
 
-const addChallengeDB = (challenges) => {
+const addChallengeDB = (challenges, userId) => {
   return async function (dispatch) {
     try {
       await axios({
@@ -26,7 +27,10 @@ const addChallengeDB = (challenges) => {
         },
       }).then((response) => {
         const challengeId = response.data.challengeNum;
-        window.location.pathname = `/link/${challengeId}`;
+        dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
+        setTimeout(()=>{
+          window.location.pathname = `/link/${challengeId}`;
+        },500); 
       });
     } catch (err) {
       console.log(err);

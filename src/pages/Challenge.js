@@ -9,6 +9,7 @@ import Plan from "../component/challenge/Plan";
 
 const Challenge = () => {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.user.user.userId);
   const [step, setStep] = React.useState(0);
   const [title, setTitle] = React.useState("");
   const [participant, setParticipant] = React.useState("");
@@ -49,7 +50,8 @@ const Challenge = () => {
         challengeType: type,
         steps: steps,
       };
-      dispatch(challengeActions.addChallengeDB(newChallenge));
+      dispatch(challengeActions.addChallengeDB(newChallenge, userId));
+
     }
   };
 
@@ -105,7 +107,7 @@ const Container = styled.div`
   border: 2px solid #151419;
 `;
 const NextButton = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 375px;
   height: 80px;

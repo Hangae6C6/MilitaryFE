@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as searchActions } from "../redux/modules/search";
 import { ActionCreators as postActions } from "../redux/modules/main";
+import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
+
 import searchIcon from "../shared/icons/SearchIcon.png";
 import logo from "../shared/images/Hand-logo.png";
 import img from "../shared/images/workout.png";
@@ -20,19 +22,22 @@ const Nav = () => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
+  React.useEffect(() => {
+    dispatch(searchActions.searchDB(type));
+  },[dispatch, type])
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
   };
-
   const searchTypeHandler = (challengetype) => {
     dispatch(searchActions.searchDB(challengetype));
   }
-
   const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
 
+  const lists = cards.filter(cur => cur.challengeViewCnt > 0);
+  const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
   return (
     <Container>
       <div className="nav">
@@ -65,7 +70,7 @@ const Nav = () => {
         </div>
       </UpperBox>
       <MiddleBox>
-        {cards?.map((card, idx) => {
+        {list?.map((card, idx) => {
           return (
             <div
               id="card"
@@ -108,6 +113,7 @@ const Nav = () => {
 export default Nav;
 const Container = styled.div`
   display: block;
+  max-height: 100%;
   max-width: 375px;
   height: 100vh;
   width: 100%;

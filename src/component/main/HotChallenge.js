@@ -5,7 +5,7 @@ import img from "../../shared/images/workout.png"
 import { ActionCreators as postActions } from "../../redux/modules/main";
 import { ActionCreators as searchActions } from "../../redux/modules/search";
 
-const HotChallenge = ({cards}) => {
+const HotChallenge = ({cards, types}) => {
 const dispatch = useDispatch();
   const veiwCountHandlerInHot = (challengeId, challengeCnt) =>{
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
@@ -17,6 +17,7 @@ const dispatch = useDispatch();
     },0)
   }
 
+  
   const lists = cards.filter(cur => cur.challengeViewCnt > 0);
   const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
 
@@ -29,7 +30,7 @@ const dispatch = useDispatch();
         </div>
       </UpperBox>
       <MiddleBox>
-      {cards?.map((card, idx) => {
+      {list?.map((card, idx) => {
           return (
             <div
               id="card"

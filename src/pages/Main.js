@@ -17,8 +17,9 @@ const Main = () => {
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const myChallenges = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.joinlist_id
-  );
+    (state) => state.challengeDetail.userChallengeDetail.answer);
+
+  
   const userId = user.userId;
 
   const progressbar = useSelector(
@@ -73,7 +74,7 @@ const Main = () => {
       <div id="my-challenge">
         <p id="p">참여중 챌린지</p>
       </div>
-      <MyCallenge user={user} cards={cards} />
+      <MyCallenge user={user} cards={myChallenges} />
       <HotChallenge cards={cards} />
       <Navigation userId={userId} />
     </Container>

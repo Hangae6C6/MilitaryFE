@@ -43,7 +43,7 @@ const Navigation = ({ userId }) => {
   );
 };
 const Nav = styled.div`
-  margin: auto;
+  margin-top:82px
 
 `;
 

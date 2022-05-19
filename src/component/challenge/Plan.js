@@ -197,9 +197,7 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  overflow: auto;
-  max-height: 371px;
+ 
   max-width: 375px;
-  height: 100%;
   width: 100%;
 `;
