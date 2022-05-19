@@ -14,10 +14,10 @@ const Main = () => {
   const user = useSelector((state) => state.user.user);
   const userId = user.userId;
 
-  const score = "50%";
-  // = useSelector(
-  //   (state) => state.card.totalProgress.totalChallengeProgress
-  // );
+  const score = useSelector(
+    (state) => state.card.totalProgress.totalChallengeProgress
+  );
+
 
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
@@ -36,10 +36,10 @@ const Main = () => {
       </div>
       <div id="top-box">
         <div id="main-title"> {user.userNick} 병장님!</div>
-        <div id="sub-title">곧 있으면 절반을 달성하지 말입니다.</div>
+        <div id="sub-title"></div>
       </div>
       <ProgressBarWrap>
-        <div id="progressBar" width="50%"/>
+        <div id="progressBar" width={score + "%"} />
 
         <div id="icon">
           <img src={icon} alt="icon" />
@@ -51,7 +51,7 @@ const Main = () => {
       </div>
       <MyCallenge user={user} cards={cards} />
       <HotChallenge />
-      <Navigation />
+      <Navigation userId={userId}/>
     </Container>
   );
 };
@@ -118,7 +118,7 @@ const ProgressBarWrap = styled.div`
   #progressBar {
     margin-bottom: -3px;
     border: 1px solid blue;
-    width: ${props => props.width};
+    width: ${(props) => props.width};
     height: 20px;
     background-color: #151419;
   }

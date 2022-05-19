@@ -18,7 +18,7 @@ import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
 import KakaoAuth from "./socialLogin/KakaoAuth";
 import NaverAuth from "./socialLogin/NaverAuth";
-import Nav from "../component/Nav";
+import Search from "../pages/Search";
 import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
@@ -49,7 +49,7 @@ function App() {
             <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
             <Route exact path="/detail/chat/:challengeId" element={<Chat />}></Route>
             <Route exact path="/main/preTest" element={<BeginPage />}></Route>
-            <Route exact path="/search" element={<Nav />}></Route>
+            <Route exact path="/search" element={<Search />}></Route>
             <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
             <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>

@@ -26,7 +26,7 @@ const Navigation = ({userId}) => {
         <Mypage>
           <MypageIcn
             src={mypageIcn}
-            onClick={(id) => {
+            onClick={() => {
               history.push(`/mypage/${userId}`);
               window.location.reload();
             }}
