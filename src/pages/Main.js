@@ -60,9 +60,7 @@ const Main = () => {
 export default Main;
 const Container = styled.div`
   position: relative;
-  max-height: 100%;
   max-width: 375px;
-  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
   .nav {

@@ -69,7 +69,7 @@ const DdayDB = (id, dday) => {
   return function (dispatch) {
     axios({
       method: 'get',
-      url:`http://13.125.228.240//api/endDay?userId=${id}&endDate=${dday}`,
+      url:`http://13.125.228.240/api/endDay?userId=${id}&endDate=${dday}`,
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
