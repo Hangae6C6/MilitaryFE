@@ -10,11 +10,11 @@ const getSearch = createAction(GET_SEARCH, (challenges) => ({
 }));
 
 const initialState = {
-  challenges: []
+  challenges: [],
 };
 
 const searchDB = (keyword) => {
-  console.log(keyword)
+  console.log(keyword);
   return async function (dispatch, getState) {
     try {
       await axios({
@@ -34,7 +34,7 @@ export default handleActions(
   {
     [GET_SEARCH]: (state, action) =>
       produce(state, (draft) => {
-        draft.challenges.unshift(...action.payload.challenges.data) ;
+        draft.challenges = action.payload.challenges.data;
       }),
   },
   initialState

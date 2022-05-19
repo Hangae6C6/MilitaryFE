@@ -15,23 +15,20 @@ const Nav = () => {
   const [keyword, setKeyword] = React.useState("");
   const results = useSelector((state) => state.search.challenges);
   const cards = useSelector((state) => state.card.cards);
-  console.log(type)
   
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
-  React.useEffect(() => {
-    dispatch(searchActions.searchDB(type));
-  },[dispatch, type])
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
   };
+
   const searchTypeHandler = (challengetype) => {
-    
     dispatch(searchActions.searchDB(challengetype));
   }
+
   const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
@@ -111,7 +108,6 @@ const Nav = () => {
 export default Nav;
 const Container = styled.div`
   display: block;
-  max-height: 100%;
   max-width: 375px;
   height: 100vh;
   width: 100%;

@@ -17,9 +17,9 @@ const dispatch = useDispatch();
     },0)
   }
 
-  const list = cards.filter((card, idx) => {
-  
-  })
+  const lists = cards.filter(cur => cur.challengeViewCnt > 0);
+  const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
+
 
   return (
     <Container>
@@ -44,7 +44,7 @@ const dispatch = useDispatch();
         })}
       </MiddleBox>
       <LowerBox>
-      {cards && cards.map((result, idx) => (
+      {list && list.map((result, idx) => (
           <div id="box" key={result+idx}
           onClick={() => {
             veiwCountHandlerInHot(result.challengeNum, result.challengeCnt);

@@ -56,13 +56,18 @@ export default MyCallenge;
 const Container = styled.div`
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 378px;
+
 
   #box {
     text-align: center;
-    height: 159px;
-    width: 121px;
-    border: 2px solid #151419;
-    /* border-left: 1px solid #151419; */
+    height: 160px;
+    width: 125px;
+    border-right: 2px solid #151419;
+    border-bottom: 2px solid #151419;
+    margin-right: -2px;
     #type {
       #p {
         border: #151419 1px solid;
@@ -94,6 +99,8 @@ const Container = styled.div`
     cursor: pointer;
     &:hover {
       background-color: #1fb57e;
+      border-left: 2px solid #151419;
+      margin: 0 -2px 0 -2px;
       color: #151419;
       #title {
         color: #ffffff;
@@ -105,7 +112,7 @@ const AddButton = styled.div`
   height: 85px;
   border-bottom: 2px solid #151419;
   border-top: 2px solid #151419;
-
+  margin-top: -2px;
   #button {
     text-align: center;
     width: 100%;
@@ -115,7 +122,7 @@ const AddButton = styled.div`
     color: #151419;
     font-size: 24px;
     font-family: Gmarket SansBold;
-
+    
     cursor: pointer;
     &:hover {
       background-color: #151419;

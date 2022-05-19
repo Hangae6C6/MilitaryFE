@@ -9,9 +9,11 @@ import MyCallenge from "../component/main/MyCallenge";
 import HotChallenge from "../component/main/HotChallenge";
 import icon from "../shared/images/mainIcon.png";
 import logo from "../shared/images/Hand-logo.png";
+import { getCookie } from "../shared/cookie";
 
 const Main = () => {
   const dispatch = useDispatch();
+  const token = getCookie("token");
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const myChallenges = useSelector(
@@ -40,6 +42,14 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 
+  const testHandler = () => {
+    if (token) {
+      window.location.pathname = `/main/preTest/${userId}`;
+    }else{
+      window.location.pathname = '/login';
+    }
+  };
+
   return (
     <Container>
       <div className="nav">
@@ -48,6 +58,9 @@ const Main = () => {
       <div id="top-box">
         <div id="main-title"> {user.userNick} 병장님!</div>
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
+        <div id="test" onClick={testHandler}>
+          잠깐, 근데 니 내 누군지 아뉘?{" "}
+        </div>
       </div>
       <ProgressBarWrap>
         <div id="progressBar" width={score} />
@@ -82,6 +95,7 @@ const Container = styled.div`
     }
   }
   #top-box {
+    display: grid;
     background-color: #ede7d3;
     height: 221px;
     border-bottom: 2px solid #151419;
@@ -93,11 +107,20 @@ const Container = styled.div`
       font-family: Gmarket SansBold;
     }
     #sub-title {
-      margin: 22px;
-      height: 30px;
+      margin: -15px 0 0 15px;
+      height: 20px;
       font-size: 16px;
       color: #151419;
       font-family: Gmarket Sansmedium;
+    }
+    #test {
+      margin: -35px 0 0 15px;
+      height: 20px;
+      width: 300px;
+      font-size: 20px;
+      color: #1fb57e;
+      cursor: pointer;
+      font-family: Gmarket SansBold;
     }
   }
 
