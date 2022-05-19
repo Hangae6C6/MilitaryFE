@@ -230,7 +230,7 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 375px;
   height: 80px;

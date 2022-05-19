@@ -67,7 +67,8 @@ function App() {
 }
 
 const DivBox = styled.div`
-  margin: 0 40% 0 60%;
+margin: 0 auto;
+  /* margin: 0 40% 0 60%; */
   max-width: 375px;
   min-height: 100vh;
   width: 100%;
