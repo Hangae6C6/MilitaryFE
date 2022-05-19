@@ -56,7 +56,7 @@ const Main = () => {
       </div>
       <MyCallenge user={user} cards={cards}/>
       <HotChallenge />
-      <Navigation />
+      <Navigation userId={userId}/>
     </Container>
   );
 };

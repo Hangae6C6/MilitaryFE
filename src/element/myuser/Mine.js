@@ -13,24 +13,22 @@ import { first, second, third, fourth } from "../../image/index";
 //이미지/아이디/군종/닉네임/계급/계급딱지/디데이
 const Mine = (props) => {
   const dispatch = useDispatch();
-  // console.log(useSelector((state) => state));
   const userId = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
   const userNickForBinding = useSelector((state) => state.user.user.userNick);
-  console.log(useSelector((state) => state.mypage.armyCategory));
   const userCategoryForBinding = useSelector(
     (state) => state.mypage.armyCategory
   );
-  console.log(userCategoryForBinding);
   const userRankForBinding = useSelector((state) => state.mypage.rank);
-  const userEndDay = useSelector((state) => state.mypage);
-  console.log(userEndDay);
-
+  const userEndDay = useSelector((state) => state.mypage.dday);
+  const Dday = useSelector((state)=>state.mypage.endDate);
+  console.log(useSelector((state)=>state.mypage))
   React.useEffect(() => {
     if (userId && userId.length) {
       console.log(userId);
       dispatch(mypageAction.getRankDB(userId));
       dispatch(mypageAction.getCategoryDB(userId));
       dispatch(mypageAction.getDDayDB(userId));
+      dispatch(mypageAction.DdayDB(userId, userEndDay))
     }
   });
 
@@ -44,7 +42,8 @@ const Mine = (props) => {
           마이페이지
         </MyP>
         <WriteDiv onClick={() => {
-            history.push(`/myPage/userProfile/${userId}`);
+            // history.push(`/myPage/userProfile/${userId}`);
+            window.location.pathname = `/myPage/userProfile/${userId}`;
           }}>
           <Write />
         </WriteDiv>
@@ -54,7 +53,7 @@ const Mine = (props) => {
           <ProfImg />
         </ImgDiv> */}
         <PDiv>
-          {/* <Ddaydiv>D-{userDDayForBinding}</Ddaydiv> */}
+          <Ddaydiv>D-{Dday}</Ddaydiv>
           <NameDiv>
             <DivDiv>
               <P padding="0" margin="0">
