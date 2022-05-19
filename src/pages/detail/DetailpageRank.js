@@ -15,7 +15,7 @@ const DetailpageRank = () => {
   console.log(joinList);
 
   React.useEffect(() => {
-    dispatch(getUserChallengeActions.getUserChallengeDetailDB(challengeId));
+    dispatch(getUserChallengeActions.getChallengeDetailDB(challengeId));
   }, [dispatch, challengeId]);
 
   return (
