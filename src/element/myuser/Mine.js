@@ -59,7 +59,14 @@ const Mine = (props) => {
               <P padding="0" margin="0">
                 {userNickForBinding}
               </P>
-              <RankImg
+              
+            </DivDiv>
+          </NameDiv>
+          <ProfList>{userCategoryForBinding}</ProfList>
+        </PDiv>
+        {/* <ProfList>{userRankForBinding}</ProfList> */}
+        {/* <ProfList>{userId}</ProfList> */}
+<RankImg
                 src={
                   userRankForBinding === "이병"
                     ? first
@@ -70,14 +77,6 @@ const Mine = (props) => {
                     : fourth
                 }
               />
-            </DivDiv>
-          </NameDiv>
-          <ProfList>{userCategoryForBinding}</ProfList>
-        </PDiv>
-        {/* <ProfList>{userRankForBinding}</ProfList> */}
-        {/* <ProfList>{userId}</ProfList> */}
-
-        <RankDiv></RankDiv>
       </Wrap>
     </>
   );
@@ -166,10 +165,10 @@ const RankDiv = styled.div`
 
 const RankImg = styled.div`
   background-image: url("${(props) => props.src}");
-  width: 28px;
-  height: 34px;
+  width: 84px;
+  height: 102px;
   background-size: cover;
-  margin: 20px 0 0 10px;
+  margin: 20px 40px 0 0;
 `;
 
 export default Mine;

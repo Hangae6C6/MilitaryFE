@@ -19,7 +19,6 @@ const MyUser = () => {
     )
 }
 const Wrap = styled.div`
-height: 100vh;
   max-width: 375px;
   width: 100%;
   border: 2px solid #151419;
