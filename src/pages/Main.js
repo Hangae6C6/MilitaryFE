@@ -63,8 +63,8 @@ const Main = () => {
           잠깐, 근데 니 내 누군지 아뉘?{" "}
         </div>
       </div>
-      <ProgressBarWrap>
-        <div id="progressBar" width={score} />
+      <ProgressBarWrap width={score}>
+        <div id="progressBar"  />
 
         <div id="icon">
           <img src={icon} alt="icon" />
@@ -82,11 +82,14 @@ const Main = () => {
 };
 
 export default Main;
+
 const Container = styled.div`
+  overflow: hidden;
   position: relative;
   max-width: 375px;
   width: 100%;
   border: 2px solid #151419;
+ 
   .nav {
     width: 375px;
     height: 44px;

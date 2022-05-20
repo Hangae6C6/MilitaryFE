@@ -111,7 +111,7 @@ const LowerBox = styled.div`
   flex-wrap: wrap;
   justify-content: start;
   width: 378px;
-  max-height: 381px;
+
 
   #box {
     text-align: center;

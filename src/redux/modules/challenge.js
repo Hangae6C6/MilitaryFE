@@ -10,7 +10,11 @@ const ADD_NUMBER ="ADD_NUMBER";
 const addChallenge = createAction(GET_ONE_CHALLENGE, (challenge) => challenge);
 
 const initialState = {
-  challenges: []
+    challenges:{
+      challengeLimitNum: 0,
+      challengeCnt: 0,
+      steps: []
+    }
 }
 
 const addChallengeDB = (challenges, userId) => {
@@ -66,10 +70,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.challenges= action.payload.challenge;
       }),
-      [ADD_NUMBER]: (state, action) =>
-      produce(state, (draft) => {
-        draft.challengeId = action.payload;
-      }),
+      // [ADD_NUMBER]: (state, action) =>
+      // produce(state, (draft) => {
+      //   draft.challengeId = action.payload;
+      // }),
    
   },
   initialState

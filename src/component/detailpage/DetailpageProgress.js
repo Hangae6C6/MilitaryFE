@@ -15,12 +15,13 @@ const DetailpageProgress = ({
   const token = getCookie("token");
   const { challengeId } = useParams();
 
-  let totalStepNum = 0;
-  if (thisChallenge.steps) {
-    for (let i = 1; i <= thisChallenge.steps.length; i++) {
-      totalStepNum = i;
-    }
-  };
+  // let totalStepNum = 0;
+  //   for (let i = 1; i <= thisChallenge.steps.length; i++) {
+  //     totalStepNum = i;
+  //   }
+
+  let totalStepNum = thisChallenge.steps.length +1;
+
 
 
 

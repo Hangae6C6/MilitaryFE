@@ -56,6 +56,7 @@ const Wrap = styled.div`
   bottom: 0;
   z-index: 999;
   display: grid;
+  border-top: 2px solid #151419;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
