@@ -7,6 +7,7 @@ import { ReactComponent as Write } from "../../image/write.svg";
 import { ActionCreators as mypageAction } from "../../redux/modules/mypage";
 import user, { ActionCreators as userAction } from "../../redux/modules/user";
 import { history } from "../../redux/configureStore";
+import { Link } from "react-router-dom";
 
 import { first, second, third, fourth } from "../../image/index";
 
@@ -20,33 +21,32 @@ const Mine = (props) => {
   );
   const userRankForBinding = useSelector((state) => state.mypage.rank);
   const userEndDay = useSelector((state) => state.mypage.dday);
-  const Dday = useSelector((state)=>state.mypage.endDate);
-  console.log(useSelector((state)=>state.mypage))
+  const Dday = useSelector((state) => state.mypage.endDate);
+  console.log(useSelector((state) => state.mypage));
   React.useEffect(() => {
     if (userId && userId.length) {
       console.log(userId);
       dispatch(mypageAction.getRankDB(userId));
       dispatch(mypageAction.getCategoryDB(userId));
       dispatch(mypageAction.getDDayDB(userId));
-      dispatch(mypageAction.DdayDB(userId, userEndDay))
+      dispatch(mypageAction.DdayDB(userId, userEndDay));
     }
   });
 
   return (
     <>
       <MyPage>
-        <BackDiv onClick={()=>{history.back()}}>
+        <BackDiv
+          onClick={() => {
+            history.back();
+          }}
+        >
           <Back />
         </BackDiv>
-        <MyP>
-          마이페이지
-        </MyP>
-        <WriteDiv onClick={() => {
-            // history.push(`/myPage/userProfile/${userId}`);
-            window.location.pathname = `/myPage/userProfile/${userId}`;
-          }}>
+        <MyP>마이페이지</MyP>
+        <Link to={`/myPage/userProfile/${userId}`}>
           <Write />
-        </WriteDiv>
+        </Link>
       </MyPage>
       <Wrap>
         {/* <ImgDiv>
@@ -59,22 +59,23 @@ const Mine = (props) => {
               <P padding="0" margin="0">
                 {userNickForBinding}
               </P>
-              
             </DivDiv>
           </NameDiv>
-          <ProfList>{userCategoryForBinding} | {userRankForBinding}</ProfList>
+          <ProfList>
+            {userCategoryForBinding} | {userRankForBinding}
+          </ProfList>
         </PDiv>
-<RankImg
-                src={
-                  userRankForBinding === "이병"
-                    ? first
-                    : userRankForBinding === "일병"
-                    ? second
-                    : userRankForBinding === "상병"
-                    ? third
-                    : fourth
-                }
-              />
+        <RankImg
+          src={
+            userRankForBinding === "이병"
+              ? first
+              : userRankForBinding === "일병"
+              ? second
+              : userRankForBinding === "상병"
+              ? third
+              : fourth
+          }
+        />
       </Wrap>
     </>
   );

@@ -11,7 +11,6 @@ import { useDispatch } from "react-redux";
 const MyEdit = () => {
   const dispatch = useDispatch();
   let cookie = document.cookie;
-  console.log(cookie);
 
   const userId = useSelector((state) => state.user.user.userId);
   const [userNick, setUserNick] = useState(
@@ -30,8 +29,9 @@ const MyEdit = () => {
 
       return;
     }
-    dispatch(mypageAction.EditNickDB(userId));
-  }, [userNick]);
+    dispatch(mypageAction.EditNickDB(userId, userNick, userRank));
+    dispatch(mypageAction.getNickDB(userId));
+  }, [userNick, userId]);
 
   return (
     <Wrap>
@@ -47,6 +47,7 @@ const MyEdit = () => {
       <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
       <NickInput
         value={userNick}
+        placeholder={userNick}
         onChange={(e) => {
           setUserNick(e.target.value);
         }}
