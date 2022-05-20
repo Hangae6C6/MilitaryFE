@@ -18,18 +18,33 @@ const Detail = () => {
   let { challengeId } = useParams();
   const card = useSelector((state) => state.challenge.challenges);
   const userId = useSelector((state) => state.user.user.userId);
-  const myChallengeDetail = useSelector((state)=>state.challengeDetail.userChallengeDetail.answer);
-  const myChallengeStep = useSelector((state)=>state.challengeDetail.userChallengeDetail.joinlist_id);
-  const allUserDetail = useSelector((state)=>state.challengeDetail.challengeDetail);
+  const myChallengeDetail = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.answer
+  );
+  const myChallengeStep = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.joinlist_id
+  );
+
+  const allUserDetail = useSelector(
+    (state) => state.challengeDetail.challengeDetail
+  );
 
   const token = getCookie("token");
   const spots = card.challengeLimitNum - card.challengeCnt;
-  const steps = card.steps;
   const [isPart, setIsPart] = React.useState(false);
+  // myChallengeStep.filter((cur) => cur.challengeNum == challengeId);
+
+  if (myChallengeStep) {
+    for (let i = 0; i < myChallengeStep.length; i++) {
+      if (myChallengeStep[i].challengeNum == challengeId) {
+        var mySteps = myChallengeStep[i].steps;
+      }
+    }
+  }
 
   let endDate = card.challengeEndDate;
-  let endDay = new Date(endDate); 
-  let now = new Date(); 
+  let endDay = new Date(endDate);
+  let now = new Date();
   let distance = endDay - now;
   let dDay = Math.floor(distance / (1000 * 60 * 60 * 24));
 
@@ -44,13 +59,10 @@ const Detail = () => {
   }, [dispatch, challengeId]);
 
   const userChallengeDataHandler = () => {
-    console.log(userId, challengeId)
-    dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId))
-  }
-
-
-  
-
+    dispatch(
+      userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId)
+    );
+  };
 
   return (
     <Container>
@@ -102,8 +114,18 @@ const Detail = () => {
           <div id="Infodetail">남은 자리</div>
         </div>
       </ChallengeRoom>
-      <DetailpageProgress userId={userId} thisChallenge={card} myChallengeDetail={myChallengeDetail} myChallengeSteps={myChallengeStep} allUserDetail={allUserDetail}/>
-      <DetailpageStep steps={steps}/>
+      <DetailpageProgress
+        userId={userId}
+        thisChallenge={card}
+        myChallengeDetail={myChallengeDetail}
+        myChallengeStep={myChallengeStep}
+        allUserDetail={allUserDetail}
+      />
+      <DetailpageStep
+        challengeNum={challengeId}
+        userId={userId}
+        steps={mySteps}
+      />
       {!token ? (
         <NextButton
           onClick={() => {
@@ -115,14 +137,13 @@ const Detail = () => {
       ) : (
         <NextButton
           onClick={() => {
-            userChallengeDataHandler()
+            userChallengeDataHandler();
             // window.location.pathname = `/detail/chat/${challengeId}`;
           }}
         >
           참여하기
         </NextButton>
       )}
-   
     </Container>
   );
 };
@@ -165,7 +186,7 @@ const TitleBox = styled.div`
   height: 159px;
   display: flex;
   border-bottom: 2px solid #151419;
-  
+
   #title {
     width: 242px;
     height: 159px;
@@ -193,7 +214,6 @@ const TitleBox = styled.div`
         line-height: 30px;
         margin-left: 60px;
       }
-  
     }
   }
 
@@ -256,5 +276,3 @@ const NextButton = styled.button`
     background-color: #151419;
   }
 `;
-
-  

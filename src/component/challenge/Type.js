@@ -59,7 +59,7 @@ const Type = ({ onBack, onTypeChange }) => {
         ></textarea>
       </div>
       <Boxes>
-        {types && types.map((cur, i) => (
+        {types.map((cur, i) => (
           <div
             className={cur.isChecked ? "checked" : "unChecked"}
             key={cur.type + i}

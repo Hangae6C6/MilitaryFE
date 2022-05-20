@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Meter } from "grommet";
 import { useParams } from "react-router-dom";
 import { getCookie } from "../../shared/cookie";
-import { useDispatch, useSelector } from "react-redux";
+import rightArrow from "../../shared/icons/right_arrow.png";
 
 const DetailpageProgress = ({
   userId,
@@ -14,16 +14,23 @@ const DetailpageProgress = ({
 }) => {
   const token = getCookie("token");
   const { challengeId } = useParams();
+  let totalStepNum = thisChallenge.steps.length;
 
-  // let totalStepNum = 0;
-  //   for (let i = 1; i <= thisChallenge.steps.length; i++) {
-  //     totalStepNum = i;
-  //   }
+  let myStep = "";
+    for (let i = 0; i < myChallengeStep.length; i++) {
+      if (myChallengeStep[i].challengeNum == challengeId) {
+        myStep = myChallengeStep[i].steps;
+      }
+    }
 
-  let totalStepNum = thisChallenge.steps.length +1;
+  let checkedStep = 0;
+  for (let i = 0; i < myStep.length; i++) {
+    if (myStep[i].isChecked === true) {
+      checkedStep += 1;
+    }
+  }
 
-
-
+  let progressScore = (checkedStep / totalStepNum) * 100;
 
   return (
     <>
@@ -52,12 +59,15 @@ const DetailpageProgress = ({
                 type="bar"
                 background="#FAFAFA"
                 color="#1FB57E"
-                value={40}
+                value={50}
               />
             </div>
             <div id="secBox">
               <p>순위</p>
-              <p>1/6</p>
+              <p>
+                랭킹보러가기
+                <img src={rightArrow} alt="rightArrow" />{" "}
+              </p>
             </div>
           </Container>
         </>
@@ -69,7 +79,7 @@ const DetailpageProgress = ({
         >
           <div id="firstBox">
             <div id="stepNum">
-              <p style={{ color: "#1FB57E" }}>07</p>
+              <p style={{ color: "#1FB57E" }}>{checkedStep}</p>
               <p>/{totalStepNum}</p>
             </div>
             <div id="myRank">1st</div>
@@ -82,12 +92,18 @@ const DetailpageProgress = ({
               type="bar"
               background="#FAFAFA"
               color="#1FB57E"
-              value={40}
+              value={progressScore}
             />
           </div>
           <div id="secBox">
-            <p>순위</p>
-            <p>1/6</p>
+            <p id="p">랭킹보러가기 </p>
+            <img
+              id="i"
+              src={rightArrow}
+              alt="rightArrow"
+              withe="20px"
+              height="20px"
+            />
           </div>
         </Container>
       )}
@@ -134,6 +150,14 @@ const Container = styled.div`
     justify-content: space-between;
     color: #151419;
     font-family: Gmarket SansMedium;
+    #p {
+      margin-left: 175px;
+    }
+    #i {
+      width: 20px;
+      height: 20px;
+      margin-top: 15px;
+    }
   }
   &:hover {
     cursor: ${(props) => (props.primary ? 0 : "pointer")};
@@ -147,6 +171,9 @@ const Container = styled.div`
     }
     #secBox {
       color: ${(props) => (props.primary ? 0 : "white")};
+    }
+    #i{
+     color: ${(props) => (props.primary ? 0 : "white")};
     }
   }
 `;

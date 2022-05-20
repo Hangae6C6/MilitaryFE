@@ -13,7 +13,7 @@ const MyCallenge = ({ user, cards }) => {
   return (
     <>
       <Container>
-        {cards?.map((card, idx) => {
+        {cards.map((card, idx) => {
           return (
             <div
               id="box"

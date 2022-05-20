@@ -2,20 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import "./DetailFont.css";
+import { ActionCreators as detailActions } from "../../redux/modules/detail";
 
-const DetailpageStep = ({ steps }) => {
+const DetailpageStep = ({ challengeNum, userId, steps }) => {
 const dispatch = useDispatch();
   const checkedHandler = (stepNumber) => {
-    // dispatch()
-  };
+    dispatch(detailActions.changeMyStepDB(challengeNum, userId, stepNumber));
+  }; 
 
   return (
     <ChallengeName>
       <div id="top">
         <div id="title">느리게 살기 챌린지</div>
       </div>
-      {steps &&
-        steps.map((step, idx) => (
+      {steps && steps.map((step, idx) => (
           <Astep key={step+idx}>
             <div id="idx-num">{step.stepNum}</div>
             <div id="stepTitle">{step.stepContent}</div>

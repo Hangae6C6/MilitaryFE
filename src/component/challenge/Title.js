@@ -64,6 +64,7 @@ const Container = styled.div`
     height: 44px;
     width: 100%;
     border-bottom: 2px solid #151419;
+    
   }
   .progressBar {
     height: 67px;

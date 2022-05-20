@@ -5,7 +5,7 @@ import { getCookie } from "../../shared/cookie";
 
 const GET_USER_DETAIL = "GET_USER_DETAIL";
 const GET_ALL_USER_STEPS = "GET_ALL_USER_STEPS";
-
+const EDIT_STEP = "EDIT_STEP";
 
 const getUserChallengeDetail = createAction(GET_USER_DETAIL, (challenges) => ({
   challenges,
@@ -13,40 +13,73 @@ const getUserChallengeDetail = createAction(GET_USER_DETAIL, (challenges) => ({
 const getChallengeDetail = createAction(GET_ALL_USER_STEPS, (challenges) => ({
   challenges,
 }));
+const editStepDetail = createAction(EDIT_STEP, (challenges) => ({
+  challenges,
+}));
 
 const initialState = {
-  userChallengeDetail: [{
-    answer: [{
-      challengeCnt: 0,
-      challengeEndDate:"",
-      challengeLimitNum: 0,
-      challengeNum: 0,
-      challengeProgress: "",
-      challengeTitle:"",
-      challengeType: "",
-      challengeViewCnt: 0,
-      steps: [{
-        stepNum: 0,
-        isChecked:false,
-        stepContent:"",
-      },]
-    },],
-    joinlist_id: [{
-      challengeNum: "",
-      userId:"",
-      steps:[{
-        stepNum: 0,
-        isChecked:false,
-        stepContent:"",
-      },]
-    },],
+  userChallengeDetail: {
+    answer: [
+      {
+        challengeCnt: 0,
+        challengeEndDate: "",
+        challengeLimitNum: "",
+        challengeNum: 0,
+        challengeProgress: "",
+        challengeTitle: "",
+        challengeType: "",
+        challengeViewCnt: 0,
+        steps: [
+          {
+            stepNum: 0,
+            isChecked: false,
+            stepContent: "",
+          },
+        ],
+      },
+    ],
+    joinlist_id: [
+      {
+        challengeNum: "",
 
-  }],
-  challengeDetail:[{
-    Users: [],
-    steps: [],
-  }]
+        steps: [
+          {
+            stepNum: 0,
+            isChecked: false,
+            stepContent: "",
+          },
+        ],
+        userId: "",
+      },
+    ],
+    usernicklist1: "",
+  },
+  challengeDetail: [
+    {
+      Users: [],
+      steps: [],
+    },
+  ],
 };
+const changeMyStepDB = (challengeNum, userId, stepNum) => {
+  return async function (dispatch, getState) {
+    try {
+      await axios({
+        method: "post",
+        url: `http://13.125.228.240/api/challengeStep?stepNum=${stepNum}&challengeNum=${challengeNum}&userId=${userId}`,
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        dispatch(editStepDetail(response.data.challengeJoin));
+        
+      });
+    } catch (err) {
+      console.log(err, "changeMyStep POST 요청 실패");
+    }
+  };
+};
+
 
 const postUserChallengeDetailDB = (userId, challengeId) => {
   return async function (dispatch, getState) {
@@ -102,26 +135,29 @@ const getUserChallengeDetailDB = (userId) => {
   };
 };
 
-
 export default handleActions(
   {
     [GET_USER_DETAIL]: (state, action) =>
       produce(state, (draft) => {
         draft.userChallengeDetail = action.payload.challenges;
       }),
-      [GET_ALL_USER_STEPS]: (state, action) =>
+    [GET_ALL_USER_STEPS]: (state, action) =>
       produce(state, (draft) => {
         draft.challengeDetail = action.payload.challenges.joinlist_challengeNum;
       }),
-
+      [EDIT_STEP]: (state, action) =>
+      produce(state, (draft) => {
+        draft.userChallengeDetail.joinlist_id = [action.payload.challenges];
+      }),
   },
   initialState
 );
 
 const ActionCreators = {
-postUserChallengeDetailDB,
-getUserChallengeDetailDB,
-getChallengeDetailDB,
+  changeMyStepDB,
+  postUserChallengeDetailDB,
+  getUserChallengeDetailDB,
+  getChallengeDetailDB,
 };
 
 export { ActionCreators };

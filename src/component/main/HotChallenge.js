@@ -30,7 +30,7 @@ const dispatch = useDispatch();
         </div>
       </UpperBox>
       <MiddleBox>
-      {list?.map((card, idx) => {
+      {list.map((card, idx) => {
           return (
             <div
               id="card"
@@ -45,7 +45,7 @@ const dispatch = useDispatch();
         })}
       </MiddleBox>
       <LowerBox>
-      {list && list.map((result, idx) => (
+      {list.map((result, idx) => (
           <div id="box" key={result+idx}
           onClick={() => {
             veiwCountHandlerInHot(result.challengeNum, result.challengeCnt);

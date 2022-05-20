@@ -70,7 +70,7 @@ const Nav = () => {
         </div>
       </UpperBox>
       <MiddleBox>
-        {list?.map((card, idx) => {
+        {list.map((card, idx) => {
           return (
             <div
               id="card"

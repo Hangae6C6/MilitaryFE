@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { history } from "../../redux/configureStore";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
+import rank3 from "../../shared/icons/rank3_small.png";
 const DetailpageRank = () => {
   const dispatch = useDispatch();
   const { challengeId } = useParams();
   const joinList = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.joinlist
-  );
-  console.log(joinList);
+    (state) => state.challengeDetail.challengeDetail);
+
+
 
   React.useEffect(() => {
     dispatch(getUserChallengeActions.getChallengeDetailDB(challengeId));
@@ -39,18 +39,18 @@ const DetailpageRank = () => {
         <div id="top">
           <div id="title">챌린지 달성 순위</div>
         </div>
-        <Astep>
-          <div id="stepTitle">이범규</div>
-          <div id="checkBox"></div>
+        {joinList.map((cur,idx)=> (
+          
+          <Astep>
+          <div id="progressBar">
+            <div id="rank">1</div>
+            <div id="stepTitle">{cur.userId}</div>
+            <img src={rank3} alt="rank" id="icon" width="28" height="36" />
+            <div id="stepDone">5</div>
+          </div>
         </Astep>
-        <Astep>
-          <div id="stepTitle">신용재</div>
-          <div id="checkBox"></div>
-        </Astep>
-        <Astep>
-          <div id="stepTitle">이국주</div>
-          <div id="checkBox"></div>
-        </Astep>
+        ))}
+        
       </ChallengeName>
 
       <NextButton
@@ -77,6 +77,7 @@ const Container = styled.div`
   .nav {
     width: 375px;
     height: 44px;
+    background-color: #151419;
   }
   .top {
     height: 69px;
@@ -111,10 +112,21 @@ const ChallengeName = styled.div`
 `;
 
 const Astep = styled.div`
+  background-color: #ffffff;
   width: 375px;
-  height: 62px;
+  height: ${props => props.width};
   border-bottom: 2px solid #151419;
+  #progressBar{
+    background-color: #1FB57E;
+    width: 375px;
+  height: 62px;
   display: flex;
+
+ #rank {
+    margin: 20px 0 0 39px;
+    font-size: 18px;
+    font-family: Gmarket SansBold;
+  }
   #stepTitle {
     font-family: NanumSquareMedium;
     color: #151419;
@@ -123,21 +135,22 @@ const Astep = styled.div`
     height: 22px;
     margin: 20px 0 0 26px;
   }
-  #checkBox {
+  #icon {
+    margin: 13px 30px 0 0;
+  }
+  #stepDone {
     width: 22px;
     height: 22px;
     margin: 20px 20px 0 10px;
-    border: 1px solid #151419;
-    &:hover {
-      cursor: pointer;
-      background-color: #151419;
-    }
   }
+
+  }
+ 
 `;
 
 const NextButton = styled.button`
-  position: table-row;
-  bottom: 29mm;
+  position: relative;
+  bottom: 0;
   width: 375px;
   height: 80px;
   border: none;
@@ -147,7 +160,6 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  border-bottom: 2px solid #151419;
   &:hover {
     cursor: pointer;
     background-color: #151419;
