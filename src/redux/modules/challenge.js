@@ -5,14 +5,19 @@ import { getCookie } from "../../shared/cookie";
 import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
 const GET_ONE_CHALLENGE = "GET_ONE_CHALLENGE";
-const ADD_NUMBER ="ADD_NUMBER";
 
 const addChallenge = createAction(GET_ONE_CHALLENGE, (challenge) => challenge);
 
 const initialState = {
     challenges:{
-      challengeLimitNum: 0,
       challengeCnt: 0,
+      challengeEndDate:"",
+      challengeLimitNum: 0,
+      challengeNum: 0,
+      challengeProgress: "",
+      challengeTitle:"",
+      challengeType: "",
+      challengeViewCnt: 0,
       steps: []
     }
 }

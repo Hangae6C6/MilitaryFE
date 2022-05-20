@@ -14,8 +14,25 @@ const getProgress = createAction(GET_PROGRESS, (totalProgress) => ({
 }));
 
 const initialState = {
-  cards: [],
-  totalProgress: {},
+  cards: [{
+    challengeCnt: 0,
+    challengeEndDate:"",
+    challengeLimitNum: 0,
+    challengeNum: 0,
+    challengeProgress: "",
+    challengeTitle:"",
+    challengeType: "",
+    challengeViewCnt: 0,
+    steps: [{
+      stepNum: 0,
+      isChecked:false,
+      stepContent:"",
+    },]
+  },],
+  totalProgress: {
+    totalChallengeProgress:0,
+    userId: "",
+  },
 };
 
 const getPostDB = () => {

@@ -17,8 +17,8 @@ const initialState = {
     userId: "",
     userPw: "",
     userNick: "",
-    is_login: false,
   },
+  is_login: false,
 };
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {

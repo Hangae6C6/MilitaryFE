@@ -15,8 +15,37 @@ const getChallengeDetail = createAction(GET_ALL_USER_STEPS, (challenges) => ({
 }));
 
 const initialState = {
-  userChallengeDetail: [],
-  challengeDetail:[]
+  userChallengeDetail: [{
+    answer: [{
+      challengeCnt: 0,
+      challengeEndDate:"",
+      challengeLimitNum: 0,
+      challengeNum: 0,
+      challengeProgress: "",
+      challengeTitle:"",
+      challengeType: "",
+      challengeViewCnt: 0,
+      steps: [{
+        stepNum: 0,
+        isChecked:false,
+        stepContent:"",
+      },]
+    },],
+    joinlist_id: [{
+      challengeNum: "",
+      userId:"",
+      steps:[{
+        stepNum: 0,
+        isChecked:false,
+        stepContent:"",
+      },]
+    },],
+
+  }],
+  challengeDetail:[{
+    Users: [],
+    steps: [],
+  }]
 };
 
 const postUserChallengeDetailDB = (userId, challengeId) => {

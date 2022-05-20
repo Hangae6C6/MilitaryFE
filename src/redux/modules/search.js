@@ -10,7 +10,21 @@ const getSearch = createAction(GET_SEARCH, (challenges) => ({
 }));
 
 const initialState = {
-  challenges: [],
+  challenges: [{
+    challengeCnt: 0,
+    challengeEndDate:"",
+    challengeLimitNum: 0,
+    challengeNum: 0,
+    challengeProgress: "",
+    challengeTitle:"",
+    challengeType: "",
+    challengeViewCnt: 0,
+    steps: [{
+      stepNum: 0,
+      isChecked:false,
+      stepContent:"",
+    },]
+  },],
 };
 
 const searchDB = (keyword) => {
