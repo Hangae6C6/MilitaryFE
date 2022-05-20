@@ -62,10 +62,8 @@ const Mine = (props) => {
               
             </DivDiv>
           </NameDiv>
-          <ProfList>{userCategoryForBinding}</ProfList>
+          <ProfList>{userCategoryForBinding} | {userRankForBinding}</ProfList>
         </PDiv>
-        {/* <ProfList>{userRankForBinding}</ProfList> */}
-        {/* <ProfList>{userId}</ProfList> */}
 <RankImg
                 src={
                   userRankForBinding === "이병"
@@ -142,6 +140,7 @@ const Ddaydiv = styled.div`
 const ProfList = styled.p`
   margin: 5px;
   text-align: left;
+  font-weight: 600;
 `;
 
 const NameDiv = styled.div`
