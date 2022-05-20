@@ -94,7 +94,6 @@ const getDDayDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res)
         dispatch(getEndDay(res.data.userdata.endDate));
       })
       .catch((err) => {

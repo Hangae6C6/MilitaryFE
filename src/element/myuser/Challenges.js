@@ -7,11 +7,9 @@ import { ActionCreators as getUserChallengeActions } from "../../redux/modules/d
 const Challenges = () => {
   const dispatch = useDispatch();
   const {id} = useParams();
-  console.log(id)
   const ChalList = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.answer
   );
-  console.log(ChalList);
 
   React.useEffect(() => {
     dispatch(getUserChallengeActions.getUserChallengeDetailDB(id));
