@@ -3,14 +3,20 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
 
-const GET_DETAIL = "GET_DETAIL";
+const GET_USER_DETAIL = "GET_USER_DETAIL";
+const GET_ALL_USER_STEPS = "GET_ALL_USER_STEPS";
 
-const getChallengeDetail = createAction(GET_DETAIL, (challenges) => ({
+
+const getUserChallengeDetail = createAction(GET_USER_DETAIL, (challenges) => ({
+  challenges,
+}));
+const getChallengeDetail = createAction(GET_ALL_USER_STEPS, (challenges) => ({
   challenges,
 }));
 
 const initialState = {
-  userChallengeDetail: []
+  userChallengeDetail: [],
+  challengeDetail:[]
 };
 
 const postUserChallengeDetailDB = (userId, challengeId) => {
@@ -26,8 +32,7 @@ const postUserChallengeDetailDB = (userId, challengeId) => {
         dispatch(getChallengeDetail(response.data));
       });
     } catch (err) {
-      console.log(err);
-      window.alert("challengeDetail GET 요청 실패");
+      console.log(err, "challengeDetail POST 요청 실패");
     }
   };
 };
@@ -45,8 +50,7 @@ const getChallengeDetailDB = (challengeId) => {
         dispatch(getChallengeDetail(response.data));
       });
     } catch (err) {
-      console.log(err);
-      window.alert("challengeDetail challengeNum GET 요청 실패");
+      console.log(err, "challengeDetail challengeNum GET 요청 실패");
     }
   };
 };
@@ -61,11 +65,10 @@ const getUserChallengeDetailDB = (userId) => {
           Authorization: `Bearer ${getCookie("token")}`,
         },
       }).then((response) => {
-        dispatch(getChallengeDetail(response.data));
+        dispatch(getUserChallengeDetail(response.data));
       });
     } catch (err) {
-      console.log(err);
-      window.alert("challengeDetailj userId로 GET 요청 실패");
+      console.log(err, "challengeDetail userId로 GET 요청 실패");
     }
   };
 };
@@ -73,9 +76,13 @@ const getUserChallengeDetailDB = (userId) => {
 
 export default handleActions(
   {
-    [GET_DETAIL]: (state, action) =>
+    [GET_USER_DETAIL]: (state, action) =>
       produce(state, (draft) => {
         draft.userChallengeDetail = action.payload.challenges;
+      }),
+      [GET_ALL_USER_STEPS]: (state, action) =>
+      produce(state, (draft) => {
+        draft.challengeDetail = action.payload.challenges.joinlist_challengeNum;
       }),
 
   },

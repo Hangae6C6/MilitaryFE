@@ -17,8 +17,11 @@ const Detail = () => {
   const dispatch = useDispatch();
   let { challengeId } = useParams();
   const card = useSelector((state) => state.challenge.challenges);
-  const user = useSelector((state) => state.user.user);
-  const userId = user.userId;
+  const userId = useSelector((state) => state.user.user.userId);
+  const myChallengeDetail = useSelector((state)=>state.challengeDetail.userChallengeDetail.answer);
+  const myChallengeStep = useSelector((state)=>state.challengeDetail.userChallengeDetail.joinlist_id);
+  const allUserDetail = useSelector((state)=>state.challengeDetail.challengeDetail);
+
   const token = getCookie("token");
   const spots = card.challengeLimitNum - card.challengeCnt;
   const steps = card.steps;
@@ -31,13 +34,20 @@ const Detail = () => {
   let dDay = Math.floor(distance / (1000 * 60 * 60 * 24));
 
   React.useEffect(() => {
-    dispatch(challengeActions.getChallengeDetailDB(challengeId));
+    dispatch(challengeActions.getOneChallengeDetailDB(challengeId));
+  }, [dispatch, challengeId]);
+  React.useEffect(() => {
+    dispatch(userChallengeDataActions.getUserChallengeDetailDB(userId));
+  }, [dispatch, userId]);
+  React.useEffect(() => {
+    dispatch(userChallengeDataActions.getChallengeDetailDB(challengeId));
   }, [dispatch, challengeId]);
 
   const userChallengeDataHandler = () => {
     console.log(userId, challengeId)
     dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId))
   }
+
 
   
 
@@ -92,7 +102,7 @@ const Detail = () => {
           <div id="Infodetail">남은 자리</div>
         </div>
       </ChallengeRoom>
-      <DetailpageProgress   />
+      <DetailpageProgress userId={userId} thisChallenge={card} myChallengeDetail={myChallengeDetail} myChallengeSteps={myChallengeStep} allUserDetail={allUserDetail}/>
       <DetailpageStep steps={steps}/>
       {!token ? (
         <NextButton
@@ -121,9 +131,8 @@ export default Detail;
 
 const Container = styled.div`
   display: block;
-  max-height: 100%;
   max-width: 375px;
-  height: 100vh;
+  height: fit-content;
   width: 100%;
   border: 2px solid #151419;
   position: relative;
@@ -230,7 +239,7 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 375px;
   height: 80px;
@@ -241,7 +250,7 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #b2b2b2;
-  border-top: 2px solid #151419;
+  /* border-top: 2px solid #151419; */
   &:hover {
     cursor: pointer;
     background-color: #151419;

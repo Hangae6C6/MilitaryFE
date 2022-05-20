@@ -5,10 +5,25 @@ import { useParams } from "react-router-dom";
 import { getCookie } from "../../shared/cookie";
 import { useDispatch, useSelector } from "react-redux";
 
-const DetailpageProgress = () => {
+const DetailpageProgress = ({
+  userId,
+  thisChallenge,
+  myChallengeDetail,
+  myChallengeStep,
+  allUserDetail,
+}) => {
   const token = getCookie("token");
   const { challengeId } = useParams();
-  
+
+  let totalStepNum = 0;
+  if (thisChallenge.steps) {
+    for (let i = 1; i <= thisChallenge.steps.length; i++) {
+      totalStepNum = i;
+    }
+  };
+
+
+
   return (
     <>
       {!token ? (
@@ -54,7 +69,7 @@ const DetailpageProgress = () => {
           <div id="firstBox">
             <div id="stepNum">
               <p style={{ color: "#1FB57E" }}>07</p>
-              <p>/08</p>
+              <p>/{totalStepNum}</p>
             </div>
             <div id="myRank">1st</div>
           </div>

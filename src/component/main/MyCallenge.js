@@ -27,7 +27,8 @@ const MyCallenge = ({ user, cards }) => {
                 <p id="p">{card.challengeType}</p>
               </div>
               <div id="title">{card.challengeTitle}</div>
-              <div id="count">{card.challengeCnt}명 참여중</div>
+              <div id="count">참가인원 {card.challengeCnt}</div>
+              <div id="viewCnt">조회수 {card.challengeViewCnt}</div>
             </div>
           );
         })}
@@ -87,14 +88,21 @@ const Container = styled.div`
       color: #1fb57e;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 10px 0 0 2px;
+      margin: 7px 0 0 2px;
       overflow: hidden;
     }
     #count {
       font-size: 14px;
       color: #151419;
       font-family: Gmarket SansMedium;
-      margin: 5px 0 0 3px;
+      margin: 2px 0 0 3px;
+  
+    }
+    #viewCnt {
+      font-size: 14px;
+      color: #151419;
+      font-family: Gmarket SansMedium;
+      margin: 3px 0 0 3px;
     }
     cursor: pointer;
     &:hover {

@@ -4,10 +4,10 @@ import axios from "axios";
 import { getCookie } from "../../shared/cookie";
 import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
-const ADD_CHALLENGE = "ADD_CHALLENGE";
+const GET_ONE_CHALLENGE = "GET_ONE_CHALLENGE";
 const ADD_NUMBER ="ADD_NUMBER";
 
-const addChallenge = createAction(ADD_CHALLENGE, (challenge) => challenge);
+const addChallenge = createAction(GET_ONE_CHALLENGE, (challenge) => challenge);
 
 const initialState = {
   challenges: []
@@ -39,7 +39,7 @@ const addChallengeDB = (challenges, userId) => {
   };
 };
 
-const getChallengeDetailDB = (challengeNum) => {
+const getOneChallengeDetailDB = (challengeNum) => {
   return async function (dispatch, getState) {
     try {
       await axios({
@@ -62,7 +62,7 @@ const getChallengeDetailDB = (challengeNum) => {
 
 export default handleActions(
   {
-    [ADD_CHALLENGE]: (state, action) =>
+    [GET_ONE_CHALLENGE]: (state, action) =>
       produce(state, (draft) => {
         draft.challenges= action.payload.challenge;
       }),
@@ -77,7 +77,7 @@ export default handleActions(
 
 const ActionCreators = {
   addChallengeDB,
- getChallengeDetailDB,
+ getOneChallengeDetailDB,
 
 };
 

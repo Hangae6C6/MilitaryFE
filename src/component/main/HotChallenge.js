@@ -50,12 +50,13 @@ const dispatch = useDispatch();
           onClick={() => {
             veiwCountHandlerInHot(result.challengeNum, result.challengeCnt);
           }}>
-          <img src={img} alt="img" height="52px" width="52px" />
+          <img src={img} alt="img" height="64px" width="64px" />
           <div id="type">
             <p id="p">{result.challengeType}</p>
           </div>
           <div id="title">{result.challengeTitle}</div>
-          <div id="count">{result.challengeCnt}명 참여중</div>
+          <div id="count">참가인원 {result.challengeCnt}</div>
+          <div id="viewCnt">조회수 {result.challengeViewCnt}</div>
         </div>
 
         ))}
@@ -114,7 +115,7 @@ const LowerBox = styled.div`
 
   #box {
     text-align: center;
-    height: 130px;
+    height: 160px;
     width: 125px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
@@ -134,29 +135,33 @@ const LowerBox = styled.div`
     }
     #title {
       width: 120px;
-      height: 30px;
+      height: 20px;
       font-size: 16px;
-      color: #1fb57e;
+      color: #b62323;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 10px 0 0 2px;
+      margin: 7px 0 0 2px;
       overflow: hidden;
     }
     #count {
       font-size: 14px;
       color: #151419;
       font-family: Gmarket SansMedium;
-      margin: -10px 0 0 3px;
+      margin: 2px 0 0 3px;
   
     }
+    #viewCnt {
+      font-size: 14px;
+      color: #151419;
+      font-family: Gmarket SansMedium;
+      margin: 3px 0 0 3px;
+    }
     &:hover {
-      background-color: #1fb57e;
+      background-color: #ede7d3;
       border-left: 2px solid #151419;
       margin: 0 -2px 0 -2px;
       color: #151419;
-      #title {
-        color: #ffffff;
-      }
+     
     }
   }
 `;
