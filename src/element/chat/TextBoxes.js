@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import moment from "moment";
-import ScrollToBottom from "react-scroll-to-bottom";
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 const TextBoxes = ({ setRoom, socket, userName, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");

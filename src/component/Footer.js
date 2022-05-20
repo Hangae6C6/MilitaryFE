@@ -15,7 +15,7 @@ const Footer = () => {
 const Wrap = styled.div`
   width: 100%;
   height: 100px;
-  background-color: whitesmoke;
+  background-color: #ede7d3;
   align-items: center;
   padding: 0;
 margin: 0;

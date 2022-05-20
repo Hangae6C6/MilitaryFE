@@ -3,7 +3,6 @@ import styled from "styled-components";
 import homeIcn from "../shared/icons/Home.svg";
 import searchIcn from "../shared/icons/Search.svg";
 import mypageIcn from "../shared/icons/Mypage.svg";
-
 import { history } from "../redux/configureStore";
 
 const Navigation = ({ userId }) => {
