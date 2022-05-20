@@ -137,7 +137,7 @@ export default SignUp;
 
 const Container = styled.div`
   display: block;
-  max-width: 375px;
+  position: relative;
   height: 100vh;
   width: 100%;
   border: 2px solid #151419;
@@ -198,8 +198,8 @@ const LoginInput = styled.input`
 `;
 
 const NextButton = styled.button`
-  position: absolute;
-  bottom: 21.2mm;
+  position: fixed;
+  bottom: 0;
   width: 375px;
   height: 80px;
   border: none;

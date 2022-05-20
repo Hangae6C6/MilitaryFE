@@ -29,7 +29,7 @@ const SignupDone = () => {
 export default SignupDone;
 
 const Container = styled.div`
-height: 100vh;
+  height: 100vh;
   max-width: 375px;
   width: 100%;
   border: 4px solid #151419;
@@ -80,8 +80,8 @@ height: 100vh;
 `;
 
 const NextButton = styled.button`
-  position: absolute;
-  bottom: 20.7mm;
+  position: fixed;
+  bottom: 0;
   width: 375px;
   height: 80px;
   border: none;
