@@ -18,7 +18,7 @@ const dispatch = useDispatch();
       {steps && steps.map((step, idx) => (
           <Astep key={step+idx}>
             <div id="idx-num">{step.stepNum}</div>
-            <div id="stepTitle">{step.stepContent}</div>
+            <div id={step.isChecked ? "checkedTitle" : "stepTitle"}>{step.stepContent}</div>
             <div
               id={step.isChecked ? "checkedBox" : "emptyBox"}
               onClick={() => {
@@ -64,6 +64,15 @@ const Astep = styled.div`
   }
   #stepTitle {
     font-family: NanumSquareMedium;
+    color: #151419;
+    font-size: 16px;
+    width: 280px;
+    height: 22px;
+    margin: 20px 0 0 26px;
+  }
+  #checkedTitle {
+    font-family: NanumSquareMedium;
+    text-decoration: line-through;
     color: #151419;
     font-size: 16px;
     width: 280px;
