@@ -22,7 +22,7 @@ const Challenges = () => {
         {ChalList?.map((chal, idx) => 
         <ChalLi key={idx}>
             <Title>{chal.challengeTitle}</Title>
-            <Progress>{chal.challengeProgress}</Progress>
+            <Progress chal={parseInt(chal.challengeProgress)}>{chal.challengeProgress}</Progress>
         </ChalLi>
         )}
       </Wrap>
@@ -48,10 +48,10 @@ border-top: 2px solid #151419;
 `
 
 const Progress = styled.div`
-width: 100%;
+width: ${props=>props.chal}%;
 font-size: 28px;
 font-weight: 800;
-
+background-color: #6dbb91;
 height: 80px;
 border-top: 2px solid #151419;
 text-align: end;

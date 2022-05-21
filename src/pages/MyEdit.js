@@ -16,11 +16,11 @@ const MyEdit = () => {
   const [userNick, setUserNick] = useState(
     useSelector((state) => state.user.user.userNick)
   );
-  console.log(userNick)
+  console.log(userNick);
   const [userRank, setUserRank] = useState(
     useSelector((state) => state.mypage.rank)
   );
-  console.log(userRank)
+  console.log(userRank);
   useEffect(() => {
     if (!cookie) {
       window.alert("로그인 후 이용해주세요");
