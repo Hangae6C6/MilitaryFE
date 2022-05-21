@@ -49,6 +49,7 @@ const addChallengeDB = (challenges, userId) => {
 };
 
 const getOneChallengeDetailDB = (challengeNum) => {
+  console.log(challengeNum)
   return async function (dispatch, getState) {
     try {
       await axios({

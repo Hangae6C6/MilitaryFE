@@ -51,7 +51,6 @@ const Challenge = () => {
         steps: steps,
       };
       dispatch(challengeActions.addChallengeDB(newChallenge, userId));
-
     }
   };
 
@@ -102,7 +101,6 @@ export default Challenge;
 
 const Container = styled.div`
   max-width: 375px;
-  height: 100vh;
   width: 100%;
   border: 2px solid #151419;
 `;
