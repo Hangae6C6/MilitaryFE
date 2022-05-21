@@ -3,7 +3,8 @@ import { Meter } from "grommet";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import titleImage from "../../shared/images/Group 1924.png";
 import styled from "styled-components";
-
+import logo from "../../shared/icons/handlogo11.png";
+import mainlogo from "../../shared/icons/mainlogo.png"
 const Title = ({ title, onChange }) => {
   return (
     <Container>
@@ -15,7 +16,10 @@ const Title = ({ title, onChange }) => {
       >
         <img src={gobackIcon} alt="goback" />
       </div>
-      <div className="top"></div>
+      <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
+      </div>
       <div className="progressBar">
         <Meter
           size="xsmall"
@@ -60,11 +64,19 @@ const Container = styled.div`
     margin: 60px 0px 0px 10px;
     cursor: pointer;
   }
-  .top {
+  .nav {
+    width: 375px;
     height: 44px;
-    width: 100%;
-    border-bottom: 2px solid #151419;
+    background-color: #151419;
     
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+      position: fixed;
+    }
+    #mainlogo{
+      margin: 10px 0 30px 230px;
+    }
   }
   .progressBar {
     height: 67px;

@@ -117,10 +117,7 @@ const NextButton = styled.button`
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-    background-color: #151419;
-  }
+  cursor: pointer;
 `;

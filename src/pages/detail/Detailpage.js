@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
@@ -9,9 +9,24 @@ import DetailpageStep from "../../component/detailpage/DetailpageStep";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
-import typeImg from "../../shared/images/workout.png";
 import personImg from "../../shared/images/icnPersonGray36.png";
+import joinIcon from "../../shared/icons/joinmemicon.png";
+import ddayIcon from "../../shared/icons/ddayicon.png";
+
 import { getCookie } from "../../shared/cookie";
+import logo from "../../shared/icons/handlogo11.png";
+import mainlogo from "../../shared/icons/mainlogo.png";
+import {
+  reading,
+  job,
+  jobSearch,
+  workout,
+  competition,
+  license,
+  self,
+  etc,
+  foreignLanguage,
+} from "../../shared/icons/icons";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -25,8 +40,8 @@ const Detail = () => {
     (state) => state.challengeDetail.userChallengeDetail.joinlist_id
   );
 
-  const allUserDetail = useSelector(
-    (state) => state.challengeDetail.challengeDetail
+  const userNickName = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.usernicklist1
   );
 
   const token = getCookie("token");
@@ -64,9 +79,19 @@ const Detail = () => {
     );
   };
 
+  let isJoined = false;
+  myChallengeStep.filter((cur) => {
+    if (cur.challengeNum == challengeId) {
+      isJoined = true;
+    }
+  });
+
   return (
     <Container>
-      <div className="nav"></div>
+      <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
+      </div>
       <div className="top">
         <div
           className="arrow"
@@ -77,49 +102,124 @@ const Detail = () => {
           <img src={gobackIcon} alt="goback" />
         </div>
         <div id="share-icon">
-          <img src={shareIcon} alt="shareIcon" />
+          <img
+            src={shareIcon}
+            alt="shareIcon"
+            onClick={() => {
+              if (!token) {
+                window.location.pathname = "/login";
+              } else {
+                window.location.pathname = `/detailpage/link/${challengeId}`;
+              }
+            }}
+          />
         </div>
       </div>
-      <TitleBox>
-        <div id="title">
-          <div id="title-up">{card.challengeTitle}</div>
-          <div id="title-down">
-            <div id="type">{card.challengeType}</div>
-          </div>
-        </div>
-        <div id="image">
-          <img src={typeImg} alt="typeImg" width="127" height="159" />
-        </div>
-      </TitleBox>
-      <ChallengeRoom>
-        <div className="box">
-          <div id="imgWrap">
-            <img src={personImg} alt="personImg" width="36" height="36" />
-          </div>
-          <div id="roomInfo">{card.challengeCnt}명</div>
-          <div id="Infodetail">참가자</div>
-        </div>
-        <div className="box">
-          <div id="imgWrap">
-            <img src={personImg} alt="typeImg" width="36" height="36" />
-          </div>
-          <div id="roomInfo">D-{dDay}</div>
-          <div id="Infodetail">남은 기간</div>
-        </div>
-        <div className="box">
-          <div id="imgWrap">
-            <img src={personImg} alt="typeImg" width="36" height="36" />
-          </div>
-          <div id="roomInfo">{spots}자리</div>
-          <div id="Infodetail">남은 자리</div>
-        </div>
-      </ChallengeRoom>
+      {!token ? (
+        <>
+          <TitleBox>
+            <div id="title">
+              <div id="title-up">마리톤 완주!</div>
+              <div id="title-down">
+                <div id="type">운동</div>
+              </div>
+            </div>
+            <div id="typeIcons">
+              <img src={workout} alt="img" height="158px" width="213px" />
+            </div>
+          </TitleBox>
+
+          <ChallengeRoom>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={joinIcon} alt="personImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">0명</div>
+              <div id="Infodetail">현재 참가자</div>
+            </div>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={ddayIcon} alt="typeImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">D-0</div>
+              <div id="Infodetail">남은 기간</div>
+            </div>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={personImg} alt="typeImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">0자리</div>
+              <div id="Infodetail">남은 자리</div>
+            </div>
+          </ChallengeRoom>
+        </>
+      ) : (
+        <>
+          <TitleBox>
+            <div id="title">
+              <div id="title-up">{card.challengeTitle}</div>
+              <div id="title-down">
+                <div id="type">{card.challengeType}</div>
+              </div>
+            </div>
+            <div id="typeIcons">
+              <img
+                src={
+                  card.challengeType === "운동"
+                    ? workout
+                    : card.challengeType === "취업"
+                    ? job
+                    : card.challengeType === "직업탐색"
+                    ? jobSearch
+                    : card.challengeType === "자기개발"
+                    ? self
+                    : card.challengeType === "기타"
+                    ? etc
+                    : card.challengeType === "공모전"
+                    ? competition
+                    : card.challengeType === "자격증"
+                    ? license
+                    : card.challengeType === "외국어"
+                    ? foreignLanguage
+                    : reading
+                }
+                alt="img"
+                height="158px"
+                width="213px"
+              />
+            </div>
+          </TitleBox>
+          <ChallengeRoom>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={joinIcon} alt="personImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">{card.challengeCnt}명</div>
+              <div id="Infodetail">현재 참가자</div>
+            </div>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={ddayIcon} alt="typeImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">D-{dDay}</div>
+              <div id="Infodetail">남은 기간</div>
+            </div>
+            <div className="box">
+              <div id="imgWrap">
+                <img src={personImg} alt="typeImg" width="36" height="36" />
+              </div>
+              <div id="roomInfo">{spots}자리</div>
+              <div id="Infodetail">남은 자리</div>
+            </div>
+          </ChallengeRoom>
+        </>
+      )}
       <DetailpageProgress
         userId={userId}
         thisChallenge={card}
         myChallengeDetail={myChallengeDetail}
         myChallengeStep={myChallengeStep}
-        allUserDetail={allUserDetail}
+        userNickName={userNickName}
       />
       <DetailpageStep
         challengeNum={challengeId}
@@ -134,11 +234,18 @@ const Detail = () => {
         >
           참여하기
         </NextButton>
+      ) : isJoined ? (
+        <NextButton
+          onClick={() => {
+            window.location.pathname = `/detail/chat/${challengeId}`;
+          }}
+        >
+          채팅하기
+        </NextButton>
       ) : (
         <NextButton
           onClick={() => {
             userChallengeDataHandler();
-            // window.location.pathname = `/detail/chat/${challengeId}`;
           }}
         >
           참여하기
@@ -162,6 +269,14 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
+
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
+    #mainlogo {
+      margin: 10px 0 30px 60px;
+    }
   }
   .top {
     height: 69px;
@@ -192,13 +307,13 @@ const TitleBox = styled.div`
     height: 159px;
 
     #title-up {
-      width: 237px;
+      width: 280px;
       height: 45px;
       color: #151419;
-      text-align: center;
       font-size: 24px;
       font-weight: bold;
       padding-top: 36px;
+      margin-left: 60px;
       font-family: Gmarket SansBold;
     }
     #title-down {
@@ -217,10 +332,9 @@ const TitleBox = styled.div`
     }
   }
 
-  #image {
-    max-width: 117px;
-    max-height: 159px;
-    margin-left: -10px;
+  #typeIcons {
+    margin: 0px -80px;
+    z-index: -1;
   }
 `;
 
@@ -248,13 +362,6 @@ const ChallengeRoom = styled.div`
       font-family: NanumSquare;
       color: #151419;
     }
-    &:hover {
-      background-color: #1fb57e;
-      color: #ffffff;
-      #roomInfo {
-        color: #ffffff;
-      }
-    }
   }
 `;
 
@@ -269,10 +376,9 @@ const NextButton = styled.button`
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
+  background-color: #151419;
   /* border-top: 2px solid #151419; */
   &:hover {
     cursor: pointer;
-    background-color: #151419;
   }
 `;

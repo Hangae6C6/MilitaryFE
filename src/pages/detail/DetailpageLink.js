@@ -1,11 +1,11 @@
 import React from "react";
 import {useParams} from "react-router-dom"
 import styled from "styled-components";
-import img from "../shared/images/imgChallengeCompleted335.png";
-import logo from "../shared/icons/handlogo11.png";
-import mainlogo from "../shared/icons/mainlogo.png";
+import img from "../../shared/images/imgChallengeCompleted335.png";
+import logo from "../../shared/icons/handlogo11.png";
+import mainlogo from "../../shared/icons/mainlogo.png";
 
-const Link = () => {
+const DetailpageLink = () => {
 const {challengeId} = useParams();
 
 
@@ -19,14 +19,14 @@ const {challengeId} = useParams();
       </div>
         <NextButton
           onClick={() => {
-            window.location.pathname = `/detailPage/${challengeId}`;
+            window.location.pathname = '/';
           }}
         >
-          시작하기
+          홈으로
         </NextButton>
       </div>
 
-      <div className="second-box">챌린지가 개설되었어요!</div>
+      <div className="second-box">챌린지 공유하기</div>
       <div className="third-box">
         <img src={img} alt="img" width="390" height="340" />
       </div>
@@ -41,7 +41,7 @@ const {challengeId} = useParams();
   );
 };
 
-export default Link;
+export default DetailpageLink;
 
 const Container = styled.div`
 overflow: hidden;
@@ -75,7 +75,7 @@ height: 100vh;
     font-size: 28px;
     color: #3f3f3f;
     font-weight: bold;
-    margin: 70px 45px 0px;
+    margin: 70px 85px 0px;
   }
   .third-box {
     margin: 30px -5px

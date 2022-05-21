@@ -7,54 +7,70 @@ import { ActionCreators as postActions } from "../redux/modules/main";
 import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
 
 import searchIcon from "../shared/icons/SearchIcon.png";
-import logo from "../shared/images/Hand-logo.png";
+import logo from "../shared/icons/handlogo11.png";
+import mainlogo from "../shared/icons/mainlogo.png";
 import img from "../shared/images/workout.png";
-import goback from "../shared/icons/icnBackNormalBlack35.svg";
-
+import gobackIcon from "../shared/icons/arrowWhite.png";
+import joinNum from "../shared/icons/joinnumber.png";
+import viewCnt from "../shared/icons/viewcount.png";
+import searchWhite from "../shared/images/searchIcon.png";
+import {
+  readingBlack,
+  jobBlack,
+  jobSearchBlack,
+  workoutBlack,
+  competitionBlack,
+  licenseBlack,
+  selfBlack,
+  etcBlack,
+  foreignLanguageBlack,
+} from "../shared/icons/icons";
 const Nav = () => {
-  const  {type}  = useParams("");
+  const { type } = useParams("");
   const dispatch = useDispatch();
   const [keyword, setKeyword] = React.useState("");
   const results = useSelector((state) => state.search.challenges);
   const cards = useSelector((state) => state.card.cards);
-  
+
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
   React.useEffect(() => {
     dispatch(searchActions.searchDB(type));
-  },[dispatch, type])
+  }, [dispatch, type]);
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
+    setKeyword("");
   };
   const searchTypeHandler = (challengetype) => {
     dispatch(searchActions.searchDB(challengetype));
-  }
+  };
   const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
 
-  const lists = cards.filter(cur => cur.challengeViewCnt > 0);
+  const lists = cards.filter((cur) => cur.challengeViewCnt > 0);
   const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
   return (
     <Container>
       <div className="nav">
-        <img id="logo" src={logo} alt="img" />
+        <img id="logo" src={logo} alt="img" height="53" />
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
       </div>
       <div className="top">
-        <div className="arrow">
-          <div
-            id="goback"
-            onClick={() => {
-              window.location.pathname = "/";
-            }}
-          >
-            <img src={goback} alt="goback" />
-          </div>
-          <img src={searchIcon} alt="search" width="33px" height="33px" />
+        <div
+          className="arrow"
+          onClick={() => {
+            window.location.pathname = "/";
+          }}
+        >
+          <img src={gobackIcon} alt="goback" width="20px" height="20px" />
         </div>
+        <div id="title">검색</div>
+      </div>
+      <div id="upperbox">
         <input
           id="inputBox"
           value={keyword}
@@ -63,12 +79,12 @@ const Nav = () => {
             setKeyword(e.target.value);
           }}
         />
-      </div>
-      <UpperBox>
-        <div id="title">
-          <div id="title-text"> {keyword}</div>
+        <div id="searchicon">
+          <img src={searchIcon} alt="search" width="22px" height="22px" onClick={searchHandler}/>
         </div>
-      </UpperBox>
+      </div>
+
+   
       <MiddleBox>
         {list.map((card, idx) => {
           return (
@@ -94,18 +110,55 @@ const Nav = () => {
                 veiwCountHandlerInSearch(card.challengeNum, card.challengeCnt);
               }}
             >
-              <img src={img} alt="img" height="64px" width="64px" />
-              <div id="type">
-                <p id="p">{card.challengeType}</p>
-              </div>
-              <div id="title">{card.challengeTitle}</div>
-              <div id="count">{card.challengeCnt}명 참여중</div>
-            </div>
-          );
-        })}
-      </LowerBox>
+             <div id="type">
+                    <p id="p">{card.challengeType}</p>
+                  </div>
+                  <div id="typeIcons">
+                    <img
+                      src={
+                        card.challengeType === "운동"
+                          ? workoutBlack
+                          : card.challengeType === "취업"
+                          ? jobBlack
+                          : card.challengeType === "직업탐색"
+                          ? jobSearchBlack
+                          : card.challengeType === "자기개발"
+                          ? selfBlack
+                          : card.challengeType === "기타"
+                          ? etcBlack
+                          : card.challengeType === "공모전"
+                          ? competitionBlack
+                          : card.challengeType === "자격증"
+                          ? licenseBlack
+                          : card.challengeType === "외국어"
+                          ? foreignLanguageBlack
+                          : readingBlack
+                      }
+                      alt="img"
+                      height="60px"
+                      width="60px"
+                    />
+                  </div>
 
-      <NextButton onClick={searchHandler}>검색하기</NextButton>
+                  <div id="title">{card.challengeTitle}</div>
+                  <div id="icons">
+                    <div id="count">
+                      <img src={joinNum} alt="img" height="12px" width="15px" />{" "}
+                      {card.challengeCnt}
+                    </div>
+                    <div id="viewCnt">
+                      <img src={viewCnt} alt="img" height="12px" width="15px" />{" "}
+                      {card.challengeViewCnt}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+      </LowerBox>
+            <ImgSearchWhite>
+            <img src={searchWhite} alt="searchWhite" width="500px" height="500px" />
+            </ImgSearchWhite>
+   
     </Container>
   );
 };
@@ -119,59 +172,65 @@ const Container = styled.div`
   width: 100%;
   border: 2px solid #151419;
   position: relative;
+  overflow: hidden;
   .nav {
     width: 375px;
     height: 44px;
     background-color: #151419;
+
     #logo {
-      width: 200px;
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
+    #mainlogo {
+      margin: 10px 0 30px 60px;
     }
   }
   .top {
-    display: flex;
     height: 100px;
     width: 375px;
-    border-top: 2px solid #151419;
-    background-color: #1fb57e;
-
+    border-top: 4px solid #ffffff;
+    background-color: #151419;
     .arrow {
-      margin: 5px 0px 0px 20px;
+      height: 23px;
+      width: 20px;
+      margin: 17px 0px 0px 20px;
       cursor: pointer;
-      #goback {
-        margin: 0 0px 10px -10px;
-      }
     }
+    #title {
+      width: 100px;
+      color: #ffffff;
+      font-size: 34px;
+      font-family: Gmarket SansBold;
+      margin: 10px 0 0 20px;
+    }
+  }
+  #upperbox {
+    display: flex;
+    height: 80px;
+    border-bottom: #151419 2px solid;
     #inputBox {
       width: 300px;
-      height: 42px;
+      height: 40px;
       padding: 16px;
       outline: none;
       border: none;
       box-sizing: border-box;
       font-size: 20px;
-      margin: 50px 0 0 3px;
-      background-color: #1fb57e;
+      margin: 20px 0 0 8px;
       font-family: Gmarket SansMedium;
+      
+    }
+    #searchicon{
+      width: 30px;
+      height: 30px;
+      margin: 28px 0 0 20px;
+      cursor: pointer;
     }
   }
 `;
 
-const UpperBox = styled.div`
-  width: 375px;
-  height: 79px;
-  background-color: #ffffff;
-  border-bottom: 2px solid #151419;
-  border-top: 2px solid #151419;
 
-  #title {
-    padding: 30px 0 0 15px;
-    #title-text {
-      color: #b62323;
-      font-size: 26px;
-      font-family: Gmarket SansBold;
-    }
-  }
-`;
 
 const MiddleBox = styled.div`
   display: flexbox;
@@ -203,53 +262,63 @@ const LowerBox = styled.div`
   max-height: 381px;
   #box {
     text-align: center;
-    height: 130px;
+    height: 160px;
     width: 125px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
     margin-right: -2px;
-
     #type {
+      margin-left: 35px;
       #p {
-        border: #151419 1px solid;
         font-size: 16px;
         font-family: Gmarket SansMedium;
         color: #ffffff;
-        background-color: #151419;
-        height: 26x;
-        width: 80px;
+        background-color: #1fb57e;
+        height: 27x;
+        width: 70px;
         margin: 0px 5px 0 20px;
       }
+    }
+    #typeIcons {
+      margin-top: 10px;
     }
     #title {
       width: 120px;
       height: 20px;
       font-size: 16px;
-      color: #1fb57e;
+      color: #151419;
       font-family: Gmarket SansBold;
       border: 3px;
-      margin: 5px 0 0 2px;
+      margin: 10px 0 0 2px;
       overflow: hidden;
     }
-    #count {
-      font-size: 14px;
-      color: #151419;
-      font-family: Gmarket SansMedium;
-      margin: 0px 0 0 3px;
-    }
-    cursor: pointer;
-    &:hover {
-      background-color: #1fb57e;
-      border-left: 2px solid #151419;
-      margin: 0 -2px 0 -2px;
-      color: #151419;
-      #title {
-        color: #ffffff;
+    #icons {
+      display: flex;
+      margin: 10px 0 0 20px;
+      #count {
+        font-size: 14px;
+        color: #8c8c8c;
+        font-family: Gmarket SansMedium;
+        margin: 3px 0 0 3px;
+      }
+      #viewCnt {
+        font-size: 14px;
+        color: #8c8c8c;
+        font-family: Gmarket SansMedium;
+        margin: 3px 0 0 16px;
       }
     }
+
+    cursor: pointer;
   }
 `;
 
+const ImgSearchWhite = styled.div`
+z-index: -1;
+padding-top: 40px;
+opacity: 0.5;
+
+`;
 const NextButton = styled.button`
   position: absolute;
   bottom: 0;
@@ -257,15 +326,11 @@ const NextButton = styled.button`
   height: 80px;
   border: none;
   outline: none;
-  color: #1fb57e;
+  color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #ffffff;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #1fb57e;
-  }
+  cursor: pointer;
 `;

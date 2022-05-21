@@ -22,6 +22,7 @@ import Search from "../pages/Search";
 import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
+import DetailpageLink from "../pages/detail/DetailpageLink";
 import Link from "../pages/Link";
 import MyEdit from "../pages/MyEdit";
 
@@ -57,7 +58,7 @@ function App() {
             <Route exact path="/myPage/userProfile/:userId" element={<MyEdit />}></Route>
             <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
             <Route exact path="/detailpage/rank/:challengeId" element={<DetailpageRank />}></Route>
-           
+            <Route exact path="/detailpage/link/:challengeId" element={<DetailpageLink />}></Route>
             <Route exact path="/challenge" element={<Challenge /> } />
 
           </Routes>

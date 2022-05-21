@@ -13,7 +13,7 @@ const dispatch = useDispatch();
   return (
     <ChallengeName>
       <div id="top">
-        <div id="title">느리게 살기 챌린지</div>
+        <div id="title">목표를 위한 Step</div>
       </div>
       {steps && steps.map((step, idx) => (
           <Astep key={step+idx}>
@@ -39,7 +39,7 @@ const ChallengeName = styled.div`
   #top {  
     width: 375px;
     height: 80px;
-    background-color: #1fb57e;
+    background-color: #ffffff;
     border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
     #title {

@@ -1,19 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import img from "../../shared/images/imgChallengeCompleted335.png";
-
+import img from "../../shared/images/signupdone.png";
+import logo from "../../shared/icons/handlogo11.png";
 
 const SignupDone = () => {
   return (
     <Container>
-      <div className="nav"></div>
-      <div className="top"></div>
+        <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+      </div>
+      <div className="top">
+      
+      </div>
       <div id="title-box">
-        <p id="p">필승 챌린지</p>
+        <p id="p">솔저챌린저스</p>
       </div>
       <div className="second-box">회원가입을 명 받았습니다!</div>
       <div className="third-box">
-        <img src={img} alt="img" width="335" height="280" />
+        <img src={img} alt="img" width="245" height="330" />
       </div>
       <NextButton
         onClick={() => {
@@ -37,25 +41,30 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
   }
   .top {
     height: 69px;
     width: 375px;
-    border-top: 4px solid #151419;
+    border-top: 4px solid #ffffff;
+    background-color: #151419;
   }
+
   #title-box {
     width: 375px;
     height: 159px;
     display: flex;
-    border-top: 4px solid #151419;
-    border-bottom: 4px solid #151419;
-
+    border-top: 2px solid #151419;
+    background-color: #151419;
 
     #p {
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 65px auto;
-      color: #151419;
+      margin: 35px auto;
+      color: #ffffff;
     }
   }
   .second-box {
@@ -73,7 +82,7 @@ const Container = styled.div`
     box-sizing: border-box;
     width: 100%;
     height: 500px;
-    padding: 50px 0 0 20px;
+    padding: 186px 0 0 100px;
     border-top: #151419 4px solid;
   }
   
@@ -86,15 +95,11 @@ const NextButton = styled.button`
   height: 80px;
   border: none;
   outline: none;
-  color:  #1FB57E;
+  color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #ffffff;
-  border-top: 4px solid #151419;
-  &:hover {
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #1FB57E;
-  }
+  background-color: #151419;
+  border-top: 2px solid #151419;
+  cursor: pointer;
 `;
