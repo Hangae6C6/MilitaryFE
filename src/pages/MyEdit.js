@@ -8,24 +8,30 @@ import { history } from "../redux/configureStore";
 import { ActionCreators as mypageAction } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
-const MyEdit = ({ match }) => {
+const MyEdit = () => {
   const dispatch = useDispatch();
+  let cookie = document.cookie;
+
+  const userId = useSelector((state) => state.user.user.userId);
   const [userNick, setUserNick] = useState(
     useSelector((state) => state.user.user.userNick)
   );
+  console.log(userNick);
   const [userRank, setUserRank] = useState(
     useSelector((state) => state.mypage.rank)
   );
+  console.log(userRank);
   useEffect(() => {
-    if (!userNick) {
+    if (!cookie) {
       window.alert("로그인 후 이용해주세요");
-      // history.replace('/');
-      // window.location.reload();
+      history.replace("/");
+      window.location.reload();
 
       return;
     }
-    dispatch(mypageAction.EditNickDB(userNick));
-  }, [userNick]);
+    dispatch(mypageAction.EditNickDB(userId, userNick, userRank));
+    dispatch(mypageAction.getNickDB(userId));
+  }, [userNick, userId]);
 
   return (
     <Wrap>
@@ -41,6 +47,7 @@ const MyEdit = ({ match }) => {
       <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
       <NickInput
         value={userNick}
+        placeholder={userNick}
         onChange={(e) => {
           setUserNick(e.target.value);
         }}
