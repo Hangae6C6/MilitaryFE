@@ -10,8 +10,44 @@ const DetailpageRank = () => {
   const dispatch = useDispatch();
   const { challengeId } = useParams();
   const joinList = useSelector(
-    (state) => state.challengeDetail.challengeDetail);
+    (state) => state.challengeDetail.challengeDetail
+  );
+  console.log(joinList)
+  // let userProgressBar = [
+  //   {
+  //     userNick: "",
+  //     progress: 0,
+  //   },
+  // ];
 
+
+  // let num = 1;
+  // if (joinList) {
+  //   for (let i = 0; i < joinList.length; i++) {
+  //     for (let j = 0; j < joinList[i].steps.length; j++) {
+  //       if(joinList[i].Users[0].userNick === joinList[j].Users[0].userNick)
+  //               userProgressBar = joinList[i];
+        // if (joinList[i].steps[j].isChecked === true) {
+        //   userProgressBar = [
+        //     ...userProgressBar,
+        //     {
+        //       userNick: joinList[i].Users[0].userNick,
+        //       progress: (num++ / joinList[i].steps.length) * 100,
+        //     },
+        //   ];
+        // } else {
+        //   userProgressBar = [
+        //     ...userProgressBar,
+        //     {
+        //       userNick: joinList[i].Users[0].userNick,
+        //       progress: 0,
+        //     },
+        //   ];
+        // }
+  //     }
+  //   }
+  // }
+  // console.log(userProgressBar);
 
 
   React.useEffect(() => {
@@ -39,18 +75,15 @@ const DetailpageRank = () => {
         <div id="top">
           <div id="title">챌린지 달성 순위</div>
         </div>
-        {joinList.map((cur,idx)=> (
-          
+        {joinList.map((cur, idx) => (
           <Astep>
-          <div id="progressBar">
-            <div id="rank">1</div>
-            <div id="stepTitle">{cur.userId}</div>
-            <img src={rank3} alt="rank" id="icon" width="28" height="36" />
-            <div id="stepDone">5</div>
-          </div>
-        </Astep>
+            <div id="progressBar">
+              <div id="rank">1</div>
+              <div id="stepTitle">{cur.userId}</div>
+              <img src={rank3} alt="rank" id="icon" width="28" height="36" />
+            </div>
+          </Astep>
         ))}
-        
       </ChallengeName>
 
       <NextButton
@@ -114,38 +147,36 @@ const ChallengeName = styled.div`
 const Astep = styled.div`
   background-color: #ffffff;
   width: 375px;
-  height: ${props => props.width};
+  height: ${(props) => props.width};
   border-bottom: 2px solid #151419;
-  #progressBar{
-    background-color: #1FB57E;
+  #progressBar {
+    background-color: #1fb57e;
     width: 375px;
-  height: 62px;
-  display: flex;
+    height: 62px;
+    display: flex;
 
- #rank {
-    margin: 20px 0 0 39px;
-    font-size: 18px;
-    font-family: Gmarket SansBold;
+    #rank {
+      margin: 20px 0 0 39px;
+      font-size: 18px;
+      font-family: Gmarket SansBold;
+    }
+    #stepTitle {
+      font-family: NanumSquareMedium;
+      color: #151419;
+      font-size: 16px;
+      width: 280px;
+      height: 22px;
+      margin: 20px 0 0 26px;
+    }
+    #icon {
+      margin: 13px 30px 0 0;
+    }
+    #stepDone {
+      width: 22px;
+      height: 22px;
+      margin: 20px 20px 0 10px;
+    }
   }
-  #stepTitle {
-    font-family: NanumSquareMedium;
-    color: #151419;
-    font-size: 16px;
-    width: 280px;
-    height: 22px;
-    margin: 20px 0 0 26px;
-  }
-  #icon {
-    margin: 13px 30px 0 0;
-  }
-  #stepDone {
-    width: 22px;
-    height: 22px;
-    margin: 20px 20px 0 10px;
-  }
-
-  }
- 
 `;
 
 const NextButton = styled.button`
