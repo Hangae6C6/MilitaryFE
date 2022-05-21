@@ -6,6 +6,7 @@ import mypageIcn from "../shared/icons/Mypage.svg";
 import { history } from "../redux/configureStore";
 
 const Navigation = ({ userId }) => {
+  let cookie = document.cookie;
   return (
     <Nav>
       <Wrap>
@@ -28,6 +29,8 @@ const Navigation = ({ userId }) => {
           <P>검색</P>
         </Home>
         <Home>
+          {cookie?
+          <>
           <MypageIcn
             src={mypageIcn}
             onClick={() => {
@@ -36,7 +39,17 @@ const Navigation = ({ userId }) => {
             }}
           />
           <P>마이페이지</P>
-        </Home>
+        </> : <><MypageIcn
+        src={mypageIcn}
+        onClick={() => {
+          history.push(`/login`);
+          window.location.reload();
+        }}
+      />
+      <P>로그인</P></>
+     }
+     </Home>
+          
       </Wrap>
     </Nav>
   );
