@@ -1,6 +1,6 @@
  // 0.리더, 1.공무원, 2.경찰, 3.개발자, 4.예술가, 5.요리사, 6.기계공, 7.창업 8.의료계
 
- import { alarm, bullet, ghost, Group, hourglass, shovel, soldier, timeLamp, walk } from '../image/index'; 
+ import { alarm, bullet, ghost, Group, hourglass, shovel, soldier, timeLamp, walk, testImage } from '../image/index'; 
 
 const qnaList = [
   {
@@ -90,47 +90,56 @@ const infoList = [
   {
     name:'훈련조교',
     desc:'통찰력이 뛰어난 당신, 당신에게는 리더가 어울려요!',
-    image: Group,
+    image: testImage,
+    bgc: '#1FB57E',
   },
   {
     name:'행정병',
     desc:'철두철미하고 정확한 것을 좋아하는 당신은 행정을 위해 태어났습니다.',
-    image: Group,
+    image: testImage,
+    bgc: '#EC7070',
   },
   {
     name:'헌병',
     desc:'질서를 좋아하는 당신, 군대 체질이신가요?',
-    image: Group,
+    image: testImage,
+    bgc: '#A17FE0',
   },
   {
     name:'통신병',
     desc:'철두철미하고 정확한 것을 좋아하는 당신 당신은 행정을 위해 태어났습니다.',
-    image: Group,
+    image: testImage,
+    bgc: '#F5B61D',
   },
   {
     name:'군악병',
     desc:'예술적으로 뛰어난 당신~!',
-    image: Group,
+    image: testImage,
+    bgc: '#17A2C2',
   },
   {
     name:'취사병',
     desc:'금손인 당신, 요리를 해보시는건 어때요?',
-    image: Group,
+    image: testImage,
+    bgc: '#B2B2B2',
   },
   {
     name:'정비병',
     desc:'고장난 건 내가 다 고친다! 기계와 친하시군요!!',
-    image: Group,
+    image: testImage,
+    bgc: '#E184DE',
   },
   {
     name:'PX병',
     desc:'계산하나는 타고나셨군요!!',
-    image: Group,
+    image: testImage,
+    bgc: '#A8CF55',
   },
   {
     name:'의무병',
     desc:'메스. 의료계통으로 나가보시는건 어떠세요?',
-    image: Group,
+    image: testImage,
+    bgc: '#D8A458',
   },
 ]
 
