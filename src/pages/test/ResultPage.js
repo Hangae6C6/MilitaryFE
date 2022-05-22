@@ -31,10 +31,12 @@ const ResultPage = (props) => {
       <PersonDiv>
         <TypeDesc>
           <b>{userNickForBinding}</b>님의 유형은
-          <b>{infoList[resultNum.id].name}</b>입니다.
+          <b>{infoList[resultNum.userId].name}</b>입니다.
         </TypeDesc>
       </PersonDiv>
-      <DescImg src={infoList[resultNum.id].image} />
+      <DescImg bgc={infoList[resultNum.userId].bgc} src={infoList[resultNum.userId].image}>
+          <P>{infoList[resultNum.userId].name}</P>
+      </DescImg>
       <DescTxt />
       <NextBtn onClick={()=>{history.push('/')}}>홈으로 가기</NextBtn>
     </Wrap>
@@ -52,5 +54,9 @@ const PersonDiv = styled.div`
   width: 100%;
   padding: 15px 0;
 `;
+
+const P = styled.p`
+font-size: 20px;
+`
 
 export default ResultPage;

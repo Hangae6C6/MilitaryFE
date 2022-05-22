@@ -12,6 +12,7 @@ import second from "./second.png";
 import third from "./third.png";
 import fourth from "./fourth.png";
 import officer from './officer.png'
+import testImage from './testImage.png'
 export {
   alarm,
   bullet,
@@ -27,4 +28,5 @@ export {
   third,
   fourth,
   officer,
+  testImage,
 };
