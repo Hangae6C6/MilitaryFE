@@ -25,6 +25,7 @@ import DetailpageRank from "../pages/detail/DetailpageRank";
 import DetailpageLink from "../pages/detail/DetailpageLink";
 import Link from "../pages/Link";
 import MyEdit from "../pages/MyEdit";
+import mainImage from "../shared/images/imgWebMainSoliderGreen640.png";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,41 +39,177 @@ function App() {
   }, [dispatch, router]);
 
   return (
+    <Background>
+      <div id="leftside">
+        <div id="title">
+          <div id="titleText">전역하고 뭐하지</div>
+        </div>
+        <div id="mainImage">
+          <img
+            id="logo"
+            src={mainImage}
+            alt="mainImage"
+            width="640"
+            height="370"
+          />
+        </div>
+        <div id="lowerBox">
+          <div id="upperText">SOLDIER CHALLENGERS</div>
+          <div id="lowerText">솔저 챌린저스 해야지</div>
+        </div>
+        <div id="bottomBox">
+          <div id="bottomText">
+            운동/ 독서/ 스터디/ 자기계발/ 취업/ 외국어/ 진로고민/ 자격증
+          </div>
+        </div>
+      </div>
       <DivBox>
-        <Router >
+        <Router>
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
-            <Route exact path="/signupdata/:id" element={<SignupData />}></Route>
+            <Route
+              exact
+              path="/signupdata/:id"
+              element={<SignupData />}
+            ></Route>
             <Route exact path="/signupdone" element={<SignupDone />}></Route>
-            <Route path="/api/auth/kakao/callback" exact element={<KakaoAuth />} />
-            <Route path="/api/auth/naver/callback" exact element={<NaverAuth />}></Route>
-            <Route exact path="/detail/chat/:challengeId" element={<Chat />}></Route>
-            <Route exact path="/main/preTest/:userId" element={<BeginPage />}></Route>
+            <Route
+              path="/api/auth/kakao/callback"
+              exact
+              element={<KakaoAuth />}
+            />
+            <Route
+              path="/api/auth/naver/callback"
+              exact
+              element={<NaverAuth />}
+            ></Route>
+            <Route
+              exact
+              path="/detail/chat/:challengeId"
+              element={<Chat />}
+            ></Route>
+            <Route
+              exact
+              path="/main/preTest/:userId"
+              element={<BeginPage />}
+            ></Route>
             <Route exact path="/search/:type" element={<Search />}></Route>
-            <Route exact path="/main/preTest/question" element={<QuestionPage />}></Route>
-            <Route exact path="/main/preTest/:id" element={<ResultPage />}></Route>
+            <Route
+              exact
+              path="/main/preTest/question"
+              element={<QuestionPage />}
+            ></Route>
+            <Route
+              exact
+              path="/main/preTest/:id"
+              element={<ResultPage />}
+            ></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
             <Route exact path="/link/:challengeId" element={<Link />}></Route>
-            <Route exact path="/myPage/userProfile/:userId" element={<MyEdit />}></Route>
-            <Route exact path="/detailpage/:challengeId" element={<Detailpage />}></Route>
-            <Route exact path="/detailpage/rank/:challengeId" element={<DetailpageRank />}></Route>
-            <Route exact path="/detailpage/link/:challengeId" element={<DetailpageLink />}></Route>
-            <Route exact path="/challenge" element={<Challenge /> } />
-
+            <Route
+              exact
+              path="/myPage/userProfile/:userId"
+              element={<MyEdit />}
+            ></Route>
+            <Route
+              exact
+              path="/detailpage/:challengeId"
+              element={<Detailpage />}
+            ></Route>
+            <Route
+              exact
+              path="/detailpage/rank/:challengeId"
+              element={<DetailpageRank />}
+            ></Route>
+            <Route
+              exact
+              path="/detailpage/link/:challengeId"
+              element={<DetailpageLink />}
+            ></Route>
+            <Route exact path="/challenge" element={<Challenge />} />
           </Routes>
         </Router>
       </DivBox>
+    </Background>
   );
 }
 
+const Background = styled.div`
+  overflow: hidden;
+  display: flex;
+  width: 98vw;
+  height: 99vh;
+  border: 4px solid #151419;
+  margin-left: 10px;
+  z-index: -10;
+  #leftside {
+    border-right: 2px solid #151419;
+    width: 834px;
+    height: 110%;
+    z-index: -10;
+
+    #title {
+      border-bottom: 2px solid black;
+      width: 98vw;
+      height: 140px;
+      z-index: -10;
+
+      #titleText {
+        width: 630px;
+        height: 100px;
+        font-size: 88px;
+        font-family: Gmarket SansBold;
+        margin: 45px 0 0 90px;
+        z-index: -10;
+      }
+    }
+    #mainImage {
+      border-bottom: 2px solid black;
+      height: 364px;
+      #logo {
+        margin: 43px;
+      }
+    }
+    #lowerBox {
+      height: 231px;
+      width: 98vw;
+      border-bottom: 2px solid #151419;
+      z-index: -10;
+
+      #upperText {
+        height: 30px;
+        width: 361px;
+        margin: 70px 0 0 157px;
+        font-size: 26px;
+        font-family: Gmarket SansMedium;
+      }
+      #lowerText {
+        height: 164px;
+        width: 380px;
+        margin: 20px 0 0 157px;
+        font-size: 60px;
+        font-family: Gmarket SansBold;
+      }
+    }
+    #bottomBox {
+      #bottomText {
+        width: 600px;
+        height: 27px;
+        font-size: 20px;
+        font-family: Gmarket Sans;
+        margin: 27px 0 0 157px;
+      }
+    }
+  }
+`;
+
 const DivBox = styled.div`
-  margin: 0 auto;
   max-width: 375px;
-  min-height: 100vh;
-  width: 100%;
-  height: fit-content;
+  max-height: 1024px;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 export default App;

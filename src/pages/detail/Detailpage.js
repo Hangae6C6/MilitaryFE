@@ -260,11 +260,10 @@ export default Detail;
 const Container = styled.div`
   display: block;
   max-width: 375px;
-  height: fit-content;
+  height: 100%;
   width: 100%;
   border: 2px solid #151419;
-  position: relative;
-
+  background-color: #ffffff;
   .nav {
     width: 375px;
     height: 44px;
@@ -276,12 +275,12 @@ const Container = styled.div`
     }
     #mainlogo {
       margin: 10px 0 30px 60px;
+    
     }
   }
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
     .arrow {
       position: absolute;
@@ -292,6 +291,7 @@ const Container = styled.div`
       position: absolute;
       margin: 17px 0px 0px 310px;
       cursor: pointer;
+      
     }
   }
 `;
@@ -305,7 +305,7 @@ const TitleBox = styled.div`
   #title {
     width: 242px;
     height: 159px;
-
+    z-index: 1;
     #title-up {
       width: 280px;
       height: 45px;
@@ -315,9 +315,11 @@ const TitleBox = styled.div`
       padding-top: 36px;
       margin-left: 60px;
       font-family: Gmarket SansBold;
+     
     }
     #title-down {
       display: flex;
+      z-index: 1;
       #type {
         width: 100px;
         height: 30px;
@@ -334,7 +336,6 @@ const TitleBox = styled.div`
 
   #typeIcons {
     margin: 0px -80px;
-    z-index: -1;
   }
 `;
 
@@ -366,10 +367,10 @@ const ChallengeRoom = styled.div`
 `;
 
 const NextButton = styled.button`
-  position: relative;
-  bottom: 0;
+  position: fixed;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
   color: #ffffff;

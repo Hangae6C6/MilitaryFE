@@ -108,7 +108,6 @@ const Container = styled.div`
   width: 375px;
   height: 245px;
   background-color: #151419;
-
   #firstBox {
     width: 300px;
     margin-left: 37px;

@@ -134,6 +134,6 @@ const Container = styled.div`
   #image{
     margin: 84px 0 0 110px;
     position: fixed;
-    bottom: 76px;
+    bottom: 80px;
   }
 `;

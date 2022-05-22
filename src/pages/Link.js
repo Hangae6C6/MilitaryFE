@@ -49,6 +49,7 @@ height: 100vh;
   max-width: 375px;
   width: 100%;
   border: 4px solid #3f3f3f;
+  background-color: #ffffff;
   .nav {
     width: 375px;
     height: 44px;

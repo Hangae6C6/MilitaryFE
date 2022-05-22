@@ -22,7 +22,6 @@ const initialState = {
 };
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {
-  console.log(userId, userPw, userNick, userPwCheck);
   return async function (dispatch, getState, { history }) {
     try {
       await axios({
@@ -45,7 +44,6 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
 };
 
 const loginDB = (id, password) => {
-  console.log(id, password);
   return async function (dispatch) {
     try {
       await axios({
@@ -94,7 +92,6 @@ const kakaoLogin = (code) => {
         setCookie("token", token);
 
         dispatch(loginCheckDB());
-        console.log("로그인 확인");
         window.location.pathname = "/";
       })
       .catch((err) => {
@@ -111,7 +108,6 @@ const NaverLogin = (code, state) => {
       .get(`http://13.125.228.240//api/auth/naver?code=${code}&state=${state}`)
 
       .then((res) => {
-        console.log(res);
         const token = res.data.token;
         setCookie("token", token);
 

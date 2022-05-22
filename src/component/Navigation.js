@@ -1,19 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import homeIcn from "../shared/icons/Home.svg";
-import searchIcn from "../shared/icons/Search.svg";
-import mypageIcn from "../shared/icons/Mypage.svg";
 import { history } from "../redux/configureStore";
+import { getCookie } from "../shared/cookie";
+
+import {
+  myPageIcon,
+  clickedPageIcon,
+  searchIcon,
+  clickedSearchIcon,
+  homeIcon,
+  clickedHomeIcon,
+} from "../shared/icons/icons";
 
 const Navigation = ({ userId }) => {
-  let cookie = document.cookie;
+  let token = getCookie("token");
+  const [homeChecked, setHomeChecked] = React.useState(false);
+  const [searchChecked, setSearchChecked] = React.useState(false);
+  const [mypageChecked, setmypageChecked] = React.useState(false);
+
   return (
     <Nav>
       <Wrap>
         <Home>
           <HomeIcn
-            src={homeIcn}
+            src={homeChecked ? clickedHomeIcon : homeIcon}
             onClick={() => {
+              setHomeChecked(true);
               window.location.pathname = "/";
             }}
           />
@@ -21,51 +33,59 @@ const Navigation = ({ userId }) => {
         </Home>
         <Home>
           <SearchIcn
-            src={searchIcn}
+            src={searchChecked ? clickedSearchIcon : searchIcon}
             onClick={() => {
+              setSearchChecked(true);
               window.location.pathname = "/search/기타";
             }}
           />
-          <P>검색</P>
+          <P>챌린지검색</P>
         </Home>
         <Home>
-          {cookie?
-          <>
-          <MypageIcn
-            src={mypageIcn}
-            onClick={() => {
-              history.push(`/mypage/${userId}`);
-              window.location.reload();
-            }}
-          />
-          <P>마이페이지</P>
-        </> : <><MypageIcn
-        src={mypageIcn}
-        onClick={() => {
-          history.push(`/login`);
-          window.location.reload();
-        }}
-      />
-      <P>로그인</P></>
-     }
-     </Home>
-          
+          {token ? (
+            <>
+              <MypageIcn
+                primary
+                src={mypageChecked ? clickedPageIcon : myPageIcon}
+                onClick={() => {
+                  setmypageChecked(true);
+                  history.push(`/mypage/${userId}`);
+                  window.location.reload();
+                }}
+              />
+              <P>마이페이지</P>
+            </>
+          ) : (
+            <>
+              <MypageIcn
+                src={myPageIcon}
+                onClick={() => {
+                  history.push(`/login`);
+                  window.location.reload();
+                }}
+              />
+              <P>로그인</P>
+            </>
+          )}
+        </Home>
       </Wrap>
     </Nav>
   );
 };
-const Nav = styled.div`
-  margin-top:82px
 
+export default Navigation;
+
+const Nav = styled.div`
+  margin-top: 82px;
 `;
 
 const Wrap = styled.div`
   max-width: 375px;
   width: 100%;
-  height: 84px;
+  height: ${(props) => (props.primary ? "83px" : "79px")};
   position: fixed;
   background-color: whitesmoke;
-  bottom: 0;
+  bottom: ${(props) => (props.primary ? "0.3em" : "0.3em")};
   z-index: 999;
   display: grid;
   border-top: 2px solid #151419;
@@ -78,11 +98,12 @@ const Home = styled.div`
 `;
 
 const P = styled.p`
-font-size: 10px;
-padding: 0;
-margin: 0;
-text-align: center;
-`
+  font-family: Gmarket Sans;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+`;
 const HomeIcn = styled.img`
   width: 50%;
   cursor: pointer;
@@ -95,4 +116,3 @@ const MypageIcn = styled.img`
   width: 50%;
   cursor: pointer;
 `;
-export default Navigation;

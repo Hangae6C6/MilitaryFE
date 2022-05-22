@@ -28,7 +28,6 @@ const initialState = {
 };
 
 const searchDB = (keyword) => {
-  console.log(keyword);
   return async function (dispatch, getState) {
     try {
       await axios({

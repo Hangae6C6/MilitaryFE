@@ -206,9 +206,9 @@ const LoginInput = styled.input`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
   color: #ffffff;

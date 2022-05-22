@@ -19,27 +19,39 @@ import self from "./self developement.png";
 import selfBlack from "./selfDevelopementBlack.png";
 import workout from "./workout.png";
 import workoutBlack from "./workoutBlack.png";
+import clickedHomeIcon from "./icnHomeTabGreen36.png";
+import homeIcon from "./homewhite.png";
+import clickedSearchIcon from "./greensearchicon.png";
+import searchIcon from "./iconSearchWhite.png";
+import clickedPageIcon from "./iconMypageGreen.png";
+import myPageIcon from "./iconMypageWhtie.png";
 
 export {
- arrow_white,
- competition,
- competitionBlack,
- etc,
- etcBlack,
- foreignLanguage,
- foreignLanguageBlack,
- newHandLogo,
- job,
- jobBlack,
- jobSearch,
- jobSearchBlack,
- license,
- licenseBlack,
- mainLogo,
- reading,
- readingBlack,
- self,
- selfBlack,
- workout,
- workoutBlack
+  myPageIcon,
+  clickedPageIcon,
+  searchIcon,
+  clickedSearchIcon,
+  homeIcon,
+  clickedHomeIcon,
+  arrow_white,
+  competition,
+  competitionBlack,
+  etc,
+  etcBlack,
+  foreignLanguage,
+  foreignLanguageBlack,
+  newHandLogo,
+  job,
+  jobBlack,
+  jobSearch,
+  jobSearchBlack,
+  license,
+  licenseBlack,
+  mainLogo,
+  reading,
+  readingBlack,
+  self,
+  selfBlack,
+  workout,
+  workoutBlack,
 };

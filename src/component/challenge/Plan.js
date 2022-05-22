@@ -211,7 +211,6 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
- 
   max-width: 375px;
   width: 100%;
 `;

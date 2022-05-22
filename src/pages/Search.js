@@ -6,6 +6,7 @@ import { ActionCreators as searchActions } from "../redux/modules/search";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
 
+import Navigation from "../component/Navigation";
 import searchIcon from "../shared/icons/SearchIcon.png";
 import logo from "../shared/icons/handlogo11.png";
 import mainlogo from "../shared/icons/mainlogo.png";
@@ -158,7 +159,7 @@ const Nav = () => {
             <ImgSearchWhite>
             <img src={searchWhite} alt="searchWhite" width="500px" height="500px" />
             </ImgSearchWhite>
-   
+            <Navigation />
     </Container>
   );
 };
@@ -173,6 +174,8 @@ const Container = styled.div`
   border: 2px solid #151419;
   position: relative;
   overflow: hidden;
+  background-color: #ffffff;
+
   .nav {
     width: 375px;
     height: 44px;
@@ -315,7 +318,6 @@ const LowerBox = styled.div`
 
 const ImgSearchWhite = styled.div`
 z-index: -1;
-padding-top: 40px;
 opacity: 0.5;
 
 `;
