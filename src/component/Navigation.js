@@ -82,7 +82,7 @@ const Nav = styled.div`
 const Wrap = styled.div`
   max-width: 375px;
   width: 100%;
-  height: ${(props) => (props.primary ? "83px" : "79px")};
+  height: ${(props) => (props.primary ? "80px" : "83px")};
   position: fixed;
   background-color: whitesmoke;
   bottom: ${(props) => (props.primary ? "0.25em" : "0.25em")};

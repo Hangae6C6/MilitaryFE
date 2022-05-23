@@ -64,6 +64,8 @@ function App() {
           </div>
         </div>
       </div>
+      <div id="rightside"><div id="box1"/><div id="box2"/></div>
+      
       <DivBox>
         <Router>
           <Routes>
@@ -146,25 +148,27 @@ const Background = styled.div`
   flex: 1;
   #leftside {
     border-right: 2px solid #151419;
-    width: 834px;
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: column;
     #title {
       border-bottom: 2px solid black;
-      padding: 45px;
-        display: flex;
-        justify-content: center;
+      padding: 45px 220px;
+      width: 100vw;
+      display: flex;
+      justify-content: start;
       box-sizing: border-box;
+      z-index: -1;
       #titleText {
         width: 630px;
         height: 100px;
         font-size: 88px;
         font-family: Gmarket SansBold;
-        z-index: -10;
       }
     }
     #mainImage {
+      padding: 0 140px;
       border-bottom: 2px solid black;
       height: 364px;
       #logo {
@@ -172,13 +176,13 @@ const Background = styled.div`
       }
     }
     #lowerBox {
-      padding: 45px 140px;
+      padding: 0px 280px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       box-sizing: border-box;
       border-bottom: 2px solid #151419;
-      z-index: -10;
+      width: 100vw;
       flex: 2;
       #upperText {
         margin-bottom: 16px;
@@ -194,15 +198,17 @@ const Background = styled.div`
     
     }
     #bottomBox {
-    
+      padding: 30px 280px;
       #bottomText {
-        padding: 24px 140px;
+       
         display: flex;
         font-size: 20px;
         font-family: Gmarket Sans;
       }
     }
   }
+
+
 `;
 
 const DivBox = styled.div`

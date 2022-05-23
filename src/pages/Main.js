@@ -98,10 +98,10 @@ export default Main;
 
 const Container = styled.div`
   height: 100%;
+  width: 100%;
   overflow: hidden;
   position: relative;
   max-width: 375px;
-  width: 100%;
   border: 2px solid #151419;
 
   .nav {

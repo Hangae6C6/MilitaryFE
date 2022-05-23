@@ -126,7 +126,7 @@ const Container = styled.div`
 
   #box {
     text-align: center;
-    height: 160px;
+    height: 166px;
     width: 125px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;

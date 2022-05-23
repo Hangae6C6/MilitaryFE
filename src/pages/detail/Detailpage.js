@@ -258,10 +258,10 @@ const Detail = () => {
 export default Detail;
 
 const Container = styled.div`
-  display: block;
-  max-width: 375px;
+  overflow: hidden;
+  position: relative;
   height: 100%;
-  width: 100%;
+  max-width: 375px;
   border: 2px solid #151419;
   background-color: #ffffff;
   .nav {
@@ -368,9 +368,9 @@ const ChallengeRoom = styled.div`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0.1em;
+  bottom: 0;
   width: 375px;
-  height: 84px;
+  height: 89px;
   border: none;
   outline: none;
   color: #ffffff;
