@@ -50,7 +50,7 @@ const Question = () => {
         <ProgressBar>
           <Progress width={step} />
         </ProgressBar>
-        <img align-items='center' height="351px" src={qnaList[num - 1].image} />
+        <img width="375px" src={qnaList[num - 1].image} />
         <QText>{qnaList[num - 1].q}</QText>
       </QDiv>
       <BWrap>
@@ -80,14 +80,14 @@ const QDiv = styled.div`
 `;
 const ProgressBar = styled.div`
   width: 100%;
-  height: 24px;
+  height: 70px;
   border-bottom: 2px solid #3f3f3f;
   border-top: 2px solid #3f3f3f;
   box-sizing: border-box;
 `;
 const Progress = styled.div`
   width: ${(props) => props.width}%;
-  height: 22px;
+  height: 68px;
   background-color: #1fb57e;
   border-bottom: 2px solid #3f3f3f;
   box-sizing: border-box;
