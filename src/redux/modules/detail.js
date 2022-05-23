@@ -93,6 +93,7 @@ const postUserChallengeDetailDB = (userId, challengeId) => {
       }).then((response) => {
         dispatch(getChallengeDetail(response.data));
       });
+       window.location.pathname=`/detailpage/${challengeId}`;
     } catch (err) {
       console.log(err, "challengeDetail POST 요청 실패");
     }

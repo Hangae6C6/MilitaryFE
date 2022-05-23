@@ -101,24 +101,24 @@ export default Challenge;
 
 const Container = styled.div`
   max-width: 375px;
+  height: 100%;
   width: 100%;
   border: 2px solid #151419;
+  background-color: #ffffff;
+
 `;
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-    background-color: #151419;
-  }
+  cursor: pointer;
 `;

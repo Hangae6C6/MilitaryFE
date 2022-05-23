@@ -9,7 +9,10 @@ import {
   NAVER_AUTH_URL,
   GOOGLE_AUTH_URL,
 } from "../shared/socialLogin/auth";
-import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
+import gobackIcon from "../shared/icons/arrowWhite.png";
+import logo from "../shared/icons/handlogo11.png";
+import kakao from "../shared/images/kakao_login_small.png";
+import naver from "../shared/images/naver login.png";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -50,7 +53,9 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="nav"></div>
+      <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+      </div>
       <div className="top">
         <div
           className="arrow"
@@ -58,11 +63,11 @@ const Login = () => {
             window.location.pathname = "/";
           }}
         >
-          <img src={gobackIcon} alt="goback" />
+          <img src={gobackIcon} alt="goback" width="20" height="18" />
         </div>
       </div>
       <div id="title-box">
-        <p id="p">필승 챌린지</p>
+        <p id="p">솔저챌린저스</p>
       </div>
       <Box2>
         <LoginInput
@@ -87,24 +92,18 @@ const Login = () => {
         >
           로그인
         </LoginButton>
-
-        <SNSLoginBtn
-          size="12pt"
-          onClick={() => {
-            window.location.href = KAKAO_AUTH_URL;
-          }}
-        >
-          카카오 로그인
-        </SNSLoginBtn>
-        <SNSLoginButton1
-          size="12pt"
-          onClick={() => {
-            window.location.href = NAVER_AUTH_URL;
-          }}
-        >
-          네이버 로그인
-        </SNSLoginButton1>
-    
+        <SocialLogin>
+          <img
+            id="kakao"
+            src={kakao}
+            alt="kakao"
+            width="60"
+            onClick={() => {
+              window.location.href = KAKAO_AUTH_URL;
+            }}
+          />
+      
+        </SocialLogin>
       </Box2>
       <NextButton
         onClick={() => {
@@ -129,11 +128,16 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
   }
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #151419;
+    border-top: 4px solid #ffffff;
+    background-color: #151419;
   }
   .arrow {
     position: absolute;
@@ -145,13 +149,13 @@ const Container = styled.div`
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
-    background-color: #ffffff;
+    background-color: #151419;
 
     #p {
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 65px auto;
-      color: #151419;
+      margin: 35px auto;
+      color: #ffffff;
     }
   }
 `;
@@ -183,87 +187,38 @@ const LoginButton = styled.button`
   font-size: 22px;
   font-family: Gmarket SansMedium;
   background-color: #ffffff;
-  color: #B62323;
+  color: #151419;
   &:hover {
     cursor: pointer;
-    background-color: #B62323;
+    background-color: #151419;
     color: #ffffff;
   }
 `;
 
-const SNSLoginBtn = styled.button`
-  width: 100%;
-  height: 62px;
-  box-sizing: border-box;
-  border-right: none;
-  border-left: none;
-  border-top: none;
-  border-bottom: 2px solid #141519;
-  outline: none;
-  font-size: 16px;
-  font-family: Gmarket SansMedium;
-  background-color: #ffd43b;
- 
-
-  &:hover {
-    cursor: pointer;
-    background-color: #fae100;
-  }
+const SocialLogin = styled.div`
+width: 375px;
+#kakao{
+  margin: 30px 10px 0 155px;
+  cursor: pointer;
+}
+#naver{
+cursor: pointer;
+}
 `;
 
-const SNSLoginButton1 = styled.button`
-  width: 100%;
-  height: 62px;
-  box-sizing: border-box;
-  border-right: none;
-  border-left: none;
-  border-top: none;
-  border-bottom: 2px solid #141519;
-  outline: none;
-  font-size: 16px;
-  background-color: #03c75a;
-  font-family: Gmarket SansMedium;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #19ce60;
-  }
-`;
-
-const SNSLoginButton2 = styled.button`
-  width: 100%;
-  height: 62px;
-  box-sizing: border-box;
-  border-right: none;
-  border-left: none;
-  border-top: none;
-  border-bottom: 2px solid #141519;
-  outline: none;
-  font-size: 16px;
-  background-color: #e4e8eb;
-  font-family: Gmarket SansMedium;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #f1f1f1;
-  }
-`;
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-    background-color: #151419;
-  }
+  cursor: pointer;
 `;

@@ -7,8 +7,9 @@ import { ActionCreators as userChallengeDetailActions } from "../redux/modules/d
 import Navigation from "../component/Navigation";
 import MyCallenge from "../component/main/MyCallenge";
 import HotChallenge from "../component/main/HotChallenge";
-import icon from "../shared/images/mainIcon.png";
-import logo from "../shared/images/Hand-logo.png";
+import icon from "../shared/icons/progressbarIcon.png";
+import logo from "../shared/icons/handlogo11.png";
+import mainlogo from "../shared/icons/mainlogo.png";
 import { getCookie } from "../shared/cookie";
 
 const Main = () => {
@@ -17,9 +18,9 @@ const Main = () => {
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const myChallenges = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.answer);
+    (state) => state.challengeDetail.userChallengeDetail.answer
+  );
 
-  
   const userId = user.userId;
 
   const progressbar = useSelector(
@@ -54,28 +55,40 @@ const Main = () => {
   return (
     <Container>
       <div className="nav">
-        <img id="logo" src={logo} alt="img" />
+        <img id="logo" src={logo} alt="img" height="53" />
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
       </div>
       <div id="top-box">
-        <div id="main-title"> {user.userNick} 병장님!</div>
+        {!token ? (
+          <div id="main-title">충성! 안녕하십니까!</div>
+        ) : (
+          <div id="main-title"> {user.userNick} 님!</div>
+        )}
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
         <div id="test" onClick={testHandler}>
-          잠깐, 근데 니 내 누군지 아뉘?{" "}
+          전역하고 뭐하지? 테스트하러가기!{" "}
         </div>
       </div>
-      <ProgressBarWrap width={score}>
-        <div id="progressBar"  />
+      {!token ? (
+        <></>
+      ) : (
+        <>
+          <ProgressBarWrap width={score}>
+            <div id="progressBar" />
 
-        <div id="icon">
-          <img src={icon} alt="icon" />
+            <div id="icon">
+              <img src={icon} alt="icon" height="73" width="153" />
+            </div>
+          </ProgressBarWrap>
+        </>
+      )}
+      <div className="challengeContainer">
+        <div id="my-challenge">
+          <p id="p">내가 진행중인 챌린지</p>
         </div>
-      </ProgressBarWrap>
-
-      <div id="my-challenge">
-        <p id="p">참여중 챌린지</p>
+        <MyCallenge user={user} cards={myChallenges} token={token} />
+        <HotChallenge cards={cards} />
       </div>
-      <MyCallenge user={user} cards={myChallenges} />
-      <HotChallenge cards={cards} />
       <Navigation userId={userId} />
     </Container>
   );
@@ -84,47 +97,53 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   position: relative;
   max-width: 375px;
-  width: 100%;
   border: 2px solid #151419;
- 
+
   .nav {
     width: 375px;
     height: 44px;
     background-color: #151419;
     #logo {
-      width: 200px;
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
+    #mainlogo {
+      margin: 0px 0 30px 60px;
     }
   }
   #top-box {
     display: grid;
-    background-color: #ede7d3;
+    background-color: #151419;
     height: 221px;
-    border-bottom: 2px solid #151419;
+    border-top: 4px solid #ffffff;
     #main-title {
       padding: 50px 0 0 15px;
       height: 35px;
       font-size: 36px;
-      color: #151419;
+      color: #ffffff;
       font-family: Gmarket SansBold;
     }
     #sub-title {
       margin: -15px 0 0 15px;
       height: 20px;
       font-size: 16px;
-      color: #151419;
+      color: #ffffff;
       font-family: Gmarket Sansmedium;
     }
     #test {
       margin: -35px 0 0 15px;
       height: 20px;
-      width: 300px;
-      font-size: 20px;
-      color: #1fb57e;
+      width: 270px;
+      font-size: 18px;
+      color: #151419;
+      background-color: #ffffff;
       cursor: pointer;
-      font-family: Gmarket SansBold;
+      font-family: Gmarket SansMedium;
     }
   }
 
@@ -139,6 +158,11 @@ const Container = styled.div`
       margin: 30px 0 0 15px;
     }
   }
+
+  .challengeContainer {
+    overflow: auto;
+    height: 100%;
+  }
 `;
 
 const ProgressBarWrap = styled.div`
@@ -147,7 +171,7 @@ const ProgressBarWrap = styled.div`
   height: 20px;
 
   #icon {
-    margin: -50px 0px 0px -30px;
+    margin: -31px 0px 0px -125px;
     width: 0;
     height: 30px;
   }
@@ -156,6 +180,6 @@ const ProgressBarWrap = styled.div`
     border: 1px solid blue;
     width: ${(props) => props.width};
     height: 20px;
-    background-color: #151419;
+    background-color: #1fb57e;
   }
 `;

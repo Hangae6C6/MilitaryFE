@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as searchActions } from "../../redux/modules/modal";
 import { Select, DateInput } from "grommet";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import gobackIcon from "../../shared/icons/arrowWhite.png";
+import logo from "../../shared/icons/handlogo11.png";
 
 const UserData = () => {
   const dispatch = useDispatch();
@@ -46,36 +47,28 @@ const UserData = () => {
   };
 
   const signupDataHandler = () => {
-    // dispatch(
-    //   searchActions.addUserDataDB(
-    //     userId,
-    //     startDate[0],
-    //     endDate[0],
-    //     milCategory,
-    //     rank
-    //   )
-    // );
     window.location.pathname = "/signupDone";
     setTimeout(() => {}, 0);
   };
 
   return (
     <Container>
-      <div className="nav"></div>
+     <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+      </div>
       <div className="top">
         <div
           className="arrow"
           onClick={() => {
-            window.location.pathname = "/login";
+            window.location.pathname = "/";
           }}
         >
-          <img src={gobackIcon} alt="goback" />
+          <img src={gobackIcon} alt="goback" width="20" height="18" />
         </div>
       </div>
       <div id="title-box">
-        <p id="p">필승 챌린지</p>
+        <p id="p">솔저챌린저스</p>
       </div>
-
       <Box2>
         <div id="p">입대일</div>
         <Wrap>
@@ -136,11 +129,16 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
   }
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #151419;
+    border-top: 4px solid #ffffff;
+    background-color: #151419;
   }
   .arrow {
     position: absolute;
@@ -149,16 +147,16 @@ const Container = styled.div`
   }
   #title-box {
     width: 375px;
-    height: 160px;
+    height: 159px;
     display: flex;
     border-top: 2px solid #151419;
-    border-bottom: 1px solid #151419;
+    background-color: #151419;
 
     #p {
-      font-size: 32px;
+      font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 60px auto;
-      color: #151419;
+      margin: 35px auto;
+      color: #ffffff;
     }
   }
 `;
@@ -194,24 +192,23 @@ const Box2 = styled.div`
     width: 100%;
     border-top: 1px solid #151419;
     border-bottom: 1px solid #151419;
-    color: #1fb57e;
+    color: #151419;
   }
 `;
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #1fb57e;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
+

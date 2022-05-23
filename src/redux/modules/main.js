@@ -71,7 +71,6 @@ const getProgressDB = (userId) => {
 };
 
 const addVeiwCountDB = (challengeId, challengeCnt) => {
-  console.log(challengeId, challengeCnt);
   return async function (dispatch, getState) {
     try {
       await axios({
@@ -81,7 +80,7 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
           challengeCnt,
         },
       }).then((response) => {
-        console.log(response);
+      
         window.location.pathname = `/detailpage/${challengeId}`;
       });
     } catch (err) {

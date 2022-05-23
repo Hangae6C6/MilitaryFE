@@ -2,7 +2,8 @@ import React from "react";
 import {useParams} from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
-
+import logo from "../shared/icons/handlogo11.png";
+import mainlogo from "../shared/icons/mainlogo.png";
 
 const Link = () => {
 const {challengeId} = useParams();
@@ -10,7 +11,12 @@ const {challengeId} = useParams();
 
   return (
     <Container>
+      
       <div className="top">
+      <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
+      </div>
         <NextButton
           onClick={() => {
             window.location.pathname = `/detailPage/${challengeId}`;
@@ -22,18 +28,15 @@ const {challengeId} = useParams();
 
       <div className="second-box">챌린지가 개설되었어요!</div>
       <div className="third-box">
-        <img src={img} alt="img" width="335" height="280" />
+        <img src={img} alt="img" width="390" height="340" />
       </div>
       <div className="fourth-box">
         친구, 연인, 부대원들과 함께 하는 건 어때요?
       </div>
-      <div className="link-box">
-        <div className="link-text">우리 챌린지에 친구를 초대합니다!</div>
-        <div className="links">
-          <div className="kakao-link">카카오</div>
-          <div className="copied-link">링크복사</div>
-        </div>
-      </div>
+  
+      <NextButton1 onClick={()=>{
+        alert('coming soon')
+      }}>링크 복사하기</NextButton1>
     </Container>
   );
 };
@@ -41,33 +44,50 @@ const {challengeId} = useParams();
 export default Link;
 
 const Container = styled.div`
+overflow: hidden;
 height: 100vh;
   max-width: 375px;
   width: 100%;
   border: 4px solid #3f3f3f;
-
+  background-color: #ffffff;
+  .nav {
+    width: 375px;
+    height: 44px;
+    background-color: #151419;
+    
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+      position: fixed;
+    }
+    #mainlogo{
+      margin: 10px 0 30px 230px;
+    }
+  }
   .top {
     width: 375px;
     height: 100px;
   }
+
   .second-box {
     width: 287px;
-    height: 44px;
+    height: 50px;
     font-family: Gmarket SansBold;
     font-size: 28px;
     color: #3f3f3f;
     font-weight: bold;
-    margin: 26px 45px 0px;
+    margin: 70px 45px 0px;
   }
   .third-box {
-    margin: 16px 20px 0px;
+    margin: 30px -5px
   }
   .fourth-box {
-    width: 290px;
+    width: 200px;
     height: 31px;
-    font-family: NanumSquare;
+    font-family: Gmarket SansMedium;
+    font-size: 20px;
     font-weight: 700;
-    margin: 16px 47px 0px;
+    margin: 16px 90px 0px;
   }
   .link-box {
     width: 336px;
@@ -123,7 +143,7 @@ const NextButton = styled.button`
   font-family: Gmarket SansMedium;
   font-size: 18px;
   font-weight: 600;
-  margin: 64px 0px 0px 264px;
+  margin: 24px 0px 0px 264px;
   background-color: #ffffff;
 
   &:hover {
@@ -132,3 +152,20 @@ const NextButton = styled.button`
     color: #ffffff;
   }
 `;
+
+const NextButton1 = styled.button`
+  position: fixed;
+  bottom: 0;
+  width: 375px;
+  height: 80px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: NanumSquareMedium;
+  background-color: #151419;
+  border-top: 2px solid #151419;
+  cursor: pointer;
+`;
+

@@ -43,7 +43,6 @@ const getRankDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res);
         dispatch(getRank(res.data.userdata.rank));
       })
       .catch((err) => {
@@ -62,7 +61,6 @@ const getCategoryDB = (id) => {
       },
     })
       .then((res) => {
-        console.log(res);
         dispatch(getCategory(res.data.userdata.armyCategory));
       })
       .catch((err) => {

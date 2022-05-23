@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../../redux/modules/user";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import gobackIcon from "../../shared/icons/arrowWhite.png";
+import logo from "../../shared/icons/handlogo11.png";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -74,19 +75,21 @@ const SignUp = () => {
 
   return (
     <Container>
-      <div className="nav"></div>
+       <div className="nav">
+        <img id="logo" src={logo} alt="img" height="53" />
+      </div>
       <div className="top">
         <div
           className="arrow"
           onClick={() => {
-            window.location.pathname = "/login";
+            window.location.pathname = "/";
           }}
         >
-          <img src={gobackIcon} alt="goback" />
+          <img src={gobackIcon} alt="goback" width="20" height="18" />
         </div>
       </div>
       <div id="title-box">
-        <p id="p">필승 챌린지</p>
+        <p id="p">솔저챌린저스</p>
       </div>
       <Box2>
         <LoginInput
@@ -145,13 +148,16 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
-    
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
   }
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #151419;
- 
+    border-top: 4px solid #ffffff;
+    background-color: #151419;
   }
   .arrow {
     position: absolute;
@@ -160,15 +166,16 @@ const Container = styled.div`
   }
   #title-box {
     width: 375px;
-    height: 160px;
+    height: 159px;
     display: flex;
     border-top: 2px solid #151419;
+    background-color: #151419;
 
     #p {
-      font-size: 32px;
+      font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 60px auto;
-      color: #151419;
+      margin: 35px auto;
+      color: #ffffff;
     }
   }
 
@@ -199,20 +206,16 @@ const LoginInput = styled.input`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.1em;
   width: 375px;
-  height: 80px;
+  height: 84px;
   border: none;
   outline: none;
-  color: #1FB57E;
+  color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color:#ffffff;
+  background-color: #151419;
   border-top: 2px solid #151419;
-  &:hover {
-    cursor: pointer;
-    color: #ffffff;
-    background-color:#1FB57E;
-  }
+  cursor: pointer;
 `;

@@ -12,7 +12,6 @@ const initialState = {
 };
 
 const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
-  console.log(userId, startDate, endDate, armyCategory, rank);
   return async function (dispatch) {
     let userdatas = {
       userId,
@@ -32,7 +31,6 @@ const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
           ...userdatas
         },
       }).then((response) => {
-        console.log(response.data);
         dispatch(addUserData(userdatas));
       });
     } catch (err) {
