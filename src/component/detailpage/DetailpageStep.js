@@ -34,10 +34,9 @@ const dispatch = useDispatch();
 export default DetailpageStep;
 
 const ChallengeName = styled.div`
-  height: fit-content;
-  display: table-row;
+  height: 100vh;
   #top {  
-    width: 375px;
+    width: 100%;
     height: 80px;
     background-color: #ffffff;
     border-top: 2px solid #151419;

@@ -48,7 +48,7 @@ overflow: hidden;
 height: 100vh;
   max-width: 375px;
   width: 100%;
-  border: 4px solid #3f3f3f;
+  border: 4px solid ;
   background-color: #ffffff;
   .nav {
     width: 375px;
@@ -155,9 +155,9 @@ const NextButton = styled.button`
 
 const NextButton1 = styled.button`
   position: fixed;
-  bottom: 0;
+  bottom: 0.2em;
   width: 375px;
-  height: 80px;
+  height: 85px;
   border: none;
   outline: none;
   color: #ffffff;

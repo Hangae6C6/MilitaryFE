@@ -155,6 +155,7 @@ const Detail = () => {
         </>
       ) : (
         <>
+              <ScrollWrap>
           <TitleBox>
             <div id="title">
               <div id="title-up">{card.challengeTitle}</div>
@@ -189,6 +190,8 @@ const Detail = () => {
               />
             </div>
           </TitleBox>
+
+          
           <ChallengeRoom>
             <div className="box">
               <div id="imgWrap">
@@ -211,21 +214,23 @@ const Detail = () => {
               <div id="roomInfo">{spots}자리</div>
               <div id="Infodetail">남은 자리</div>
             </div>
-          </ChallengeRoom>
+          </ChallengeRoom>{" "}
+          <DetailpageProgress
+            userId={userId}
+            thisChallenge={card}
+            myChallengeDetail={myChallengeDetail}
+            myChallengeStep={myChallengeStep}
+            userNickName={userNickName}
+          />
+          <DetailpageStep
+            challengeNum={challengeId}
+            userId={userId}
+            steps={mySteps}
+          />
+          </ScrollWrap>
         </>
       )}
-      <DetailpageProgress
-        userId={userId}
-        thisChallenge={card}
-        myChallengeDetail={myChallengeDetail}
-        myChallengeStep={myChallengeStep}
-        userNickName={userNickName}
-      />
-      <DetailpageStep
-        challengeNum={challengeId}
-        userId={userId}
-        steps={mySteps}
-      />
+
       {!token ? (
         <NextButton
           onClick={() => {
@@ -265,7 +270,7 @@ const Container = styled.div`
   border: 2px solid #151419;
   background-color: #ffffff;
   .nav {
-    width: 375px;
+    width: 100%;
     height: 44px;
     background-color: #151419;
 
@@ -275,12 +280,11 @@ const Container = styled.div`
     }
     #mainlogo {
       margin: 10px 0 30px 60px;
-    
     }
   }
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-bottom: 2px solid #151419;
     .arrow {
       position: absolute;
@@ -291,13 +295,12 @@ const Container = styled.div`
       position: absolute;
       margin: 17px 0px 0px 310px;
       cursor: pointer;
-      
     }
   }
 `;
 
 const TitleBox = styled.div`
-  width: 375px;
+  width: 100%;
   height: 159px;
   display: flex;
   border-bottom: 2px solid #151419;
@@ -315,7 +318,6 @@ const TitleBox = styled.div`
       padding-top: 36px;
       margin-left: 60px;
       font-family: Gmarket SansBold;
-     
     }
     #title-down {
       display: flex;
@@ -364,6 +366,13 @@ const ChallengeRoom = styled.div`
       color: #151419;
     }
   }
+`;
+
+const ScrollWrap = styled.div`
+ overflow: auto;
+height: 100%;
+
+
 `;
 
 const NextButton = styled.button`

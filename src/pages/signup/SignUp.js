@@ -139,23 +139,25 @@ const SignUp = () => {
 export default SignUp;
 
 const Container = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 375px;
   border: 2px solid #151419;
   .nav {
-    width: 375px;
+    width: 100%;
     height: 44px;
     background-color: #151419;
     #logo {
       margin: 13px 0 0 20px;
       width: 140px;
+      position: fixed;
     }
   }
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
   }
@@ -165,7 +167,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   #title-box {
-    width: 375px;
+    width: 100%;
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
@@ -187,7 +189,8 @@ const Container = styled.div`
 
 const Box2 = styled.div`
   height: 250px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
 `;
 
 const LoginInput = styled.input`
@@ -206,7 +209,7 @@ const LoginInput = styled.input`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0.1em;
+  bottom: 0.2em;
   width: 375px;
   height: 84px;
   border: none;

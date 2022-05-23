@@ -146,6 +146,7 @@ const Background = styled.div`
   height: 100vh;
   z-index: -10;
   flex: 1;
+  overflow: hidden;
   #leftside {
     border-right: 2px solid #151419;
     width: 60%;

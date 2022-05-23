@@ -66,8 +66,9 @@ const Main = () => {
         )}
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
         <div id="test" onClick={testHandler}>
-          전역하고 뭐하지? 테스트하러가기!{" "}
+          전역하고 뭐하지? 테스트하러가기
         </div>
+        <span id="progressText">전체 진행율(%)</span>
       </div>
       {!token ? (
         <></>
@@ -104,6 +105,7 @@ const Container = styled.div`
   max-width: 375px;
   border: 2px solid #151419;
 
+
   .nav {
     width: 375px;
     height: 44px;
@@ -117,7 +119,8 @@ const Container = styled.div`
     }
   }
   #top-box {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     background-color: #151419;
     height: 221px;
     border-top: 4px solid #ffffff;
@@ -129,21 +132,29 @@ const Container = styled.div`
       font-family: Gmarket SansBold;
     }
     #sub-title {
-      margin: -15px 0 0 15px;
+      padding: 10px 17px;
       height: 20px;
       font-size: 16px;
       color: #ffffff;
       font-family: Gmarket Sansmedium;
     }
     #test {
-      margin: -35px 0 0 15px;
+      margin: 0 17px;
       height: 20px;
-      width: 270px;
+      width: 290px;
       font-size: 18px;
       color: #151419;
       background-color: #ffffff;
       cursor: pointer;
       font-family: Gmarket SansMedium;
+    }
+    #progressText {
+      padding: 50px 0 0 260px;
+      height: 20px;
+      font-size: 14px;
+      color: #ffffff;
+      font-family: Gmarket Sansmedium;
+      
     }
   }
 
@@ -160,7 +171,7 @@ const Container = styled.div`
   }
 
   .challengeContainer {
-    overflow: auto;
+    overflow: scroll;
     height: 100%;
   }
 `;
