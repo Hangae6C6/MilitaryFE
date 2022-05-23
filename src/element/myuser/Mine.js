@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { ReactComponent as Back } from "../../image/back.svg";
 import { ReactComponent as Write } from "../../image/write.svg";
 import { ActionCreators as mypageAction } from "../../redux/modules/mypage";
-import user, { ActionCreators as userAction } from "../../redux/modules/user";
 import { history } from "../../redux/configureStore";
 import { Link } from "react-router-dom";
 
@@ -24,7 +23,7 @@ const Mine = (props) => {
   const Dday = useSelector((state) => state.mypage.endDate);
   console.log(useSelector((state) => state.mypage));
   React.useEffect(() => {
-    if (userId && userId.length) {
+    if (userId?.length) {
       console.log(userId);
       dispatch(mypageAction.getRankDB(userId));
       dispatch(mypageAction.getCategoryDB(userId));

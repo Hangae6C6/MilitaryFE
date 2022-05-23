@@ -51,7 +51,6 @@ const Challenge = () => {
         steps: steps,
       };
       dispatch(challengeActions.addChallengeDB(newChallenge, userId));
-
     }
   };
 

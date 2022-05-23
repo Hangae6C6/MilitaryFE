@@ -10,11 +10,13 @@ const NextBtn = ({children}) => {
 };
 
 const Next = styled.div`
-width: 100%;
+width: 375px;
 height: 50px;
 text-align: center;
 line-height: 48px;
 background-color: #151419;
+bottom: 0px;
+position: fixed;
 color: #ffffff;
 cursor: pointer;
 `

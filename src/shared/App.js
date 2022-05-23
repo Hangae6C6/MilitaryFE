@@ -93,7 +93,7 @@ function App() {
             ></Route>
             <Route
               exact
-              path="/main/preTest/:userId"
+              path="/main/preTest/"
               element={<BeginPage />}
             ></Route>
             <Route exact path="/search/" element={<Search />}></Route>
@@ -148,7 +148,6 @@ const Background = styled.div`
     border-right: 2px solid #151419;
     width: 834px;
     height: 100%;
-    z-index: -10;
     display: flex;
     flex-direction: column;
     #title {

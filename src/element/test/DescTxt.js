@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 import { infoList as dataInfoList } from "../../data/data";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const DescTxt = () => {
   const params = useParams();
-  const resultIdx = params.id;
-  console.log(resultIdx);
-
+  const resultIdx = params.userId;
   return (
     <div>
         <DescP>
@@ -21,6 +18,7 @@ const DescTxt = () => {
 
 const DescP = styled.p`
   width: 100%;
+  text-align: center;
   height: 100%;
   margin: 0;
   padding: 20px 0;

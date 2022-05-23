@@ -2,7 +2,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { getCookie, setCookie } from "../../shared/cookie";
-import { history } from "../../redux/configureStore";
 import axios from "axios";
 
 //Action Types
@@ -124,7 +123,7 @@ const getNickDB = (id) => {
   };
 };
 
-const EditNickDB = (userId, userNick, userRank) => {
+const EditNickDB = (userId, userNick) => {
   return function (dispatch, getState, { history }) {
     axios({
       method: "put",
@@ -137,7 +136,7 @@ const EditNickDB = (userId, userNick, userRank) => {
         console.log(res);
         const nick = getState().user.user.userNick;
         console.log(getState())
-        dispatch(editNick(nick));
+        dispatch(editNick(userNick));
       })
       .catch((err) => {
         console.log(err);
@@ -168,11 +167,14 @@ export default handleActions(
       produce(state, (draft) => {
         draft.nick = action.payload.nick;
       }),
-    // [EDIT_NICK]: (state, action) =>
-    //   produce(state, (draft) => {
-    //     let index = draft.list.findIndex((p) => p.id === action.payload.postId);
-    //     draft.list[index] = { ...draft.list[index], ...action.payload.post };
-    //   }),
+    [EDIT_NICK]: (state, action) =>
+      produce(state, (draft) => {
+        draft.nick = action.payload.nick;
+
+        // console.log(draft)
+        // let index = draft.list.find((p) => p.id === action.payload.nick);
+        // draft.list[index] = { ...draft.list[index], ...action.payload.nick };
+      }),
   },
   initialState
 );

@@ -29,9 +29,13 @@ const MyEdit = () => {
 
       return;
     }
-    dispatch(mypageAction.EditNickDB(userId, userNick, userRank));
+    dispatch(mypageAction.EditNickDB(userId, userNick));
     dispatch(mypageAction.getNickDB(userId));
   }, [userNick, userId]);
+
+  const EditNick = () => {
+    dispatch(mypageAction.EditNickDB(userId,userNick))
+  }
 
   return (
     <Wrap>
@@ -59,7 +63,7 @@ const MyEdit = () => {
           setUserRank(e.target.value);
         }}
       ></NickInput>
-      <EditBtn>저장하기</EditBtn>
+      <EditBtn onClick={EditNick}>저장하기</EditBtn>
       <Navigation />
     </Wrap>
   );

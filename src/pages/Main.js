@@ -46,9 +46,9 @@ const Main = () => {
 
   const testHandler = () => {
     if (token) {
-      window.location.pathname = `/main/preTest/${userId}`;
-    } else {
-      window.location.pathname = "/login";
+      window.location.pathname = `/main/preTest`;
+    }else{
+      window.location.pathname = '/login';
     }
   };
 
