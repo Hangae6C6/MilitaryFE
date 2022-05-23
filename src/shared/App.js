@@ -55,11 +55,12 @@ function App() {
         </div>
         <div id="lowerBox">
           <div id="upperText">SOLDIER CHALLENGERS</div>
-          <div id="lowerText">솔저 챌린저스 해야지</div>
+          <div id="lowerText">솔저 챌린저스</div>
+          <span id="lowerText">해야지</span>
         </div>
         <div id="bottomBox">
           <div id="bottomText">
-            운동/ 독서/ 스터디/ 자기계발/ 취업/ 외국어/ 진로고민/ 자격증
+            운동/ 독서/ 스터디/ 자기개발/ 취업/ 외국어/ 진로고민/ 자격증
           </div>
         </div>
       </div>
@@ -95,7 +96,7 @@ function App() {
               path="/main/preTest/:userId"
               element={<BeginPage />}
             ></Route>
-            <Route exact path="/search/:type" element={<Search />}></Route>
+            <Route exact path="/search/" element={<Search />}></Route>
             <Route
               exact
               path="/main/preTest/question"
@@ -137,31 +138,30 @@ function App() {
 }
 
 const Background = styled.div`
-  overflow: hidden;
+  box-sizing: border-box;
   display: flex;
-  width: 98vw;
-  height: 99vh;
   border: 4px solid #151419;
-  margin-left: 10px;
+  height: 100vh;
   z-index: -10;
+  flex: 1;
   #leftside {
     border-right: 2px solid #151419;
     width: 834px;
-    height: 110%;
+    height: 100%;
     z-index: -10;
-
+    display: flex;
+    flex-direction: column;
     #title {
       border-bottom: 2px solid black;
-      width: 98vw;
-      height: 140px;
-      z-index: -10;
-
+      padding: 45px;
+        display: flex;
+        justify-content: center;
+      box-sizing: border-box;
       #titleText {
         width: 630px;
         height: 100px;
         font-size: 88px;
         font-family: Gmarket SansBold;
-        margin: 45px 0 0 90px;
         z-index: -10;
       }
     }
@@ -173,43 +173,43 @@ const Background = styled.div`
       }
     }
     #lowerBox {
-      height: 231px;
-      width: 98vw;
+      padding: 45px 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
       border-bottom: 2px solid #151419;
       z-index: -10;
-
+      flex: 2;
       #upperText {
-        height: 30px;
-        width: 361px;
-        margin: 70px 0 0 157px;
+        margin-bottom: 16px;
         font-size: 26px;
         font-family: Gmarket SansMedium;
       }
       #lowerText {
-        height: 164px;
-        width: 380px;
-        margin: 20px 0 0 157px;
+        display: flex;
+        box-sizing: border-box;
         font-size: 60px;
         font-family: Gmarket SansBold;
       }
+    
     }
     #bottomBox {
+    
       #bottomText {
-        width: 600px;
-        height: 27px;
+        padding: 24px 140px;
+        display: flex;
         font-size: 20px;
         font-family: Gmarket Sans;
-        margin: 27px 0 0 157px;
       }
     }
   }
 `;
 
 const DivBox = styled.div`
-  max-width: 375px;
-  max-height: 1024px;
   height: 100%;
   margin: 0 auto;
+
 `;
 
 export default App;

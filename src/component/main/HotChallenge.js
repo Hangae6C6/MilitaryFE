@@ -12,12 +12,6 @@ const HotChallenge = ({ cards, types }) => {
   const veiwCountHandlerInHot = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
-  const searchTypeHandler = (type) => {
-    dispatch(searchActions.searchDB(type));
-    setTimeout(() => {
-      window.location.pathname = `/search/${type}`;
-    }, 0);
-  };
 
   const [list, setList] = React.useState(false);
 
@@ -158,7 +152,9 @@ const HotChallenge = ({ cards, types }) => {
 
 export default HotChallenge;
 
-const Container = styled.div``;
+const Container = styled.div`
+height: 100%;
+`;
 
 const UpperBox = styled.div`
   width: 375px;
@@ -229,7 +225,7 @@ const LowerBox = styled.div`
       font-family: Gmarket SansBold;
       border: 3px;
       margin: 10px 0 0 2px;
-      overflow: hidden;
+    
     }
     #icons {
       display: flex;

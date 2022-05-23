@@ -36,7 +36,7 @@ const Navigation = ({ userId }) => {
             src={searchChecked ? clickedSearchIcon : searchIcon}
             onClick={() => {
               setSearchChecked(true);
-              window.location.pathname = "/search/기타";
+              window.location.pathname = "/search";
             }}
           />
           <P>챌린지검색</P>
@@ -85,7 +85,7 @@ const Wrap = styled.div`
   height: ${(props) => (props.primary ? "83px" : "79px")};
   position: fixed;
   background-color: whitesmoke;
-  bottom: ${(props) => (props.primary ? "0.3em" : "0.3em")};
+  bottom: ${(props) => (props.primary ? "0.25em" : "0.25em")};
   z-index: 999;
   display: grid;
   border-top: 2px solid #151419;

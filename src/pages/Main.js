@@ -80,14 +80,15 @@ const Main = () => {
               <img src={icon} alt="icon" height="73" width="153" />
             </div>
           </ProgressBarWrap>
-
-          <div id="my-challenge">
-            <p id="p">내가 진행중인 챌린지</p>
-          </div>
         </>
       )}
-      <MyCallenge user={user} cards={myChallenges} token={token} />
-      <HotChallenge cards={cards} />
+      <div className="challengeContainer">
+        <div id="my-challenge">
+          <p id="p">내가 진행중인 챌린지</p>
+        </div>
+        <MyCallenge user={user} cards={myChallenges} token={token} />
+        <HotChallenge cards={cards} />
+      </div>
       <Navigation userId={userId} />
     </Container>
   );
@@ -96,6 +97,7 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
+  height: 100%;
   overflow: hidden;
   position: relative;
   max-width: 375px;
@@ -155,6 +157,11 @@ const Container = styled.div`
     #p {
       margin: 30px 0 0 15px;
     }
+  }
+
+  .challengeContainer {
+    overflow: auto;
+    height: 100%;
   }
 `;
 

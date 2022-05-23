@@ -27,7 +27,6 @@ import {
   foreignLanguageBlack,
 } from "../shared/icons/icons";
 const Nav = () => {
-  const { type } = useParams("");
   const dispatch = useDispatch();
   const [keyword, setKeyword] = React.useState("");
   const results = useSelector((state) => state.search.challenges);
@@ -36,10 +35,6 @@ const Nav = () => {
   React.useEffect(() => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
-
-  React.useEffect(() => {
-    dispatch(searchActions.searchDB(type));
-  }, [dispatch, type]);
 
   const searchHandler = () => {
     dispatch(searchActions.searchDB(keyword));
@@ -54,6 +49,7 @@ const Nav = () => {
 
   const lists = cards.filter((cur) => cur.challengeViewCnt > 0);
   const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
+  
   return (
     <Container>
       <div className="nav">
@@ -263,6 +259,7 @@ const LowerBox = styled.div`
   justify-content: start;
   width: 378px;
   max-height: 381px;
+  
   #box {
     text-align: center;
     height: 160px;
@@ -270,6 +267,7 @@ const LowerBox = styled.div`
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
     margin-right: -2px;
+    
     #type {
       margin-left: 35px;
       #p {
@@ -317,22 +315,8 @@ const LowerBox = styled.div`
 `;
 
 const ImgSearchWhite = styled.div`
-z-index: -1;
+z-index: 0;
 opacity: 0.5;
+position: absolute;
 
-`;
-const NextButton = styled.button`
-  position: absolute;
-  bottom: 0;
-  width: 375px;
-  height: 80px;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  font-family: NanumSquareMedium;
-  background-color: #151419;
-  border-top: 2px solid #151419;
-  cursor: pointer;
 `;

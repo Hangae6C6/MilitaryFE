@@ -118,7 +118,7 @@ const MyCallenge = ({ user, cards, token }) => {
 export default MyCallenge;
 
 const Container = styled.div`
-  overflow: hidden;
+ 
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
