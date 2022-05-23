@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const DescTxt = () => {
   const params = useParams();
-  const resultIdx = params.userId;
+  const resultIdx = params.id;
   return (
     <div>
         <DescP>

@@ -31,11 +31,11 @@ const ResultPage = (props) => {
       <PersonDiv>
         <TypeDesc>
           <b>{userNickForBinding}</b>님의 유형은
-          <b>{infoList[resultNum.userId].name}</b>입니다.
+          <b>{(infoList[resultNum.id].name)}</b>입니다.
         </TypeDesc>
       </PersonDiv>
-      <DescImg bgc={infoList[resultNum.userId].bgc} src={infoList[resultNum.userId].image}>
-          <P>{infoList[resultNum.userId].name}</P>
+      <DescImg bgc={infoList[resultNum.id].bgc} src={infoList[resultNum.id].image}>
+          <P>{infoList[resultNum.id].name}</P>
       </DescImg>
       <DescTxt />
       <NextBtn onClick={()=>{history.push('/')}}>홈으로 가기</NextBtn>

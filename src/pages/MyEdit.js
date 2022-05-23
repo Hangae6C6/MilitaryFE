@@ -9,6 +9,11 @@ import { ActionCreators as mypageAction } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
 const MyEdit = () => {
+
+  const userId = useSelector((state) => state.user.user.userId);
+  window.alert('comming soon!')
+  history.back()
+
   const dispatch = useDispatch();
   let cookie = document.cookie;
 
@@ -19,7 +24,6 @@ const MyEdit = () => {
     setSelected(e.target.value);
   };
 
-  const userId = useSelector((state) => state.user.user.userId);
   const [userNick, setUserNick] = useState(
     useSelector((state) => state.user.user.userNick)
   );

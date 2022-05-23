@@ -33,7 +33,8 @@ const MyUser = () => {
 }
 const Wrap = styled.div`
   max-width: 375px;
-  width: 100%;
+  width: 375px;
+  background-color: #fff;
   border: 2px solid #151419;
 `;
 
