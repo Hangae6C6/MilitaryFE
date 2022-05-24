@@ -65,8 +65,6 @@ function App() {
         </div>
       </LeftSide>
       <div id="rightside">
-        <div id="box1" />
-        <div id="box2" />
       </div>
 
       <DivBox>
@@ -223,7 +221,6 @@ const DivBox = styled.div`
     max-width: 390px;
     height: 100vh;
   }
-
   height: 100%;
   margin: 0 auto;
   background-color: #fff;
