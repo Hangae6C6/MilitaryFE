@@ -173,12 +173,12 @@ const Nav = () => {
 export default Nav;
 const Container = styled.div`
   max-width: 375px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   border: 2px solid #151419;
   position: relative;
   overflow: hidden;
-
+ 
   .nav {
     width: 375px;
     height: 44px;
@@ -271,7 +271,7 @@ const LowerBox = styled.div`
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
     background-color: #ffffff;
-
+    z-index: 1;
     #type {
       margin-left: 35px;
       #p {
@@ -319,7 +319,7 @@ const LowerBox = styled.div`
 `;
 
 const ImgSearchWhite = styled.div`
-  z-index: -2;
+  z-index: 0;
   opacity: 0.3;
   padding-top: 80px;
   position: absolute;

@@ -15,7 +15,7 @@ const NaverAuth = (props) => {
     sessionStorage.setItem("code", code);
     console.log(code, state);
 
-    // dispatch(userActions.NaverLogin(code, state));
+    dispatch(userActions.NaverLogin(code, state));
   };
 
   try {

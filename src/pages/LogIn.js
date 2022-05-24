@@ -102,6 +102,15 @@ const Login = () => {
               window.location.href = KAKAO_AUTH_URL;
             }}
           />
+           {/* <img
+            id="naver"
+            src={naver}
+            alt="navero"
+            width="60"
+            onClick={() => {
+              window.location.href = NAVER_AUTH_URL;
+            }}
+          /> */}
       
         </SocialLogin>
       </Box2>
@@ -120,7 +129,7 @@ const Login = () => {
 export default Login;
 
 const Container = styled.div`
-  width: 375px;
+
   height: 100vh;
   width: 100%;
   border: 2px solid #151419;

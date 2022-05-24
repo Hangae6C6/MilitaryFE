@@ -12,47 +12,13 @@ const DetailpageRank = () => {
   const joinList = useSelector(
     (state) => state.challengeDetail.challengeDetail
   );
-  console.log(joinList)
-  // let userProgressBar = [
-  //   {
-  //     userNick: "",
-  //     progress: 0,
-  //   },
-  // ];
-
-
-  // let num = 1;
-  // if (joinList) {
-  //   for (let i = 0; i < joinList.length; i++) {
-  //     for (let j = 0; j < joinList[i].steps.length; j++) {
-  //       if(joinList[i].Users[0].userNick === joinList[j].Users[0].userNick)
-  //               userProgressBar = joinList[i];
-        // if (joinList[i].steps[j].isChecked === true) {
-        //   userProgressBar = [
-        //     ...userProgressBar,
-        //     {
-        //       userNick: joinList[i].Users[0].userNick,
-        //       progress: (num++ / joinList[i].steps.length) * 100,
-        //     },
-        //   ];
-        // } else {
-        //   userProgressBar = [
-        //     ...userProgressBar,
-        //     {
-        //       userNick: joinList[i].Users[0].userNick,
-        //       progress: 0,
-        //     },
-        //   ];
-        // }
-  //     }
-  //   }
-  // }
-  // console.log(userProgressBar);
-
 
   React.useEffect(() => {
-    dispatch(getUserChallengeActions.getChallengeDetailDB(challengeId));
+    dispatch(getUserChallengeActions.getRankDetailDB(challengeId));
   }, [dispatch, challengeId]);
+
+  const ranks = [...joinList];
+   const rank = ranks.sort((a,b)=> (b.progress - a.progress));
 
   return (
     <Container>
@@ -73,13 +39,13 @@ const DetailpageRank = () => {
 
       <ChallengeName>
         <div id="top">
-          <div id="title">챌린지 달성 순위</div>
+          <div id="title">챌린지 랭킹</div>
         </div>
-        {joinList.map((cur, idx) => (
-          <Astep>
+        {rank?.map((cur, idx) => (
+          <Astep key={cur + idx} width={cur.progress + "%"}>
             <div id="progressBar">
-              <div id="rank">1</div>
-              <div id="stepTitle">{cur.userId}</div>
+              <div id="rank">{idx + 1}</div>
+              <div id="nickname">{cur.userNick}</div>
               <img src={rank3} alt="rank" id="icon" width="28" height="36" />
             </div>
           </Astep>
@@ -147,52 +113,49 @@ const ChallengeName = styled.div`
 const Astep = styled.div`
   background-color: #ffffff;
   width: 375px;
-  height: ${(props) => props.width};
+  height: 100%;
   border-bottom: 2px solid #151419;
   #progressBar {
     background-color: #1fb57e;
-    width: 375px;
+    width: ${(props) => props.width};
     height: 62px;
     display: flex;
-
+    border-right: ${(props) => props.width === 0 ? "none" : "2px solid black"};
+   
     #rank {
       margin: 20px 0 0 39px;
       font-size: 18px;
       font-family: Gmarket SansBold;
     }
-    #stepTitle {
+    #nickname {
       font-family: NanumSquareMedium;
       color: #151419;
       font-size: 16px;
       width: 280px;
       height: 22px;
-      margin: 20px 0 0 26px;
+      margin: 20px 0 0 100px;
+      position: fixed;
     }
     #icon {
-      margin: 13px 30px 0 0;
+      margin: 13px 0 0 300px;
+      position: fixed;
     }
-    #stepDone {
-      width: 22px;
-      height: 22px;
-      margin: 20px 20px 0 10px;
-    }
+  
   }
 `;
 
 const NextButton = styled.button`
-  position: relative;
+position: fixed;
   bottom: 0;
-  width: 375px;
-  height: 80px;
-  border: none;
+  width: 379px;
+  height: 89px;
+  border: 2px solid #151419;
+  margin-left: -2px;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  background-color: #b2b2b2;
-  &:hover {
-    cursor: pointer;
-    background-color: #151419;
-  }
+  background-color: #151419;
+  cursor: pointer;
 `;

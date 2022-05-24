@@ -82,7 +82,7 @@ const Container = styled.div`
     box-sizing: border-box;
     width: 100%;
     height: 500px;
-    padding: 186px 0 0 100px;
+    padding: 167px 0 0 100px;
     border-top: #151419 4px solid;
   }
   
@@ -90,7 +90,7 @@ const Container = styled.div`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0.1em;
+  bottom: 0.2em;
   width: 375px;
   height: 84px;
   border: none;

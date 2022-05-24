@@ -84,6 +84,7 @@ const MyPage = styled.div`
   border-bottom: 2px solid #151419;
   display: grid;
   justify-content: space-between;
+
 `;
 
 const BackDiv = styled.div`

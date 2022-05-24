@@ -111,17 +111,17 @@ const Container = styled.div`
 
 `;
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 0.1em;
-  width: 375px;
-  height: 87px;
-  border: none;
+position: fixed;
+  bottom: 0;
+  width: 379px;
+  height: 89px;
+  border: 2px solid #151419;
+  margin-left: -2px;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
   cursor: pointer;
 `;

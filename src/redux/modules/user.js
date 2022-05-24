@@ -105,7 +105,7 @@ const NaverLogin = (code, state) => {
   return function (dispatch, getState, { history }) {
     console.log(code, state);
     axios
-      .get(`http://13.125.228.240//api/auth/naver?code=${code}&state=${state}`)
+      .get(`http://13.125.228.240/api/auth/naver/callback?code=${code}&state=${state}`)
 
       .then((res) => {
         const token = res.data.token;

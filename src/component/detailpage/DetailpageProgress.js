@@ -63,8 +63,7 @@ const DetailpageProgress = ({
       ) : (
         <Container
           onClick={() => {
-            alert("coming soon");
-            // window.location.pathname = `/detailpage/rank/${challengeId}`;
+            window.location.pathname = `/detailpage/rank/${challengeId}`;
           }}
         >
           <div id="firstBox">

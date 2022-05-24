@@ -45,7 +45,7 @@ export default Link;
 
 const Container = styled.div`
 overflow: hidden;
-height: 100vh;
+height: 100%;
   max-width: 375px;
   width: 100%;
   border: 4px solid ;
@@ -156,7 +156,7 @@ const NextButton = styled.button`
 const NextButton1 = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
+  width: 383px;
   height: 85px;
   border: none;
   outline: none;
@@ -164,8 +164,9 @@ const NextButton1 = styled.button`
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
+  margin-left: -4px;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  /* border-top: 2px solid #151419; */
   cursor: pointer;
 `;
 

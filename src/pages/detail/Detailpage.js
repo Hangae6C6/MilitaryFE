@@ -378,16 +378,16 @@ height: 100%;
 const NextButton = styled.button`
   position: fixed;
   bottom: 0;
-  width: 375px;
+  width: 379px;
   height: 89px;
-  border: none;
+  border: 2px solid #151419;
+  margin-left: -2px;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  /* border-top: 2px solid #151419; */
   &:hover {
     cursor: pointer;
   }

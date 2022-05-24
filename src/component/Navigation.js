@@ -84,6 +84,7 @@ const Nav = styled.div`
 `;
 
 const Wrap = styled.div`
+  margin-left: -2px;
   max-width: 375px;
   width: 100%;
   height: ${(props) => (props.primary ? "80px" : "83px")};
@@ -92,7 +93,8 @@ const Wrap = styled.div`
   bottom: ${(props) => (props.primary ? "0.25em" : "0.25em")};
   z-index: 999;
   display: grid;
-  border-top: 2px solid #151419;
+  border: 2px solid #151419;
+  border-bottom: none;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 

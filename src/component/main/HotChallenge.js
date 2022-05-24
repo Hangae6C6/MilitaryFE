@@ -16,7 +16,8 @@ const HotChallenge = ({ cards, types }) => {
   const [list, setList] = React.useState(false);
 
   
-  const lists = cards.filter((cur) => cur.challengeViewCnt >= 0);
+  const listsAB = cards.filter((cur) => cur.challengeViewCnt >= 0);
+  const lists = [...listsAB];
   const listB = lists.sort((a, b) => b.challengeCnt - a.challengeCnt);
   const listA = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
 

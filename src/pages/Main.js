@@ -47,8 +47,8 @@ const Main = () => {
   const testHandler = () => {
     if (token) {
       window.location.pathname = `/main/preTest`;
-    }else{
-      window.location.pathname = '/login';
+    } else {
+      window.location.pathname = "/login";
     }
   };
 
@@ -84,9 +84,14 @@ const Main = () => {
         </>
       )}
       <div className="challengeContainer">
-        <div id="my-challenge">
-          <p id="p">내가 진행중인 챌린지</p>
-        </div>
+        {token ? (
+          <div id="my-challenge">
+            <p id="p">내가 진행중인 챌린지</p>
+          </div>
+        ) : (
+          <></>
+        )}
+
         <MyCallenge user={user} cards={myChallenges} token={token} />
         <HotChallenge cards={cards} />
       </div>
@@ -104,7 +109,7 @@ const Container = styled.div`
   position: relative;
   max-width: 375px;
   border: 2px solid #151419;
-
+ 
 
   .nav {
     width: 375px;
@@ -154,7 +159,6 @@ const Container = styled.div`
       font-size: 14px;
       color: #ffffff;
       font-family: Gmarket Sansmedium;
-      
     }
   }
 
@@ -172,7 +176,7 @@ const Container = styled.div`
 
   .challengeContainer {
     overflow: scroll;
-    height: 100%;
+    height: 67%;
   }
 `;
 

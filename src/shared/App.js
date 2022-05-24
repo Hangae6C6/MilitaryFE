@@ -142,8 +142,8 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
 }
-  box-sizing: border-box;
   display: flex;
+  box-sizing: border-box;
   border: 4px solid #151419;
   height: 100vh;
   z-index: -10;
@@ -218,10 +218,10 @@ const DivBox = styled.div`
   @media (max-width: 576px) {
     margin: 0 auto;
     max-width: 390px;
-    height: 100vh;
+    max-height: 935px;
   }
-
-  height: 100%;
+  
+  max-height: 850px;
   margin: 0 auto;
   background-color: #fff;
 `;
