@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
 
+import logo from "./icons/handlogo11.png";
+import mainlogo from "./icons/mainlogo.png";
+
 import Main from "../pages/Main";
 import Detailpage from "../pages/detail/Detailpage";
 import Login from "../pages/LogIn";
@@ -64,9 +67,12 @@ function App() {
           </div>
         </div>
       </LeftSide>
-     
 
       <DivBox>
+        <Logo>
+          <img id="logo" src={logo} alt="img" height="53" />
+          <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
+        </Logo>
         <Router>
           <Routes>
             <Route exact path="/" element={<Main />}></Route>
@@ -136,12 +142,12 @@ function App() {
 }
 
 const Background = styled.div`
-@media (max-width: 576px) {
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  @media (max-width: 576px) {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   box-sizing: border-box;
   display: flex;
   border: 4px solid #151419;
@@ -223,6 +229,20 @@ const DivBox = styled.div`
   height: 100%;
   margin: 0 auto;
   background-color: #fff;
+`;
+
+const Logo = styled.div`
+    width: 379px;
+    height: 44px;
+    background-color: #151419;
+
+    #logo {
+      margin: 13px 0 0 20px;
+      width: 140px;
+    }
+    #mainlogo {
+      margin: 10px 0 30px 60px;
+    }
 `;
 
 export default App;

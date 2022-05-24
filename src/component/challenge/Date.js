@@ -90,7 +90,6 @@ const Container = styled.div`
     #logo {
       margin: 13px 0 0 20px;
       width: 140px;
-      position: fixed;
     }
     #mainlogo{
       margin: 10px 0 30px 230px;

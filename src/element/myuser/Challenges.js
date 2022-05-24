@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
 import { history } from "../../redux/configureStore";
+import closeIcon from "../../shared/icons/icnCloseBlack32.svg";
 
 const Challenges = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Challenges = () => {
             <Title>
               {chal.challengeTitle}
               <Type>{chal.challengeType}</Type>
+              <Close src={closeIcon} alt="closeIcon"></Close>
             </Title>
             {console.log(chal)}
             <Progress>
@@ -76,6 +78,11 @@ const Type = styled.div`
   padding: 4px;
   margin: 0 0 10px 10px;
 `;
+
+const Close = styled.img`
+float: right;
+margin: 0 20px 0 0;
+`
 
 const Progress = styled.div`
 font-family: Gmarket Sans;

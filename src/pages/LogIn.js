@@ -1,7 +1,8 @@
 //SY
 import React from "react";
 import styled from "styled-components";
-import {message} from 'antd';
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import {
@@ -32,19 +33,19 @@ const Login = () => {
 
   const login = () => {
     if (id === "" || password === "") {
-      message.warning("빈칸을 입력해주세요.");
+      toast.error("빈칸을 입력해주세요.", { position:"top-center" });
       return;
     }
 
     if (!isId(id)) {
-      message.warning("잘못된 이메일 형식입니다.");
+      toast.error("잘못된 이메일 형식입니다.", { position:"top-center" });
       return;
     }
 
     if (!isPwd(password)) {
-      message.warning(
+      toast.error(
         "비밀번호는 최소 8자, 하나 이상의 문자와 숫자로 입력해주세요."
-      );
+        , { position:"top-center" });
       return;
     }
 
@@ -113,6 +114,7 @@ const Login = () => {
         {" "}
         회원가입
       </NextButton>
+      <ToastContainer />
     </Container>
   );
 };
