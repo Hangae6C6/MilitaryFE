@@ -64,10 +64,7 @@ function App() {
           </div>
         </div>
       </LeftSide>
-      <div id="rightside">
-        <div id="box1" />
-        <div id="box2" />
-      </div>
+     
 
       <DivBox>
         <Router>
