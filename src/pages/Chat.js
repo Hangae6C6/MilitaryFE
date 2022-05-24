@@ -18,9 +18,9 @@ const Chat = () => {
 
 const Wrap = styled.div`
 height: 100vh;
-  max-width: 375px;
-  width: 100%;
+  width: 375px;
   border: 2px solid #151419;
+  background-color: #fff;
 `;
 
 export default Chat;

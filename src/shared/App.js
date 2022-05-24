@@ -40,7 +40,7 @@ function App() {
 
   return (
     <Background>
-      <div id="leftside">
+      <LeftSide>
         <div id="title">
           <div id="titleText">전역하고 뭐하지</div>
         </div>
@@ -63,9 +63,12 @@ function App() {
             운동/ 독서/ 스터디/ 자기개발/ 취업/ 외국어/ 진로고민/ 자격증
           </div>
         </div>
+      </LeftSide>
+      <div id="rightside">
+        <div id="box1" />
+        <div id="box2" />
       </div>
-      <div id="rightside"><div id="box1"/><div id="box2"/></div>
-      
+
       <DivBox>
         <Router>
           <Routes>
@@ -93,11 +96,7 @@ function App() {
               path="/detail/chat/:challengeId"
               element={<Chat />}
             ></Route>
-            <Route
-              exact
-              path="/main/preTest/"
-              element={<BeginPage />}
-            ></Route>
+            <Route exact path="/main/preTest/" element={<BeginPage />}></Route>
             <Route exact path="/search/" element={<Search />}></Route>
             <Route
               exact
@@ -140,81 +139,94 @@ function App() {
 }
 
 const Background = styled.div`
+@media (max-width: 576px) {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   box-sizing: border-box;
   display: flex;
   border: 4px solid #151419;
   height: 100vh;
   z-index: -10;
   flex: 1;
-  #leftside {
-    border-right: 2px solid #151419;
-    width: 60%;
-    height: 100%;
+`;
+
+const LeftSide = styled.div`
+  @media (max-width: 576px) {
+    display: none;
+    border: none;
+  }
+  border-right: 2px solid #151419;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  #title {
+    border-bottom: 2px solid black;
+    padding: 45px 220px;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
-    #title {
-      border-bottom: 2px solid black;
-      padding: 45px 220px;
-      width: 100vw;
-      display: flex;
-      justify-content: start;
-      box-sizing: border-box;
-      z-index: -1;
-      #titleText {
-        width: 630px;
-        height: 100px;
-        font-size: 88px;
-        font-family: Gmarket SansBold;
-      }
-    }
-    #mainImage {
-      padding: 0 140px;
-      border-bottom: 2px solid black;
-      height: 364px;
-      #logo {
-        margin: 43px;
-      }
-    }
-    #lowerBox {
-      padding: 0px 280px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-sizing: border-box;
-      border-bottom: 2px solid #151419;
-      width: 100vw;
-      flex: 2;
-      #upperText {
-        margin-bottom: 16px;
-        font-size: 26px;
-        font-family: Gmarket SansMedium;
-      }
-      #lowerText {
-        display: flex;
-        box-sizing: border-box;
-        font-size: 60px;
-        font-family: Gmarket SansBold;
-      }
-    
-    }
-    #bottomBox {
-      padding: 30px 280px;
-      #bottomText {
-       
-        display: flex;
-        font-size: 20px;
-        font-family: Gmarket Sans;
-      }
+    justify-content: start;
+    box-sizing: border-box;
+    z-index: -1;
+    #titleText {
+      width: 630px;
+      height: 100px;
+      font-size: 88px;
+      font-family: Gmarket SansBold;
     }
   }
-
-
+  #mainImage {
+    padding: 0 140px;
+    border-bottom: 2px solid black;
+    height: 364px;
+    #logo {
+      margin: 43px;
+    }
+  }
+  #lowerBox {
+    padding: 0px 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    border-bottom: 2px solid #151419;
+    width: 100vw;
+    flex: 2;
+    #upperText {
+      margin-bottom: 16px;
+      font-size: 26px;
+      font-family: Gmarket SansMedium;
+    }
+    #lowerText {
+      display: flex;
+      box-sizing: border-box;
+      font-size: 60px;
+      font-family: Gmarket SansBold;
+    }
+  }
+  #bottomBox {
+    padding: 30px 280px;
+    #bottomText {
+      display: flex;
+      font-size: 20px;
+      font-family: Gmarket Sans;
+    }
+  }
 `;
 
 const DivBox = styled.div`
+  @media (max-width: 576px) {
+    margin: 0 auto;
+    max-width: 390px;
+    height: 100vh;
+  }
+
   height: 100%;
   margin: 0 auto;
-
+  background-color: #fff;
 `;
 
 export default App;

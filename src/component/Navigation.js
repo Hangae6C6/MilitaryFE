@@ -77,6 +77,7 @@ export default Navigation;
 
 const Nav = styled.div`
   margin-top: 82px;
+
 `;
 
 const Wrap = styled.div`

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const DescTxt = () => {
   const params = useParams();
-  const resultIdx = params.userId;
+  const resultIdx = params.id;
   return (
     <div>
         <DescP>
@@ -17,6 +17,7 @@ const DescTxt = () => {
 
 
 const DescP = styled.p`
+font-family: NanumSquare;
   width: 100%;
   text-align: center;
   height: 100%;

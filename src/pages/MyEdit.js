@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Wrap from "../element/test/Wrap";
 import styled from "styled-components";
+import {message} from 'antd';
 import { ReactComponent as Back } from "../image/back.svg";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
@@ -9,33 +10,40 @@ import { ActionCreators as mypageAction } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
 const MyEdit = () => {
+  // message.info('comming soon!')
+  // history.back()
+
+  const userId = useSelector((state) => state.user.user.userId);
   const dispatch = useDispatch();
   let cookie = document.cookie;
 
-  const userId = useSelector((state) => state.user.user.userId);
-  const [userNick, setUserNick] = useState(
-    useSelector((state) => state.user.user.userNick)
-  );
-  console.log(userNick);
-  const [userRank, setUserRank] = useState(
-    useSelector((state) => state.mypage.rank)
-  );
-  console.log(userRank);
+  const selectList = ["이병", "일병", "상병", "병장"];
+  const [select, setSelected] = useState(useSelector((state) => state.mypage.rank));
+
+  const handelSelect = (e) => {
+    setSelected(e.target.value);
+  };
+
+  // const [userNick, setUserNick] = useState(
+  //   useSelector((state) => state.user.user.userNick)
+  // );
+
   useEffect(() => {
     if (!cookie) {
-      window.alert("로그인 후 이용해주세요");
+      message.warning("로그인 후 이용해주세요");
       history.replace("/");
       window.location.reload();
-
       return;
     }
-    dispatch(mypageAction.EditNickDB(userId, userNick));
-    dispatch(mypageAction.getNickDB(userId));
-  }, [userNick, userId]);
+  }, [])
 
-  const EditNick = () => {
-    dispatch(mypageAction.EditNickDB(userId,userNick))
-  }
+  useEffect(() => {
+    dispatch(mypageAction.getRankDB(userId));
+  }, [userId]);
+
+  const EditRank = () => {
+    dispatch(mypageAction.EditRankDB(userId, select));
+  };
 
   return (
     <Wrap>
@@ -48,22 +56,23 @@ const MyEdit = () => {
         </MyP>
       </MyPage>
       <PersonalEdit>&nbsp;&nbsp;&nbsp;개인정보 수정</PersonalEdit>
-      <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
+      {/* <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
       <NickInput
         value={userNick}
         placeholder={userNick}
         onChange={(e) => {
           setUserNick(e.target.value);
         }}
-      ></NickInput>
+      ></NickInput> */}
       <Nick>&nbsp;&nbsp;&nbsp;&nbsp;계급</Nick>
-      <NickInput
-        value={userRank}
-        onChange={(e) => {
-          setUserRank(e.target.value);
-        }}
-      ></NickInput>
-      <EditBtn onClick={EditNick}>저장하기</EditBtn>
+      <Select onChange={handelSelect} value={select}>
+        {selectList.map((item) => (
+          <Option value={item} key={item}>
+            {item}
+          </Option>
+        ))}
+      </Select>
+      <EditBtn onClick={EditRank(select)}>저장하기</EditBtn>
       <Navigation />
     </Wrap>
   );
@@ -107,7 +116,28 @@ const Nick = styled.div`
   text-align: left;
 `;
 
-const NickInput = styled.input`
+const NickInput = styled.div`
+  border-bottom: 2px solid #151419;
+  border-top: 2px solid #151419;
+  border-right: none;
+  border-left: none;
+  width: 100%;
+  height: 75px;
+  box-sizing: border-box;
+`;
+
+
+const Select = styled.select`
+  border-bottom: 2px solid #151419;
+  border-top: 2px solid #151419;
+  border-right: none;
+  border-left: none;
+  width: 100%;
+  height: 75px;
+  box-sizing: border-box;
+`;
+
+const Option = styled.option`
   border-bottom: 2px solid #151419;
   border-top: 2px solid #151419;
   border-right: none;
@@ -127,6 +157,7 @@ const EditBtn = styled.div`
   bottom: 71px;
   position: fixed;
   line-height: 70px;
+  cursor: pointer;
 `;
 
 export default MyEdit;
