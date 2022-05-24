@@ -11,10 +11,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
          onClick={onBack}>
           <img src={gobackIcon} alt='goback'/>
         </div>
-        <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
-      </div>
+       
         <div className="progressBar">
           <Meter
             size="xsmall"
@@ -79,22 +76,10 @@ const Container = styled.div`
 
   .arrow{
     position: absolute;
-    margin: 60px 0px 0px 10px;
+    margin: 15px 0px 0px 10px;
     cursor: pointer;
   }
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-    #mainlogo{
-      margin: 10px 0 30px 230px;
-    }
-  }
+ 
   .progressBar {
     height: 67px;
     width: 100%;

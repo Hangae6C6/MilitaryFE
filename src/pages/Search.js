@@ -52,10 +52,7 @@ const Nav = () => {
 
   return (
     <Container>
-      <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
-      </div>
+   
       <div className="top">
         <div
           className="arrow"
@@ -160,8 +157,8 @@ const Nav = () => {
           <img
             src={searchWhite}
             alt="searchWhite"
-            width="500px"
-            height="500px"
+            width="380px"
+            height="380px"
           />
         </ImgSearchWhite>
       </LowerBox>
@@ -176,22 +173,8 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   border: 2px solid #151419;
-  position: relative;
   overflow: hidden;
- 
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-    #mainlogo {
-      margin: 10px 0 30px 60px;
-    }
-  }
+  
   .top {
     height: 100px;
     width: 375px;
@@ -264,6 +247,7 @@ const LowerBox = styled.div`
   justify-content: start;
   width: 378px;
   overflow: scroll;
+  
   #box {
     text-align: center;
     height: 167px;
@@ -321,6 +305,6 @@ const LowerBox = styled.div`
 const ImgSearchWhite = styled.div`
   z-index: 0;
   opacity: 0.3;
-  padding-top: 80px;
+  padding-top: 180px;
   position: absolute;
 `;

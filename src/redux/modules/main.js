@@ -5,6 +5,7 @@ import { getCookie } from "../../shared/cookie";
 
 const GET_POST = "GET_POST";
 const GET_PROGRESS = "GET_TOTALPROGRESS";
+const GET_TEST_COUNT = "GET_TEST_COUNT";
 
 const getPost = createAction(GET_POST, (cards) => ({
   cards,
@@ -12,6 +13,12 @@ const getPost = createAction(GET_POST, (cards) => ({
 const getProgress = createAction(GET_PROGRESS, (totalProgress) => ({
   totalProgress,
 }));
+
+const getTestCount = createAction(GET_TEST_COUNT, (testCount) => ({
+  testCount,
+}));
+
+
 
 const initialState = {
   cards: [{
@@ -33,6 +40,7 @@ const initialState = {
     totalChallengeProgress:0,
     userId: "",
   },
+  testCount: 0
 };
 
 const getPostDB = () => {
@@ -90,6 +98,39 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
   };
 };
 
+const addTestCountDB = (testViewCount) => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "post",
+        url: `http://13.125.228.240/api/main/testCount?userId=${testViewCount}`,
+      }).then((response) => {
+        console.log(response);
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("addTestCount 요청 실패"); 
+    }
+  };
+};
+
+const getTestCountDB = () => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "get",
+        url: "http://13.125.228.240/api/main/testCountRead",
+      }).then((response) => {
+        dispatch(getTestCount(response.data));
+        console.log(response.data)
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("getTestCount 요청 실패");
+    }
+  };
+};
+
 export default handleActions(
   {
     [GET_POST]: (state, action) =>
@@ -100,6 +141,10 @@ export default handleActions(
       produce(state, (draft) => {
         draft.totalProgress = action.payload.totalProgress;
       }),
+      [GET_TEST_COUNT]: (state, action) =>
+      produce(state, (draft) => {
+        draft.testCount = action.payload.testCount;
+      }),
   },
   initialState
 );
@@ -108,6 +153,8 @@ const ActionCreators = {
   getPostDB,
   getProgressDB,
   addVeiwCountDB,
+  addTestCountDB,
+  getTestCountDB,
 };
 
 export { ActionCreators };

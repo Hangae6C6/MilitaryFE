@@ -54,9 +54,9 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="nav">
+      {/* <div className="nav">
         <img id="logo" src={logo} alt="img" height="53" />
-      </div>
+      </div> */}
       <div className="top">
         <div
           className="arrow"
@@ -131,24 +131,17 @@ const Login = () => {
 export default Login;
 
 const Container = styled.div`
-
+  box-sizing: border-box;
   height: 100vh;
   width: 100%;
   border: 2px solid #151419;
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-  }
+
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
+    z-index: -1;
   }
   .arrow {
     position: absolute;
@@ -156,7 +149,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   #title-box {
-    width: 375px;
+    width: 100%;
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;

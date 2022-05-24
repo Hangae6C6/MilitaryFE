@@ -21,10 +21,7 @@ const Plan = ({
       <div className="arrow" onClick={onBack}>
         <img src={gobackIcon} alt="goback" />
       </div>
-      <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
-      </div>
+  
       <div className="progressBar">
         <Meter
           size="xsmall"
@@ -86,27 +83,14 @@ const Plan = ({
 export default Plan;
 
 const Container = styled.div`
-  height: 100%;
+
 
   .arrow {
     position: absolute;
-    margin: 60px 0px 0px 10px;
+    margin: 15px 0px 0px 10px;
     cursor: pointer;
   }
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-      position: fixed;
-    }
-    #mainlogo {
-      margin: 10px 0 30px 230px;
-    }
-  }
+ 
   .progressBar {
     height: 67px;
     width: 100%;
@@ -151,7 +135,7 @@ const Container = styled.div`
 
   .boxes {
     display: flex;
-    width: 375px;
+    width: 100%;
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btn {
@@ -181,22 +165,18 @@ const Container = styled.div`
   }
   .box {
     display: flex;
-    width: 375px;
+    width: 100%;
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
     .delete-btns {
       margin: 10px 0 0 0px;
-
-      &:hover {
-        cursor: pointer;
-        color: #000;
-      }
+      cursor: pointer;
     }
     .step-inputs {
       height: 30px;
       width: 240px;
       max-width: 260px;
-      margin: 50px 0 0 -5px;
+      margin: 50px 5px 0 0;
       font-size: 16px;
       font-family: NanumSquareMedium;
       text-align: center;
@@ -213,6 +193,7 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
+
   overflow: scroll;
   height: 50%;
 `;

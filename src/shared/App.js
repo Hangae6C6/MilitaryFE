@@ -152,8 +152,7 @@ const Background = styled.div`
   box-sizing: border-box;
   border: 4px solid #151419;
   height: 100vh;
-  z-index: -10;
-  flex: 1;
+  width: 100vw;
 `;
 
 const LeftSide = styled.div`
@@ -223,7 +222,7 @@ const LeftSide = styled.div`
 const DivBox = styled.div`
   @media (max-width: 576px) {
     margin: 0 auto;
-    max-width: 390px;
+    max-width: 375px;
     max-height: 935px;
   }
   
@@ -236,13 +235,15 @@ const Logo = styled.div`
     width: 379px;
     height: 44px;
     background-color: #151419;
-
+    
     #logo {
-      margin: 13px 0 0 20px;
+      margin: 15px 0 0 20px;
       width: 140px;
+      position: absolute;
     }
     #mainlogo {
-      margin: 10px 0 30px 60px;
+      margin: 10px 0 30px 220px;
+      
     }
 `;
 

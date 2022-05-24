@@ -77,9 +77,7 @@ const SignUp = () => {
 
   return (
     <Container>
-       <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-      </div>
+     
       <div className="top">
         <div
           className="arrow"
@@ -144,20 +142,10 @@ export default SignUp;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
   height: 100vh;
   width: 375px;
   border: 2px solid #151419;
-  .nav {
-    width: 100%;
-    height: 44px;
-    background-color: #151419;
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-      position: fixed;
-    }
-  }
+ 
   .top {
     height: 69px;
     width: 100%;

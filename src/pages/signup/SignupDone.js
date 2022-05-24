@@ -6,9 +6,7 @@ import logo from "../../shared/icons/handlogo11.png";
 const SignupDone = () => {
   return (
     <Container>
-        <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-      </div>
+        
       <div className="top">
       
       </div>
@@ -37,15 +35,7 @@ const Container = styled.div`
   max-width: 375px;
   width: 100%;
   border: 4px solid #151419;
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-  }
+  border-top: 2px solid #151419;
   .top {
     height: 69px;
     width: 375px;
@@ -82,7 +72,7 @@ const Container = styled.div`
     box-sizing: border-box;
     width: 100%;
     height: 500px;
-    padding: 167px 0 0 100px;
+    padding: 192px 0 0 100px;
     border-top: #151419 4px solid;
   }
   

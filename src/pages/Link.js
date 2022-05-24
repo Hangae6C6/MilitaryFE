@@ -13,10 +13,7 @@ const {challengeId} = useParams();
     <Container>
       
       <div className="top">
-      <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
-      </div>
+     
         <NextButton
           onClick={() => {
             window.location.pathname = `/detailPage/${challengeId}`;
@@ -48,22 +45,9 @@ overflow: hidden;
 height: 100%;
   max-width: 375px;
   width: 100%;
-  border: 4px solid ;
+  border: 4px solid black;
   background-color: #ffffff;
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-      position: fixed;
-    }
-    #mainlogo{
-      margin: 10px 0 30px 230px;
-    }
-  }
+  border-top: 2px solid black;
   .top {
     width: 375px;
     height: 100px;

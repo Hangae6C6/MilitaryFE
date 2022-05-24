@@ -13,7 +13,7 @@ const Modal = (props) => {
             <div className="dim" onClick={close}></div>
             <section>
                 <div className="upperbox">
-              <div className="cancel">정말 포기하시겠습니까?</div>
+              <div className="cancel">정말 나가시겠습니까?</div>
               <button className="close" onClick={close}>
                 <img src={closeIcon} alt="closeIcon"></img>
               </button>

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { history } from "../redux/configureStore";
 import { getCookie } from "../shared/cookie";
 
+
+
 import {
   myPageIcon,
   clickedPageIcon,

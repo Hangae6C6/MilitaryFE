@@ -88,10 +88,7 @@ const Detail = () => {
 
   return (
     <Container>
-      <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
-      </div>
+     
       <div className="top">
         <div
           className="arrow"
@@ -264,28 +261,16 @@ export default Detail;
 
 const Container = styled.div`
   overflow: hidden;
-  position: relative;
   height: 100%;
   max-width: 375px;
   border: 2px solid #151419;
   background-color: #ffffff;
-  .nav {
-    width: 100%;
-    height: 44px;
-    background-color: #151419;
-
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-    #mainlogo {
-      margin: 10px 0 30px 60px;
-    }
-  }
+  
   .top {
     height: 69px;
     width: 100%;
     border-bottom: 2px solid #151419;
+  
     .arrow {
       position: absolute;
       margin: 17px 0px 0px 20px;

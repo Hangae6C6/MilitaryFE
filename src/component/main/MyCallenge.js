@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import img from "../../shared/images/workout.png";
 import { ActionCreators as postActions } from "../../redux/modules/main";
@@ -24,6 +24,8 @@ const MyCallenge = ({ user, cards, token }) => {
 
   const veiwCountHandler = (challengeId, challengeCnt) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
+
+
   };
   return (
     <>

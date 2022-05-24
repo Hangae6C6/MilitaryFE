@@ -11,7 +11,6 @@ import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
 
-
 import Profile from "../component/user/Profile";
 
 const MyUser = () => {
@@ -32,7 +31,9 @@ const MyUser = () => {
       <Profile />
       <Footer />
       <Navigation />
-      <ToastContainer />
+      {/* <ToastContainer /> */}
+
+      {/* <Modal open={isOpen} onClose={() => setIsOpen(false)}>정말 나가시겠습니까?</Modal> */}
     </Wrap>
   );
 };
@@ -41,7 +42,8 @@ const Wrap = styled.div`
   width: 100%;
   background-color: #fff;
   border: 2px solid #151419;
-  display: block;
+  display: flex;
+  flex-direction: column;
   max-height: 100vh;
   height: 100%;
   /* width: 100%; */

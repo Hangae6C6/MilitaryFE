@@ -3,13 +3,12 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
+import { ActionCreators as testCountActions } from "../redux/modules/main";
 
 import Navigation from "../component/Navigation";
 import MyCallenge from "../component/main/MyCallenge";
 import HotChallenge from "../component/main/HotChallenge";
 import icon from "../shared/icons/progressbarIcon.png";
-import logo from "../shared/icons/handlogo11.png";
-import mainlogo from "../shared/icons/mainlogo.png";
 import { getCookie } from "../shared/cookie";
 
 const Main = () => {
@@ -43,21 +42,28 @@ const Main = () => {
       dispatch(postActions.getProgressDB(userId));
     }
   }, [dispatch, userId]);
-
+let testViewCount = 1;
   const testHandler = () => {
-    if (token) {
-      window.location.pathname = `/main/preTest`;
-    } else {
-      window.location.pathname = "/login";
-    }
+    dispatch(testCountActions.addTestCountDB(testViewCount));
+    
+    // if (token) {
+    //   setTimeout(()=>{
+    //     window.location.pathname = `/main/preTest`;
+    //   },500)
+
+    // } else {
+    //   window.location.pathname = "/login";
+    // }
   };
+
+ 
 
   return (
     <Container>
-      <div className="nav">
+      {/* <div className="nav">
         <img id="logo" src={logo} alt="img" height="53" />
         <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
-      </div>
+      </div> */}
       <div id="top-box">
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
@@ -106,29 +112,17 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
-  position: relative;
   max-width: 375px;
   border: 2px solid #151419;
  
 
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-    }
-    #mainlogo {
-      margin: 0px 0 30px 60px;
-    }
-  }
   #top-box {
     display: flex;
     flex-direction: column;
     background-color: #151419;
     height: 221px;
     border-top: 4px solid #ffffff;
+    
     #main-title {
       padding: 50px 0 0 15px;
       height: 35px;
@@ -176,7 +170,7 @@ const Container = styled.div`
 
   .challengeContainer {
     overflow: scroll;
-    height: 61%;
+    height: 69%;
   }
 `;
 

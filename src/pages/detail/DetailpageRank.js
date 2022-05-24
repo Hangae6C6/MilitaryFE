@@ -22,7 +22,7 @@ const DetailpageRank = () => {
 
   return (
     <Container>
-      <div className="nav"></div>
+   
       <div className="top">
         <div
           className="arrow"
@@ -73,15 +73,11 @@ const Container = styled.div`
   width: 100%;
   border: 2px solid #151419;
 
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-  }
+
   .top {
     height: 69px;
     width: 375px;
-    border-top: 2px solid #151419;
+
     border-bottom: 2px solid #151419;
     .arrow {
       position: absolute;

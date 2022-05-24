@@ -53,9 +53,7 @@ const UserData = () => {
 
   return (
     <Container>
-     <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-      </div>
+     
       <div className="top">
         <div
           className="arrow"
