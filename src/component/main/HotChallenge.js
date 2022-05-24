@@ -16,7 +16,7 @@ const HotChallenge = ({ cards, types }) => {
   const [list, setList] = React.useState(false);
 
   
-  const lists = cards.filter((cur) => cur.challengeViewCnt > 0);
+  const lists = cards.filter((cur) => cur.challengeViewCnt >= 0);
   const listB = lists.sort((a, b) => b.challengeCnt - a.challengeCnt);
   const listA = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
 
@@ -197,7 +197,7 @@ const LowerBox = styled.div`
  
   #box {
     text-align: center;
-    height: 164px;
+    height: 167px;
     width: 125px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
@@ -229,7 +229,7 @@ const LowerBox = styled.div`
     }
     #icons {
       display: flex;
-      margin: 10px 0 0 20px;
+      margin: 15px 0 0 20px;
       #count {
         font-size: 14px;
         color: #8c8c8c;

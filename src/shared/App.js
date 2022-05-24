@@ -64,8 +64,7 @@ function App() {
           </div>
         </div>
       </LeftSide>
-      <div id="rightside">
-      </div>
+     
 
       <DivBox>
         <Router>

@@ -23,7 +23,7 @@ const Plan = ({
       </div>
       <div className="nav">
         <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
+        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
       </div>
       <div className="progressBar">
         <Meter
@@ -43,7 +43,7 @@ const Plan = ({
 
         <textarea
           className="titleInput"
-          placeholder="쉽게 시작할 수 있는 할일을 적고 실천한다면 &#13;&#10;큰 목표를 이룰 수 있지 말입니다"
+          placeholder="쉽게 시작할 수 있는 할일을 적고 실천한다면 &#13;&#10;큰 목표를 이룰 수 있지 말입니다.(최대20개)"
           maxLength="0"
           type="text"
         ></textarea>
@@ -86,6 +86,8 @@ const Plan = ({
 export default Plan;
 
 const Container = styled.div`
+  height: 100%;
+
   .arrow {
     position: absolute;
     margin: 60px 0px 0px 10px;
@@ -95,13 +97,13 @@ const Container = styled.div`
     width: 375px;
     height: 44px;
     background-color: #151419;
-    
+
     #logo {
       margin: 13px 0 0 20px;
       width: 140px;
       position: fixed;
     }
-    #mainlogo{
+    #mainlogo {
       margin: 10px 0 30px 230px;
     }
   }
@@ -211,6 +213,6 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  max-width: 375px;
-  width: 100%;
+  overflow: scroll;
+  height: 50%;
 `;

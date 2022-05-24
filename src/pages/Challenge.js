@@ -26,6 +26,7 @@ const Challenge = () => {
       ...prevSteps,
       { stepNum: stepIndex, stepContent: stepContent, isChecked: false },
     ]);
+    window.scrollTo({ top: 1000, left: 1000, behavior: "smooth" });
     setStepContent("");
   };
 
@@ -100,9 +101,11 @@ const Challenge = () => {
 export default Challenge;
 
 const Container = styled.div`
-  max-width: 375px;
   height: 100%;
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  max-width: 375px;
   border: 2px solid #151419;
   background-color: #ffffff;
 
@@ -111,7 +114,7 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.1em;
   width: 375px;
-  height: 84px;
+  height: 87px;
   border: none;
   outline: none;
   color: #ffffff;

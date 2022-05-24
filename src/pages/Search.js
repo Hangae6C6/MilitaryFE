@@ -49,7 +49,7 @@ const Nav = () => {
 
   const lists = cards.filter((cur) => cur.challengeViewCnt > 0);
   const list = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
-  
+
   return (
     <Container>
       <div className="nav">
@@ -77,11 +77,16 @@ const Nav = () => {
           }}
         />
         <div id="searchicon">
-          <img src={searchIcon} alt="search" width="22px" height="22px" onClick={searchHandler}/>
+          <img
+            src={searchIcon}
+            alt="search"
+            width="22px"
+            height="22px"
+            onClick={searchHandler}
+          />
         </div>
       </div>
 
-   
       <MiddleBox>
         {list.map((card, idx) => {
           return (
@@ -107,70 +112,72 @@ const Nav = () => {
                 veiwCountHandlerInSearch(card.challengeNum, card.challengeCnt);
               }}
             >
-             <div id="type">
-                    <p id="p">{card.challengeType}</p>
-                  </div>
-                  <div id="typeIcons">
-                    <img
-                      src={
-                        card.challengeType === "운동"
-                          ? workoutBlack
-                          : card.challengeType === "취업"
-                          ? jobBlack
-                          : card.challengeType === "직업탐색"
-                          ? jobSearchBlack
-                          : card.challengeType === "자기개발"
-                          ? selfBlack
-                          : card.challengeType === "기타"
-                          ? etcBlack
-                          : card.challengeType === "공모전"
-                          ? competitionBlack
-                          : card.challengeType === "자격증"
-                          ? licenseBlack
-                          : card.challengeType === "외국어"
-                          ? foreignLanguageBlack
-                          : readingBlack
-                      }
-                      alt="img"
-                      height="60px"
-                      width="60px"
-                    />
-                  </div>
+              <div id="type">
+                <p id="p">{card.challengeType}</p>
+              </div>
+              <div id="typeIcons">
+                <img
+                  src={
+                    card.challengeType === "운동"
+                      ? workoutBlack
+                      : card.challengeType === "취업"
+                      ? jobBlack
+                      : card.challengeType === "직업탐색"
+                      ? jobSearchBlack
+                      : card.challengeType === "자기개발"
+                      ? selfBlack
+                      : card.challengeType === "기타"
+                      ? etcBlack
+                      : card.challengeType === "공모전"
+                      ? competitionBlack
+                      : card.challengeType === "자격증"
+                      ? licenseBlack
+                      : card.challengeType === "외국어"
+                      ? foreignLanguageBlack
+                      : readingBlack
+                  }
+                  alt="img"
+                  height="60px"
+                  width="60px"
+                />
+              </div>
 
-                  <div id="title">{card.challengeTitle}</div>
-                  <div id="icons">
-                    <div id="count">
-                      <img src={joinNum} alt="img" height="12px" width="15px" />{" "}
-                      {card.challengeCnt}
-                    </div>
-                    <div id="viewCnt">
-                      <img src={viewCnt} alt="img" height="12px" width="15px" />{" "}
-                      {card.challengeViewCnt}
-                    </div>
-                  </div>
+              <div id="title">{card.challengeTitle}</div>
+              <div id="icons">
+                <div id="count">
+                  <img src={joinNum} alt="img" height="12px" width="15px" />{" "}
+                  {card.challengeCnt}
                 </div>
-              );
-            })}
+                <div id="viewCnt">
+                  <img src={viewCnt} alt="img" height="12px" width="15px" />{" "}
+                  {card.challengeViewCnt}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        <ImgSearchWhite>
+          <img
+            src={searchWhite}
+            alt="searchWhite"
+            width="500px"
+            height="500px"
+          />
+        </ImgSearchWhite>
       </LowerBox>
-            <ImgSearchWhite>
-            <img src={searchWhite} alt="searchWhite" width="500px" height="500px" />
-            </ImgSearchWhite>
-            <Navigation />
+      <Navigation />
     </Container>
   );
 };
 
 export default Nav;
 const Container = styled.div`
-  display: block;
-  max-height: 100%;
   max-width: 375px;
   height: 100vh;
   width: 100%;
   border: 2px solid #151419;
   position: relative;
   overflow: hidden;
-  background-color: #ffffff;
 
   .nav {
     width: 375px;
@@ -208,6 +215,7 @@ const Container = styled.div`
     display: flex;
     height: 80px;
     border-bottom: #151419 2px solid;
+    background-color: #ffffff;
     #inputBox {
       width: 300px;
       height: 40px;
@@ -218,9 +226,8 @@ const Container = styled.div`
       font-size: 20px;
       margin: 20px 0 0 8px;
       font-family: Gmarket SansMedium;
-      
     }
-    #searchicon{
+    #searchicon {
       width: 30px;
       height: 30px;
       margin: 28px 0 0 20px;
@@ -228,8 +235,6 @@ const Container = styled.div`
     }
   }
 `;
-
-
 
 const MiddleBox = styled.div`
   display: flexbox;
@@ -258,16 +263,15 @@ const LowerBox = styled.div`
   flex-wrap: wrap;
   justify-content: start;
   width: 378px;
-  max-height: 381px;
-  
+  overflow: scroll;
   #box {
     text-align: center;
-    height: 160px;
-    width: 125px;
+    height: 167px;
+    width: 124px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
-    margin-right: -2px;
-    
+    background-color: #ffffff;
+
     #type {
       margin-left: 35px;
       #p {
@@ -295,7 +299,7 @@ const LowerBox = styled.div`
     }
     #icons {
       display: flex;
-      margin: 10px 0 0 20px;
+      margin: 15px 0 0 20px;
       #count {
         font-size: 14px;
         color: #8c8c8c;
@@ -315,8 +319,8 @@ const LowerBox = styled.div`
 `;
 
 const ImgSearchWhite = styled.div`
-z-index: 0;
-opacity: 0.5;
-position: absolute;
-
+  z-index: -2;
+  opacity: 0.3;
+  padding-top: 80px;
+  position: absolute;
 `;
