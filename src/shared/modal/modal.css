@@ -1,0 +1,125 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 105;
+  }
+  .modal .dim {
+    width: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 1, 2, 0.6);
+    z-index: 99;
+  }
+
+  .modal .upperbox{
+    height: 97px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: #151419 2px solid;
+
+  }
+
+  .modal .lowerbox{
+    display: flex;
+    font-size: 24px;
+    font-family: Gmarket SansBold;
+  }
+  .modal .left{
+    width: 173px;
+    height: 97px;
+    border-right: #151419 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .modal .right{
+    width: 173px;
+    height: 97px;
+    color: #1FB57E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .modal button {
+    cursor: pointer;
+    border: 0;
+    background-color: #fff;
+    margin: -40px -30px 0 0 ;
+  }
+
+  .modal .cancel {
+    font-size: 24px;
+    font-family: Gmarket SansBold;
+  }
+
+
+  .modal > section {
+    width: calc(100% - 40px);
+    max-width: 335px;
+    height: 190px;
+    margin: 0 auto;
+   border: #151419 2px solid;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(3, 1, 2, 0.08);
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-show 0.3s;
+    overflow: hidden;
+    z-index: 105;
+  }
+  .fullmodal.modal > section {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+
+
+
+
+  .modal.openModal {
+    display: flex;
+    align-items: center;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-bg-show 0.2s;
+  }
+
+
+
+  @keyframes modal-show {
+    from {
+      opacity: 0;
+      margin-top: -50px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+  @keyframes share-modal-show {
+    from {
+      opacity: 0;
+      bottom: -275px;
+    }
+    to {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+
+  @keyframes modal-bg-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

@@ -6,6 +6,7 @@ import { ActionCreators as postActions } from "../../redux/modules/main";
 import joinNum from "../../shared/icons/joinnumber.png";
 import viewCnt from "../../shared/icons/viewcount.png";
 
+
 import {
   readingBlack,
   jobBlack,

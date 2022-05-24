@@ -18,58 +18,61 @@ const Navigation = ({ userId }) => {
   const [searchChecked, setSearchChecked] = React.useState(false);
   const [mypageChecked, setmypageChecked] = React.useState(false);
 
+
   return (
-    <Nav>
-      <Wrap>
-        <Home>
-          <HomeIcn
-            src={homeChecked ? clickedHomeIcon : homeIcon}
-            onClick={() => {
-              setHomeChecked(true);
-              window.location.pathname = "/";
-            }}
-          />
-          <P>홈</P>
-        </Home>
-        <Home>
-          <SearchIcn
-            src={searchChecked ? clickedSearchIcon : searchIcon}
-            onClick={() => {
-              setSearchChecked(true);
-              window.location.pathname = "/search";
-            }}
-          />
-          <P>챌린지검색</P>
-        </Home>
-        <Home>
-          {token ? (
-            <>
-              <MypageIcn
-                primary
-                src={mypageChecked ? clickedPageIcon : myPageIcon}
-                onClick={() => {
-                  setmypageChecked(true);
-                  history.push(`/mypage/${userId}`);
-                  window.location.reload();
-                }}
-              />
-              <P>마이페이지</P>
-            </>
-          ) : (
-            <>
-              <MypageIcn
-                src={myPageIcon}
-                onClick={() => {
-                  history.push(`/login`);
-                  window.location.reload();
-                }}
-              />
-              <P>로그인</P>
-            </>
-          )}
-        </Home>
-      </Wrap>
-    </Nav>
+
+      <Nav>
+        <Wrap>
+          <Home>
+            <HomeIcn
+              src={homeChecked ? clickedHomeIcon : homeIcon}
+              onClick={() => {
+                setHomeChecked(true);
+                window.location.pathname = "/";
+              }}
+            />
+            <P>홈</P>
+          </Home>
+          <Home>
+            <SearchIcn
+              src={searchChecked ? clickedSearchIcon : searchIcon}
+              onClick={() => {
+                setSearchChecked(true);
+                window.location.pathname = "/search";
+              }}
+            />
+            <P>챌린지검색</P>
+          </Home>
+          <Home>
+            {token ? (
+              <>
+                <MypageIcn
+                  primary
+                  src={mypageChecked ? clickedPageIcon : myPageIcon}
+                  onClick={() => {
+                    setmypageChecked(true);
+                    history.push(`/mypage/${userId}`);
+                    window.location.reload();
+                  }}
+                />
+                <P>마이페이지</P>
+              </>
+            ) : (
+              <>
+                <MypageIcn
+                  src={myPageIcon}
+                  onClick={() => {
+                    history.push(`/login`);
+                    window.location.reload();
+                  }}
+                />
+                <P>로그인</P>
+              </>
+            )}
+          </Home>
+        </Wrap>
+      </Nav>
+      
   );
 };
 
