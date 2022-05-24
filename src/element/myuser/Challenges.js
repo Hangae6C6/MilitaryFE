@@ -21,26 +21,7 @@ const Challenges = () => {
     dispatch(getUserChallengeActions.getUserChallengeDetailDB(id));
   }, [dispatch, id]);
 
-  // let step = 0;
-  // for (let i = 0; i < myChallengeStep.length; i++) {
-  //   step = myChallengeStep.length;
-  // }
-  // console.log(step);
 
-  // let checkedStep = 0;
-  // let progressScore = 0;
-  // let checked = [];
-  // console.log(myChallengeStep);
-  // for (let i = 0; i < myChallengeStep.length; i++) {
-  //   for (let j = 0; j < myChallengeStep[i].steps.length; j++) {
-  //     console.log(myChallengeStep);
-  //     if (myChallengeStep[i].steps[j].isChecked == true) {
-  //       checkedStep += 1;
-  //     }
-  //   }
-  //   progressScore = (checkedStep / step) * 100;
-  // }
-  // console.log(checked);
   return (
     <ChalLi>
       {ChalList.map((chal, i) => {
@@ -53,17 +34,13 @@ const Challenges = () => {
           >
             <Title>
               {chal.challengeTitle}
-              <Type className="type">{chal.challengeType}</Type>
+              <Type>{chal.challengeType}</Type>
             </Title>
             {console.log(chal)}
             <Progress>
-              <p className="view">조회수&nbsp;:&nbsp;{chal.challengeViewCnt}</p>
               <div className="day">
                 <div className="start">
-                  시작일&nbsp;:&nbsp;{chal.challengeStartDate}
-                </div>
-                <div className="end">
-                  종료일&nbsp;:&nbsp;{chal.challengeEndDate}
+                  {chal.challengeStartDate}  - {chal.challengeEndDate}
                 </div>
               </div>
             </Progress>
@@ -80,10 +57,12 @@ const Wrap = styled.div`
 const ChalLi = styled.div``;
 
 const Title = styled.div`
+font-family: Gmarket SansBold;
+font-weight: bold;
   width: 100%;
   font-size: 24px;
   font-weight: 700;
-  padding: 15px 0 0 15px;
+  padding: 15px 0 10px 15px;
   height: 50px;
   border-top: 2px solid #151419;
   display: space-between;
@@ -94,31 +73,21 @@ const Type = styled.div`
   background-color: #151419;
   color: white;
   display: inline-block;
-  margin: 10px;
   padding: 4px;
-  margin: 0 0 0 20px;
+  margin: 0 0 10px 10px;
 `;
 
 const Progress = styled.div`
-  border-top: 1px solid #151419;
-  height: 80px;
+font-family: Gmarket Sans;
+  height: 40px;
   .day{
   display: space-between;
+  text-align: center;
 }
   .view {
     padding: 10px;
     margin: 0;
     text-align: center;
-  }
-  .start {
-    display: inline-block;
-    text-align: start;
-    margin: 0 20px 0 20px;
-  }
-  .end {
-    display: inline-block;
-    text-align: end;
-    margin: 0 0 0 20px;
   }
 `;
 

@@ -13,6 +13,16 @@ import third from "./third.png";
 import fourth from "./fourth.png";
 import officer from './officer.png'
 import testImage from './testImage.png'
+import leader from './leader.png'
+import officerSoldier from './officerSoldier.png'
+import police from './police.png'
+import IT from './IT.png'
+import artist from './artist.png'
+import cook from './cook.png'
+import mechanic from './mechanic.png'
+import medical from './medical.png'
+import PX from './PX.png'
+
 export {
   alarm,
   bullet,
@@ -29,4 +39,13 @@ export {
   fourth,
   officer,
   testImage,
+  leader,
+  officerSoldier,
+  police,
+  IT,
+  artist,
+  cook,
+  mechanic,
+  medical,
+  PX,
 };

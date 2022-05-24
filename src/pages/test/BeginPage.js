@@ -19,8 +19,10 @@ const BeginPage = () => {
 };
 
 const NextBtn = styled.div`
+  font-family: NanumSquare;
+  font-weight: bold;
 width: 375px;
-height: 50px;
+height: 89px;
 text-align: center;
 line-height: 48px;
 background-color: #151419;

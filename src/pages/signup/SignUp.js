@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {message} from 'antd';
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../../redux/modules/user";
 import gobackIcon from "../../shared/icons/arrowWhite.png";
@@ -39,31 +40,31 @@ const SignUp = () => {
       password === "" ||
       passwordCheck === ""
     ) {
-      window.alert("빈칸을 입력해주세요.");
+      message.warning("빈칸을 입력해주세요.");
       return;
     }
 
     //아이디형식 확인
     if (!isId(id)) {
-      window.alert("잘못된 형식입니다.");
+      message.error("잘못된 형식입니다.");
       return;
     }
 
     //닉네임 형식 확인
     if (!isNickname(nickname)) {
-      window.alert("잘못된 닉네임 형식입니다.");
+      message.error("잘못된 닉네임 형식입니다.");
       return;
     }
 
     //비밀번호형식 확인
     if (!isPwd(password)) {
-      window.alert("잘못된 비밀번호 형식입니다.");
+      message.error("잘못된 비밀번호 형식입니다.");
       return;
     }
 
     //비밀번호 확인
     if (password !== passwordCheck) {
-      window.alert("비밀번호가 다릅니다.");
+      message.error("비밀번호가 다릅니다.");
       return;
     }
 

@@ -61,7 +61,7 @@ const Mine = (props) => {
             </DivDiv>
           </NameDiv>
           <ProfList>
-            {userCategoryForBinding} | {userRankForBinding}
+            {userCategoryForBinding} - {userRankForBinding}
           </ProfList>
         </PDiv>
         <RankImg
@@ -103,7 +103,7 @@ const MyP = styled.div`
   display: inline-block;
   align-items: center;
   margin: 0;
-  padding: 5px 0;
+  padding: 15px 0;
 `;
 
 const WriteDiv = styled.div`
@@ -141,12 +141,14 @@ const ProfList = styled.p`
   margin: 5px;
   text-align: left;
   font-weight: 600;
+  margin: 15px 0;
 `;
 
 const NameDiv = styled.div`
   font-weight: 800;
   font-size: 30px;
   display: grid;
+  margin: 15px 0;
 `;
 
 const DivDiv = styled.div`
@@ -154,6 +156,7 @@ const DivDiv = styled.div`
 `;
 
 const P = styled.p`
+font-family: Gmarket SansBold;
   margin: 20px 0 0 0;
   padding: 0;
 `;

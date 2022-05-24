@@ -12,9 +12,10 @@ const Wrap = ({children}) => {
 };
 
 const Wrapper = styled.div`
+background-color: #fff;
 height: 100vh;
   max-width: 375px;
-  width: 100%;
+  width: 375px;
   border: 2px solid #151419;
 `
 
