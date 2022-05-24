@@ -198,7 +198,7 @@ const Box2 = styled.div`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0.1em;
+  bottom: 0.2em;
   width: 375px;
   height: 84px;
   border: none;

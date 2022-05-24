@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {message} from 'antd';
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../../redux/modules/user";
 import gobackIcon from "../../shared/icons/arrowWhite.png";
@@ -40,31 +41,31 @@ const SignUp = () => {
       password === "" ||
       passwordCheck === ""
     ) {
-      message.warning("빈칸을 입력해주세요.");
+      toast.error("빈칸을 입력해주세요.", { position:"top-center" });
       return;
     }
 
     //아이디형식 확인
     if (!isId(id)) {
-      message.error("잘못된 형식입니다.");
+      toast.error("잘못된 형식입니다.", { position:"top-center" });
       return;
     }
 
     //닉네임 형식 확인
     if (!isNickname(nickname)) {
-      message.error("잘못된 닉네임 형식입니다.");
+      toast.error("잘못된 닉네임 형식입니다.", { position:"top-center" });
       return;
     }
 
     //비밀번호형식 확인
     if (!isPwd(password)) {
-      message.error("잘못된 비밀번호 형식입니다.");
+      toast.error("잘못된 비밀번호 형식입니다.", { position:"top-center" });
       return;
     }
 
     //비밀번호 확인
     if (password !== passwordCheck) {
-      message.error("비밀번호가 다릅니다.");
+      toast.error("비밀번호가 다릅니다.", { position:"top-center" });
       return;
     }
 
@@ -133,6 +134,7 @@ const SignUp = () => {
       >
         회원가입
       </NextButton>
+      <ToastContainer />
     </Container>
   );
 };
@@ -140,23 +142,25 @@ const SignUp = () => {
 export default SignUp;
 
 const Container = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 375px;
   border: 2px solid #151419;
   .nav {
-    width: 375px;
+    width: 100%;
     height: 44px;
     background-color: #151419;
     #logo {
       margin: 13px 0 0 20px;
       width: 140px;
+      position: fixed;
     }
   }
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
   }
@@ -166,7 +170,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   #title-box {
-    width: 375px;
+    width: 100%;
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
@@ -188,7 +192,8 @@ const Container = styled.div`
 
 const Box2 = styled.div`
   height: 250px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
 `;
 
 const LoginInput = styled.input`
@@ -207,7 +212,7 @@ const LoginInput = styled.input`
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0.1em;
+  bottom: 0.2em;
   width: 375px;
   height: 84px;
   border: none;

@@ -39,7 +39,7 @@ const addChallengeDB = (challenges, userId) => {
         dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
         setTimeout(()=>{
           window.location.pathname = `/link/${challengeId}`;
-        },500); 
+        },1000); 
       });
     } catch (err) {
       console.log(err);

@@ -30,7 +30,7 @@ bottom: 0px;
 position: fixed;
 color: #ffffff;
 cursor: pointer;
-`
+`;
 
 
 export default BeginPage;

@@ -2,21 +2,24 @@
 
 //마이페이지 메인, 아이콘, 프로필, 아이디, 이미지 등등
 
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import {message} from 'antd';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { message } from "antd";
 import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
+
 
 import Profile from "../component/user/Profile";
 
 const MyUser = () => {
   let cookie = document.cookie;
-  
+
   useEffect(() => {
     if (!cookie) {
-      message.warning("로그인 후 이용해주세요");
+      toast.error("로그인 후 이용해주세요!", { position: "top-center" });
       history.replace("/");
       window.location.reload();
 
@@ -24,18 +27,24 @@ const MyUser = () => {
     }
   }, []);
 
-    return (
-        <Wrap>
-        <Profile />
-        <Footer />
-        <Navigation />
-        </Wrap>
-    )
-}
+  return (
+    <Wrap>
+      <Profile />
+      <Footer />
+      <Navigation />
+      <ToastContainer />
+    </Wrap>
+  );
+};
 const Wrap = styled.div`
   max-width: 375px;
-  width: 375px;
+  width: 100%;
   background-color: #fff;
+  border: 2px solid #151419;
+  display: block;
+  max-height: 100vh;
+  height: 100%;
+  /* width: 100%; */
   border: 2px solid #151419;
 `;
 

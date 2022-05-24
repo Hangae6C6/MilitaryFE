@@ -6,6 +6,7 @@ import { ActionCreators as postActions } from "../../redux/modules/main";
 import joinNum from "../../shared/icons/joinnumber.png";
 import viewCnt from "../../shared/icons/viewcount.png";
 
+
 import {
   readingBlack,
   jobBlack,
@@ -17,7 +18,7 @@ import {
   etcBlack,
   foreignLanguageBlack,
 } from "../../shared/icons/icons";
-import { getCookie } from "../../shared/cookie";
+
 const MyCallenge = ({ user, cards, token }) => {
   const dispatch = useDispatch();
 
@@ -126,7 +127,7 @@ const Container = styled.div`
 
   #box {
     text-align: center;
-    height: 166px;
+    height: 167px;
     width: 125px;
     border-right: 2px solid #151419;
     border-bottom: 2px solid #151419;
@@ -158,7 +159,7 @@ const Container = styled.div`
     }
     #icons {
       display: flex;
-      margin: 10px 0 0 20px;
+      margin: 15px 0 0 20px;
       #count {
         font-size: 14px;
         color: #8c8c8c;
