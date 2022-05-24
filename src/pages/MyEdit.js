@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Wrap from "../element/test/Wrap";
 import styled from "styled-components";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import {message} from 'antd';
 import { ReactComponent as Back } from "../image/back.svg";
 import Navigation from "../component/Navigation";
@@ -30,7 +32,7 @@ const MyEdit = () => {
 
   useEffect(() => {
     if (!cookie) {
-      message.warning("로그인 후 이용해주세요");
+      toast.error("로그인 후 이용해주세요!", { position:"top-center" });
       history.replace("/");
       window.location.reload();
       return;
@@ -74,6 +76,7 @@ const MyEdit = () => {
       </Select>
       <EditBtn onClick={EditRank(select)}>저장하기</EditBtn>
       <Navigation />
+      <ToastContainer />
     </Wrap>
   );
 };

@@ -111,18 +111,6 @@ const WriteDiv = styled.div`
   cursor: pointer;
 `;
 
-const ImgDiv = styled.div`
-  margin: auto 25px;
-`;
-
-const ProfImg = styled.div`
-  background-image: url("http://www.urbanbrush.net/web/wp-content/uploads/edd/2018/03/web-20180302110610094677.png");
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background-size: cover;
-`;
-
 const PDiv = styled.div`
   margin: 30px auto 10px auto;
   font-weight: 700;
@@ -171,6 +159,8 @@ const RankImg = styled.div`
   height: 102px;
   background-size: cover;
   margin: 20px 40px 0 0;
+  padding: 10px;
+  border: 2px solid #151419;
 `;
 
 export default Mine;
