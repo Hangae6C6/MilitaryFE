@@ -17,6 +17,7 @@ const DescTxt = () => {
 
 
 const DescP = styled.p`
+font-family: NanumSquare;
   width: 100%;
   text-align: center;
   height: 100%;

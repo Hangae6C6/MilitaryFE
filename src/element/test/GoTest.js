@@ -21,6 +21,7 @@ const GoTest = () => {
 
 const GotestDiv = styled.div`
   border-bottom: 2px solid #151419;
+  font-family: NanumSquare;
 `;
 const HeaderDiv = styled.div`
   height: 150px;

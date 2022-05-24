@@ -10,11 +10,15 @@ import {
   soldier,
   timeLamp,
   walk,
-  testImage,
   leader,
   officerSoldier,
   police,
   IT,
+  artist,
+  cook,
+  mechanic,
+  medical,
+  PX,
 } from "../image/index";
 
 const qnaList = [
@@ -129,31 +133,31 @@ const infoList = [
   {
     name: "군악병",
     desc: "예술적으로 뛰어난 당신~!",
-    image: testImage,
+    image: artist,
     bgc: "#17A2C2",
   },
   {
     name: "취사병",
     desc: "금손인 당신, 요리를 해보시는건 어때요?",
-    image: testImage,
+    image: cook,
     bgc: "#B2B2B2",
   },
   {
     name: "정비병",
     desc: "고장난 건 내가 다 고친다! 기계와 친하시군요!!",
-    image: testImage,
+    image: mechanic,
     bgc: "#E184DE",
   },
   {
     name: "PX병",
     desc: "계산하나는 타고나셨군요!!",
-    image: testImage,
+    image: PX,
     bgc: "#A8CF55",
   },
   {
     name: "의무병",
     desc: "메스. 의료계통으로 나가보시는건 어떠세요?",
-    image: testImage,
+    image: medical,
     bgc: "#D8A458",
   },
 ];

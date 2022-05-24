@@ -22,13 +22,13 @@ const Question = () => {
       }
     }
 
-    const resultNum = type.indexOf(Math.max(...type)) + 1;
+    const resultNum = type.indexOf(Math.max(...type));
 
     setNum(num + 1);
     console.log(resultNum);
   };
 
-  const resultNum = type.indexOf(Math.max(...type)) + 1;
+  const resultNum = type.indexOf(Math.max(...type));
 
   if (num === 10) {
     history.push({
@@ -77,6 +77,7 @@ const Question = () => {
 
 const QDiv = styled.div`
   justify-content: center;
+  font-family: NanumSquare;
 `;
 const ProgressBar = styled.div`
   width: 100%;
@@ -111,7 +112,9 @@ const QText = styled.div`
   line-height: 45px;
 `;
 
-const BWrap = styled.div``;
+const BWrap = styled.div`
+font-family: NanumSquare;
+`;
 
 const Button = styled.div`
   height: 100px;

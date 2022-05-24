@@ -4,6 +4,7 @@
 
 import React, {useEffect} from "react";
 import styled from "styled-components";
+import {message} from 'antd';
 import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
@@ -15,7 +16,7 @@ const MyUser = () => {
   
   useEffect(() => {
     if (!cookie) {
-      window.alert("로그인 후 이용해주세요");
+      message.warning("로그인 후 이용해주세요");
       history.replace("/");
       window.location.reload();
 

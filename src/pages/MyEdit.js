@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Wrap from "../element/test/Wrap";
 import styled from "styled-components";
+import {message} from 'antd';
 import { ReactComponent as Back } from "../image/back.svg";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
@@ -11,7 +12,7 @@ import { useDispatch } from "react-redux";
 const MyEdit = () => {
 
   const userId = useSelector((state) => state.user.user.userId);
-  window.alert('comming soon!')
+  message.info('comming soon!')
   history.back()
 
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const MyEdit = () => {
 
   useEffect(() => {
     if (!cookie) {
-      window.alert("로그인 후 이용해주세요");
+      message.warning("로그인 후 이용해주세요");
       history.replace("/");
       window.location.reload();
 

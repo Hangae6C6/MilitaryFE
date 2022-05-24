@@ -43,6 +43,7 @@ const getRankDB = (id) => {
       },
     })
       .then((res) => {
+        console.log(res);
         dispatch(getRank(res.data.userdata.rank));
       })
       .catch((err) => {
