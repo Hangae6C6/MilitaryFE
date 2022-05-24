@@ -20,7 +20,7 @@ const getCategory = createAction(GET_CATEGORY, (armyCategory) => ({
 const getRank = createAction(GET_RANK, (rank) => ({ rank }));
 const getEndDay = createAction(GET_DDAY, (dday) => ({ dday }));
 const getDDay = createAction(DDAY, (endDate) => ({ endDate }));
-const editNick = createAction(EDIT_NICK, (nick) => ({ nick }));
+// const editNick = createAction(EDIT_NICK, (nick) => ({ nick })); 
 const editRank = createAction(EDIT_RANK, (rank) => ({ rank }));
 // const getData = createAction(GET_DATA, (nick, rank) => ({ nick, rank }));
 

@@ -10,11 +10,10 @@ import { ActionCreators as mypageAction } from "../redux/modules/mypage";
 import { useDispatch } from "react-redux";
 
 const MyEdit = () => {
+  // message.info('comming soon!')
+  // history.back()
 
   const userId = useSelector((state) => state.user.user.userId);
-  message.info('comming soon!')
-  history.back()
-
   const dispatch = useDispatch();
   let cookie = document.cookie;
 
@@ -25,23 +24,25 @@ const MyEdit = () => {
     setSelected(e.target.value);
   };
 
-  const [userNick, setUserNick] = useState(
-    useSelector((state) => state.user.user.userNick)
-  );
+  // const [userNick, setUserNick] = useState(
+  //   useSelector((state) => state.user.user.userNick)
+  // );
 
   useEffect(() => {
     if (!cookie) {
       message.warning("로그인 후 이용해주세요");
       history.replace("/");
       window.location.reload();
-
       return;
     }
+  }, [])
+
+  useEffect(() => {
     dispatch(mypageAction.getRankDB(userId));
-  }, [userNick, userId]);
+  }, [userId]);
 
   const EditRank = () => {
-    dispatch(mypageAction.EditRankDB(userId, userNick));
+    dispatch(mypageAction.EditRankDB(userId, select));
   };
 
   return (
