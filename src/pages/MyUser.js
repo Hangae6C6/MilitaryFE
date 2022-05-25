@@ -42,7 +42,7 @@ const Wrap = styled.div`
   background-color: #fff;
   border: 2px solid #151419;
   display: block;
-  max-height: 100vh;
+  max-height: 100%;
   height: 100%;
   /* width: 100%; */
   border: 2px solid #151419;

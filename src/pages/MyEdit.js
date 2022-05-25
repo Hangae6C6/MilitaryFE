@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Wrap from "../element/test/Wrap";
 import styled from "styled-components";
-import { toast, ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
-import {message} from 'antd';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Select } from "grommet";
 import { ReactComponent as Back } from "../image/back.svg";
 import Navigation from "../component/Navigation";
 import { history } from "../redux/configureStore";
@@ -18,26 +18,39 @@ const MyEdit = () => {
   const userId = useSelector((state) => state.user.user.userId);
   const dispatch = useDispatch();
   let cookie = document.cookie;
-
-  const selectList = ["이병", "일병", "상병", "병장"];
-  const [select, setSelected] = useState(useSelector((state) => state.mypage.rank));
-
-  const handelSelect = (e) => {
-    setSelected(e.target.value);
+  const [rank, setRank] = React.useState("");
+  const ranks = [
+    "이병",
+    "일병",
+    "상병",
+    "병장",
+    "하사",
+    "중사",
+    "상사",
+    "소위",
+    "중위",
+    "대위",
+  ];
+  const onRankChange = (e) => {
+    setRank(e);
   };
 
-  // const [userNick, setUserNick] = useState(
-  //   useSelector((state) => state.user.user.userNick)
-  // );
+  const [select, setSelected] = useState(
+    useSelector((state) => state.mypage.rank)
+  );
+
+  const [userNick, setUserNick] = useState(
+    useSelector((state) => state.user.user.userNick)
+  );
 
   useEffect(() => {
     if (!cookie) {
-      toast.error("로그인 후 이용해주세요!", { position:"top-center" });
+      toast.error("로그인 후 이용해주세요!", { position: "top-center" });
       history.replace("/");
       window.location.reload();
       return;
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     dispatch(mypageAction.getRankDB(userId));
@@ -52,30 +65,31 @@ const MyEdit = () => {
       <MyPage>
         <MyP>
           <BackDiv>
-            <Back />
+            <Back onClick={history.back} />
           </BackDiv>
-          마이페이지
         </MyP>
       </MyPage>
       <PersonalEdit>&nbsp;&nbsp;&nbsp;개인정보 수정</PersonalEdit>
-      {/* <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
+      <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
       <NickInput
         value={userNick}
         placeholder={userNick}
         onChange={(e) => {
           setUserNick(e.target.value);
         }}
-      ></NickInput> */}
+      ></NickInput>
       <Nick>&nbsp;&nbsp;&nbsp;&nbsp;계급</Nick>
-      <Select onChange={handelSelect} value={select}>
-        {selectList.map((item) => (
-          <Option value={item} key={item}>
-            {item}
-          </Option>
-        ))}
-      </Select>
+      <Wrap2>
+        <Select
+          id="inputs"
+          placeholder="계급을 선택해주세요"
+          value={rank}
+          options={ranks}
+          onChange={({ value: nextValue }) => onRankChange(nextValue)}
+          size={"large"}
+        />
+      </Wrap2>
       <EditBtn onClick={EditRank(select)}>저장하기</EditBtn>
-      <Navigation />
       <ToastContainer />
     </Wrap>
   );
@@ -105,19 +119,20 @@ const MyP = styled.div`
 `;
 
 const PersonalEdit = styled.div`
-  height: 75px;
+  height: 93px;
+  line-height: 80px;
   font-size: 24px;
   font-weight: 700;
-  text-align: left;
-  margin: 20px 0;
+  font-family: Gmarket SansBold;
   border-bottom: 2px solid #151419;
 `;
 
 const Nick = styled.div`
   height: 60px;
-  line-height: 40px;
+  line-height: 80px;
+  font-size: 20px;
   font-weight: 700;
-  text-align: left;
+  font-family: Gmarket SansBold;
 `;
 
 const NickInput = styled.div`
@@ -130,16 +145,21 @@ const NickInput = styled.div`
   box-sizing: border-box;
 `;
 
-
-const Select = styled.select`
-  border-bottom: 2px solid #151419;
-  border-top: 2px solid #151419;
-  border-right: none;
-  border-left: none;
-  width: 100%;
-  height: 75px;
-  box-sizing: border-box;
+const Wrap2 = styled.div`
+  height: 65px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 `;
+
+// const Select = styled.select`
+//   border-bottom: 2px solid #151419;
+//   border-top: 2px solid #151419;
+//   border-right: none;
+//   border-left: none;
+//   width: 100%;
+//   height: 75px;
+//   box-sizing: border-box;
+// `;
 
 const Option = styled.option`
   border-bottom: 2px solid #151419;
@@ -157,8 +177,8 @@ const EditBtn = styled.div`
   font-weight: 700;
   background-color: #212121;
   text-align: center;
-  height: 70px;
-  bottom: 71px;
+  height: 89px;
+  bottom: 0px;
   position: fixed;
   line-height: 70px;
   cursor: pointer;
