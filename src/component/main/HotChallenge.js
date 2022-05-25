@@ -13,13 +13,14 @@ const HotChallenge = ({ cards, types }) => {
     dispatch(postActions.addVeiwCountDB(challengeId, challengeCnt));
   };
 
-  const [list, setList] = React.useState(false);
 
+  const [list, setList] = React.useState(false);
   
   const listsAB = cards.filter((cur) => cur.challengeViewCnt >= 0);
-  const lists = [...listsAB];
-  const listB = lists.sort((a, b) => b.challengeCnt - a.challengeCnt);
-  const listA = lists.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
+  const listsA = [...listsAB];
+  const listsB = [...listsAB];
+  const listA = listsA.sort((a, b) => b.challengeViewCnt - a.challengeViewCnt);
+  const listB = listsB.sort((a, b) => b.challengeCnt - a.challengeCnt);
 
  
   return (
@@ -28,12 +29,12 @@ const HotChallenge = ({ cards, types }) => {
           <UpperBox>
             <div id="title">
               <div id="title-text"> HOT 챌린지</div>
-              <div id="viewCnt" onClick={()=>{
+              <div id={list===false ?"viewCnt" : "viewCntUnChecked"} onClick={()=>{
                 setList(true);
               }}>조회순</div>
-              <div id="joinMember" onClick={()=>{
+              
+              <div id={list===true ? "joinMember" : "joinMemberUnChecked"} onClick={()=>{
                 setList(false);
-                alert('coming soon')
               }}>참여순</div>
             </div>
           </UpperBox>
@@ -174,7 +175,14 @@ const UpperBox = styled.div`
     #viewCnt {
       color: #151419;
       font-size: 18px;
-      font-family: NanumSquareMedium;
+      font-family: NanumSquare;
+      margin: 10px 0 0 80px;
+      cursor: pointer;
+    }
+    #viewCntUnChecked {
+      color: #151419;
+      font-size: 18px;
+      font-family: NanumSquareBold;
       margin: 10px 0 0 80px;
       cursor: pointer;
     }
@@ -182,7 +190,14 @@ const UpperBox = styled.div`
       color: #151419;
       font-size: 18px;
       margin: 10px 0px 0 10px;
-      font-family: NanumSquareMedium;
+      font-family: NanumSquare;
+      cursor: pointer;
+    }
+    #joinMemberUnChecked {
+      color: #151419;
+      font-size: 18px;
+      margin: 10px 0px 0 10px;
+      font-family: NanumSquareBold;
       cursor: pointer;
     }
   }

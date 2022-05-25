@@ -10,14 +10,14 @@ import TextField from "../element/chat/TextField";
 const Chat = () => {
   return (
     <Wrap>
-      <ChatHeader>CHATTING</ChatHeader>
+      <ChatHeader>통신보안 채팅</ChatHeader>
       <TextField></TextField>
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
-height: 93vh;
+height: 100%;
   width: 375px;
   border: 2px solid #151419;
   background-color: #fff;

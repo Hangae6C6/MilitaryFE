@@ -67,7 +67,7 @@ const addTestResultDB = (userId, result) => {
         },
       }).then((response) => {
         console.log(response);
-        
+        window.location.pathname='/';
       });
     } catch (err) {
       console.log(err);

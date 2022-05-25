@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
+import { useDispatch } from "react-redux";
 import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
 import closeIcon from "../../shared/icons/icnCloseBlack32.svg";
 import Modal from "../../shared/modal/Modal";

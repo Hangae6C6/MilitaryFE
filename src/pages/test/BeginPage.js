@@ -11,27 +11,26 @@ const BeginPage = () => {
       <GoTest />
       <NextBtn           
             onClick={() => {
-            history.push("/main/preTest/question");
-            window.location.reload();
-          }}>시작하기</NextBtn>
+            window.location.pathname="/main/preTest/question";
+          }}><span> 시작하기 </span></NextBtn>
     </Wrap>
   );
 };
 
-const NextBtn = styled.div`
-  font-family: NanumSquare;
+const NextBtn = styled.button`
+  position: fixed;
+  bottom: 0.2em;
+  width: 375px;
+  height: 85px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 18px;
   font-weight: bold;
-width: 379px;
-height: 89px;
-text-align: center;
-line-height: 48px;
-background-color: #151419;
-bottom: 0px;
-position: fixed;
-color: #ffffff;
-cursor: pointer;
-margin:0 0 0 -2px;
+  font-family: NanumSquareMedium;
+  background-color: #151419;
+  border-top: 2px solid #151419;
+  cursor: pointer;
 `;
-
 
 export default BeginPage;

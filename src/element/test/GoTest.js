@@ -6,29 +6,35 @@ import { ReactComponent as Back } from "../../image/back.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as testCountActions } from "../../redux/modules/main";
 
-
-
 const GoTest = () => {
-const dispatch = useDispatch();
-const testCount = useSelector((state)=> state.card.testCount);
-console.log(testCount)
-  React.useEffect(()=>{
+  const dispatch = useDispatch();
+  const testCount = useSelector((state) => state.card.testCount);
+  console.log(testCount);
+  React.useEffect(() => {
     dispatch(testCountActions.getTestCountDB());
-  },[dispatch])
-
+  }, [dispatch]);
 
   return (
     <div>
       <GotestDiv>
         <HeaderDiv>
-        <Back onClick={()=>{history.back()}} cursor='pointer' margin='10px'/>
+          <Back
+            onClick={() => {
+              history.back();
+            }}
+            cursor="pointer"
+            margin="10px"
+          />
           <MatchP>입대하면 뭐 되지?</MatchP>
         </HeaderDiv>
         <TestImg src={TEST} />
-        <div className="n">지금까지<br />우리와 함께 '뭐'가 된<br />전우 {testCount}명</div>
+        <div className="n">
+          지금까지
+          <br />
+          우리와 함께 '뭐'가 된<br />
+          전우 <span style={{ color: "#1FB57E" }}> {testCount} </span>명
+        </div>
       </GotestDiv>
-
-     
     </div>
   );
 };
@@ -43,7 +49,6 @@ const GotestDiv = styled.div`
     font-size: 20px;
     line-height: 137.02%;
   }
-
 `;
 const HeaderDiv = styled.div`
   height: 150px;

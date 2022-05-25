@@ -113,14 +113,14 @@ const QImage = styled.div`
 `;
 
 const QText = styled.div`
-  height: 154px;
+  height: 179px;
   background-color: #ffffff;
   font-weight: 700;
   font-size: 26px;
   font-stretch: condensed;
   text-align: center;
   border-bottom: 2px solid #151419;
-  line-height: 45px;
+  line-height: 55px;
   font-family: NanumSquareBold;
   letter-spacing: -0.3px;
   .question {

@@ -109,7 +109,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
 };
 const Wrap = styled.div`
 background-color: #fff;
-height:85vh;
+height:100%;
   max-width: 375px;
   width: 375px;
 `;
@@ -210,15 +210,20 @@ const YourMsgBox = styled.div`
 `;
 const Input = styled.input`
   width: 300px;
-  height: 83px;
+  height: 81px;
   background-color: #fff;
   border: 2px solid black;
+  font-size: 16px;
+  font-family: NanumSquareMedium;
+  
 `;
 const SendBtn = styled.button`
   width: 95px;
-  height: 89px;
+  height: 87px;
   background-color: #6dbb91;
   border-top: 2px solid #151419;
+  font-size: 16px;
+  font-family: NanumSquareMedium;
   &:hover {
     background-color: #fff;
   }

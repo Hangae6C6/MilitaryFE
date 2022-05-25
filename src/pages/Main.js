@@ -4,18 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
 import { ActionCreators as testCountActions } from "../redux/modules/main";
+import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 
 import Navigation from "../component/Navigation";
 import MyCallenge from "../component/main/MyCallenge";
 import HotChallenge from "../component/main/HotChallenge";
 import icon from "../shared/icons/progressbarIcon.png";
 import { getCookie } from "../shared/cookie";
+import rightArrow from "../shared/icons/right_arrow.png";
 
 const Main = () => {
   const dispatch = useDispatch();
   const token = getCookie("token");
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
+  const userInfo = useSelector((state) => state.mypage.mypage);
+
   const myChallenges = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.answer
   );
@@ -33,6 +37,12 @@ const Main = () => {
 
   React.useEffect(() => {
     if (userId) {
+      dispatch(userProfileActions.getUserProfileDB(userId));
+    }
+  }, [dispatch, userId]);
+
+  React.useEffect(() => {
+    if (userId) {
       dispatch(userChallengeDetailActions.getUserChallengeDetailDB(userId));
     }
   }, [dispatch, userId]);
@@ -42,22 +52,18 @@ const Main = () => {
       dispatch(postActions.getProgressDB(userId));
     }
   }, [dispatch, userId]);
-let testViewCount = 1;
- 
-const testHandler = () => {
-  
-  if (token) {
-      dispatch(testCountActions.addTestCountDB(testViewCount));
-      setTimeout(()=>{
-        window.location.pathname = `/main/preTest`;
-      },500)
+  let testViewCount = 1;
 
+  const testHandler = () => {
+    if (token) {
+      dispatch(testCountActions.addTestCountDB(testViewCount));
+      setTimeout(() => {
+        window.location.pathname = `/main/preTest`;
+      }, 500);
     } else {
       window.location.pathname = "/login";
     }
   };
-
-
 
   return (
     <Container>
@@ -65,12 +71,34 @@ const testHandler = () => {
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
-          <div id="main-title"> {user.userNick} 님!</div>
+          <div id="main-title">
+            {" "}
+            {user.userNick} {userInfo.rank}님!
+          </div>
         )}
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        <div id="test" onClick={testHandler}>
-          전역하고 뭐하지? 테스트하러가기
-        </div>
+        {userInfo.testResult ? (
+          <div id="test-wrapdone">
+            <div id="test" onClick={testHandler}>
+              {user.userNick}
+              {userInfo.rank}님은 {userInfo.testResult}이 딱! 입니다
+            </div>
+          </div>
+        ) : (
+          <div id="test-wrap">
+            <div id="test" onClick={testHandler}>
+              전역하고 뭐하지? 테스트하러가기
+            </div>
+            <img
+              id="arrow-right"
+              src={rightArrow}
+              alt="icon"
+              height="20"
+              width="20"
+            />
+          </div>
+        )}
+
         <span id="progressText">전체 진행율(%)</span>
       </div>
       {!token ? (
@@ -133,18 +161,39 @@ const Container = styled.div`
       color: #ffffff;
       font-family: Gmarket Sansmedium;
     }
-    #test {
-      margin: 0 17px;
-      height: 20px;
-      width: 290px;
-      font-size: 18px;
-      color: #151419;
-      background-color: #ffffff;
-      cursor: pointer;
-      font-family: Gmarket SansMedium;
+    #test-wrap {
+      display: flex;
+      #test {
+        margin: 0 12px;
+        padding: 4px;
+        font-size: 18px;
+        color: #151419;
+        background-color: #ffffff;
+        cursor: pointer;
+        font-family: Gmarket SansMedium;
+      }
+      #arrow-right {
+        position: absolute;
+        margin: -1px 0 0 284px;
+      }
     }
+    #test-wrapdone {
+      display: flex;
+      #test {
+        margin: 0 12px;
+        padding: 4px;
+        font-size: 18px;
+        color: #151419;
+        background-color: #ffffff;
+        cursor: pointer;
+        font-family: Gmarket SansMedium;
+      }
+    
+    }
+
+
     #progressText {
-      padding: 50px 0 0 260px;
+      padding: 45px 0 0 260px;
       height: 20px;
       font-size: 14px;
       color: #ffffff;
@@ -154,8 +203,7 @@ const Container = styled.div`
 
   #my-challenge {
     border-bottom: 2px solid #151419;
-    border-top: 2px solid #151419;
-    height: 77px;
+    height: 46px;
     font-size: 26px;
     color: #151419;
     font-family: Gmarket SansBold;
@@ -174,7 +222,7 @@ const ProgressBarWrap = styled.div`
   display: flex;
   width: 100%;
   height: 20px;
-
+  border-bottom: 2px solid #151419;
   #icon {
     margin: -31px 0px 0px -125px;
     width: 0;

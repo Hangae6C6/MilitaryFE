@@ -48,11 +48,11 @@ const ResultPage = (props) => {
         <P>{infoList[id].name}</P>
       </DescImg>
       <DescTxt />
-      <Next
+      <NextButton
         onClick={testResultHandler}
       >
         홈으로 가기
-      </Next>
+      </NextButton>
     </Wrap>
   );
 };
@@ -80,18 +80,19 @@ const P = styled.p`
   font-size: 20px;
 
 `;
-const Next = styled.div`
-  font-family: NanumSquare;
-  font-weight: bold;
-  width: 375px;
-  height: 89px;
-  text-align: center;
-  line-height: 48px;
-  background-color: #151419;
-  bottom: 0px;
+const NextButton = styled.button`
   position: fixed;
+  bottom: 0.2em;
+  width: 375px;
+  height: 85px;
+  border: none;
+  outline: none;
   color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: NanumSquareMedium;
+  background-color: #151419;
+  border-top: 2px solid #151419;
   cursor: pointer;
 `;
-
 export default ResultPage;
