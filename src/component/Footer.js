@@ -24,6 +24,7 @@ font-weight: 400;
 color: #909090;
 text-align: center;
 display: grid;
+border-top: 2px solid #151419;
 `;
 
 

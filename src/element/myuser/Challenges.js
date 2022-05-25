@@ -22,27 +22,31 @@ const Challenges = () => {
     dispatch(getUserChallengeActions.getUserChallengeDetailDB(id));
   }, [dispatch, id]);
 
-
   return (
     <ChalLi>
       {ChalList.map((chal, i) => {
         return (
-          <Wrap
-            onClick={() => {
-              history.replace(`/detailpage/${chal.challengeNum}`);
-              window.location.reload();
-            }}
-          >
-            <Title>
+          <Wrap>
+            <CloseDiv>
+              <Close src={closeIcon} alt="closeIcon"></Close>
+            </CloseDiv>
+            <Title
+              onClick={() => {
+                history.replace(`/detailpage/${chal.challengeNum}`);
+                window.location.reload();
+              }}
+            >
               {chal.challengeTitle}
               <Type>{chal.challengeType}</Type>
-              <Close src={closeIcon} alt="closeIcon"></Close>
             </Title>
             {console.log(chal)}
-            <Progress>
+            <Progress onClick={() => {
+                history.replace(`/detailpage/${chal.challengeNum}`);
+                window.location.reload();
+              }}>
               <div className="day">
                 <div className="start">
-                  {chal.challengeStartDate}  - {chal.challengeEndDate}
+                  {chal.challengeStartDate} - {chal.challengeEndDate}
                 </div>
               </div>
             </Progress>
@@ -59,15 +63,16 @@ const Wrap = styled.div`
 const ChalLi = styled.div``;
 
 const Title = styled.div`
-font-family: Gmarket SansBold;
-font-weight: bold;
+  font-family: Gmarket SansBold;
+  font-weight: bold;
   width: 100%;
   font-size: 24px;
   font-weight: 700;
   padding: 15px 0 10px 15px;
   height: 50px;
   border-top: 2px solid #151419;
-  display: space-between;
+  cursor: pointer;
+  display: space-around;
 `;
 
 const Type = styled.div`
@@ -79,18 +84,26 @@ const Type = styled.div`
   margin: 0 0 10px 10px;
 `;
 
+const CloseDiv = styled.div`
+  width: 50px;
+  float: right;
+  z-index: 1;
+  cursor: cell;
+`;
+
 const Close = styled.img`
-float: right;
-margin: 0 20px 0 0;
-`
+  float: right;
+  margin: 10px 20px 0 0;
+`;
 
 const Progress = styled.div`
-font-family: Gmarket Sans;
+  font-family: Gmarket Sans;
   height: 40px;
-  .day{
-  display: space-between;
-  text-align: center;
-}
+  cursor: pointer;
+  .day {
+    display: space-between;
+    text-align: center;
+  }
   .view {
     padding: 10px;
     margin: 0;

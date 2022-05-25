@@ -172,7 +172,7 @@ const Container = styled.div`
 
   .challengeContainer {
     overflow: scroll;
-    height: 100%;
+    height: 61%;
   }
 `;
 

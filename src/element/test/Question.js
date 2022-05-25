@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { qnaList } from "../../data/data";
 import { history } from "../../redux/configureStore";
-import { ReactComponent as Back } from "../../image/back.svg";
+import Back from "../../image/back.svg";
 
 const Question = () => {
   const [num, setNum] = useState(1);
@@ -33,7 +33,7 @@ const Question = () => {
   if (num === 10) {
     history.push({
       pathname: `/main/preTest/${resultNum}`,
-      state: {resultNum},
+      state: { resultNum },
     });
     window.location.reload();
   }
@@ -41,17 +41,24 @@ const Question = () => {
   return (
     <>
       <QDiv>
-        <Back
-          onClick={() => {
-            history.back();
-          }}
-          cursor="pointer"
-        />
+        {/* <Back
+         
+          
+
+        /> */}
         <ProgressBar>
+          <BackIcon
+            src={Back}
+            onClick={() => {
+              history.back();
+            }}
+          />
           <Progress width={step} />
         </ProgressBar>
         <img width="375px" src={qnaList[num - 1].image} />
-        <QText>{qnaList[num - 1].q}</QText>
+        <QText>
+          <div className="question">{qnaList[num - 1].q}</div>
+        </QText>
       </QDiv>
       <BWrap>
         {qnaList[num - 1].a.map((elem, i) => {
@@ -65,7 +72,8 @@ const Question = () => {
                 key={i}
                 id={i}
               >
-                {elem.answer}
+                <div className="index">{i + 1}</div>
+                <div className="answer">{elem.answer}</div>
               </Button>
             </>
           );
@@ -91,7 +99,14 @@ const Progress = styled.div`
   height: 68px;
   background-color: #1fb57e;
   border-bottom: 2px solid #3f3f3f;
+  border-right: 2px solid #3f3f3f;
   box-sizing: border-box;
+`;
+const BackIcon = styled.img`
+  z-index: 1;
+  position: absolute;
+  padding: 15px 0 0 15px;
+  cursor: pointer;
 `;
 
 const QImage = styled.div`
@@ -103,29 +118,49 @@ const QImage = styled.div`
 `;
 
 const QText = styled.div`
-  height: 90px;
+  height: 159px;
   background-color: #ffffff;
   font-weight: 700;
   font-size: 26px;
+  font-stretch: condensed;
   text-align: center;
   border-bottom: 2px solid #151419;
   line-height: 45px;
+  font-family: NanumSquareBold;
+  letter-spacing: -0.3px;
+  .question {
+    transform: translateY(100%);
+  }
 `;
 
 const BWrap = styled.div`
-font-family: NanumSquare;
+  font-family: NanumSquare;
 `;
 
 const Button = styled.div`
-  height: 100px;
+  height: 107px;
   background: #ffffff;
   border-bottom: 2px solid #151419;
-  text-align: center;
-  line-height: 100px;
   cursor: pointer;
+  display: flex;
   transition: all 0.1s;
+  font-family: NanumSquare;
+  font-weight: 700;
   &:hover {
     background-color: #1fb57e;
+  }
+  .index {
+    text-align: center;
+    width: 70px;
+    line-height: 100px;
+    font-size: 24px;
+    border-right: 2px solid #151419;
+  }
+  .answer {
+    text-align: center;
+    width: 303px;
+    line-height: 100px;
+    font-size: 22px;
   }
 `;
 
