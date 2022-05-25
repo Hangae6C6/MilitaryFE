@@ -43,17 +43,18 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 let testViewCount = 1;
-  const testHandler = () => {
-    dispatch(testCountActions.addTestCountDB(testViewCount));
+ 
+const testHandler = () => {
+    // dispatch(testCountActions.addTestCountDB(testViewCount));
     
-    // if (token) {
-    //   setTimeout(()=>{
-    //     window.location.pathname = `/main/preTest`;
-    //   },500)
+    if (token) {
+      setTimeout(()=>{
+        window.location.pathname = `/main/preTest`;
+      },500)
 
-    // } else {
-    //   window.location.pathname = "/login";
-    // }
+    } else {
+      window.location.pathname = "/login";
+    }
   };
 
  

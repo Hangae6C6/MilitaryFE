@@ -13,9 +13,9 @@ const GoTest = () => {
 const dispatch = useDispatch();
 // const testCount = useSelector((state)=> state.testCount.testCount);
 
-  React.useEffect(()=>{
-    dispatch(testCountActions.getTestCountDB());
-  },[dispatch])
+  // React.useEffect(()=>{
+  //   dispatch(testCountActions.getTestCountDB());
+  // },[dispatch])
 
 
   return (
@@ -29,7 +29,7 @@ const dispatch = useDispatch();
         <div className="n">지금까지<br />우리와 함께 '뭐'가 된<br />전우 00명</div>
       </GotestDiv>
 
-      <div>지금까지 우리와 함께'뭐'가 된 전우 명</div>
+     
     </div>
   );
 };

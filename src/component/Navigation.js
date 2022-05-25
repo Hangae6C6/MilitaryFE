@@ -93,7 +93,7 @@ const Wrap = styled.div`
   position: fixed;
   background-color: whitesmoke;
   bottom: ${(props) => (props.primary ? "0.25em" : "0.25em")};
-  z-index: 999;
+  z-index: 9;
   display: grid;
   border: 2px solid #151419;
   border-bottom: none;
