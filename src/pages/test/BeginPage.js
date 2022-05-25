@@ -21,7 +21,7 @@ const BeginPage = () => {
 const NextBtn = styled.div`
   font-family: NanumSquare;
   font-weight: bold;
-width: 375px;
+width: 379px;
 height: 89px;
 text-align: center;
 line-height: 48px;
@@ -30,6 +30,7 @@ bottom: 0px;
 position: fixed;
 color: #ffffff;
 cursor: pointer;
+margin:0 0 0 -2px;
 `;
 
 
