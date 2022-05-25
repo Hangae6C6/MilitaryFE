@@ -22,10 +22,11 @@ const dispatch = useDispatch();
     <div>
       <GotestDiv>
         <HeaderDiv>
-        <Back onClick={()=>{history.back()}} cursor='pointer' />
-          <MatchP>나는 어떤 군인이 어울릴까?</MatchP>
+        <Back onClick={()=>{history.back()}} cursor='pointer' margin='10px'/>
+          <MatchP>입대하면 뭐 되지?</MatchP>
         </HeaderDiv>
         <TestImg src={TEST} />
+        <div className="n">지금까지<br />우리와 함께 '뭐'가 된<br />전우 00명</div>
       </GotestDiv>
 
       <div>지금까지 우리와 함께'뭐'가 된 전우 명</div>
@@ -34,18 +35,26 @@ const dispatch = useDispatch();
 };
 
 const GotestDiv = styled.div`
-  border-bottom: 2px solid #151419;
-  font-family: NanumSquare;
+  font-family: NanumSquareBold;
+  text-align: center;
+  .n {
+    margin: 20px 0;
+    font-family: Gmarket Sans;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 137.02%;
+  }
+
 `;
 const HeaderDiv = styled.div`
   height: 150px;
   width: 100%;
   padding: 30px 0;
+  display: grid;
 `;
 const TestImg = styled.img`
-  height: 294.5px;
+  height: 363px;
   border-top: 2px solid #151419;
-  border-bottom: 2px solid #151419;
 `;
 
 const MatchP = styled.p`

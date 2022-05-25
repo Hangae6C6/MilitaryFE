@@ -31,6 +31,11 @@ const Challenges = () => {
       {ChalList.map((chal, i) => {
         return (
           <Wrap>
+            <CloseDiv>
+              <Close src={closeIcon} alt="closeIcon"   onClick={() => {
+                  setIsOpen(true);
+                }}></Close>
+            </CloseDiv>
             <Title
               onClick={() => {
                 history.replace(`/detailpage/${chal.challengeNum}`);
@@ -39,16 +44,13 @@ const Challenges = () => {
             >
               {chal.challengeTitle}
               <Type>{chal.challengeType}</Type>
-              <Close
-                src={closeIcon}
-                alt="closeIcon"
-                onClick={() => {
-                  setIsOpen(true);
-                }}
-              ></Close>
+            
             </Title>
             {console.log(chal)}
-            <Progress>
+            <Progress onClick={() => {
+                history.replace(`/detailpage/${chal.challengeNum}`);
+                window.location.reload();
+              }}>
               <div className="day">
                 <div className="start">
                   {chal.challengeStartDate} - {chal.challengeEndDate}
@@ -77,8 +79,8 @@ const Title = styled.div`
   padding: 15px 0 10px 15px;
   height: 50px;
   border-top: 2px solid #151419;
-  display: space-between;
   cursor: pointer;
+  display: space-around;
 `;
 
 const Type = styled.div`
@@ -90,14 +92,22 @@ const Type = styled.div`
   margin: 0 0 10px 10px;
 `;
 
+const CloseDiv = styled.div`
+  width: 50px;
+  float: right;
+  z-index: 1;
+  cursor: cell;
+`;
+
 const Close = styled.img`
   float: right;
-  margin: 0 20px 0 0;
+  margin: 10px 20px 0 0;
 `;
 
 const Progress = styled.div`
   font-family: Gmarket Sans;
   height: 40px;
+  cursor: pointer;
   .day {
     display: space-between;
     text-align: center;
