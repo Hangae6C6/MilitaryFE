@@ -12,10 +12,10 @@ import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import personImg from "../../shared/images/icnPersonGray36.png";
 import joinIcon from "../../shared/icons/joinmemicon.png";
 import ddayIcon from "../../shared/icons/ddayicon.png";
+import { ActionCreators as navBarActions } from "../../redux/modules/main";
 
 import { getCookie } from "../../shared/cookie";
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png";
+
 import {
   reading,
   job,
@@ -79,6 +79,13 @@ const Detail = () => {
     );
   };
 
+
+  const navBarCheckedHandler = (num) => {
+    dispatch(navBarActions.addNavCheckedDB(num, userId));
+
+  };
+
+
   let isJoined = false;
   myChallengeStep.filter((cur) => {
     if (cur.challengeNum == challengeId) {
@@ -93,7 +100,7 @@ const Detail = () => {
         <div
           className="arrow"
           onClick={() => {
-            window.location.pathname = "/";
+            navBarCheckedHandler(1);
           }}
         >
           <img src={gobackIcon} alt="goback" />

@@ -3,64 +3,60 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
-import { history } from "../../redux/configureStore";
+import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
 import closeIcon from "../../shared/icons/icnCloseBlack32.svg";
 import Modal from "../../shared/modal/Modal";
-import { SettingsPowerRounded } from "@material-ui/icons";
 
-const Challenges = () => {
+const Challenges = ({userId, myChallengeList }) => {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const ChalList = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.answer
-  );
-  console.log(ChalList);
-  const myChallengeStep = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.joinlist_id
-  );
-  console.log(myChallengeStep);
-
-  React.useEffect(() => {
-    dispatch(getUserChallengeActions.getUserChallengeDetailDB(id));
-  }, [dispatch, id]);
-
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const challengeDeleteHandler = (challengeNum) =>{
+     dispatch(challengeActions.deleteCallengeDB(challengeNum, userId));
+  }
+  
   return (
     <ChalLi>
-      {ChalList.map((chal, i) => {
+      {myChallengeList.map((chal, i) => {
         return (
-          <Wrap>
+          <div key={chal+i}>
+          <Wrap
+     
+          >
             <CloseDiv>
-              <Close src={closeIcon} alt="closeIcon"   onClick={() => {
+              <Close
+                src={closeIcon}
+                alt="closeIcon"
+                onClick={() => {
                   setIsOpen(true);
-                }}></Close>
+                }}
+              ></Close>
             </CloseDiv>
-            <Title
-              onClick={() => {
-                history.replace(`/detailpage/${chal.challengeNum}`);
-                window.location.reload();
-              }}
-            >
+            <Title    onClick={() => {
+              window.location.pathname = `/detailpage/${chal.challengeNum}`;
+            }}>
               {chal.challengeTitle}
               <Type>{chal.challengeType}</Type>
-            
             </Title>
-            {console.log(chal)}
-            <Progress onClick={() => {
-                history.replace(`/detailpage/${chal.challengeNum}`);
-                window.location.reload();
-              }}>
+
+            <Progress>
               <div className="day">
                 <div className="start">
                   {chal.challengeStartDate} - {chal.challengeEndDate}
                 </div>
               </div>
             </Progress>
-          </Wrap>
+          </Wrap>  
+          
+          <Modal
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        done={() => challengeDeleteHandler(chal.challengeNum)}
+      />
+      </div>
         );
       })}
-      <Modal open={isOpen} close={() => setIsOpen(false)} />
+    
     </ChalLi>
   );
 };
@@ -88,15 +84,15 @@ const Type = styled.div`
   background-color: #151419;
   color: white;
   display: inline-block;
-  padding: 4px;
-  margin: 0 0 10px 10px;
+  padding: 5px;
+  margin: 0 0 0 10px;
 `;
 
 const CloseDiv = styled.div`
   width: 50px;
   float: right;
   z-index: 1;
-  cursor: cell;
+  cursor: pointer;
 `;
 
 const Close = styled.img`
@@ -107,7 +103,6 @@ const Close = styled.img`
 const Progress = styled.div`
   font-family: Gmarket Sans;
   height: 40px;
-  cursor: pointer;
   .day {
     display: space-between;
     text-align: center;

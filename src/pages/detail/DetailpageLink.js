@@ -1,25 +1,28 @@
 import React from "react";
 import {useParams} from "react-router-dom"
+import { useDispatch} from "react-redux";
 import styled from "styled-components";
 import img from "../../shared/images/imgChallengeCompleted335.png";
 import logo from "../../shared/icons/handlogo11.png";
 import mainlogo from "../../shared/icons/mainlogo.png";
+import { ActionCreators as navBarActions } from "../../redux/modules/main";
 
 const DetailpageLink = () => {
+const dispatch = useDispatch();
 const {challengeId} = useParams();
 
+const navBarCheckedHandler = (num) => {
+  dispatch(navBarActions.addNavCheckedDB(num));
+};
 
   return (
     <Container>
       
       <div className="top">
-      <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130"/>
-      </div>
+   
         <NextButton
           onClick={() => {
-            window.location.pathname = '/';
+            navBarCheckedHandler(1);
           }}
         >
           홈으로
@@ -45,25 +48,13 @@ export default DetailpageLink;
 
 const Container = styled.div`
 overflow: hidden;
-height: 100vh;
-  max-width: 375px;
+box-sizing: border-box;
+height: 100%;
+  max-width: 379px;
   width: 100%;
   border: 4px solid #3f3f3f;
   background-color: #ffffff;
-  .nav {
-    width: 375px;
-    height: 44px;
-    background-color: #151419;
-    
-    #logo {
-      margin: 13px 0 0 20px;
-      width: 140px;
-      position: fixed;
-    }
-    #mainlogo{
-      margin: 10px 0 30px 230px;
-    }
-  }
+  border-top: 2px solid black;
   .top {
     width: 375px;
     height: 100px;
@@ -156,7 +147,7 @@ const NextButton = styled.button`
 const NextButton1 = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
+  width: 379px;
   height: 85px;
   border: none;
   outline: none;
@@ -164,8 +155,9 @@ const NextButton1 = styled.button`
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
+  margin-left: -4px;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  /* border-top: 2px solid #151419; */
   cursor: pointer;
 `;
 

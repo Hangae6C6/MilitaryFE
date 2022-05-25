@@ -45,9 +45,9 @@ const Main = () => {
 let testViewCount = 1;
  
 const testHandler = () => {
-    // dispatch(testCountActions.addTestCountDB(testViewCount));
-    
-    if (token) {
+  
+  if (token) {
+      dispatch(testCountActions.addTestCountDB(testViewCount));
       setTimeout(()=>{
         window.location.pathname = `/main/preTest`;
       },500)
@@ -98,7 +98,7 @@ const testHandler = () => {
         <MyCallenge user={user} cards={myChallenges} token={token} />
         <HotChallenge cards={cards} />
       </div>
-      <Navigation userId={userId} />
+      <Navigation />
     </Container>
   );
 };

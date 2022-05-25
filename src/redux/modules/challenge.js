@@ -68,6 +68,24 @@ const getOneChallengeDetailDB = (challengeNum) => {
   };
 };
 
+const deleteCallengeDB = (challengeNum, userId) => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "delete",
+        url: `http://13.125.228.240/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        window.location.pathname=`/mypage/${userId}`;
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("챌린지 나가기 실패");
+    }
+  };
+};
 
 
 export default handleActions(
@@ -88,7 +106,7 @@ export default handleActions(
 const ActionCreators = {
   addChallengeDB,
  getOneChallengeDetailDB,
-
+  deleteCallengeDB,
 };
 
 export { ActionCreators };

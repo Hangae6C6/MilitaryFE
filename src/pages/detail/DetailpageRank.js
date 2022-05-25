@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
 import rank3 from "../../shared/icons/rank3_small.png";
+import rank1 from "../../shared/icons/smallRank1.png"
+import rank2 from "../../shared/icons/smallRank2.png"
+import rankNull from "../../shared/icons/joinmemicon.png"
 const DetailpageRank = () => {
   const dispatch = useDispatch();
   const { challengeId } = useParams();
@@ -46,7 +49,15 @@ const DetailpageRank = () => {
             <div id="progressBar">
               <div id="rank">{idx + 1}</div>
               <div id="nickname">{cur.userNick}</div>
-              <img src={rank3} alt="rank" id="icon" width="28" height="36" />
+              <img src={
+            idx === 0
+              ? rank1
+              : idx === 1
+              ? rank2
+              : idx === 2
+              ? rank3 
+              : rankNull
+          } alt="rank" id="icon" width="28" height="36" />
             </div>
           </Astep>
         ))}

@@ -1,39 +1,54 @@
-//YJ
-
-//마이페이지 메인, 아이콘, 프로필, 아이디, 이미지 등등
-
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionCreators as userChallengeDataActions } from "../redux/modules/detail";
+import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
-import { history } from "../redux/configureStore";
-
-import Profile from "../component/user/Profile";
+import { useParams } from "react-router-dom";
+import Challenges from "../element/myuser/Challenges";
+import Mine from "../element/myuser/Mine";
 
 const MyUser = () => {
   let cookie = document.cookie;
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const userInfo = useSelector((state) => state.mypage.mypage);
+  const myChallengeList = useSelector(
+    (state) => state.challengeDetail.userChallengeDetail.answer
+  );
 
-  useEffect(() => {
-    if (!cookie) {
-      toast.error("로그인 후 이용해주세요!", { position: "top-center" });
-      history.replace("/");
-      window.location.reload();
-
-      return;
+  React.useEffect(() => {
+    if (id) {
+      dispatch(userProfileActions.getUserProfileDB(id));
     }
-  }, []);
+  }, [dispatch, id]);
+
+  React.useEffect(() => {
+    if (id) {
+      dispatch(userChallengeDataActions.getUserChallengeDetailDB(id));
+    }
+  }, [dispatch, id]);
+  
+  // useEffect(() => {
+  //   if (!cookie) {
+  //     toast.error("로그인 후 이용해주세요!", { position: "top-center" });
+  //     window.location.pathname='/';
+
+  //     return;
+  //   }
+  // }, []);
+
+
 
   return (
     <Wrap>
-      <Profile />
+      <Mine userId={id} userInfo={userInfo} />
+      <Challenges userId={id} myChallengeList={myChallengeList} />
       <Footer />
       <Navigation />
       {/* <ToastContainer /> */}
-
-      {/* <Modal open={isOpen} onClose={() => setIsOpen(false)}>정말 나가시겠습니까?</Modal> */}
     </Wrap>
   );
 };

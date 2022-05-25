@@ -41,15 +41,16 @@ const {challengeId} = useParams();
 export default Link;
 
 const Container = styled.div`
+box-sizing: border-box;
 overflow: hidden;
 height: 100%;
-  max-width: 375px;
+  max-width: 379px;
   width: 100%;
   border: 4px solid black;
   background-color: #ffffff;
   border-top: 2px solid black;
   .top {
-    width: 375px;
+    width: 100%;
     height: 100px;
   }
 
@@ -140,7 +141,7 @@ const NextButton = styled.button`
 const NextButton1 = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 383px;
+  width: 379px;
   height: 85px;
   border: none;
   outline: none;

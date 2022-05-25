@@ -1,195 +1,144 @@
-//5번 마이페이지 관련
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import { getCookie, setCookie } from "../../shared/cookie";
 import axios from "axios";
+import { getCookie } from "../../shared/cookie";
 
-//Action Types
-const GET_CATEGORY = "GET_CATEGORY";
-const GET_RANK = "GET_RANK";
-const GET_DDAY = "GET_DDAY";
-const DDAY = "DDAY";
-const EDIT_NICK = "EDIT_NICK";
-const EDIT_RANK = "EDIT_RANK";
-// const GET_DATA = "GET_DATA";
-
-//Action Creators
-const getCategory = createAction(GET_CATEGORY, (armyCategory) => ({
-  armyCategory,
-}));
-const getRank = createAction(GET_RANK, (rank) => ({ rank }));
-const getEndDay = createAction(GET_DDAY, (dday) => ({ dday }));
-const getDDay = createAction(DDAY, (endDate) => ({ endDate }));
-// const editNick = createAction(EDIT_NICK, (nick) => ({ nick })); 
-const editRank = createAction(EDIT_RANK, (rank) => ({ rank }));
-// const getData = createAction(GET_DATA, (nick, rank) => ({ nick, rank }));
-
-//Initial State
+const ADD = "userdata/ADD";
+const GET_USER_PROFILE = "GET_USER_PROFILE";
+const addUserData = createAction(ADD, (userdata) => ({ userdata }));
+const getUserProfile = createAction(GET_USER_PROFILE, (userProfile) => ({ userProfile }));
 const initialState = {
-  armyCategory: "",
-  rank: "",
-  dday: "",
-  nick: "",
+  mypage:{
+    User: {
+      userNick:""
+    },
+    rank:"",
+    armyCategory:"",
+    startDate:"",
+    endDate:"",
+
+  },
+  userdata: [],
+  testResult: "",
+  
 };
 
-//middleware actions
-const getRankDB = (id) => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        dispatch(getRank(res.data.userdata.rank));
-      })
-      .catch((err) => {
-        console.log(err);
+const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
+  console.log(userId, startDate, endDate, armyCategory, rank);
+  return async function (dispatch) {
+    let userdatas = {
+      startDate,
+      endDate,
+      armyCategory,
+      rank,
+    };
+    try {
+      await axios({
+        method: "post",
+        url: `http://13.125.228.240/api/userData?userId=${userId}`,
+      
+        data: {
+          ...userdatas
+        },
+      }).then((response) => {
+        console.log(response);
+        dispatch(addUserData(userdatas));
+        window.location.pathname = "/signupDone";
       });
+    } catch (err) {
+      console.log(err);
+      window.alert("회원정보 추가 실패");
+    }
   };
 };
 
-const getCategoryDB = (id) => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        dispatch(getCategory(res.data.userdata.armyCategory));
-      })
-      .catch((err) => {
-        console.log(err);
+const addTestResultDB = (userId, result) => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "post",
+        url: "http://13.125.228.240/api/userTest",
+        data: {
+          userId,
+          testResult: result,
+        },
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        
       });
+    } catch (err) {
+      console.log(err);
+      window.alert("테스트 결과 추가 실패");
+    }
   };
 };
 
-const DdayDB = (id, dday) => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: `http://13.125.228.240/api/endDay?userId=${id}&endDate=${dday}`,
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        dispatch(getDDay(res.data.msg));
-      })
-      .catch((err) => {
-        console.log(err);
+const getUserProfileDB = (userId) => {
+  return async function (dispatch, getState) {
+    try {
+      await axios({
+        method: "get",
+        url: `http://13.125.228.240/api/myPage/userProfile?userId=${userId}`,
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        dispatch(getUserProfile(response));
       });
+    } catch (err) {
+      console.log(err, "challengeDetail userId로 GET 요청 실패");
+    }
   };
 };
 
-const getDDayDB = (id) => {
-  return function (dispatch) {
-    axios({
-      method: "get",
-      url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        dispatch(getEndDay(res.data.userdata.endDate));
-      })
-      .catch((err) => {
-        console.log(err);
+const editUserDataDB = (userId, userNick, startDate, endDate, armyCategory, rank) => {
+  console.log(userId, userNick, startDate, endDate, armyCategory, rank);
+  return async function (dispatch) {
+   
+    try {
+      await axios({
+        method: "put",
+        url: `http://13.125.228.240/api/myPage/userProfile?userId=${userId}`,
+      
+        data: {
+          userNick,
+          startDate,
+          endDate,
+          armyCategory,
+          rank,
+        },
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        window.location.pathname = `/mypage/${userId}`;
       });
+    } catch (err) {
+      console.log(err);
+      window.alert("회원정보 추가 실패");
+    }
   };
 };
 
-// const getRankDB = (id) => {
-//   return function (dispatch) {
-//     axios({
-//       method: "get",
-//       url: `http://13.125.228.240/api/myPage/userProfile?userId=${id}`,
-//       headers: {
-//         Authorization: `Bearer ${getCookie("token")}`,
-//       },
-//     })
-//       .then((res) => {
-//         console.log(res);
-//         dispatch(getData(res.data.userdata.rank));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
-const EditRankDB = (userId, select) => {
-  return function (dispatch, getState, { history }) {
-    axios({
-      method: "put",
-      url: `http://13.125.228.240/api/myPage/userProfile?userId=${userId}`,
-      headers: {
-        Authorization: `Bearer ${getCookie("token")}`,
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        const rank = getState().user.user.userRank;
-        console.log(getState())
-        dispatch(editRank(rank));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
-
-//Reducer
 export default handleActions(
   {
-    [GET_CATEGORY]: (state, action) =>
+      [GET_USER_PROFILE]: (state, action) =>
       produce(state, (draft) => {
-        draft.armyCategory = action.payload.armyCategory;
-      }),
-    [GET_RANK]: (state, action) =>
-      produce(state, (draft) => {
-        draft.rank = action.payload.rank;
-      }),
-    [GET_DDAY]: (state, action) =>
-      produce(state, (draft) => {
-        draft.dday = action.payload.dday;
-      }),
-    [DDAY]: (state, action) =>
-      produce(state, (draft) => {
-        draft.endDate = action.payload.endDate;
-      }),
-    // [GET_DATA]: (state, action) =>
-    //   produce(state, (draft) => {
-    //     draft.rank = action.payload.rank;
-    //   }),
-    [EDIT_RANK]: (state, action) =>
-      produce(state, (draft) => {
-        console.log(action);
-        draft.rank = action.payload.rank;
-
-        // console.log(draft)
-        // let index = draft.list.find((p) => p.id === action.payload.nick);
-        // draft.list[index] = { ...draft.list[index], ...action.payload.nick };
+        draft.mypage = action.payload.userProfile.data.userdata;
       }),
   },
   initialState
 );
-//Action Creator Export
+
 const ActionCreators = {
-  getRankDB,
-  getCategoryDB,
-  getDDayDB,
-  DdayDB,
-  EditRankDB,
-  // getDataDB,
+  addUserDataDB,
+  addTestResultDB,
+  getUserProfileDB,
+  editUserDataDB,
 };
 
 export { ActionCreators };

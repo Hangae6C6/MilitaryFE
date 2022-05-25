@@ -54,14 +54,7 @@ const Nav = () => {
     <Container>
    
       <div className="top">
-        <div
-          className="arrow"
-          onClick={() => {
-            window.location.pathname = "/";
-          }}
-        >
-          <img src={gobackIcon} alt="goback" width="20px" height="20px" />
-        </div>
+  
         <div id="title">검색</div>
       </div>
       <div id="upperbox">
@@ -180,18 +173,13 @@ const Container = styled.div`
     width: 375px;
     border-top: 4px solid #ffffff;
     background-color: #151419;
-    .arrow {
-      height: 23px;
-      width: 20px;
-      margin: 17px 0px 0px 20px;
-      cursor: pointer;
-    }
+
     #title {
       width: 100px;
       color: #ffffff;
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 10px 0 0 20px;
+      margin: 40px 0 0 20px;
     }
   }
   #upperbox {
@@ -199,6 +187,7 @@ const Container = styled.div`
     height: 80px;
     border-bottom: #151419 2px solid;
     background-color: #ffffff;
+
     #inputBox {
       width: 300px;
       height: 40px;

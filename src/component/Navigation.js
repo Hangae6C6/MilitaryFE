@@ -1,9 +1,8 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { history } from "../redux/configureStore";
 import { getCookie } from "../shared/cookie";
-
-
+import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 import {
   myPageIcon,
@@ -14,67 +13,69 @@ import {
   clickedHomeIcon,
 } from "../shared/icons/icons";
 
-const Navigation = ({ userId }) => {
+const Navigation = () => {
   let token = getCookie("token");
-  const [homeChecked, setHomeChecked] = React.useState(false);
-  const [searchChecked, setSearchChecked] = React.useState(false);
-  const [mypageChecked, setmypageChecked] = React.useState(false);
+  const dispatch = useDispatch();
+  const router = useSelector((state) => state.router.location.pathname);
+  const userId = useSelector((state) => state.user.user.userId);
+  const navBar = useSelector((state) => state.card.navBar);
+  
+  React.useEffect(() => {
+    dispatch(navBarActions.getNavCheckedDB());
+  }, [dispatch, router]);
 
+  const navBarCheckedHandler = (num) => {
+    dispatch(navBarActions.addNavCheckedDB(num, userId));
+
+  };
 
   return (
-
-      <Nav>
-        <Wrap>
-          <Home>
-            <HomeIcn
-              src={homeChecked ? clickedHomeIcon : homeIcon}
-              onClick={() => {
-                setHomeChecked(true);
-                window.location.pathname = "/";
-              }}
-            />
-            <P>홈</P>
-          </Home>
-          <Home>
-            <SearchIcn
-              src={searchChecked ? clickedSearchIcon : searchIcon}
-              onClick={() => {
-                setSearchChecked(true);
-                window.location.pathname = "/search";
-              }}
-            />
-            <P>챌린지검색</P>
-          </Home>
-          <Home>
-            {token ? (
-              <>
-                <MypageIcn
-                  primary
-                  src={mypageChecked ? clickedPageIcon : myPageIcon}
-                  onClick={() => {
-                    setmypageChecked(true);
-                    history.push(`/mypage/${userId}`);
-                    window.location.reload();
-                  }}
-                />
-                <P>마이페이지</P>
-              </>
-            ) : (
-              <>
-                <MypageIcn
-                  src={myPageIcon}
-                  onClick={() => {
-                    history.push(`/login`);
-                    window.location.reload();
-                  }}
-                />
-                <P>로그인</P>
-              </>
-            )}
-          </Home>
-        </Wrap>
-      </Nav>
-      
+    <Nav>
+      <Wrap>
+        <Home>
+          <HomeIcn
+            src={navBar.home === 1 ? clickedHomeIcon : homeIcon}
+            onClick={() => {
+              navBarCheckedHandler(1);
+            }}
+          />
+          <P>홈</P>
+        </Home>
+        <Home>
+          <SearchIcn
+            src={navBar.search === 1 ? clickedSearchIcon : searchIcon}
+            onClick={() => {
+              navBarCheckedHandler(2);
+            }}
+          />
+          <P>챌린지검색</P>
+        </Home>
+        <Home>
+          {token ? (
+            <>
+              <MypageIcn
+                primary
+                src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
+                onClick={() => {
+                  navBarCheckedHandler(3);
+                }}
+              />
+              <P>마이페이지</P>
+            </>
+          ) : (
+            <>
+              <MypageIcn
+                src={myPageIcon}
+                onClick={() => {
+              window.location.pathname='/login';
+                }}
+              />
+              <P>로그인</P>
+            </>
+          )}
+        </Home>
+      </Wrap>
+    </Nav>
   );
 };
 
@@ -82,7 +83,6 @@ export default Navigation;
 
 const Nav = styled.div`
   margin-top: 82px;
-
 `;
 
 const Wrap = styled.div`

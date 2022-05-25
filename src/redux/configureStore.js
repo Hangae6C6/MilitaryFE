@@ -2,12 +2,11 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
-import modal from "./modules/modal";
+import mypage from "./modules/mypage";
 import user from "./modules/user";
 import challenge from "./modules/challenge";
 import search from "./modules/search";
 import main from "./modules/main";
-import mypage from './modules/mypage'
 import detail from "./modules/detail";
 
 export const history = createBrowserHistory();
@@ -15,7 +14,6 @@ export const history = createBrowserHistory();
 const rootReducer = combineReducers({
   //우리가 만든 리듀서 뭉치기
   user: user,
-  userdata: modal,
   search: search,
   challenge: challenge,
   card: main,

@@ -34,7 +34,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then(() => {
-        history.push("/login");
+        window.location.pathname=`/signupData/${userId}`;
       });
     } catch (err) {
       console.log(err);
@@ -43,14 +43,14 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
   };
 };
 
-const loginDB = (id, password) => {
+const loginDB = (userId, password) => {
   return async function (dispatch) {
     try {
       await axios({
         method: "post",
         url: "http://13.125.228.240/api/login",
         data: {
-          userId: id,
+          userId,
           userPw: password,
         },
       }).then((res) => {

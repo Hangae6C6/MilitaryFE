@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {history} from '../../redux/configureStore'
 
 const EditBtn = ({children}) => {
-    const [userInfo, setUserInfo] = useState({
-        nickname:'',
-        password:'',
-        passwordCheck:'',
-    })
+
 
     return (
         <div>

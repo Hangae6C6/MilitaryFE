@@ -120,6 +120,7 @@ const getChallengeDetailDB = (challengeId) => {
         },
       }).then((response) => {
         dispatch(getChallengeDetail(response.data));
+     
       });
     } catch (err) {
       console.log(err, "challengeDetail challengeNum GET 요청 실패");
@@ -138,6 +139,7 @@ const getUserChallengeDetailDB = (userId) => {
         },
       }).then((response) => {
         dispatch(getUserChallengeDetail(response.data));
+        console.log(response)
       });
     } catch (err) {
       console.log(err, "challengeDetail userId로 GET 요청 실패");

@@ -70,9 +70,7 @@ const SignUp = () => {
     }
 
     dispatch(userActions.signupDB(id, password, nickname, passwordCheck));
-    setTimeout(()=> {
-      window.location.pathname=`/signupData/${id}`;
-    },1000)
+
   };
 
   return (

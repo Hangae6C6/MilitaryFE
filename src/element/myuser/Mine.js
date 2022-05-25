@@ -1,76 +1,50 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Back } from "../../image/back.svg";
 import { ReactComponent as Write } from "../../image/write.svg";
-import { ActionCreators as mypageAction } from "../../redux/modules/mypage";
-import { history } from "../../redux/configureStore";
 import { Link } from "react-router-dom";
-
 import { first, second, third, fourth } from "../../image/index";
 
-//이미지/아이디/군종/닉네임/계급/계급딱지/디데이
-const Mine = (props) => {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.user.userId); //dispatch중복돼서 useEffect중복되면서 일어나는 문제
-  const userNickForBinding = useSelector((state) => state.user.user.userNick);
-  const userCategoryForBinding = useSelector(
-    (state) => state.mypage.armyCategory
-  );
-  const userRankForBinding = useSelector((state) => state.mypage.rank);
-  const userEndDay = useSelector((state) => state.mypage.dday);
-  const Dday = useSelector((state) => state.mypage.endDate);
-  console.log(useSelector((state) => state.mypage));
-  React.useEffect(() => {
-    if (userId?.length) {
-      console.log(userId);
-      dispatch(mypageAction.getRankDB(userId));
-      dispatch(mypageAction.getCategoryDB(userId));
-      dispatch(mypageAction.getDDayDB(userId));
-      dispatch(mypageAction.DdayDB(userId, userEndDay));
-    }
-  });
+const Mine = ({userId, userInfo}) => {
+  let endDate = userInfo.endDate;
+  let endDay = new Date(endDate);
+  let now = new Date();
+  let distance = endDay - now;
+  let dDay = Math.floor(distance / (1000 * 60 * 60 * 24));
 
   return (
     <>
       <MyPage>
-        <BackDiv
-          onClick={() => {
-            history.back();
-          }}
-        >
-          <Back />
-        </BackDiv>
         <MyP>마이페이지</MyP>
-        <Link to={`/myPage/userProfile/${userId}`}>
+        <Link to={`/myPage/userProfile/edit/${userId}`}>
           <Write />
         </Link>
       </MyPage>
       <Wrap>
-        {/* <ImgDiv>
-          <ProfImg />
-        </ImgDiv> */}
         <PDiv>
-          <Ddaydiv>D-{Dday}</Ddaydiv>
+          <Ddaydiv><span>
+            D-{dDay}
+            </span></Ddaydiv>
           <NameDiv>
             <DivDiv>
               <P padding="0" margin="0">
-                {userNickForBinding}
+                {userInfo.User.userNick}
               </P>
             </DivDiv>
           </NameDiv>
           <ProfList>
-            {userCategoryForBinding} - {userRankForBinding}
+            <span>
+
+            {userInfo.armyCategory} - {userInfo.rank}
+            </span>
           </ProfList>
         </PDiv>
         <RankImg
           src={
-            userRankForBinding === "이병"
+            userInfo.rank === "이병"
               ? first
-              : userRankForBinding === "일병"
+              : userInfo.rank === "일병"
               ? second
-              : userRankForBinding === "상병"
+              : userInfo.rank === "상병"
               ? third
               : fourth
           }
@@ -90,49 +64,47 @@ const MyPage = styled.div`
   border-bottom: 2px solid #151419;
   display: flex;
   justify-content: space-between;
-`;
-
-const BackDiv = styled.div`
-  display: inline-block;
+  padding: 10px 0 10px 140px;
 `;
 
 const MyP = styled.div`
+  width: 100px;
   font-size: 20px;
   font-weight: 600;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 15px 0;
-`;
-
-const WriteDiv = styled.div`
-  display: inline-block;
-  cursor: pointer;
 `;
 
 const PDiv = styled.div`
   margin: 30px auto 10px auto;
-  font-weight: 700;
   display: inline-block;
   text-align: center;
+  font-family: Gmarket SansBold;
+  height: 170px;
 `;
 
 const Ddaydiv = styled.div`
+  margin-left: 20px;
+  width: 60px;
   background-color: #151419;
   color: #fff;
-  padding: 3px;
-  margin: 30px 0 10 0;
+  padding: 6px 2px;
+  font-family: Gmarket SansBold;
 `;
 
 const ProfList = styled.p`
-  margin: 5px;
+  padding: 0 20px;
   text-align: left;
   font-weight: 600;
-  margin: 15px 0;
+  font-family: Gmarket Sans;
+  
 `;
 
 const NameDiv = styled.div`
+  width: 220px;
   font-weight: 800;
   font-size: 30px;
   display: grid;
@@ -141,24 +113,22 @@ const NameDiv = styled.div`
 
 const DivDiv = styled.div`
   display: flex;
+  padding: 0px 18px;
 `;
 
 const P = styled.p`
-font-family: Gmarket SansBold;
+  font-family: Gmarket SansBold;
   margin: 20px 0 0 0;
   padding: 0;
 `;
 
-const RankDiv = styled.div`
-  margin: 0 auto;
-`;
 
 const RankImg = styled.div`
   background-image: url("${(props) => props.src}");
-  width: 84px;
-  height: 102px;
+  width: 118px;
+  height: 142px;
   background-size: cover;
-  margin: 20px 40px 0 0;
+  margin: 20px 20px 0 0;
   padding: 10px;
   border: 2px solid #151419;
 `;

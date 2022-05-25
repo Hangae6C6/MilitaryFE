@@ -115,7 +115,7 @@ function App() {
             <Route exact path="/link/:challengeId" element={<Link />}></Route>
             <Route
               exact
-              path="/myPage/userProfile/:userId"
+              path="/myPage/userProfile/edit/:userId"
               element={<MyEdit />}
             ></Route>
             <Route

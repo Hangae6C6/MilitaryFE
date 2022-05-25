@@ -1,32 +1,24 @@
 import React from "react";
-import styled, { withTheme } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { ActionCreators as searchActions } from "../../redux/modules/modal";
+import styled  from "styled-components";
+import { useDispatch} from "react-redux";
+import {useParams} from "react-router-dom";
+import { ActionCreators as searchActions } from "../../redux/modules/mypage";
 import { Select, DateInput } from "grommet";
 import gobackIcon from "../../shared/icons/arrowWhite.png";
-import logo from "../../shared/icons/handlogo11.png";
 
 const UserData = () => {
   const dispatch = useDispatch();
-  const { userId } = useParams();
+  const {id}  = useParams();
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
   const [milCategory, setMilCategory] = React.useState("");
   const [rank, setRank] = React.useState("");
-
   const options = ["육군", "해군", "공군", "해병대", "특수부대"];
   const ranks = [
     "이병",
     "일병",
     "상병",
     "병장",
-    "하사",
-    "중사",
-    "상사",
-    "소위",
-    "중위",
-    "대위",
   ];
 
   const onStartDateChange = (e) => {
@@ -47,8 +39,7 @@ const UserData = () => {
   };
 
   const signupDataHandler = () => {
-    window.location.pathname = "/signupDone";
-    setTimeout(() => {}, 0);
+    dispatch(searchActions.addUserDataDB(id, startDate[0], endDate[0], milCategory, rank));
   };
 
   return (
@@ -76,6 +67,7 @@ const UserData = () => {
             value={startDate}
             onChange={onStartDateChange}
             defaultValue="string"
+            
           />
         </Wrap>
         <div id="p">전역일</div>
@@ -111,7 +103,7 @@ const UserData = () => {
         </Wrap>
         <Empty/>
       </Box2>
-      <NextButton onClick={() => signupDataHandler()}>회원가입</NextButton>
+      <NextButton onClick={signupDataHandler}>회원가입</NextButton>
     </Container>
   );
 };
@@ -120,7 +112,7 @@ export default UserData;
 const Container = styled.div`
   display: block;
   max-width: 375px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   border: 2px solid #151419;
   .nav {

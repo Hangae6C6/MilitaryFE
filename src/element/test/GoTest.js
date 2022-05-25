@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import { history } from "../../redux/configureStore";
 import TEST from "../../image/TEST.png";
 import { ReactComponent as Back } from "../../image/back.svg";
@@ -11,11 +10,11 @@ import { ActionCreators as testCountActions } from "../../redux/modules/main";
 
 const GoTest = () => {
 const dispatch = useDispatch();
-// const testCount = useSelector((state)=> state.testCount.testCount);
-
-  // React.useEffect(()=>{
-  //   dispatch(testCountActions.getTestCountDB());
-  // },[dispatch])
+const testCount = useSelector((state)=> state.card.testCount);
+console.log(testCount)
+  React.useEffect(()=>{
+    dispatch(testCountActions.getTestCountDB());
+  },[dispatch])
 
 
   return (
@@ -26,7 +25,7 @@ const dispatch = useDispatch();
           <MatchP>입대하면 뭐 되지?</MatchP>
         </HeaderDiv>
         <TestImg src={TEST} />
-        <div className="n">지금까지<br />우리와 함께 '뭐'가 된<br />전우 00명</div>
+        <div className="n">지금까지<br />우리와 함께 '뭐'가 된<br />전우 {testCount}명</div>
       </GotestDiv>
 
      

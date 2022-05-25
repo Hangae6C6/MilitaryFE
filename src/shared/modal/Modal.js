@@ -3,7 +3,7 @@ import "./modal.css";
 import closeIcon from "../icons/icnCloseBlack32.svg";
 
 const Modal = (props) => {
-  const { open, close } = props;
+  const { open, close, done } = props;
 
   return (
     <>
@@ -20,8 +20,8 @@ const Modal = (props) => {
                 </div>
 
                 <div className="lowerbox">
-                    <div className="left">YES</div>
-                    <div className="right">NO</div>
+                    <div className="left" onClick={done}>YES</div>
+                    <div className="right" onClick={close}>NO</div>
 
                 </div>
             </section>

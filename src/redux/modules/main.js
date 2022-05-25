@@ -6,6 +6,7 @@ import { getCookie } from "../../shared/cookie";
 const GET_POST = "GET_POST";
 const GET_PROGRESS = "GET_TOTALPROGRESS";
 const GET_TEST_COUNT = "GET_TEST_COUNT";
+const GET_NAV_CHECKED = "GET_NAV_CHECKED";
 
 const getPost = createAction(GET_POST, (cards) => ({
   cards,
@@ -18,29 +19,36 @@ const getTestCount = createAction(GET_TEST_COUNT, (testCount) => ({
   testCount,
 }));
 
-
+const getNavChecked = createAction(GET_NAV_CHECKED, (navBar) => ({
+  navBar,
+}));
 
 const initialState = {
-  cards: [{
-    challengeCnt: 0,
-    challengeEndDate:"",
-    challengeLimitNum: 0,
-    challengeNum: 0,
-    challengeProgress: "",
-    challengeTitle:"",
-    challengeType: "",
-    challengeViewCnt: 0,
-    steps: [{
-      stepNum: 0,
-      isChecked:false,
-      stepContent:"",
-    },]
-  },],
+  cards: [
+    {
+      challengeCnt: 0,
+      challengeEndDate: "",
+      challengeLimitNum: 0,
+      challengeNum: 0,
+      challengeProgress: "",
+      challengeTitle: "",
+      challengeType: "",
+      challengeViewCnt: 0,
+      steps: [
+        {
+          stepNum: 0,
+          isChecked: false,
+          stepContent: "",
+        },
+      ],
+    },
+  ],
   totalProgress: {
-    totalChallengeProgress:0,
+    totalChallengeProgress: 0,
     userId: "",
   },
-  testCount: 0
+  testCount: 0,
+  navBar: {},
 };
 
 const getPostDB = () => {
@@ -88,7 +96,6 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
           challengeCnt,
         },
       }).then((response) => {
-      
         window.location.pathname = `/detailpage/${challengeId}`;
       });
     } catch (err) {
@@ -104,12 +111,10 @@ const addTestCountDB = (testViewCount) => {
       await axios({
         method: "post",
         url: `http://13.125.228.240/api/main/testCount?userId=${testViewCount}`,
-      }).then((response) => {
-        console.log(response);
-      });
+      }).then((response) => {});
     } catch (err) {
       console.log(err);
-      window.alert("addTestCount 요청 실패"); 
+      window.alert("addTestCount 요청 실패");
     }
   };
 };
@@ -121,12 +126,48 @@ const getTestCountDB = () => {
         method: "get",
         url: "http://13.125.228.240/api/main/testCountRead",
       }).then((response) => {
-        dispatch(getTestCount(response.data));
-        console.log(response.data)
+        dispatch(getTestCount(response.data.countread.TestCount));
       });
     } catch (err) {
       console.log(err);
       window.alert("getTestCount 요청 실패");
+    }
+  };
+};
+const addNavCheckedDB = (navNum, userId) => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "post",
+        url: `http://13.125.228.240/api/main/iconclick?btnNum=${navNum}`,
+      }).then((response) => {
+        if (navNum === 1) {
+          window.location.pathname = "/";
+        } else if (navNum === 2) {
+          window.location.pathname = "/search";
+        } else {
+          window.location.pathname = `/mypage/${userId}`;
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("NavChecked 요청 실패");
+    }
+  };
+};
+
+const getNavCheckedDB = () => {
+  return async function (dispatch) {
+    try {
+      await axios({
+        method: "get",
+        url: "http://13.125.228.240/api/main/iconclickRead",
+      }).then((response) => {
+        dispatch(getNavChecked(response.data.iconRead));
+      });
+    } catch (err) {
+      console.log(err);
+      window.alert("getNaveChecked 요청 실패");
     }
   };
 };
@@ -141,9 +182,13 @@ export default handleActions(
       produce(state, (draft) => {
         draft.totalProgress = action.payload.totalProgress;
       }),
-      [GET_TEST_COUNT]: (state, action) =>
+    [GET_TEST_COUNT]: (state, action) =>
       produce(state, (draft) => {
         draft.testCount = action.payload.testCount;
+      }),
+    [GET_NAV_CHECKED]: (state, action) =>
+      produce(state, (draft) => {
+        draft.navBar = action.payload.navBar;
       }),
   },
   initialState
@@ -155,6 +200,8 @@ const ActionCreators = {
   addVeiwCountDB,
   addTestCountDB,
   getTestCountDB,
+  getNavCheckedDB,
+  addNavCheckedDB,
 };
 
 export { ActionCreators };
