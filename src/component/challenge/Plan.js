@@ -4,8 +4,6 @@ import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import deleteIcon from "../../shared/icons/icnCloseBlack32.svg";
 import addIcon from "../../shared/icons/icnPlusBlack32.svg";
 import { Meter } from "grommet";
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png";
 
 const Plan = ({
   type,
@@ -83,8 +81,7 @@ const Plan = ({
 export default Plan;
 
 const Container = styled.div`
-
-
+height: 100%;
   .arrow {
     position: absolute;
     margin: 15px 0px 0px 10px;
@@ -194,6 +191,6 @@ const Container = styled.div`
 
 const Wrap = styled.div`
 
-  overflow: scroll;
-  height: 50%;
+  overflow: auto;
+  height: 60%;
 `;

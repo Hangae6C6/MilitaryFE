@@ -107,6 +107,7 @@ const Container = styled.div`
   overflow: hidden;
   border: 2px solid #151419;
   background-color: #ffffff;
+
   
 `;
 const NextButton = styled.button`

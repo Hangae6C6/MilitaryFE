@@ -60,10 +60,7 @@ let testViewCount = 1;
 
   return (
     <Container>
-      {/* <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-        <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
-      </div> */}
+  
       <div id="top-box">
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
