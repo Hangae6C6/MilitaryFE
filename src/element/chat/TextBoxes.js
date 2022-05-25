@@ -9,15 +9,6 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   const nowTime = moment().format("kk:mm");
   const chatWindow = useRef();
 
-  const moveScroll = useCallback(() => {
-    if (chatWindow.current) {
-      chatWindow.current.scrollTo({
-        top: chatWindow.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
  
   // const MyComponent = () => {
   //   const formIsDirty = true; // Condition to trigger the prompt.
@@ -34,12 +25,6 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   //   MyComponent()
   // }, []);
 
-  const onLeft = () => {
-    socket.on("leave_room", () => {
-      console.log("6");
-      setMessageList(messageList.concat(`${userName} disconnected`));
-    });
-  };
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -52,7 +37,6 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
-      moveScroll();
     }
   };
 
@@ -123,17 +107,22 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   );
 };
 const Wrap = styled.div`
-height: 100vh;
-  width: 100%;
-  /* overflow:scroll; */
+background-color: #fff;
+height:94.3vh;
+  max-width: 375px;
+  width: 375px;
+  overflow: scroll;
 `;
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 83%;
+  height: 78%;
   display: flex;
   flex-direction: column;
   overflow: auto;
+  border-top: 2px solid #151419;
+  border-bottom: 2px solid #151419;
+  
 `;
 const ChatFoot = styled.div`
   max-width: 375px;
@@ -198,7 +187,7 @@ const MyMsgBox = styled.div`
 
   /* White */
   background: #ffffff;
-  border: 3px solid #000000;
+  border: 2px solid #000000;
 `;
 const YourMsgBox = styled.div`
   box-sizing: border-box;
@@ -215,23 +204,23 @@ const YourMsgBox = styled.div`
   bottom: 41.26%;
 
   /* Black */
-  background: #3f3f3f;
-  color: #ffffff;
+  background: #6dbb91;
+  color: #000000;
   /* Black */
-  border: 3px solid #3f3f3f;
+  border: 2px solid #3f3f3f;
 `;
 const Input = styled.input`
   width: 300px;
-  height: 70px;
   background-color: #fff;
-  border: 3px solid #000000;
-  box-sizing: border-box;
+  /* border-top: 2px solid #3f3f3f; */
 `;
 const SendBtn = styled.button`
-  width: 75px;
+  width: 95px;
   height: 70px;
   background-color: #6dbb91;
-  border: 3px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
   &:hover {
     background-color: #fff;
   }
