@@ -57,11 +57,10 @@ const testHandler = () => {
     }
   };
 
- 
+
 
   return (
     <Container>
-  
       <div id="top-box">
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
@@ -112,7 +111,6 @@ const Container = styled.div`
   overflow: hidden;
   max-width: 375px;
   border: 2px solid #151419;
- 
 
   #top-box {
     display: flex;
@@ -120,7 +118,7 @@ const Container = styled.div`
     background-color: #151419;
     height: 221px;
     border-top: 4px solid #ffffff;
-    
+
     #main-title {
       padding: 50px 0 0 15px;
       height: 35px;
