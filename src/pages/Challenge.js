@@ -26,7 +26,7 @@ const Challenge = () => {
       ...prevSteps,
       { stepNum: stepIndex, stepContent: stepContent, isChecked: false },
     ]);
-    window.scrollTo({ top: 1000, left: 1000, behavior: "smooth" });
+    window.scrollTo({ top: 1000, left: 0, behavior: "smooth" });
     setStepContent("");
   };
 

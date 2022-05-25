@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import styled from "styled-components";
 import moment from "moment";
 import ScrollToBottom from 'react-scroll-to-bottom'
@@ -8,15 +8,6 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   const [messageList, setMessageList] = useState([]);
   const nowTime = moment().format("kk:mm");
   const chatWindow = useRef();
-
-  const moveScroll = useCallback(() => {
-    if (chatWindow.current) {
-      chatWindow.current.scrollTo({
-        top: chatWindow.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, []);
 
  
   // const MyComponent = () => {
@@ -34,12 +25,6 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   //   MyComponent()
   // }, []);
 
-  const onLeft = () => {
-    socket.on("leave_room", () => {
-      console.log("6");
-      setMessageList(messageList.concat(`${userName} disconnected`));
-    });
-  };
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -52,8 +37,8 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
-      moveScroll();
-    }
+      window.scrollTo({ top: 1000, left: 0, behavior: "smooth" });
+      }
   };
 
   useEffect(() => {
@@ -108,7 +93,7 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
             e.key === "Enter" && sendMessage();
           }}
         />
-        <SendBtn onClick={sendMessage}>send</SendBtn>
+        <SendBtn onClick={sendMessage}>보내기</SendBtn>
         {/* <button
           onClick={() => {
             onLeft();
@@ -123,26 +108,29 @@ const TextBoxes = ({ setRoom, socket, userName, room }) => {
   );
 };
 const Wrap = styled.div`
-height: 100vh;
-  width: 100%;
-  /* overflow:scroll; */
+background-color: #fff;
+height:85vh;
+  max-width: 375px;
+  width: 375px;
 `;
 
 const ChatBody = styled.div`
   width: 100%;
-  height: 83%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   overflow: auto;
+  border-top: 2px solid #151419;
 `;
 const ChatFoot = styled.div`
-  max-width: 375px;
+  max-width: 379px;
   width: 100%;
-  height: 70px;
+  height: 89px;
   bottom: 0;
   position: absolute;
   z-index: 999;
   display: flex;
+  margin: 0 0 0 -2px;
 `;
 const You = styled.div`
   width: 90%;
@@ -198,7 +186,7 @@ const MyMsgBox = styled.div`
 
   /* White */
   background: #ffffff;
-  border: 3px solid #000000;
+  border: 2px solid #000000;
 `;
 const YourMsgBox = styled.div`
   box-sizing: border-box;
@@ -215,23 +203,22 @@ const YourMsgBox = styled.div`
   bottom: 41.26%;
 
   /* Black */
-  background: #3f3f3f;
-  color: #ffffff;
+  background: #6dbb91;
+  color: #000000;
   /* Black */
-  border: 3px solid #3f3f3f;
+  border: 2px solid #151419;
 `;
 const Input = styled.input`
   width: 300px;
-  height: 70px;
+  height: 83px;
   background-color: #fff;
-  border: 3px solid #000000;
-  box-sizing: border-box;
+  border: 2px solid black;
 `;
 const SendBtn = styled.button`
-  width: 75px;
-  height: 70px;
+  width: 95px;
+  height: 89px;
   background-color: #6dbb91;
-  border: 3px solid black;
+  border-top: 2px solid #151419;
   &:hover {
     background-color: #fff;
   }

@@ -8,8 +8,8 @@ import DescImg from "../../element/test/DescImg";
 import DescTxt from "../../element/test/DescTxt";
 import Wrap from "../../element/test/Wrap";
 import TypeDesc from "../../element/test/TypeDesc";
-import { ReactComponent as Back } from "../../image/back.svg";
 import { history } from "../../redux/configureStore";
+import Back from "../../image/back.svg";
 
 const ResultPage = (props) => {
   const dispatch = useDispatch();
@@ -28,12 +28,12 @@ const ResultPage = (props) => {
   return (
     <Wrap>
       <QDiv>
-        <Back
-          onClick={() => {
-            history.back();
-          }}
-          cursor="pointer"
-        />
+      <BackIcon
+            src={Back}
+            onClick={() => {
+              history.back();
+            }}
+          />
       </QDiv>
       <PersonDiv>
         <TypeDesc>
@@ -61,6 +61,13 @@ const QDiv = styled.div`
   justify-content: center;
   border-bottom: 2px solid #151419;
   box-sizing: border-box;
+  height: 81px;
+`;
+const BackIcon = styled.img`
+  z-index: 1;
+  position: absolute;
+  padding: 15px 0 0 15px;
+  cursor: pointer;
 `;
 
 const PersonDiv = styled.div`
@@ -71,6 +78,7 @@ const PersonDiv = styled.div`
 
 const P = styled.p`
   font-size: 20px;
+
 `;
 const Next = styled.div`
   font-family: NanumSquare;

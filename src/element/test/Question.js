@@ -41,11 +41,6 @@ const Question = () => {
   return (
     <>
       <QDiv>
-        {/* <Back
-         
-          
-
-        /> */}
         <ProgressBar>
           <BackIcon
             src={Back}
@@ -55,7 +50,7 @@ const Question = () => {
           />
           <Progress width={step} />
         </ProgressBar>
-        <img width="375px" src={qnaList[num - 1].image} />
+        <img height="238.5px" src={qnaList[num - 1].image} />
         <QText>
           <div className="question">{qnaList[num - 1].q}</div>
         </QText>
@@ -89,14 +84,14 @@ const QDiv = styled.div`
 `;
 const ProgressBar = styled.div`
   width: 100%;
-  height: 70px;
+  height: 81px;
   border-bottom: 2px solid #3f3f3f;
   border-top: 2px solid #3f3f3f;
   box-sizing: border-box;
 `;
 const Progress = styled.div`
   width: ${(props) => props.width}%;
-  height: 68px;
+  height: 79px;
   background-color: #1fb57e;
   border-bottom: 2px solid #3f3f3f;
   border-right: 2px solid #3f3f3f;
@@ -118,7 +113,7 @@ const QImage = styled.div`
 `;
 
 const QText = styled.div`
-  height: 159px;
+  height: 154px;
   background-color: #ffffff;
   font-weight: 700;
   font-size: 26px;
@@ -160,7 +155,7 @@ const Button = styled.div`
     text-align: center;
     width: 303px;
     line-height: 100px;
-    font-size: 22px;
+    font-size: 20px;
   }
 `;
 

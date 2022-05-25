@@ -17,7 +17,7 @@ const Chat = () => {
 };
 
 const Wrap = styled.div`
-height: 100vh;
+height: 93vh;
   width: 375px;
   border: 2px solid #151419;
   background-color: #fff;

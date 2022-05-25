@@ -11,10 +11,12 @@ const ChatHeader = ({children}) => {
 
 const HeadDiv = styled.div`
 height: 80px;
+line-height: 80px;
 width: 100%;
 background-color: #fff;
 text-align: center;
 align-items: center;
+font-family: Gmarket SansBold;
 `
 
 export default ChatHeader;
