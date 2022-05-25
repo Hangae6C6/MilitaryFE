@@ -42,25 +42,22 @@ const Main = () => {
       dispatch(postActions.getProgressDB(userId));
     }
   }, [dispatch, userId]);
-let testViewCount = 1;
+  let testViewCount = 1;
   const testHandler = () => {
-    dispatch(testCountActions.addTestCountDB(testViewCount));
-    
-    // if (token) {
-    //   setTimeout(()=>{
-    //     window.location.pathname = `/main/preTest`;
-    //   },500)
+    // dispatch(testCountActions.addTestCountDB(testViewCount));
 
-    // } else {
-    //   window.location.pathname = "/login";
-    // }
+    if (token) {
+      setTimeout(()=>{
+        window.location.pathname = `/main/preTest`;
+      },500)
+
+    } else {
+      window.location.pathname = "/login";
+    }
   };
-
- 
 
   return (
     <Container>
-  
       <div id="top-box">
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
@@ -111,7 +108,6 @@ const Container = styled.div`
   overflow: hidden;
   max-width: 375px;
   border: 2px solid #151419;
- 
 
   #top-box {
     display: flex;
@@ -119,7 +115,7 @@ const Container = styled.div`
     background-color: #151419;
     height: 221px;
     border-top: 4px solid #ffffff;
-    
+
     #main-title {
       padding: 50px 0 0 15px;
       height: 35px;
