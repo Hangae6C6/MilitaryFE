@@ -2,6 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
+import { ActionCreators as navBarActions } from "../../redux/modules/main";
 
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
@@ -76,6 +77,7 @@ const loginCheckDB = () => {
     })
       .then((res) => {
         dispatch(getUser(res.data.user));
+
       })
       .catch((err) => {
         console.log(err);
@@ -123,12 +125,13 @@ const NaverLogin = (code, state) => {
   };
 };
 
-const logoutDB = () => {
+const logoutDB = (userId) => {
   return function (dispatch, getState, { history }) {
+    let num = 1;
     deleteCookie("token"); // 쿠키에서 토큰 삭제
     localStorage.removeItem("userId");
     dispatch(logout());
-    history.replace("/");
+    dispatch(navBarActions.addNavCheckedDB(num, userId));
   };
 };
 

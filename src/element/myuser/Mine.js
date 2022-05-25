@@ -4,7 +4,7 @@ import { ReactComponent as Write } from "../../image/write.svg";
 import { Link } from "react-router-dom";
 import { first, second, third, fourth } from "../../image/index";
 
-const Mine = ({userId, userInfo}) => {
+const Mine = ({ userId, userInfo }) => {
   let endDate = userInfo.endDate;
   let endDay = new Date(endDate);
   let now = new Date();
@@ -21,34 +21,36 @@ const Mine = ({userId, userInfo}) => {
       </MyPage>
       <Wrap>
         <PDiv>
-          <Ddaydiv><span>
-            D-{dDay}
-            </span></Ddaydiv>
-          <NameDiv>
-            <DivDiv>
-              <P padding="0" margin="0">
-                {userInfo.User.userNick}
-              </P>
-            </DivDiv>
-          </NameDiv>
-          <ProfList>
-            <span>
+          <Bigbox>
+            <Ddaydiv>
+              <span>D-{dDay}</span>
+            </Ddaydiv>
+            <NameDiv>
+              <DivDiv>
+                <P padding="0" margin="0">
+                  {userInfo.User.userNick}
+                </P>
+              </DivDiv>
+            </NameDiv>
+            <ProfList>
+              <span>
+                {userInfo.armyCategory} - {userInfo.rank}
+              </span>
+            </ProfList>{" "}
+          </Bigbox>
 
-            {userInfo.armyCategory} - {userInfo.rank}
-            </span>
-          </ProfList>
+          <RankImg
+            src={
+              userInfo.rank === "이병"
+                ? first
+                : userInfo.rank === "일병"
+                ? second
+                : userInfo.rank === "상병"
+                ? third
+                : fourth
+            }
+          />
         </PDiv>
-        <RankImg
-          src={
-            userInfo.rank === "이병"
-              ? first
-              : userInfo.rank === "일병"
-              ? second
-              : userInfo.rank === "상병"
-              ? third
-              : fourth
-          }
-        />
       </Wrap>
     </>
   );
@@ -56,6 +58,8 @@ const Mine = ({userId, userInfo}) => {
 
 const Wrap = styled.div`
   display: flex;
+  width: 100%;
+  height: 220px;
 `;
 
 const MyPage = styled.div`
@@ -77,13 +81,20 @@ const MyP = styled.div`
   align-items: center;
   margin: 0;
 `;
-
+const Bigbox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  width: 210px;
+`;
 const PDiv = styled.div`
   margin: 30px auto 10px auto;
-  display: inline-block;
+  display: flex;
   text-align: center;
   font-family: Gmarket SansBold;
-  height: 170px;
+  
+  width: 100%;
+  border-bottom: 2px solid #151419;
 `;
 
 const Ddaydiv = styled.div`
@@ -98,9 +109,8 @@ const Ddaydiv = styled.div`
 const ProfList = styled.p`
   padding: 0 20px;
   text-align: left;
-  font-weight: 600;
-  font-family: Gmarket Sans;
-  
+  font-size: 16px;
+  font-family: Gmarket SansMedium;
 `;
 
 const NameDiv = styled.div`
@@ -122,14 +132,11 @@ const P = styled.p`
   padding: 0;
 `;
 
-
 const RankImg = styled.div`
   background-image: url("${(props) => props.src}");
   width: 118px;
   height: 142px;
   background-size: cover;
-  margin: 20px 20px 0 0;
-  padding: 10px;
   border: 2px solid #151419;
 `;
 

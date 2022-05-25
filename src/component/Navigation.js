@@ -19,14 +19,13 @@ const Navigation = () => {
   const router = useSelector((state) => state.router.location.pathname);
   const userId = useSelector((state) => state.user.user.userId);
   const navBar = useSelector((state) => state.card.navBar);
-  
+
   React.useEffect(() => {
     dispatch(navBarActions.getNavCheckedDB());
   }, [dispatch, router]);
 
   const navBarCheckedHandler = (num) => {
     dispatch(navBarActions.addNavCheckedDB(num, userId));
-
   };
 
   return (
@@ -51,28 +50,14 @@ const Navigation = () => {
           <P>챌린지검색</P>
         </Home>
         <Home>
-          {token ? (
-            <>
-              <MypageIcn
-                primary
-                src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
-                onClick={() => {
-                  navBarCheckedHandler(3);
-                }}
-              />
-              <P>마이페이지</P>
-            </>
-          ) : (
-            <>
-              <MypageIcn
-                src={myPageIcon}
-                onClick={() => {
-              window.location.pathname='/login';
-                }}
-              />
-              <P>로그인</P>
-            </>
-          )}
+          <MypageIcn
+            primary
+            src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
+            onClick={() => {
+              navBarCheckedHandler(3);
+            }}
+          />
+          <P>마이페이지</P>
         </Home>
       </Wrap>
     </Nav>

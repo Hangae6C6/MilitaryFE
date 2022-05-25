@@ -114,7 +114,7 @@ const Main = () => {
           </ProgressBarWrap>
         </>
       )}
-      <div className="challengeContainer">
+      <div className={!token ? "challengeContainer" : "challengeContainerIn"}>
         {token ? (
           <div id="my-challenge">
             <p id="p">내가 진행중인 챌린지</p>
@@ -144,7 +144,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #151419;
-    height: 221px;
+    height: 224px;
     border-top: 4px solid #ffffff;
 
     #main-title {
@@ -164,8 +164,9 @@ const Container = styled.div`
     #test-wrap {
       display: flex;
       #test {
-        margin: 0 12px;
-        padding: 4px;
+        margin: 0 17px;
+      height: 20px;
+      width: 290px;
         font-size: 18px;
         color: #151419;
         background-color: #ffffff;
@@ -193,7 +194,7 @@ const Container = styled.div`
 
 
     #progressText {
-      padding: 45px 0 0 260px;
+      padding: 35px 0 0 260px;
       height: 20px;
       font-size: 14px;
       color: #ffffff;
@@ -213,6 +214,10 @@ const Container = styled.div`
   }
 
   .challengeContainer {
+    overflow: scroll;
+    height: 71%;
+  }
+  .challengeContainerIn {
     overflow: scroll;
     height: 69%;
   }

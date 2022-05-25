@@ -7,6 +7,7 @@ import { Select, DateInput } from "grommet";
 import { ReactComponent as Back } from "../image/back.svg";
 import { history } from "../redux/configureStore";
 import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
+import { ActionCreators as logoutActions } from "../redux/modules/user";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 
@@ -75,6 +76,9 @@ const MyEdit = () => {
         <MyP>
           <BackDiv>
             <Back onClick={history.back} />
+            <span id="logout" onClick={()=>{
+              dispatch(logoutActions.logoutDB(userId));
+            }}>로그아웃</span>
           </BackDiv>
         </MyP>
       </MyPage>
@@ -159,7 +163,17 @@ const MyPage = styled.div`
 `;
 
 const BackDiv = styled.div`
-  display: inline-block;
+  display: flex;
+  height: 34px;
+  padding: 20px 10px;
+  #logout{
+    font-size: 18px;
+    font-family: NanumSquareMedium;
+    color: #1fb57e;
+    padding: 7px 0 0 250px ;
+    cursor: pointer;
+  
+  }
 `;
 
 const MyP = styled.div`
