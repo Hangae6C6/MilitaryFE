@@ -226,13 +226,13 @@ const DivBox = styled.div`
     max-height: 935px;
   }
   
-  max-height: 850px;
+  max-height: 90%;
   margin: 0 auto;
   background-color: #fff;
 `;
 
 const Logo = styled.div`
-    width: 379px;
+    width: 375px;
     height: 44px;
     background-color: #151419;
     

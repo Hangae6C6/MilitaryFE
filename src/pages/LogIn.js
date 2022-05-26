@@ -135,7 +135,7 @@ export default Login;
 
 const Container = styled.div`
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   border: 2px solid #151419;
 
@@ -203,7 +203,7 @@ const LoginButton = styled.button`
 `;
 
 const SocialLogin = styled.div`
-width: 375px;
+width: 100%;
 #kakao{
   margin: 30px 10px 0 155px;
   cursor: pointer;
@@ -217,8 +217,9 @@ cursor: pointer;
 const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 84px;
+  /* width: 375px;
+  height: 84px; */
+  padding: 32px 156px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -226,6 +227,6 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
