@@ -21,7 +21,7 @@ const searchDB = (keyword) => {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/search?keyword=${keyword}`,
+        url: `http://3.34.45.246/api/search?keyword=${keyword}`,
       }).then((response) => {
         dispatch(getSearch(response));
       });

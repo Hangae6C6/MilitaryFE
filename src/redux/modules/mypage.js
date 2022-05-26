@@ -32,7 +32,7 @@ const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
     try {
       await axios({
         method: "post",
-        url: `http://13.125.228.240/api/userData?userId=${userId}`,
+        url: `http://3.34.45.246/api/userData?userId=${userId}`,
       
         data: {
           ...userdatas
@@ -53,7 +53,7 @@ const addTestResultDB = (userId, result) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/userTest",
+        url: "http://3.34.45.246/api/userTest",
         data: {
           userId,
           testResult: result,
@@ -76,7 +76,7 @@ const getUserProfileDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/myPage/userProfile?userId=${userId}`,
+        url: `http://3.34.45.246/api/myPage/userProfile?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -96,7 +96,7 @@ const editUserDataDB = (userId, userNick, startDate, endDate, armyCategory, rank
     try {
       await axios({
         method: "put",
-        url: `http://13.125.228.240/api/myPage/userProfile?userId=${userId}`,
+        url: `http://3.34.45.246/api/myPage/userProfile?userId=${userId}`,
       
         data: {
           userNick,

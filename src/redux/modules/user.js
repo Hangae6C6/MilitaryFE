@@ -27,7 +27,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/signUp",
+        url: "http://3.34.45.246/api/signUp",
         data: {
           userId: userId,
           userPw: userPw,
@@ -49,7 +49,7 @@ const loginDB = (userId, password) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/login",
+        url: "http://3.34.45.246/api/login",
         data: {
           userId,
           userPw: password,
@@ -71,7 +71,7 @@ const loginCheckDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "http://13.125.228.240/api/logincheck",
+      url: "http://3.34.45.246/api/logincheck",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
@@ -89,7 +89,7 @@ const loginCheckDB = () => {
 const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get(`http://13.125.228.240/api/auth/kakao/callback?code=${code}`)
+      .get(`http://3.34.45.246/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);
@@ -108,7 +108,7 @@ const NaverLogin = (code, state) => {
   return function (dispatch, getState, { history }) {
     console.log(code, state);
     axios
-      .get(`http://13.125.228.240/api/auth/naver/callback?code=${code}&state=${state}`)
+      .get(`http://3.34.45.246/api/auth/naver/callback?code=${code}&state=${state}`)
 
       .then((res) => {
         const token = res.data.token;
