@@ -43,7 +43,7 @@ const Challenges = ({ userId, myChallengeList }) => {
 
               <div className="day">
                 <div className="start">
-                  {chal.challengeStartDate} - {chal.challengeEndDate}
+                  기간: {chal.challengeStartDate} - {chal.challengeEndDate}
                 </div>
               </div>
             </Wrap>
@@ -73,13 +73,13 @@ const Wrap = styled.div`
       display: flex;
       height: 90px;
       width: 280px;
+      cursor: pointer;
 
       #title {
         font-family: Gmarket SansBold;
         height: fit-content;
         font-size: 24px;
         margin: 30px 0 0 20px;
-        cursor: pointer;
       }
       #type {
         height: fit-content;
@@ -94,15 +94,16 @@ const Wrap = styled.div`
     #close {
       padding: 10px 0 0 35px;
       float: right;
+      cursor: pointer;
     }
   }
 
   .day {
-    font-family: Gmarket Sans;
+    font-family: Gmarket SansMedium;
     height: 20px;
     padding: 0px 40px;
-    .view {
-      padding: 10px;
+    .start {
+      padding: 0px;
       margin: 0;
       text-align: center;
     }
