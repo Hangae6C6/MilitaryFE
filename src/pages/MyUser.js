@@ -11,7 +11,6 @@ import Challenges from "../element/myuser/Challenges";
 import Mine from "../element/myuser/Mine";
 
 const MyUser = () => {
-  let cookie = document.cookie;
   const dispatch = useDispatch();
   const { id } = useParams();
   const userInfo = useSelector((state) => state.mypage.mypage);
@@ -30,15 +29,6 @@ const MyUser = () => {
       dispatch(userChallengeDataActions.getUserChallengeDetailDB(id));
     }
   }, [dispatch, id]);
-  
-  // useEffect(() => {
-  //   if (!cookie) {
-  //     toast.error("로그인 후 이용해주세요!", { position: "top-center" });
-  //     window.location.pathname='/';
-
-  //     return;
-  //   }
-  // }, []);
 
   return (
     <Wrap>
@@ -46,7 +36,6 @@ const MyUser = () => {
       <Challenges userId={id} myChallengeList={myChallengeList} />
       <Footer />
       <Navigation />
-      {/* <ToastContainer /> */}
     </Wrap>
   );
 };
@@ -60,7 +49,6 @@ const Wrap = styled.div`
   box-sizing: border-box;
   max-height: 100%;
   height: 100%;
-  /* width: 100%; */
   border: 2px solid #151419;
 `;
 

@@ -18,18 +18,15 @@ const Challenges = ({ userId, myChallengeList }) => {
       {myChallengeList.map((chal, i) => {
         return (
           <div key={chal + i}>
-            <Wrap >
-              <div id="bigbox"  >
-                <div id="titlebox"  onClick={() => {
-                      window.location.pathname = `/detailpage/${chal.challengeNum}`;
-                    }}
-               >
-                  <div
-                    id="title"
-                  
-                  >
-                    {chal.challengeTitle}
-                  </div>
+            <Wrap>
+              <div id="bigbox">
+                <div
+                  id="titlebox"
+                  onClick={() => {
+                    window.location.pathname = `/detailpage/${chal.challengeNum}`;
+                  }}
+                >
+                  <div id="title">{chal.challengeTitle}</div>
                   <div id="type">{chal.challengeType}</div>
                 </div>
 
@@ -68,28 +65,26 @@ const Wrap = styled.div`
   width: 100%;
   height: 125px;
   border-bottom: 2px solid #151419;
-  
+
   #bigbox {
-    width: 360px; 
+    width: 360px;
     display: flex;
     #titlebox {
       display: flex;
-      justify-content: space-between;
-      height:90px;
-      
+      height: 90px;
+      width: 280px;
 
       #title {
         font-family: Gmarket SansBold;
         height: fit-content;
         font-size: 24px;
-        margin: 30px 0 0 40px;
-      cursor: pointer;
-
+        margin: 30px 0 0 20px;
+        cursor: pointer;
       }
       #type {
         height: fit-content;
-        margin: 26px 0 0 15px;
-        padding: 5px;
+        margin: 26px 0 0 5px;
+        padding: 4px;
         font-size: 18px;
         font-family: Gmarket SansMedium;
         background-color: #151419;
@@ -97,7 +92,7 @@ const Wrap = styled.div`
       }
     }
     #close {
-      padding: 10px 0 0 85px;
+      padding: 10px 0 0 35px;
       float: right;
     }
   }
@@ -114,6 +109,5 @@ const Wrap = styled.div`
   }
 `;
 const ChalLi = styled.div``;
-
 
 export default Challenges;
