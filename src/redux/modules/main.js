@@ -56,7 +56,7 @@ const getPostDB = () => {
     try {
       await axios({
         method: "get",
-        url: "http://13.125.228.240/api/main",
+        url: "http://3.34.45.246/api/main",
       }).then((response) => {
         dispatch(getPost(response.data));
       });
@@ -71,7 +71,7 @@ const getProgressDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/main/challenge?userId=${userId}`,
+        url: `http://3.34.45.246/api/main/challenge?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -89,7 +89,7 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
     try {
       await axios({
         method: "post",
-        url: `http://13.125.228.240/api/categoryClick?challengeNum=${challengeId}`,
+        url: `http://3.34.45.246/api/categoryClick?challengeNum=${challengeId}`,
         data: {
           challengeCnt,
         },
@@ -107,7 +107,7 @@ const addTestCountDB = (testViewCount) => {
     try {
       await axios({
         method: "post",
-        url: `http://13.125.228.240/api/main/testCount?userId=${testViewCount}`,
+        url: `http://3.34.45.246/api/main/testCount?userId=${testViewCount}`,
       }).then((response) => {
         console.log(response);
       });
@@ -122,7 +122,7 @@ const getTestCountDB = () => {
     try {
       await axios({
         method: "get",
-        url: "http://13.125.228.240/api/main/testCountRead",
+        url: "http://3.34.45.246/api/main/testCountRead",
       }).then((response) => {
         dispatch(getTestCount(response.data.countread.TestCount));
       });
@@ -136,7 +136,7 @@ const addNavCheckedDB = (navNum, userId) => {
     try {
       await axios({
         method: "post",
-        url: `http://13.125.228.240/api/main/iconclick?btnNum=${navNum}`,
+        url: `http://3.34.45.246/api/main/iconclick?btnNum=${navNum}`,
       }).then((response) => {
         if (navNum === 1) {
           window.location.pathname = "/";
@@ -157,7 +157,7 @@ const getNavCheckedDB = () => {
     try {
       await axios({
         method: "get",
-        url: "http://13.125.228.240/api/main/iconclickRead",
+        url: "http://3.34.45.246/api/main/iconclickRead",
       }).then((response) => {
         dispatch(getNavChecked(response.data.iconRead));
       });
