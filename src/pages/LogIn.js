@@ -14,6 +14,7 @@ import gobackIcon from "../shared/icons/arrowWhite.png";
 import logo from "../shared/icons/handlogo11.png";
 import kakao from "../shared/images/kakao_login_small.png";
 import naver from "../shared/images/naver login.png";
+import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -52,16 +53,18 @@ const Login = () => {
     dispatch(userActions.loginDB(id, password));
   };
 
+  const navBarCheckedHandler = (num) => {
+    dispatch(navBarActions.addNavCheckedDB(num));
+  };
+
   return (
     <Container>
-      {/* <div className="nav">
-        <img id="logo" src={logo} alt="img" height="53" />
-      </div> */}
+    
       <div className="top">
         <div
           className="arrow"
           onClick={() => {
-            window.location.pathname = "/";
+            navBarCheckedHandler(1);
           }}
         >
           <img src={gobackIcon} alt="goback" width="20" height="18" />

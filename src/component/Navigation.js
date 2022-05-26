@@ -54,6 +54,9 @@ const Navigation = () => {
             primary
             src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
             onClick={() => {
+              if(!userId){
+                window.location.pathname='/login';
+              }
               navBarCheckedHandler(3);
             }}
           />
