@@ -47,13 +47,12 @@ const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("회원정보 추가 실패");
     }
   };
 };
 
 const addTestResultDB = (userId, result) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios({
         method: "post",
@@ -71,13 +70,12 @@ const addTestResultDB = (userId, result) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("테스트 결과 추가 실패");
     }
   };
 };
 
 const getUserProfileDB = (userId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -96,7 +94,7 @@ const getUserProfileDB = (userId) => {
 
 const editUserDataDB = (userId, userNick, startDate, endDate, armyCategory, rank) => {
   console.log(userId, userNick, startDate, endDate, armyCategory, rank);
-  return async function (dispatch) {
+  return async function () {
    
     try {
       await axios({
@@ -119,7 +117,6 @@ const editUserDataDB = (userId, userNick, startDate, endDate, armyCategory, rank
       });
     } catch (err) {
       console.log(err);
-      window.alert("회원정보 추가 실패");
     }
   };
 };

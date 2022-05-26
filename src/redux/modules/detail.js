@@ -71,7 +71,7 @@ const initialState = {
   steps: [],
 };
 const changeMyStepDB = (challengeNum, userId, stepNum) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "post",
@@ -91,7 +91,7 @@ const changeMyStepDB = (challengeNum, userId, stepNum) => {
 
 
 const postUserChallengeDetailDB = (userId, challengeId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "post",
@@ -110,7 +110,7 @@ const postUserChallengeDetailDB = (userId, challengeId) => {
 };
 
 const getChallengeDetailDB = (challengeId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -129,7 +129,7 @@ const getChallengeDetailDB = (challengeId) => {
 };
 
 const getUserChallengeDetailDB = (userId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -148,7 +148,7 @@ const getUserChallengeDetailDB = (userId) => {
 };
 
 const getRankDetailDB = (challengeId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",

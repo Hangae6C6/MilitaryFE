@@ -52,7 +52,7 @@ const initialState = {
 };
 
 const getPostDB = () => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -62,13 +62,12 @@ const getPostDB = () => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("GET 요청 실패");
     }
   };
 };
 
 const getProgressDB = (userId) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -81,13 +80,12 @@ const getProgressDB = (userId) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("GET 요청 실패");
     }
   };
 };
 
 const addVeiwCountDB = (challengeId, challengeCnt) => {
-  return async function (dispatch, getState) {
+  return async function () {
     try {
       await axios({
         method: "post",
@@ -100,18 +98,19 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("challengeDetail GET 요청 실패");
     }
   };
 };
 
 const addTestCountDB = (testViewCount) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios({
         method: "post",
         url: `http://13.125.228.240/api/main/testCount?userId=${testViewCount}`,
-      }).then((response) => {});
+      }).then((response) => {
+        console.log(response);
+      });
     } catch (err) {
       console.log(err);
       window.alert("addTestCount 요청 실패");
@@ -130,7 +129,6 @@ const getTestCountDB = () => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("getTestCount 요청 실패");
     }
   };
 };
@@ -151,7 +149,6 @@ const addNavCheckedDB = (navNum, userId) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("NavChecked 요청 실패");
     }
   };
 };
@@ -167,7 +164,6 @@ const getNavCheckedDB = () => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("getNaveChecked 요청 실패");
     }
   };
 };

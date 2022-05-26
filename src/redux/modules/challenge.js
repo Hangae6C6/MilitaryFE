@@ -43,14 +43,13 @@ const addChallengeDB = (challenges, userId) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("챌린지 개설 실패");
     }
   };
 };
 
 const getOneChallengeDetailDB = (challengeNum) => {
   console.log(challengeNum)
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
@@ -63,13 +62,12 @@ const getOneChallengeDetailDB = (challengeNum) => {
       });
     } catch (err) {
       console.log(err);
- 
     }
   };
 };
 
 const deleteCallengeDB = (challengeNum, userId) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios({
         method: "delete",
@@ -77,7 +75,7 @@ const deleteCallengeDB = (challengeNum, userId) => {
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
-      }).then((response) => {
+      }).then(() => {
         window.location.pathname=`/mypage/${userId}`;
       });
     } catch (err) {
@@ -94,11 +92,6 @@ export default handleActions(
       produce(state, (draft) => {
         draft.challenges= action.payload.challenge;
       }),
-      // [ADD_NUMBER]: (state, action) =>
-      // produce(state, (draft) => {
-      //   draft.challengeId = action.payload;
-      // }),
-   
   },
   initialState
 );

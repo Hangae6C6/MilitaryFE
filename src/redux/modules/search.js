@@ -3,7 +3,6 @@ import { produce } from "immer";
 import axios from "axios";
 import { toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const GET_SEARCH = "GET_SEARCH";
 
@@ -18,7 +17,7 @@ const initialState = {
 };
 
 const searchDB = (keyword) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       await axios({
         method: "get",
