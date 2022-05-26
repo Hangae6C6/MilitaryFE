@@ -20,8 +20,8 @@ const BeginPage = () => {
 const NextBtn = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 85px;
+  margin-left: -2px;
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -29,7 +29,7 @@ const NextBtn = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
 

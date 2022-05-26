@@ -1,4 +1,3 @@
-//SY
 import React from "react";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify"
@@ -8,12 +7,9 @@ import { ActionCreators as userActions } from "../redux/modules/user";
 import {
   KAKAO_AUTH_URL,
   NAVER_AUTH_URL,
-  GOOGLE_AUTH_URL,
 } from "../shared/socialLogin/auth";
 import gobackIcon from "../shared/icons/arrowWhite.png";
-import logo from "../shared/icons/handlogo11.png";
 import kakao from "../shared/images/kakao_login_small.png";
-import naver from "../shared/images/naver login.png";
 import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 const Login = () => {
@@ -39,13 +35,13 @@ const Login = () => {
     }
 
     if (!isId(id)) {
-      toast.error("잘못된 이메일 형식입니다.", { position:"top-center" });
+      toast.error("잘못된 아이디 형식입니다.", { position:"top-center" });
       return;
     }
 
     if (!isPwd(password)) {
       toast.error(
-        "비밀번호는 최소 8자, 하나 이상의 문자와 숫자로 입력해주세요."
+        "비밀번호가 틀렸습니다."
         , { position:"top-center" });
       return;
     }
@@ -106,15 +102,6 @@ const Login = () => {
               window.location.href = KAKAO_AUTH_URL;
             }}
           />
-           {/* <img
-            id="naver"
-            src={naver}
-            alt="navero"
-            width="60"
-            onClick={() => {
-              window.location.href = NAVER_AUTH_URL;
-            }}
-          /> */}
       
         </SocialLogin>
       </Box2>
@@ -184,6 +171,7 @@ const LoginInput = styled.input`
   font-size: 16px;
   font-family: Gmarket SansMedium;
 `;
+
 const LoginButton = styled.button`
   width: 100%;
   height: 62px;
@@ -203,6 +191,7 @@ const LoginButton = styled.button`
 `;
 
 const SocialLogin = styled.div`
+
 width: 100%;
 #kakao{
   margin: 30px 10px 0 155px;
@@ -217,9 +206,8 @@ cursor: pointer;
 const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
-  /* width: 375px;
-  height: 84px; */
-  padding: 32px 156px;
+  margin-left: -2px;
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;

@@ -70,17 +70,17 @@ const Navigation = () => {
 export default Navigation;
 
 const Nav = styled.div`
-  margin-top: 82px;
+  
 `;
 
 const Wrap = styled.div`
   margin-left: -2px;
-  max-width: 375px;
+  max-width: 371px;
   width: 100%;
-  height: ${(props) => (props.primary ? "80px" : "83px")};
+  height: 83px;
   position: fixed;
   background-color: whitesmoke;
-  bottom: ${(props) => (props.primary ? "0.25em" : "0.25em")};
+  bottom: 0.25em;
   z-index: 9;
   display: grid;
   border: 2px solid #151419;

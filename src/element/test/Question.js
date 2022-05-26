@@ -10,7 +10,6 @@ const Question = () => {
   const [type, setType] = useState(new Array(9).fill(0));
 
   const step = Math.floor((num / 9) * 100);
-  //type=[0,0,0,0,0,0,0,0,0]
 
   const onIncrease = (e, qIdx, idx) => {
     let result = [];
@@ -72,8 +71,9 @@ const Question = () => {
               </Button>
             </>
           );
-        })}
+          })}
       </BWrap>
+    <NextButton/>
     </>
   );
 };
@@ -81,6 +81,8 @@ const Question = () => {
 const QDiv = styled.div`
   justify-content: center;
   font-family: NanumSquare;
+  width: 100%;
+  border-bottom: 2px solid #3f3f3f;
 `;
 const ProgressBar = styled.div`
   width: 100%;
@@ -104,28 +106,15 @@ const BackIcon = styled.img`
   cursor: pointer;
 `;
 
-const QImage = styled.div`
-  background-image: url("https://dummyimage.com/600x600/b0b0b0/222");
-  height: 345px;
-  width: 345px;
-  background-size: cover;
-  display: inline-block;
-`;
 
 const QText = styled.div`
-  height: 179px;
+padding: 60px 0 0 10px;
+  height: 119px;
+  width: 350px;
   background-color: #ffffff;
-  font-weight: 700;
   font-size: 26px;
-  font-stretch: condensed;
   text-align: center;
-  border-bottom: 2px solid #151419;
-  line-height: 55px;
   font-family: NanumSquareBold;
-  letter-spacing: -0.3px;
-  .question {
-    transform: translateY(100%);
-  }
 `;
 
 const BWrap = styled.div`
@@ -157,6 +146,21 @@ const Button = styled.div`
     line-height: 100px;
     font-size: 20px;
   }
+`;
+const NextButton = styled.button`
+  position: fixed;
+  bottom: 0.2em;
+  margin-left: -2px;
+  padding: 32px 185.5px;
+  outline: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: NanumSquareMedium;
+  background-color: #fff;
+  border: 2px solid #151419;
+  border-top: none;
+  cursor: pointer;
 `;
 
 export default Question;

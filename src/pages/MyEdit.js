@@ -33,7 +33,6 @@ const MyEdit = () => {
   }, []);
   
   const [nickName, setNickName] = React.useState("");
-  console.log(nickName);
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
   const [milCategory, setMilCategory] = React.useState("");
@@ -63,9 +62,45 @@ const MyEdit = () => {
     setRank(e);
   };
 
+  // 닉네임 조건
+  const isNickname = (nickName) => {
+    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
+    return pattern.test(nickName); // 맞으면 true, 틀리면 false반환
+  };
+
   const editUserDataHandler = () => {
+    if (startDate === "" ||
+    endDate === "" ||
+    milCategory === "" ||
+    rank === ""
+) {
+  toast.error("빈칸을 입력해주세요", { position:"top-center" });
+  return;
+}
+if (!isNickname(nickName)) {
+  toast.error("잘못된 닉네임 형식입니다.", { position:"top-center" });
+  return;
+}
+
+if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
+  toast.error("입대일과 전역일을 확인해주세요", {
+    position: "top-center",
+  });
+  return;
+}
+
+
+
     dispatch(userProfileActions.editUserDataDB(userId, nickName, startDate[0], endDate[0], milCategory, rank));
   };
+
+
+
+
+
+
+
+
 
 
 
@@ -142,12 +177,16 @@ const MyEdit = () => {
         <Empty/>
       </Box2>
       <NextButton onClick={editUserDataHandler}>저장하기</NextButton>
+      <ToastContainer />
+
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
- display: block;
+ display: flex;
+ flex-direction: column;
+ box-sizing: border-box;
   max-width: 375px;
   height: 100%;
   width: 100%;
@@ -265,12 +304,10 @@ const InputTitle = styled.div`
   
 `;
 const NextButton = styled.button`
-
   position: fixed;
   bottom: 0.2em;
-  width: 379px;
   margin-left: -2px;
-  height: 85px;
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -278,8 +315,9 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
+
 
 export default MyEdit;

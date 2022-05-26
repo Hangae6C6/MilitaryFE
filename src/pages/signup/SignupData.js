@@ -5,6 +5,8 @@ import {useParams} from "react-router-dom";
 import { ActionCreators as searchActions } from "../../redux/modules/mypage";
 import { Select, DateInput } from "grommet";
 import gobackIcon from "../../shared/icons/arrowWhite.png";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserData = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,11 @@ const UserData = () => {
     "병장",
   ];
 
+
+
+
   const onStartDateChange = (e) => {
+
     const nextValue = e.value;
     setStartDate(nextValue);
   };
@@ -39,6 +45,21 @@ const UserData = () => {
   };
 
   const signupDataHandler = () => {
+    if (startDate === "" ||
+        endDate === "" ||
+        milCategory === "" ||
+        rank === ""
+    ) {
+      toast.error("빈칸을 입력해주세요", { position:"top-center" });
+      return;
+    }
+    if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
+      toast.error("입대일과 전역일을 확인해주세요", {
+        position: "top-center",
+      });
+      return;
+    }
+
     dispatch(searchActions.addUserDataDB(id, startDate[0], endDate[0], milCategory, rank));
   };
 
@@ -104,6 +125,7 @@ const UserData = () => {
         <Empty/>
       </Box2>
       <NextButton onClick={signupDataHandler}>회원가입</NextButton>
+      <ToastContainer/>
     </Container>
   );
 };
@@ -111,12 +133,13 @@ const UserData = () => {
 export default UserData;
 const Container = styled.div`
   display: block;
+  box-sizing: border-box;
   max-width: 375px;
   height: 100%;
   width: 100%;
   border: 2px solid #151419;
   .nav {
-    width: 375px;
+    width: 100%;
     height: 44px;
     background-color: #151419;
     #logo {
@@ -126,7 +149,7 @@ const Container = styled.div`
   }
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
   }
@@ -136,7 +159,7 @@ const Container = styled.div`
     cursor: pointer;
   }
   #title-box {
-    width: 375px;
+    width: 100%;
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
@@ -187,11 +210,10 @@ const Box2 = styled.div`
 `;
 
 const NextButton = styled.button`
-
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 85px;
+  margin-left: -2px;
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -199,7 +221,6 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
-

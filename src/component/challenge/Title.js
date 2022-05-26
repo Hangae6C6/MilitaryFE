@@ -3,8 +3,8 @@ import { Meter } from "grommet";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import titleImage from "../../shared/images/Group 1924.png";
 import styled from "styled-components";
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png"
+
+
 const Title = ({ title, onChange }) => {
   return (
     <Container>
@@ -30,18 +30,17 @@ const Title = ({ title, onChange }) => {
       </div>
       <div className="title">
         <div className="title-text">챌린지 이름</div>
-        <textarea
-          className="sub-title"
-          placeholder="다른이의 시선을 사로잡을수 있는 &#13;&#10;챌린지 이름은 최대한 간결하게!"
-          maxLength="0"
-        ></textarea>
+        <span className="sub-title">
+         다른이의 시선을 사로잡을수 있는 
+         <br/>챌린지 이름은 최대한 간결하게! (최대10자)
+        </span>
       </div>
       <div className="input-title">
         <textarea
           className="input-area"
           value={title}
           placeholder="챌린지 이름을 작성합니다"
-          maxLength="8"
+          maxLength="15"
           type="text"
           onChange={(e) => onChange(e.target.value)}
         ></textarea>
@@ -71,11 +70,11 @@ const Container = styled.div`
     
   }
   .title {
-    min-height: 120px;
+    height: 120px;
     width: 100%;
     border-top: 2px solid #151419;
     border-bottom: 2px solid #151419;
-
+    padding: 40px 0 0 30px ;
     .title-text {
       height: 35px;
       width: 130px;
@@ -83,19 +82,15 @@ const Container = styled.div`
       font-family: Gmarket SansMedium;
       color: #151419;
       font-weight: 800;
-      margin: 40px 0px 0px 30px;
+      
     }
     .sub-title {
       height: 54px;
       width: 300px;
-      outline: none;
-      margin-left: 30px;
-      border: 0px;
       max-height: 54px;
       max-width: 295px;
-      resize: none;
-      font-size: 15px;
-      font-family: Gmarket SansMedium;
+      font-family: Gmarket Sans;
+   
     }
   }
   .input-title {
@@ -103,10 +98,10 @@ const Container = styled.div`
     width: 100%;
     border-bottom: 2px solid #151419;
     .input-area {
-      margin: 45px;
+      padding: 50px 0 0 0px;
       font-family: Gmarket SansMedium;
       height: 38px;
-      width: 280px;
+      width: 370px;
       outline: none;
       border: 0px;
       resize: none;

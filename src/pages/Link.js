@@ -2,8 +2,8 @@ import React from "react";
 import {useParams} from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
-import logo from "../shared/icons/handlogo11.png";
-import mainlogo from "../shared/icons/mainlogo.png";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const Link = () => {
 const {challengeId} = useParams();
@@ -11,9 +11,7 @@ const {challengeId} = useParams();
 
   return (
     <Container>
-      
       <div className="top">
-     
         <NextButton
           onClick={() => {
             window.location.pathname = `/detailPage/${challengeId}`;
@@ -22,7 +20,6 @@ const {challengeId} = useParams();
           시작하기
         </NextButton>
       </div>
-
       <div className="second-box">챌린지가 개설되었어요!</div>
       <div className="third-box">
         <img src={img} alt="img" width="390" height="340" />
@@ -30,10 +27,11 @@ const {challengeId} = useParams();
       <div className="fourth-box">
         친구, 연인, 부대원들과 함께 하는 건 어때요?
       </div>
-  
       <NextButton1 onClick={()=>{
-        alert('coming soon')
+       toast.error("빈칸을 입력해주세요", { position:"top-center" });
+       return;
       }}>링크 복사하기</NextButton1>
+      <ToastContainer/>
     </Container>
   );
 };
@@ -151,7 +149,6 @@ const NextButton1 = styled.button`
   font-family: NanumSquareMedium;
   margin-left: -4px;
   background-color: #151419;
-  /* border-top: 2px solid #151419; */
   cursor: pointer;
 `;
 

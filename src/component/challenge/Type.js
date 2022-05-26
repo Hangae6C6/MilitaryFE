@@ -53,12 +53,10 @@ const Type = ({ onBack, onTypeChange }) => {
       </div>
       <div className="title">
         <div className="title-text">챌린지 주제</div>
-        <textarea
-          className="titleInput"
-          placeholder="이번 챌린지의 주제를 아래에서 &#13;&#10;선택합니다"
-          maxLength="0"
-          type="text"
-        ></textarea>
+        <span className="sub-title">
+         이번 챌린지의 주제를 아래에서 
+         <br/>선택합니다!
+        </span>
       </div>
       <Boxes>
         {types.map((cur, i) => (
@@ -95,29 +93,26 @@ const Container = styled.div`
     border-bottom: 2px solid #151419;
   }
   .title {
-    min-height: 120px;
+    height: 120px;
     width: 100%;
     border-bottom: 2px solid #151419;
-
+    padding: 40px 0 0 30px ;
     .title-text {
       height: 35px;
       width: 130px;
       font-size: 24px;
+      font-family: Gmarket SansMedium;
       color: #151419;
-      font-family: Gmarket SansBold;
-      margin: 40px 0px 0px 30px;
+      font-weight: 800;
+      
     }
-    .titleInput {
+    .sub-title {
       height: 54px;
       width: 300px;
-      outline: none;
-      margin-left: 30px;
-      border: 0px;
       max-height: 54px;
       max-width: 295px;
-      resize: none;
-      font-size: 15px;
       font-family: Gmarket Sans;
+   
     }
   }
 `;

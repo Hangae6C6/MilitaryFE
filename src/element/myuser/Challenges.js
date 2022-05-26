@@ -18,14 +18,15 @@ const Challenges = ({ userId, myChallengeList }) => {
       {myChallengeList.map((chal, i) => {
         return (
           <div key={chal + i}>
-            <Wrap>
-              <div id="bigbox">
-                <div id="titlebox">
-                  <div
-                    id="title"
-                    onClick={() => {
+            <Wrap >
+              <div id="bigbox"  >
+                <div id="titlebox"  onClick={() => {
                       window.location.pathname = `/detailpage/${chal.challengeNum}`;
                     }}
+               >
+                  <div
+                    id="title"
+                  
                   >
                     {chal.challengeTitle}
                   </div>
@@ -66,16 +67,15 @@ const Wrap = styled.div`
   overflow: hidden;
   width: 100%;
   height: 125px;
-  cursor: pointer;
   border-bottom: 2px solid #151419;
   
   #bigbox {
-    width: 370px;
-    
+    width: 360px; 
     display: flex;
     #titlebox {
       display: flex;
       justify-content: space-between;
+      height:90px;
       
 
       #title {
@@ -83,6 +83,8 @@ const Wrap = styled.div`
         height: fit-content;
         font-size: 24px;
         margin: 30px 0 0 40px;
+      cursor: pointer;
+
       }
       #type {
         height: fit-content;
@@ -95,15 +97,15 @@ const Wrap = styled.div`
       }
     }
     #close {
-      padding: 10px 0 0 333px;
-      position: fixed;
+      padding: 10px 0 0 85px;
+      float: right;
     }
   }
 
   .day {
     font-family: Gmarket Sans;
-    height: 40px;
-    padding: 30px 40px;
+    height: 20px;
+    padding: 0px 40px;
     .view {
       padding: 10px;
       margin: 0;

@@ -13,11 +13,13 @@ const TypeDesc = ({children}) => {
 
 const DescP = styled.p`
 margin: 0;
-font-size: 20px;
+font-size: 22px;
 border-bottom: 2px solid #151419;
 text-align: center;
 line-height: 36px;
-height: 48px;
+height: 120px;
+font-family: Gmarket SansMedium;
+background-color: #fff;
 `
 
 export default TypeDesc;

@@ -4,8 +4,15 @@ import { Meter } from "grommet";
 import styled from 'styled-components';
 import logo from "../../shared/icons/handlogo11.png";
 import mainlogo from "../../shared/icons/mainlogo.png"
-const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onParticipantChange, onBack}) => {
-    return (
+const Day = ({startDate, endDate, participant, onStartChange, onEndChange, onParticipantChange, onBack}) => {
+ 
+  let today = new Date();
+  let year = today.getFullYear(); // 년도
+  let month = today.getMonth() + 1;  // 월
+  let date = today.getDate();  // 날짜
+  let now = month + '월' + date + '일' + year + '년';
+  
+  return (
         <Container>
          <div className="arrow"
          onClick={onBack}>
@@ -24,7 +31,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
           />
         </div>
         <div className="title">
-          <div className="title-text">참여 인원수</div>
+          <div className="title-text">참여 인원수 <span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}>(최대99명까지)</span></div>
           <textarea
             className="titleInput"
             value={participant}
@@ -36,7 +43,8 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
           <div className="small-text">명</div>
         </div>
         <div className="title">
-          <div className="title-text">시작일</div>
+          <div className="title-text">시작일<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span>
+          </div>
           <textarea
             className="titleInput"
             value={startDate}
@@ -50,7 +58,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
           <div className="from-text">부터</div>
         </div>
         <div className="title">
-          <div className="title-text">종료일</div>
+          <div className="title-text">종료일<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span></div>
           <textarea
             className="titleInput"
             value={endDate}
@@ -68,7 +76,7 @@ const Date = ({startDate, endDate, participant, onStartChange, onEndChange, onPa
     );
 };
 
-export default Date;
+export default Day;
 
 
 const Container = styled.div`
@@ -92,7 +100,7 @@ const Container = styled.div`
 
     .title-text {
       height: 35px;
-      width: 130px;
+      width: 280px;
       font-size: 24px;
       color: #151419;
       font-family: Gmarket SansBold;

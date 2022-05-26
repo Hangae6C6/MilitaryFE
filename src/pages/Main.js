@@ -72,7 +72,6 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
-            {" "}
             {user.userNick} {userInfo.rank}님!
           </div>
         )}
@@ -137,8 +136,10 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
+  box-sizing: border-box;
   max-width: 375px;
   border: 2px solid #151419;
+  border-bottom: none;
 
   #top-box {
     display: flex;
@@ -213,14 +214,52 @@ const Container = styled.div`
     }
   }
 
+  @media screen and (min-width:576px) {
+/* 스마트폰 가로 */
+}
+
+@media screen and (min-width:768px) {
+  .challengeContainer {
+    overflow: scroll;
+    height: 100vh;
+  }
+  .challengeContainerIn {
+    overflow-y:scroll !important;
+    height: 50%;
+  }
+}
+
+.challengeContainer {
+    overflow: scroll;
+    height: 67%;
+  }
+  .challengeContainerIn {
+    overflow-y:scroll !important;
+    height: 65%;
+  }
+  @media screen and (min-height:1000px) {
   .challengeContainer {
     overflow: scroll;
     height: 71%;
   }
   .challengeContainerIn {
-    overflow: scroll;
+    overflow-y:scroll !important;
     height: 69%;
   }
+}
+
+@media screen and (min-height:1200px) {
+  .challengeContainer {
+    overflow: scroll;
+    height: 76%;
+  }
+  .challengeContainerIn {
+    overflow-y:scroll !important;
+    height: 75%;
+  }
+}
+
+  
 `;
 
 const ProgressBarWrap = styled.div`

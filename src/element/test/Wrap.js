@@ -13,10 +13,11 @@ const Wrap = ({children}) => {
 
 const Wrapper = styled.div`
 background-color: #fff;
-height:94.3vh;
+height:93vh;
   max-width: 375px;
   width: 375px;
   border: 2px solid #151419;
+  box-sizing: border-box;
 `
 
 export default Wrap;
