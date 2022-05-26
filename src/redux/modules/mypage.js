@@ -16,7 +16,6 @@ const initialState = {
     armyCategory:"",
     startDate:"",
     endDate:"",
-
   },
   userdata: [],
   testResult: "",
