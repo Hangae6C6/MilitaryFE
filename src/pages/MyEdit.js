@@ -284,7 +284,7 @@ const InputTitle = styled.div`
     height: 60px;
     width: 100%;
     border-bottom: 1px solid #151419;
-    border-top: 2px solid #151419;
+    border-top: 1px solid #151419;
 
     .input-area {
       padding: 18px 20px 1px;
