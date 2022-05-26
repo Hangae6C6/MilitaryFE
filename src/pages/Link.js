@@ -28,7 +28,7 @@ const {challengeId} = useParams();
         친구, 연인, 부대원들과 함께 하는 건 어때요?
       </div>
       <NextButton1 onClick={()=>{
-       toast.error("빈칸을 입력해주세요", { position:"top-center" });
+       toast.error("곧 찾아 뵙겠습니다!", { position:"top-center" });
        return;
       }}>링크 복사하기</NextButton1>
       <ToastContainer/>
