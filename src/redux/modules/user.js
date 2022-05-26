@@ -55,10 +55,11 @@ const loginDB = (userId, password) => {
           userPw: password,
         },
       }).then((res) => {
+        let num = 1;
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        document.location.href = "/";
+        dispatch(navBarActions.addNavCheckedDB(num));
       });
     } catch (err) {
       console.log(err);
@@ -128,7 +129,7 @@ const NaverLogin = (code, state) => {
 const logoutDB = (userId) => {
   return function (dispatch, getState, { history }) {
     let num = 1;
-    deleteCookie("token"); // 쿠키에서 토큰 삭제
+    deleteCookie("token"); 
     localStorage.removeItem("userId");
     dispatch(logout());
     dispatch(navBarActions.addNavCheckedDB(num, userId));
@@ -159,7 +160,6 @@ export default handleActions(
 );
 
 const ActionCreators = {
-  //액션 생성자 내보내기
   getUser,
   signupDB,
   loginDB,

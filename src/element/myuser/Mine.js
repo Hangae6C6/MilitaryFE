@@ -23,7 +23,7 @@ const Mine = ({ userId, userInfo }) => {
         <PDiv>
           <Bigbox>
             <Ddaydiv>
-              <span>D-{dDay}</span>
+              <span>{dDay < 0? "전역자" : "D"-{dDay}}</span>
             </Ddaydiv>
             <NameDiv>
               <DivDiv>
