@@ -23,7 +23,7 @@ import {
 
 const qnaList = [
   {
-    q: "사격을 마친 후, 탄피가 하나 없는데...",
+    q: "사격 후, 탄피 하나가 없는데...",
     a: [
       { answer: "혼자 찾는다", type: [0, 2, 3] },
       { answer: "안없어진 척 한다", type: [4, 5, 7] },
@@ -108,55 +108,55 @@ const qnaList = [
 const infoList = [
   {
     name: "훈련조교",
-    desc: "통찰력이 뛰어난 당신, 당신에게는 리더가 어울려요!",
+    desc: `\b\b\b\b\b\b\b\b\b통찰력이 뛰어난 당신,\b\b\b\b\b\b\b\b\b\b\b\b당신에게는 리더가 어울려요!`,
     image: leader,
     bgc: "#1FB57E",
   },
   {
     name: "행정병",
-    desc: "철두철미하고 정확한 것을 좋아하는 당신은 행정을 위해 태어났습니다.",
+    desc: `철두철미하고 정확한 것을 좋아하는 당신은 행정을 위해 태어났습니다.`,
     image: officerSoldier,
     bgc: "#EC7070",
   },
   {
     name: "헌병",
-    desc: "질서를 좋아하는 당신, 군대 체질이신가요?",
+    desc: `\b\b\b\b\b\b\b\b\b질서를 좋아하는 당신,\b\b\b\b\b\b\b\b\b 군대 체질이신가요?`,
     image: police,
     bgc: "#A17FE0",
   },
   {
     name: "통신병",
-    desc: "철두철미하고 정확한 것을 좋아하는 당신 당신은 행정을 위해 태어났습니다.",
+    desc: `정확하고 철두철미한 당신,\b\b\b\b\b\b\b\b\b\b\b 당신은 행정을 위해 태어났습니다.`,
     image: IT,
     bgc: "#F5B61D",
   },
   {
     name: "군악병",
-    desc: "예술적으로 뛰어난 당신~!",
+    desc: `예술적으로 뛰어난 당신~!`,
     image: artist,
     bgc: "#17A2C2",
   },
   {
     name: "취사병",
-    desc: "금손인 당신, 요리를 해보시는건 어때요?",
+    desc: `\b\b\b\b\b\b\b\b\b\b\b\b금손인 당신,\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b 요리를 해보시는건 어때요?`,
     image: cook,
     bgc: "#B2B2B2",
   },
   {
     name: "정비병",
-    desc: "고장난 건 내가 다 고친다! 기계와 친하시군요!!",
+    desc: `\b\b\b\b\b\b고장난 건 내가 다 고친다! \b\b\b\b\b\b기계와 친하시군요!!`,
     image: mechanic,
     bgc: "#E184DE",
   },
   {
     name: "PX병",
-    desc: "계산하나는 타고나셨군요!!",
+    desc: `계산하나는 타고나셨군요!!`,
     image: PX,
     bgc: "#A8CF55",
   },
   {
     name: "의무병",
-    desc: "메스. 의료계통으로 나가보시는건 어떠세요?",
+    desc: `메스. 의료계통으로 나가보시는건 어떠세요?`,
     image: medical,
     bgc: "#D8A458",
   },

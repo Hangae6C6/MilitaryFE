@@ -145,19 +145,18 @@ const NextButton = styled.button`
 `;
 
 const NextButton1 = styled.button`
-  position: fixed;
+   position: fixed;
   bottom: 0.2em;
-  width: 379px;
-  height: 85px;
+  margin-left: -4px;
+  padding: 32px 139px;
   border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
-  margin-left: -4px;
   background-color: #151419;
-  /* border-top: 2px solid #151419; */
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
 

@@ -1,6 +1,8 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
+import { toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 
 const GET_SEARCH = "GET_SEARCH";
@@ -26,7 +28,7 @@ const searchDB = (keyword) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("입력하신 키워드와 관련된 챌린지가 없습니다");
+      toast.error(`${keyword}에 대한 챌린지가 없습니다`, { position:"top-center" });
     }
   };
 };

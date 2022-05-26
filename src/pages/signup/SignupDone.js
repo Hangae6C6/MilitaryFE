@@ -15,8 +15,11 @@ const SignupDone = () => {
       </div>
       <div className="second-box">회원가입을 명 받았습니다!</div>
       <div className="third-box">
-        <img src={img} alt="img" width="245" height="330" />
+      
+
+        
       </div>
+        <img id="pic" src={img} alt="img" width="245" height="330" />
       <NextButton
         onClick={() => {
           window.location.pathname = "/";
@@ -31,20 +34,20 @@ const SignupDone = () => {
 export default SignupDone;
 
 const Container = styled.div`
-  height: 100vh;
-  max-width: 375px;
+  box-sizing: border-box;
+  height: 100%;
   width: 100%;
   border: 4px solid #151419;
   border-top: 2px solid #151419;
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
   }
 
   #title-box {
-    width: 375px;
+    width: 100%;
     height: 159px;
     display: flex;
     border-top: 2px solid #151419;
@@ -71,18 +74,24 @@ const Container = styled.div`
   .third-box {
     box-sizing: border-box;
     width: 100%;
-    height: 500px;
-    padding: 192px 0 0 100px;
     border-top: #151419 4px solid;
   }
-  
+  #pic{
+  position: fixed;
+  bottom: 5em;
+  padding-left: 90px;
+
+  }
 `;
+
 
 const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 84px;
+  margin-left: -4px;
+  /* width: 375px;
+  height: 84px; */
+  padding: 32px 164px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -90,6 +99,6 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;

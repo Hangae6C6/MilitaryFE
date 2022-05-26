@@ -225,17 +225,16 @@ const DivBox = styled.div`
     max-width: 375px;
     max-height: 935px;
   }
-  
-  max-height: 90%;
+  width: 375px;
+  max-height: 94%;
   margin: 0 auto;
   background-color: #fff;
 `;
 
 const Logo = styled.div`
-    width: 375px;
+    max-width: 379px;
     height: 44px;
     background-color: #151419;
-    
     #logo {
       margin: 15px 0 0 20px;
       width: 140px;
@@ -243,7 +242,6 @@ const Logo = styled.div`
     }
     #mainlogo {
       margin: 10px 0 30px 220px;
-      
     }
 `;
 

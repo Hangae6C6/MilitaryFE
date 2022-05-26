@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
 import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
-
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
@@ -13,7 +14,6 @@ import personImg from "../../shared/images/icnPersonGray36.png";
 import joinIcon from "../../shared/icons/joinmemicon.png";
 import ddayIcon from "../../shared/icons/ddayicon.png";
 import { ActionCreators as navBarActions } from "../../redux/modules/main";
-
 import { getCookie } from "../../shared/cookie";
 
 import {
@@ -47,7 +47,6 @@ const Detail = () => {
   const token = getCookie("token");
   const spots = card.challengeLimitNum - card.challengeCnt;
   const [isPart, setIsPart] = React.useState(false);
-  // myChallengeStep.filter((cur) => cur.challengeNum == challengeId);
 
   if (myChallengeStep) {
     for (let i = 0; i < myChallengeStep.length; i++) {
@@ -246,7 +245,9 @@ const Detail = () => {
       ) : isJoined ? (
         <NextButton
           onClick={() => {
-            window.location.pathname = `/detail/chat/${challengeId}`;
+            toast.warn("통신보안! 조금만 기다려주세요!", { position:"top-center" });
+      return;
+            // window.location.pathname = `/detail/chat/${challengeId}`;
           }}
         >
           채팅하기
@@ -260,6 +261,7 @@ const Detail = () => {
           참여하기
         </NextButton>
       )}
+      <ToastContainer/>
     </Container>
   );
 };
@@ -369,18 +371,16 @@ height: 100%;
 
 const NextButton = styled.button`
   position: fixed;
-  bottom: 0;
-  width: 379px;
-  height: 89px;
-  border: 2px solid #151419;
+  bottom: 0.2em;
   margin-left: -2px;
+  padding: 32px 157px;
+  border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  &:hover {
-    cursor: pointer;
-  }
+  border-top: 1px solid #151419;
+  cursor: pointer;
 `;

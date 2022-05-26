@@ -37,12 +37,12 @@ const ResultPage = (props) => {
       </QDiv>
       <PersonDiv>
         <TypeDesc>
-          <b>{userNick}</b>  님의 유형은
-          <b>{infoList[id].name}</b>  입니다.
+          {userNick}  님의 유형은
+          <br/>{infoList[id].name}  입니다.
         </TypeDesc>
       </PersonDiv>
       <DescImg
-        bgc={infoList[id].bgc}
+        bgc={infoList[id].bgc} 
         src={infoList[id].image}
       >
         <P>{infoList[id].name}</P>
@@ -62,6 +62,7 @@ const QDiv = styled.div`
   border-bottom: 2px solid #151419;
   box-sizing: border-box;
   height: 81px;
+
 `;
 const BackIcon = styled.img`
   z-index: 1;
@@ -73,7 +74,8 @@ const BackIcon = styled.img`
 const PersonDiv = styled.div`
   height: 100px;
   width: 100%;
-  padding: 15px 0;
+  padding: 50px 0;
+  background-color: #fff;
 `;
 
 const P = styled.p`
@@ -81,10 +83,10 @@ const P = styled.p`
 
 `;
 const NextButton = styled.button`
-  position: fixed;
+   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 85px;
+  margin-left: -2px;
+  padding: 32px 147px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -92,7 +94,7 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;
 export default ResultPage;

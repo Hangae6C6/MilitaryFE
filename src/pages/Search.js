@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { ActionCreators as searchActions } from "../redux/modules/search";
 import { ActionCreators as postActions } from "../redux/modules/main";
-import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
 
 import Navigation from "../component/Navigation";
 import searchIcon from "../shared/icons/SearchIcon.png";
-import logo from "../shared/icons/handlogo11.png";
-import mainlogo from "../shared/icons/mainlogo.png";
-import img from "../shared/images/workout.png";
-import gobackIcon from "../shared/icons/arrowWhite.png";
 import joinNum from "../shared/icons/joinnumber.png";
 import viewCnt from "../shared/icons/viewcount.png";
 import searchWhite from "../shared/images/searchIcon.png";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import {
   readingBlack,
   jobBlack,
@@ -37,10 +33,17 @@ const Nav = () => {
   }, [dispatch]);
 
   const searchHandler = () => {
+    if (
+      keyword === "" 
+    ) {
+      toast.error("키워드를 입력해주세요.", { position:"top-center" });
+      return;
+    }
     dispatch(searchActions.searchDB(keyword));
     setKeyword("");
   };
   const searchTypeHandler = (challengetype) => {
+  
     dispatch(searchActions.searchDB(challengetype));
   };
   const veiwCountHandlerInSearch = (challengeId, challengeCnt) => {
@@ -156,12 +159,15 @@ const Nav = () => {
         </ImgSearchWhite>
       </LowerBox>
       <Navigation />
+      <ToastContainer />
+
     </Container>
   );
 };
 
 export default Nav;
 const Container = styled.div`
+  box-sizing: border-box;
   max-width: 375px;
   height: 100%;
   width: 100%;

@@ -47,7 +47,7 @@ const SignUp = () => {
 
     //아이디형식 확인
     if (!isId(id)) {
-      toast.error("잘못된 형식입니다.", { position:"top-center" });
+      toast.error("잘못된 아이디 형식입니다.", { position:"top-center" });
       return;
     }
 
@@ -80,7 +80,7 @@ const SignUp = () => {
         <div
           className="arrow"
           onClick={() => {
-            window.location.pathname = "/";
+            window.location.pathname = "/login";
           }}
         >
           <img src={gobackIcon} alt="goback" width="20" height="18" />
@@ -140,8 +140,9 @@ export default SignUp;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 375px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
   border: 2px solid #151419;
  
   .top {
@@ -199,8 +200,10 @@ const LoginInput = styled.input`
 const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 375px;
-  height: 85px;
+  margin-left: -2px;
+  /* width: 375px;
+  height: 84px; */
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;
@@ -208,6 +211,6 @@ const NextButton = styled.button`
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
-  border-top: 2px solid #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;

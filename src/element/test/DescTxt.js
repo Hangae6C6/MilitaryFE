@@ -17,14 +17,13 @@ const DescTxt = () => {
 
 
 const DescP = styled.p`
-font-family: NanumSquare;
-  width: 100%;
-  text-align: center;
+font-family: NanumSquareMedium;
+  width: 90%;
   height: 100%;
-  margin: 0;
-  padding: 20px 0;
+  margin: 40px 20px ;
+  text-align: center;
   font-weight:600;
-  font-size:22px;
+  font-size: 24px;
 `;
 
 export default DescTxt;

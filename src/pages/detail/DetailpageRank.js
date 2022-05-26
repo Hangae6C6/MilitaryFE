@@ -78,6 +78,7 @@ export default DetailpageRank;
 
 const Container = styled.div`
   display: block;
+  box-sizing: border-box;
   max-height: 100vh;
   max-width: 375px;
   height: 100%;
@@ -119,7 +120,7 @@ const ChallengeName = styled.div`
 
 const Astep = styled.div`
   background-color: #ffffff;
-  width: 375px;
+  width: 100%;
   height: 100%;
   border-bottom: 2px solid #151419;
   #progressBar {
@@ -150,19 +151,18 @@ const Astep = styled.div`
   
   }
 `;
-
 const NextButton = styled.button`
-position: fixed;
-  bottom: 0;
-  width: 379px;
-  height: 89px;
-  border: 2px solid #151419;
+  position: fixed;
+  bottom: 0.2em;
   margin-left: -2px;
+  padding: 32px 157px;
+  border: none;
   outline: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   font-family: NanumSquareMedium;
   background-color: #151419;
+  border-top: 1px solid #151419;
   cursor: pointer;
 `;

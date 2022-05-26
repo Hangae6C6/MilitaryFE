@@ -36,12 +36,10 @@ const Plan = ({
         <div id="type">{type}</div>
         <div className="title-text">목표를 위한 STEP</div>
 
-        <textarea
-          className="titleInput"
-          placeholder="쉽게 시작할 수 있는 할일을 적고 실천한다면 &#13;&#10;큰 목표를 이룰 수 있지 말입니다.(최대20개)"
-          maxLength="0"
-          type="text"
-        ></textarea>
+        <span className="sub-title">
+         쉽게 시작할수 있는 할일을 저고 실천한다면
+         <br/>큰 목표를 이룰 수 있지 말입니다! (최대20개)
+        </span>
       </div>
       <div className="boxes">
         <div className="delete-btn" onClick={addStepHandler}>
@@ -50,7 +48,7 @@ const Plan = ({
         <textarea
           className="step-input"
           value={content}
-          placeholder="ex) 코드책 50쪽 까지 읽기"
+          placeholder="최대 10자까지 가능합니다"
           maxLength="15"
           type="text"
           onChange={(e) => onContentChange(e.target.value)}
@@ -97,6 +95,7 @@ height: 100%;
     min-height: 120px;
     width: 100%;
     border-bottom: 2px solid #3f3f3f;
+    padding: 40px 0 0 30px ;
     #type {
       position: absolute;
       width: 100px;
@@ -105,28 +104,23 @@ height: 100%;
       color: #e5e5e5;
       font-size: 24px;
       text-align: center;
-      margin-left: 240px;
+      margin-left: 210px;
       font-family: Gmarket SansMedium;
     }
     .title-text {
       height: 35px;
       width: 230px;
       font-size: 24px;
-      color: #3f3f3f;
+      color: #151419;
       font-family: Gmarket SansBold;
-      margin: 40px 0px 0px 30px;
     }
-    .titleInput {
+    .sub-title {
       height: 54px;
       width: 300px;
-      outline: none;
-      margin-left: 30px;
-      border: 0px;
       max-height: 54px;
       max-width: 295px;
-      resize: none;
-      font-size: 15px;
       font-family: Gmarket Sans;
+   
     }
   }
 
@@ -152,11 +146,12 @@ height: 100%;
       resize: none;
       margin: 50px 0 0 50px;
       font-size: 16px;
-      font-family: NanumSquare;
+      font-family: NanumSquareMedium;
       text-align: center;
       ::placeholder {
         color: #d9d9d9;
         text-align: center;
+        
       }
     }
   }

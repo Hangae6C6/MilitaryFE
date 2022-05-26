@@ -55,7 +55,9 @@ const Wrap = styled.div`
   width: 100%;
   background-color: #fff;
   border: 2px solid #151419;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   max-height: 100%;
   height: 100%;
   /* width: 100%; */
