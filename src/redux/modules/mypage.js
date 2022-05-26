@@ -20,9 +20,7 @@ const initialState = {
   },
   userdata: [],
   testResult: "",
-  
 };
-
 const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
   console.log(userId, startDate, endDate, armyCategory, rank);
   return async function (dispatch) {

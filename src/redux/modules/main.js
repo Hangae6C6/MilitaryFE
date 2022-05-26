@@ -113,7 +113,6 @@ const addTestCountDB = (testViewCount) => {
       });
     } catch (err) {
       console.log(err);
-      window.alert("addTestCount 요청 실패");
     }
   };
 };
