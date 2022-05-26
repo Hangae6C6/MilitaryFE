@@ -97,10 +97,8 @@ const Wrap = styled.div`
       }
     }
     #close {
-      padding: 10px 0 0 333px;
-      position: fixed;
-  cursor: pointer;
-
+      padding: 10px 0 0 85px;
+      float: right;
     }
   }
 
