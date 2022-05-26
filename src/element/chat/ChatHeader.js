@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Back from "../../image/back.svg";
+import { history } from "../../redux/configureStore";
 
 const ChatHeader = ({children}) => {
     return (
         <div>
-            <HeadDiv>{children}</HeadDiv>
+            <HeadDiv>
+            <BackIcon
+            src={Back}
+            onClick={() => {
+              history.back();
+            }}
+          />{children}</HeadDiv>
         </div>
     );
 };
@@ -18,5 +26,11 @@ text-align: center;
 align-items: center;
 font-family: Gmarket SansBold;
 `
+const BackIcon = styled.img`
+  z-index: 1;
+  float: left;
+  padding: 23px 0 0 10px;
+  cursor: pointer;
+`;
 
 export default ChatHeader;

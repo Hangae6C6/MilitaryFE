@@ -40,8 +40,6 @@ const MyUser = () => {
   //   }
   // }, []);
 
-
-
   return (
     <Wrap>
       <Mine userId={id} userInfo={userInfo} />
