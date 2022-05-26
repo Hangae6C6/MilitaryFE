@@ -1,19 +1,11 @@
 import React from "react";
-import {useParams} from "react-router-dom"
-import { useDispatch} from "react-redux";
+import { history } from "../../redux/configureStore";
 import styled from "styled-components";
 import img from "../../shared/images/imgChallengeCompleted335.png";
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png";
-import { ActionCreators as navBarActions } from "../../redux/modules/main";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const DetailpageLink = () => {
-const dispatch = useDispatch();
-const {challengeId} = useParams();
-
-const navBarCheckedHandler = (num) => {
-  dispatch(navBarActions.addNavCheckedDB(num));
-};
 
   return (
     <Container>
@@ -21,11 +13,9 @@ const navBarCheckedHandler = (num) => {
       <div className="top">
    
         <NextButton
-          onClick={() => {
-            navBarCheckedHandler(1);
-          }}
+         onClick={history.back}
         >
-          홈으로
+          뒤로가기
         </NextButton>
       </div>
 
@@ -38,8 +28,10 @@ const navBarCheckedHandler = (num) => {
       </div>
   
       <NextButton1 onClick={()=>{
-        alert('coming soon')
-      }}>링크 복사하기</NextButton1>
+       toast.error("곧 찾아 뵙겠습니다!", { position:"top-center" });
+       return;}}>링크 복사하기</NextButton1>
+      <ToastContainer/>
+
     </Container>
   );
 };
