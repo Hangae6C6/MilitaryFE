@@ -9,6 +9,7 @@ import rank3 from "../../shared/icons/rank3_small.png";
 import rank1 from "../../shared/icons/smallRank1.png"
 import rank2 from "../../shared/icons/smallRank2.png"
 import rankNull from "../../shared/icons/joinmemicon.png"
+
 const DetailpageRank = () => {
   const dispatch = useDispatch();
   const { challengeId } = useParams();

@@ -1,5 +1,4 @@
 import React from "react";
-import { history } from "../../redux/configureStore";
 import styled from "styled-components";
 import GoTest from "../../element/test/GoTest";
 import Wrap from '../../element/test/Wrap'

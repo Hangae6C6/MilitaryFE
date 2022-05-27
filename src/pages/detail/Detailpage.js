@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ActionCreators as challengeActions } from "../../redux/modules/challenge";
 import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
-import { toast, ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
@@ -46,7 +46,7 @@ const Detail = () => {
 
   const token = getCookie("token");
   const spots = card.challengeLimitNum - card.challengeCnt;
-  const [isPart, setIsPart] = React.useState(false);
+
 
   if (myChallengeStep) {
     for (let i = 0; i < myChallengeStep.length; i++) {
@@ -66,7 +66,9 @@ const Detail = () => {
     dispatch(challengeActions.getOneChallengeDetailDB(challengeId));
   }, [dispatch, challengeId]);
   React.useEffect(() => {
-    dispatch(userChallengeDataActions.getUserChallengeDetailDB(userId));
+    if (userId) {
+      dispatch(userChallengeDataActions.getUserChallengeDetailDB(userId));
+    }
   }, [dispatch, userId]);
   React.useEffect(() => {
     dispatch(userChallengeDataActions.getChallengeDetailDB(challengeId));
@@ -78,12 +80,9 @@ const Detail = () => {
     );
   };
 
-
   const navBarCheckedHandler = (num) => {
     dispatch(navBarActions.addNavCheckedDB(num, userId));
-
   };
-
 
   let isJoined = false;
   myChallengeStep.filter((cur) => {
@@ -94,7 +93,6 @@ const Detail = () => {
 
   return (
     <Container>
-     
       <div className="top">
         <div
           className="arrow"
@@ -158,78 +156,76 @@ const Detail = () => {
         </>
       ) : (
         <>
-              <ScrollWrap>
-          <TitleBox>
-            <div id="title">
-              <div id="title-up">{card.challengeTitle}</div>
-              <div id="title-down">
-                <div id="type">{card.challengeType}</div>
+          <ScrollWrap>
+            <TitleBox>
+              <div id="title">
+                <div id="title-up">{card.challengeTitle}</div>
+                <div id="title-down">
+                  <div id="type">{card.challengeType}</div>
+                </div>
               </div>
-            </div>
-            <div id="typeIcons">
-              <img
-                src={
-                  card.challengeType === "운동"
-                    ? workout
-                    : card.challengeType === "취업"
-                    ? job
-                    : card.challengeType === "직업탐색"
-                    ? jobSearch
-                    : card.challengeType === "자기개발"
-                    ? self
-                    : card.challengeType === "기타"
-                    ? etc
-                    : card.challengeType === "공모전"
-                    ? competition
-                    : card.challengeType === "자격증"
-                    ? license
-                    : card.challengeType === "외국어"
-                    ? foreignLanguage
-                    : reading
-                }
-                alt="img"
-                height="158px"
-                width="213px"
-              />
-            </div>
-          </TitleBox>
-
-          
-          <ChallengeRoom>
-            <div className="box">
-              <div id="imgWrap">
-                <img src={joinIcon} alt="personImg" width="36" height="36" />
+              <div id="typeIcons">
+                <img
+                  src={
+                    card.challengeType === "운동"
+                      ? workout
+                      : card.challengeType === "취업"
+                      ? job
+                      : card.challengeType === "직업탐색"
+                      ? jobSearch
+                      : card.challengeType === "자기개발"
+                      ? self
+                      : card.challengeType === "기타"
+                      ? etc
+                      : card.challengeType === "공모전"
+                      ? competition
+                      : card.challengeType === "자격증"
+                      ? license
+                      : card.challengeType === "외국어"
+                      ? foreignLanguage
+                      : reading
+                  }
+                  alt="img"
+                  height="158px"
+                  width="213px"
+                />
               </div>
-              <div id="roomInfo">{card.challengeCnt}명</div>
-              <div id="Infodetail">현재 참가자</div>
-            </div>
-            <div className="box">
-              <div id="imgWrap">
-                <img src={ddayIcon} alt="typeImg" width="36" height="36" />
+            </TitleBox>
+            <ChallengeRoom>
+              <div className="box">
+                <div id="imgWrap">
+                  <img src={joinIcon} alt="personImg" width="36" height="36" />
+                </div>
+                <div id="roomInfo">{card.challengeCnt}명</div>
+                <div id="Infodetail">현재 참가자</div>
               </div>
-              <div id="roomInfo">D-{dDay}</div>
-              <div id="Infodetail">남은 기간</div>
-            </div>
-            <div className="box">
-              <div id="imgWrap">
-                <img src={personImg} alt="typeImg" width="36" height="36" />
+              <div className="box">
+                <div id="imgWrap">
+                  <img src={ddayIcon} alt="typeImg" width="36" height="36" />
+                </div>
+                <div id="roomInfo">{dDay <= 0 ? "기간만료" : "D-" + dDay}</div>
+                <div id="Infodetail">남은 기간</div>
               </div>
-              <div id="roomInfo">{spots}자리</div>
-              <div id="Infodetail">남은 자리</div>
-            </div>
-          </ChallengeRoom>{" "}
-          <DetailpageProgress
-            userId={userId}
-            thisChallenge={card}
-            myChallengeDetail={myChallengeDetail}
-            myChallengeStep={myChallengeStep}
-            userNickName={userNickName}
-          />
-          <DetailpageStep
-            challengeNum={challengeId}
-            userId={userId}
-            steps={mySteps}
-          />
+              <div className="box">
+                <div id="imgWrap">
+                  <img src={personImg} alt="typeImg" width="36" height="36" />
+                </div>
+                <div id="roomInfo">{spots <= 0 ? "FULL": spots + "자리"}</div>
+                <div id="Infodetail">남은 자리</div>
+              </div>
+            </ChallengeRoom>{" "}
+            <DetailpageProgress
+              userId={userId}
+              thisChallenge={card}
+              myChallengeDetail={myChallengeDetail}
+              myChallengeStep={myChallengeStep}
+              userNickName={userNickName}
+            />
+            <DetailpageStep
+              challengeNum={challengeId}
+              userId={userId}
+              steps={mySteps}
+            />
           </ScrollWrap>
         </>
       )}
@@ -245,8 +241,10 @@ const Detail = () => {
       ) : isJoined ? (
         <NextButton
           onClick={() => {
-            toast.warn("통신보안! 조금만 기다려주세요!", { position:"top-center" });
-      return;
+            toast.warn("통신보안! 조금만 기다려주세요!", {
+              position: "top-center",
+            });
+            return;
             // window.location.pathname = `/detail/chat/${challengeId}`;
           }}
         >
@@ -261,7 +259,7 @@ const Detail = () => {
           참여하기
         </NextButton>
       )}
-      <ToastContainer/>
+      <ToastContainer />
     </Container>
   );
 };
@@ -274,12 +272,12 @@ const Container = styled.div`
   max-width: 375px;
   border: 2px solid #151419;
   background-color: #ffffff;
-  
+  box-sizing: border-box;
   .top {
     height: 69px;
     width: 100%;
     border-bottom: 2px solid #151419;
-  
+
     .arrow {
       position: absolute;
       margin: 17px 0px 0px 20px;
@@ -363,10 +361,8 @@ const ChallengeRoom = styled.div`
 `;
 
 const ScrollWrap = styled.div`
- overflow: auto;
-height: 100%;
-
-
+  overflow: auto;
+  height: 100%;
 `;
 
 const NextButton = styled.button`

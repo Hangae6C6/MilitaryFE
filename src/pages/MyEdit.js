@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,36 +14,21 @@ import { useParams } from "react-router";
 const MyEdit = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
-  let cookie = document.cookie;
   const userInfo = useSelector((state) => state.mypage.mypage);
-  
+
   React.useEffect(() => {
     if (userId) {
       dispatch(userProfileActions.getUserProfileDB(userId));
     }
   }, [dispatch, userId]);
-  
-  useEffect(() => {
-    if (!cookie) {
-      toast.error("로그인 후 이용해주세요!", { position: "top-center" });
-      history.replace("/");
-      window.location.reload();
-      return;
-    }
-  }, []);
-  
+
   const [nickName, setNickName] = React.useState("");
   const [startDate, setStartDate] = React.useState("");
   const [endDate, setEndDate] = React.useState("");
   const [milCategory, setMilCategory] = React.useState("");
   const [rank, setRank] = React.useState("");
   const options = ["육군", "해군", "공군", "해병대", "특수부대"];
-  const ranks = [
-    "이병",
-    "일병",
-    "상병",
-    "병장",
-  ];
+  const ranks = ["이병", "일병", "상병", "병장"];
 
   const onStartDateChange = (e) => {
     const nextValue = e.value;
@@ -69,41 +54,38 @@ const MyEdit = () => {
   };
 
   const editUserDataHandler = () => {
-    if (startDate === "" ||
-    endDate === "" ||
-    milCategory === "" ||
-    rank === ""
-) {
-  toast.error("빈칸을 입력해주세요", { position:"top-center" });
-  return;
-}
-if (!isNickname(nickName)) {
-  toast.error("잘못된 닉네임 형식입니다.", { position:"top-center" });
-  return;
-}
+    if (
+      startDate === "" ||
+      endDate === "" ||
+      milCategory === "" ||
+      rank === ""
+    ) {
+      toast.error("빈칸을 입력해주세요", { position: "top-center" });
+      return;
+    }
+    if (!isNickname(nickName)) {
+      toast.error("잘못된 닉네임 형식입니다.", { position: "top-center" });
+      return;
+    }
 
-if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
-  toast.error("입대일과 전역일을 확인해주세요", {
-    position: "top-center",
-  });
-  return;
-}
+    if ((startDate[0] === endDate[0]) | (startDate[0] > endDate[0])) {
+      toast.error("입대일과 전역일을 확인해주세요", {
+        position: "top-center",
+      });
+      return;
+    }
 
-
-
-    dispatch(userProfileActions.editUserDataDB(userId, nickName, startDate[0], endDate[0], milCategory, rank));
+    dispatch(
+      userProfileActions.editUserDataDB(
+        userId,
+        nickName,
+        startDate[0],
+        endDate[0],
+        milCategory,
+        rank
+      )
+    );
   };
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <Wrap>
@@ -111,9 +93,14 @@ if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
         <MyP>
           <BackDiv>
             <Back onClick={history.back} />
-            <span id="logout" onClick={()=>{
-              dispatch(logoutActions.logoutDB(userId));
-            }}>로그아웃</span>
+            <span
+              id="logout"
+              onClick={() => {
+                dispatch(logoutActions.logoutDB(userId));
+              }}
+            >
+              로그아웃
+            </span>
           </BackDiv>
         </MyP>
       </MyPage>
@@ -139,7 +126,6 @@ if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
             value={startDate}
             onChange={onStartDateChange}
             defaultValue="string"
-            
           />
         </Box1>
         <div id="p">전역일</div>
@@ -174,19 +160,18 @@ if (startDate[0] === endDate[0] | startDate[0] > endDate[0]) {
             size={"large"}
           />
         </Box1>
-        <Empty/>
+        <Empty />
       </Box2>
       <NextButton onClick={editUserDataHandler}>저장하기</NextButton>
       <ToastContainer />
-
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
- display: flex;
- flex-direction: column;
- box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   max-width: 375px;
   height: 100%;
   width: 100%;
@@ -198,20 +183,18 @@ const MyPage = styled.div`
   border-bottom: 2px solid #151419;
   display: grid;
   justify-content: space-between;
-
 `;
 
 const BackDiv = styled.div`
   display: flex;
   height: 34px;
   padding: 20px 10px;
-  #logout{
+  #logout {
     font-size: 18px;
     font-family: NanumSquareMedium;
     color: #1fb57e;
-    padding: 7px 0 0 250px ;
+    padding: 7px 0 0 250px;
     cursor: pointer;
-  
   }
 `;
 
@@ -280,28 +263,26 @@ const Box2 = styled.div`
 `;
 
 const InputTitle = styled.div`
+  height: 60px;
+  width: 100%;
+  border-bottom: 1px solid #151419;
+  border-top: 1px solid #151419;
 
-    height: 60px;
-    width: 100%;
-    border-bottom: 1px solid #151419;
-    border-top: 1px solid #151419;
-
-    .input-area {
-      padding: 18px 20px 1px;
-      font-family: Gmarket SansMedium;
-      height: 30px;
-      width: 280px;
-      outline: none;
-      border: 0px;
-      resize: none;
-      font-size: 18px;
-      color: #151419;
-      ::placeholder {
-        font-family: Gmarket Sans;
-        color: #aaaaaa;
-      }
+  .input-area {
+    padding: 18px 20px 1px;
+    font-family: Gmarket SansMedium;
+    height: 30px;
+    width: 280px;
+    outline: none;
+    border: 0px;
+    resize: none;
+    font-size: 18px;
+    color: #151419;
+    ::placeholder {
+      font-family: Gmarket Sans;
+      color: #aaaaaa;
     }
-  
+  }
 `;
 const NextButton = styled.button`
   position: fixed;
@@ -318,6 +299,5 @@ const NextButton = styled.button`
   border-top: 1px solid #151419;
   cursor: pointer;
 `;
-
 
 export default MyEdit;

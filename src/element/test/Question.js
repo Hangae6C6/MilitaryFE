@@ -12,7 +12,6 @@ const Question = () => {
   const step = Math.floor((num / 9) * 100);
 
   const onIncrease = (e, qIdx, idx) => {
-    let result = [];
     for (let i = 0; i < e.length; i++) {
       for (let j = 0; j <= type.length; j++) {
         if (e[i] === j) {

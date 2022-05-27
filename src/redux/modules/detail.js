@@ -75,7 +75,7 @@ const changeMyStepDB = (challengeNum, userId, stepNum) => {
     try {
       await axios({
         method: "post",
-        url: `http://3.34.45.246/api/challengeStep?stepNum=${stepNum}&challengeNum=${challengeNum}&userId=${userId}`,
+        url: `http://13.125.228.240/api/challengeStep?stepNum=${stepNum}&challengeNum=${challengeNum}&userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -95,7 +95,7 @@ const postUserChallengeDetailDB = (userId, challengeId) => {
     try {
       await axios({
         method: "post",
-        url: `http://3.34.45.246/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
+        url: `http://13.125.228.240/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -114,7 +114,7 @@ const getChallengeDetailDB = (challengeId) => {
     try {
       await axios({
         method: "get",
-        url: `http://3.34.45.246/api/challengeJoinBychallengeNum?challengeNum=${challengeId}`,
+        url: `http://13.125.228.240/api/challengeJoinBychallengeNum?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -133,13 +133,12 @@ const getUserChallengeDetailDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `http://3.34.45.246/api/challengeJoin?userId=${userId}`,
+        url: `http://13.125.228.240/api/challengeJoin?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
       }).then((response) => {
         dispatch(getUserChallengeDetail(response.data));
-        console.log(response)
       });
     } catch (err) {
       console.log(err, "challengeDetail userId로 GET 요청 실패");
@@ -152,7 +151,7 @@ const getRankDetailDB = (challengeId) => {
     try {
       await axios({
         method: "get",
-        url: `http://3.34.45.246/api/challengeRanking?challengeNum=${challengeId}`,
+        url: `http://13.125.228.240/api/challengeRanking?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

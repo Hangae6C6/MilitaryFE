@@ -3,8 +3,6 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
 import { ActionCreators as navBarActions } from "../../redux/modules/main";
-
-const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
@@ -23,11 +21,11 @@ const initialState = {
 };
 
 const signupDB = (userId, userPw, userNick, userPwCheck) => {
-  return async function (dispatch, getState, { history }) {
+  return async function () {
     try {
       await axios({
         method: "post",
-        url: "http://3.34.45.246/api/signUp",
+        url: "http://13.125.228.240/api/signUp",
         data: {
           userId: userId,
           userPw: userPw,
@@ -49,7 +47,7 @@ const loginDB = (userId, password) => {
     try {
       await axios({
         method: "post",
-        url: "http://3.34.45.246/api/login",
+        url: "http://13.125.228.240/api/login",
         data: {
           userId,
           userPw: password,
@@ -71,7 +69,7 @@ const loginCheckDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "http://3.34.45.246/api/logincheck",
+      url: "https://54.180.107.198/api/logincheck",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
@@ -89,7 +87,7 @@ const loginCheckDB = () => {
 const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get(`http://3.34.45.246/api/auth/kakao/callback?code=${code}`)
+      .get(`http://13.125.228.240/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);
@@ -104,30 +102,9 @@ const kakaoLogin = (code) => {
   };
 };
 
-const NaverLogin = (code, state) => {
-  return function (dispatch, getState, { history }) {
-    console.log(code, state);
-    axios
-      .get(`http://3.34.45.246/api/auth/naver/callback?code=${code}&state=${state}`)
-
-      .then((res) => {
-        const token = res.data.token;
-        setCookie("token", token);
-
-        dispatch(loginCheckDB());
-        console.log("서버 네이버 로그인 확인");
-        // window.location.replace("/");
-      })
-      .catch((err) => {
-        console.log("네이버 소셜로그인 에러 서버", err);
-        window.alert("리덕스 소셜 로그인에 실패하였습니다.");
-        // window.location.replace("/");
-      });
-  };
-};
 
 const logoutDB = (userId) => {
-  return function (dispatch, getState, { history }) {
+  return function (dispatch) {
     let num = 1;
     deleteCookie("token"); 
     localStorage.removeItem("userId");
@@ -166,7 +143,6 @@ const ActionCreators = {
   loginCheckDB,
   logoutDB,
   kakaoLogin,
-  NaverLogin,
 };
 
 export { ActionCreators };

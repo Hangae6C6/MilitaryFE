@@ -27,7 +27,7 @@ const addChallengeDB = (challenges, userId) => {
     try {
       await axios({
         method: "post",
-        url: "http://3.34.45.246/api/challenge",
+        url: "http://13.125.228.240/api/challenge",
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -48,12 +48,11 @@ const addChallengeDB = (challenges, userId) => {
 };
 
 const getOneChallengeDetailDB = (challengeNum) => {
-  console.log(challengeNum)
   return async function (dispatch) {
     try {
       await axios({
         method: "get",
-        url: `http://3.34.45.246/api/challengeDetail?challengeNum=${challengeNum}`,
+        url: `http://13.125.228.240/api/challengeDetail?challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -71,7 +70,7 @@ const deleteCallengeDB = (challengeNum, userId) => {
     try {
       await axios({
         method: "delete",
-        url: `http://3.34.45.246/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
+        url: `http://13.125.228.240/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getCookie } from "../shared/cookie";
 import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 import {
@@ -14,7 +13,6 @@ import {
 } from "../shared/icons/icons";
 
 const Navigation = () => {
-  let token = getCookie("token");
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
   const userId = useSelector((state) => state.user.user.userId);

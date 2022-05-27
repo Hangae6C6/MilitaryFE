@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import { Meter } from "grommet";
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png";
 
 const Type = ({ onBack, onTypeChange }) => {
   const [types, setTypes] = React.useState([

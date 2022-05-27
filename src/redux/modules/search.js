@@ -21,13 +21,13 @@ const searchDB = (keyword) => {
     try {
       await axios({
         method: "get",
-        url: `http://3.34.45.246/api/search?keyword=${keyword}`,
+        url: `http://13.125.228.240/api/search?keyword=${keyword}`,
       }).then((response) => {
         dispatch(getSearch(response));
       });
     } catch (err) {
       console.log(err);
-      toast.error(`${keyword}에 대한 챌린지가 없습니다`, { position:"top-center" });
+      toast.error(`"${keyword}" 와/과 관련 챌린지가 없습니다`, { position:"top-center" });
     }
   };
 };

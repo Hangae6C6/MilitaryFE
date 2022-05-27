@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import img from "../../shared/images/signupdone.png";
-import logo from "../../shared/icons/handlogo11.png";
 
 const SignupDone = () => {
   return (
@@ -89,8 +88,6 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -4px;
-  /* width: 375px;
-  height: 84px; */
   padding: 32px 164px;
   border: none;
   outline: none;

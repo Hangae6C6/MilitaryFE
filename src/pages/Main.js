@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as postActions } from "../redux/modules/main";
 import { ActionCreators as userChallengeDetailActions } from "../redux/modules/detail";
-import { ActionCreators as testCountActions } from "../redux/modules/main";
 import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 
 import Navigation from "../component/Navigation";
@@ -52,11 +51,14 @@ const Main = () => {
       dispatch(postActions.getProgressDB(userId));
     }
   }, [dispatch, userId]);
-  let testViewCount = 1;
 
+
+  
+
+  let testViewCount = 1;
   const testHandler = () => {
     if (token) {
-      dispatch(testCountActions.addTestCountDB(testViewCount));
+      dispatch(postActions.addTestCountDB(testViewCount));
       setTimeout(() => {
         window.location.pathname = `/main/preTest`;
       }, 500);

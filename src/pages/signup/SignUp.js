@@ -5,33 +5,28 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { ActionCreators as userActions } from "../../redux/modules/user";
 import gobackIcon from "../../shared/icons/arrowWhite.png";
-import logo from "../../shared/icons/handlogo11.png";
 
 const SignUp = () => {
   const dispatch = useDispatch();
 
-  //회원가입 목록
   const [id, setId] = React.useState("");
   const [nickname, setNickname] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [passwordCheck, setPasswordCheck] = React.useState("");
 
-  // 아이디 조건
   const isId = (id) => {
     let pattern = /^[a-zA-z0-9]{4,12}$/;
-    return pattern.test(id); // 맞으면 true, 틀리면 false반환
+    return pattern.test(id); 
   };
 
-  // 닉네임 조건
   const isNickname = (nickname) => {
     let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
-    return pattern.test(nickname); // 맞으면 true, 틀리면 false반환
+    return pattern.test(nickname); 
   };
 
-  // 비밀번호 조건
   const isPwd = (password) => {
     let pattern = /^(?=.*[A-Za-z])(?=.*\d)[\w]{8,}$/;
-    return pattern.test(password); // 맞으면 true, 틀리면 false반환
+    return pattern.test(password); 
   };
 
   const signup = () => {
@@ -45,25 +40,21 @@ const SignUp = () => {
       return;
     }
 
-    //아이디형식 확인
     if (!isId(id)) {
       toast.error("잘못된 아이디 형식입니다.", { position:"top-center" });
       return;
     }
 
-    //닉네임 형식 확인
     if (!isNickname(nickname)) {
       toast.error("잘못된 닉네임 형식입니다.", { position:"top-center" });
       return;
     }
 
-    //비밀번호형식 확인
     if (!isPwd(password)) {
       toast.error("잘못된 비밀번호 형식입니다.", { position:"top-center" });
       return;
     }
 
-    //비밀번호 확인
     if (password !== passwordCheck) {
       toast.error("비밀번호가 다릅니다.", { position:"top-center" });
       return;
@@ -201,8 +192,6 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -2px;
-  /* width: 375px;
-  height: 84px; */
   padding: 32px 157px;
   border: none;
   outline: none;

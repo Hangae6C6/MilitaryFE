@@ -2,14 +2,14 @@ import React from 'react';
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg"
 import { Meter } from "grommet";
 import styled from 'styled-components';
-import logo from "../../shared/icons/handlogo11.png";
-import mainlogo from "../../shared/icons/mainlogo.png"
+
+
 const Day = ({startDate, endDate, participant, onStartChange, onEndChange, onParticipantChange, onBack}) => {
  
   let today = new Date();
-  let year = today.getFullYear(); // 년도
-  let month = today.getMonth() + 1;  // 월
-  let date = today.getDate();  // 날짜
+  let year = today.getFullYear(); 
+  let month = today.getMonth() + 1;  
+  let date = today.getDate(); 
   let now = month + '월' + date + '일' + year + '년';
   
   return (

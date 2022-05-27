@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Meter } from "grommet";
 import { useParams } from "react-router-dom";
 import { getCookie } from "../../shared/cookie";
 import rightArrow from "../../shared/icons/rightarrowwhite.png";
