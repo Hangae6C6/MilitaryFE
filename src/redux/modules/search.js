@@ -21,7 +21,7 @@ const searchDB = (keyword) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/search?keyword=${keyword}`,
+        url: `https://pizzaboy.shop/api/search?keyword=${keyword}`,
       }).then((response) => {
         dispatch(getSearch(response));
       });
