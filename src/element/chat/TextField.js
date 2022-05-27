@@ -3,7 +3,7 @@
 // // import io from "socket.io-client";
 // import TextBoxes from "./TextBoxes";
 
-// // const socket = io.connect("http://13.125.228.240/");
+// // const socket = io.connect("https://soldierchallengers.com/");
 
 // const TextField = (props) => {
 //   const [userName, setUsername] = useState("");

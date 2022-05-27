@@ -25,7 +25,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/signUp",
+        url: "https://soldierchallengers.com/api/signUp",
         data: {
           userId: userId,
           userPw: userPw,
@@ -47,7 +47,7 @@ const loginDB = (userId, password) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/login",
+        url: "https://soldierchallengers.com/api/login",
         data: {
           userId,
           userPw: password,
@@ -87,7 +87,7 @@ const loginCheckDB = () => {
 const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get(`http://13.125.228.240/api/auth/kakao/callback?code=${code}`)
+      .get(`https://soldierchallengers.com/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);

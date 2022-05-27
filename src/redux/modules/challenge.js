@@ -27,7 +27,7 @@ const addChallengeDB = (challenges, userId) => {
     try {
       await axios({
         method: "post",
-        url: "http://13.125.228.240/api/challenge",
+        url: "https://soldierchallengers.com/api/challenge",
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -52,7 +52,7 @@ const getOneChallengeDetailDB = (challengeNum) => {
     try {
       await axios({
         method: "get",
-        url: `http://13.125.228.240/api/challengeDetail?challengeNum=${challengeNum}`,
+        url: `https://soldierchallengers.com/api/challengeDetail?challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -70,7 +70,7 @@ const deleteCallengeDB = (challengeNum, userId) => {
     try {
       await axios({
         method: "delete",
-        url: `http://13.125.228.240/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
+        url: `https://soldierchallengers.com/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

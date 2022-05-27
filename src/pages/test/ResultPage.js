@@ -15,10 +15,8 @@ const ResultPage = (props) => {
   const dispatch = useDispatch();
   const {id} = useParams();
   const result = infoList[id].name;
-  console.log(result)
   const userInfo = useSelector((state) => state.user.user);
   const userId = userInfo.userId;
-  console.log(userId);
   const userNick = userInfo.userNick;
 
   const testResultHandler = () =>{

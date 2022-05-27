@@ -9,7 +9,6 @@ import { ActionCreators as testCountActions } from "../../redux/modules/main";
 const GoTest = () => {
   const dispatch = useDispatch();
   const testCount = useSelector((state) => state.card.testCount);
-  console.log(testCount);
   React.useEffect(() => {
     dispatch(testCountActions.getTestCountDB());
   }, [dispatch]);

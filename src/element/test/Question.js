@@ -20,10 +20,7 @@ const Question = () => {
       }
     }
 
-    const resultNum = type.indexOf(Math.max(...type));
-
     setNum(num + 1);
-    console.log(resultNum);
   };
 
   const resultNum = type.indexOf(Math.max(...type));
@@ -56,23 +53,21 @@ const Question = () => {
       <BWrap>
         {qnaList[num - 1].a.map((elem, i) => {
           return (
-            <>
-              <Button
-                onClick={() => {
-                  onIncrease(elem.type);
-                }}
-                value={elem.answer}
-                key={i}
-                id={i}
-              >
-                <div className="index">{i + 1}</div>
-                <div className="answer">{elem.answer}</div>
-              </Button>
-            </>
+            <Button
+              onClick={() => {
+                onIncrease(elem.type);
+              }}
+              value={elem.answer}
+              key={elem + i}
+              id={i}
+            >
+              <div className="index">{i + 1}</div>
+              <div className="answer">{elem.answer}</div>
+            </Button>
           );
-          })}
+        })}
       </BWrap>
-    <NextButton/>
+      <NextButton />
     </>
   );
 };
@@ -105,9 +100,8 @@ const BackIcon = styled.img`
   cursor: pointer;
 `;
 
-
 const QText = styled.div`
-padding: 60px 0 0 10px;
+  padding: 60px 0 0 10px;
   height: 119px;
   width: 350px;
   background-color: #ffffff;
