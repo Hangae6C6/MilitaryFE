@@ -52,11 +52,12 @@ const initialState = {
 };
 
 const getPostDB = () => {
+console.log("hi")
   return async function (dispatch) {
     try {
       await axios({
         method: "get",
-        url: "https://soldierchallengers.com/api/main",
+        url: "https://soldierchallengers.link/api/main",
       }).then((response) => {
         dispatch(getPost(response.data));
       });
@@ -71,7 +72,7 @@ const getProgressDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/main/challenge?userId=${userId}`,
+        url: `https://soldierchallengers.link/api/main/challenge?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -89,7 +90,7 @@ const addVeiwCountDB = (challengeId, challengeCnt) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.com/api/categoryClick?challengeNum=${challengeId}`,
+        url: `https://soldierchallengers.link/api/categoryClick?challengeNum=${challengeId}`,
         data: {
           challengeCnt,
         },
@@ -107,7 +108,7 @@ const addTestCountDB = (testViewCount) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.com/api/main/testCount?userId=${testViewCount}`,
+        url: `https://soldierchallengers.link/api/main/testCount?userId=${testViewCount}`,
       }).then((response) => {
         console.log(response);
       });
@@ -122,7 +123,7 @@ const getTestCountDB = () => {
     try {
       await axios({
         method: "get",
-        url: "https://soldierchallengers.com/api/main/testCountRead",
+        url: "https://soldierchallengers.link/api/main/testCountRead",
       }).then((response) => {
         dispatch(getTestCount(response.data.countread.TestCount));
       });
@@ -136,7 +137,7 @@ const addNavCheckedDB = (navNum, userId) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.com/api/main/iconclick?btnNum=${navNum}`,
+        url: `https://soldierchallengers.link/api/main/iconclick?btnNum=${navNum}`,
       }).then((response) => {
         if (navNum === 1) {
           window.location.pathname = "/";
@@ -157,7 +158,7 @@ const getNavCheckedDB = () => {
     try {
       await axios({
         method: "get",
-        url: "https://soldierchallengers.com/api/main/iconclickRead",
+        url: "https://soldierchallengers.link/api/main/iconclickRead",
       }).then((response) => {
         dispatch(getNavChecked(response.data.iconRead));
       });

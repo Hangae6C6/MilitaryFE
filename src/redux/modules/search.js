@@ -21,7 +21,7 @@ const searchDB = (keyword) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/search?keyword=${keyword}`,
+        url: `https://soldierchallengers.link/api/search?keyword=${keyword}`,
       }).then((response) => {
         dispatch(getSearch(response));
       });

@@ -75,7 +75,7 @@ const changeMyStepDB = (challengeNum, userId, stepNum) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.com/api/challengeStep?stepNum=${stepNum}&challengeNum=${challengeNum}&userId=${userId}`,
+        url: `https://soldierchallengers.link/api/challengeStep?stepNum=${stepNum}&challengeNum=${challengeNum}&userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -95,7 +95,7 @@ const postUserChallengeDetailDB = (userId, challengeId) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.com/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
+        url: `https://soldierchallengers.link/api/challengeJoin?userId=${userId}&challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -114,7 +114,7 @@ const getChallengeDetailDB = (challengeId) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/challengeJoinBychallengeNum?challengeNum=${challengeId}`,
+        url: `https://soldierchallengers.link/api/challengeJoinBychallengeNum?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -133,7 +133,7 @@ const getUserChallengeDetailDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/challengeJoin?userId=${userId}`,
+        url: `https://soldierchallengers.link/api/challengeJoin?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -151,7 +151,7 @@ const getRankDetailDB = (challengeId) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.com/api/challengeRanking?challengeNum=${challengeId}`,
+        url: `https://soldierchallengers.link/api/challengeRanking?challengeNum=${challengeId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
