@@ -69,7 +69,7 @@ const loginCheckDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "https://54.180.107.198/api/logincheck",
+      url: "https://soldierchallengers.com/api/logincheck",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
