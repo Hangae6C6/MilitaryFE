@@ -233,7 +233,7 @@ const Detail = () => {
             window.location.pathname = "/login";
           }}
         >
-          로그인하기
+          참여하기
         </NextButton>
       ) : isJoined ? (
         <NextButton
