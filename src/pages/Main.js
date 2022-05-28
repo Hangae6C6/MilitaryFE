@@ -58,8 +58,10 @@ const Main = () => {
 
   
 
-  let testViewCount = 1;
   const testHandler = () => {
+    dispatch(postActions.checkUserdataDB());
+    
+    let testViewCount = 1;
     if (userId) {
       dispatch(postActions.addTestCountDB(testViewCount));
       setTimeout(() => {
@@ -68,6 +70,8 @@ const Main = () => {
     } else {
       window.location.pathname = "/login";
     } 
+
+    
   };
 
   return (
@@ -75,17 +79,14 @@ const Main = () => {
       <div id="top-box">
         {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
-        ) : token && !userInfo ? (
+        ) : (
           <div id="main-title">
-           {user.userNick} 님!
+           {user.userNick} {userInfo.rank && userInfo.rank} 님!
           </div>
-        ) :
-        <div id="main-title">
-        {user.userNick} {userInfo.rank}님!
-       </div> 
-      }
+        )}
+
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        {token && userId ? (
+        {userInfo.testResult ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}

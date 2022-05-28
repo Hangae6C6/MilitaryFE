@@ -161,6 +161,23 @@ const getNavCheckedDB = () => {
   };
 };
 
+const checkUserdataDB = () => {
+  return async function (dispatch) {
+    try{
+      await axios ({
+        method: "post",
+        url: "https://pizzaboy.shop/api/main/preTest1",
+      }).then((response) => {
+        console.log(response)
+       
+            });
+      }catch (err) {
+        console.log(err);
+      }
+    };
+  };
+
+
 export default handleActions(
   {
     [GET_POST]: (state, action) =>
@@ -191,6 +208,7 @@ const ActionCreators = {
   getTestCountDB,
   getNavCheckedDB,
   addNavCheckedDB,
+  checkUserdataDB,
 };
 
 export { ActionCreators };

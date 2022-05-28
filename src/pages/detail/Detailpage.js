@@ -117,9 +117,9 @@ const Detail = () => {
         <>
           <TitleBox>
             <div id="title">
-              <div id="title-up">마리톤 완주!</div>
+              <div id="title-up">로그인해주세요!</div>
               <div id="title-down">
-                <div id="type">운동</div>
+                <div id="type">가즈아!!</div>
               </div>
             </div>
             <div id="typeIcons">
@@ -233,7 +233,7 @@ const Detail = () => {
             window.location.pathname = "/login";
           }}
         >
-          참여하기
+          로그인하기
         </NextButton>
       ) : isJoined ? (
         <NextButton
@@ -366,7 +366,7 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -2px;
-  padding: 32px 157px;
+  padding: 32px 149px;
   border: none;
   outline: none;
   color: #ffffff;
