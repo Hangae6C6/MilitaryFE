@@ -52,6 +52,7 @@ const initialState = {
 };
 
 const getPostDB = () => {
+console.log("hello")
   return async function (dispatch) {
     try {
       await axios({

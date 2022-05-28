@@ -3,9 +3,8 @@
 // // import io from "socket.io-client";
 // import TextBoxes from "./TextBoxes";
 
-// // const socket = io.connect("http://pizzaboy.shop/");
-// const ENDPOINT = "http://pizzaboy.shop/"; const socket = io.connect(ENDPOINT, { transports: ["websocket"]}
-// forceNew: true, });
+// // const socket = io.connect("https://pizzaboy.shop/");
+
 // const TextField = (props) => {
 //   const [userName, setUsername] = useState("");
 //   const [room, setRoom] = useState([]);
