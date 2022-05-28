@@ -19,6 +19,7 @@ const Navigation = () => {
   const userId = useSelector((state) => state.user.user.userId);
   const navBar = useSelector((state) => state.card.navBar);
   const userInfo = useSelector((state) => state.mypage.mypage);
+
   React.useEffect(() => {
     dispatch(navBarActions.getNavCheckedDB());
   }, [dispatch, router]);
@@ -29,9 +30,9 @@ const Navigation = () => {
     }
   }, [dispatch, userId]);
 
-  const navBarCheckedHandler = (num) => {
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
-  };
+  // const navBarCheckedHandler = (num) => {
+  //   dispatch(navBarActions.addNavCheckedDB(num, userId));
+  // };
 
   return (
     <Nav>
@@ -40,7 +41,7 @@ const Navigation = () => {
           <HomeIcn
             src={navBar.home === 1 ? clickedHomeIcon : homeIcon}
             onClick={() => {
-              navBarCheckedHandler(1);
+              window.location.pathname='/';
             }}
           />
           <P>홈</P>
@@ -49,7 +50,7 @@ const Navigation = () => {
           <SearchIcn
             src={navBar.search === 1 ? clickedSearchIcon : searchIcon}
             onClick={() => {
-              navBarCheckedHandler(2);
+              window.location.pathname='/search';
             }}
           />
           <P>챌린지검색</P>
@@ -62,10 +63,11 @@ const Navigation = () => {
               if(!userId){
                 window.location.pathname='/login';
               }
-              if(userId && !userInfo){
+              else if(userId && !userInfo){
                 window.location.pathname=`signupdata/${userId}`;
+              }else if(userId && userInfo){
+                window.location.pathname=`mypage/${userId}`;
               }
-              navBarCheckedHandler(3);
             }}
           />
           <P>마이페이지</P>

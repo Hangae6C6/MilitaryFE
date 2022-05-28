@@ -51,6 +51,10 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 
+  React.useEffect(() => {
+    let num=1
+    dispatch(postActions.addNavCheckedDB(num));
+  }, [dispatch]);
 
   
 
@@ -81,7 +85,7 @@ const Main = () => {
        </div> 
       }
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        {token&&userInfo ? (
+        {token&&userInfo.testResult ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}

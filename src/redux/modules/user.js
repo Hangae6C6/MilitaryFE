@@ -53,11 +53,12 @@ const loginDB = (userId, password) => {
           userPw: password,
         },
       }).then((res) => {
-        let num = 1;
+        
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        dispatch(navBarActions.addNavCheckedDB(num));
+        window.location.pathname = "/";
+
       });
     } catch (err) {
       console.log(err);
@@ -111,7 +112,7 @@ const logoutDB = (userId) => {
     deleteCookie("token"); 
     localStorage.removeItem("userId");
     dispatch(logout());
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
+    // dispatch(navBarActions.addNavCheckedDB(num, userId));
   };
 };
 

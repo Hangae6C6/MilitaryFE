@@ -81,7 +81,7 @@ const Detail = () => {
   };
 
   const navBarCheckedHandler = (num) => {
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
+    // dispatch(navBarActions.addNavCheckedDB(num, userId));
   };
 
   let isJoined = false;
