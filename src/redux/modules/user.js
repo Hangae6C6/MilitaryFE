@@ -86,7 +86,7 @@ const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     console.log(code);
     axios
-      .get(`https://pizzaboy/api/auth/kakao/callback?code=${code}`)
+      .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         let userId = res.data.userId;
