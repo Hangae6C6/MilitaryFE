@@ -32,7 +32,7 @@ const addUserDataDB = (userId, startDate, endDate, armyCategory, rank) => {
     try {
       await axios({
         method: "post",
-        url: `https://soldierchallengers.link/api/userData?userId=${userId}`,
+        url: `https://pizzaboy.shop/api/userData?userId=${userId}`,
       
         data: {
           ...userdatas
@@ -53,7 +53,7 @@ const addTestResultDB = (userId, result) => {
     try {
       await axios({
         method: "post",
-        url: "https://soldierchallengers.link/api/userTest",
+        url: "https://pizzaboy.shop/api/userTest",
         data: {
           userId,
           testResult: result,
@@ -76,7 +76,7 @@ const getUserProfileDB = (userId) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.link/api/myPage/userProfile?userId=${userId}`,
+        url: `https://pizzaboy.shop/api/myPage/userProfile?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -96,7 +96,7 @@ const editUserDataDB = (userId, userNick, startDate, endDate, armyCategory, rank
     try {
       await axios({
         method: "put",
-        url: `https://soldierchallengers.link/api/myPage/userProfile?userId=${userId}`,
+        url: `https://pizzaboy.shop/api/myPage/userProfile?userId=${userId}`,
       
         data: {
           userNick,

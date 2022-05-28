@@ -27,7 +27,7 @@ const addChallengeDB = (challenges, userId) => {
     try {
       await axios({
         method: "post",
-        url: "https://soldierchallengers.link/api/challenge",
+        url: "https://pizzaboy.shop/api/challenge",
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -52,7 +52,7 @@ const getOneChallengeDetailDB = (challengeNum) => {
     try {
       await axios({
         method: "get",
-        url: `https://soldierchallengers.link/api/challengeDetail?challengeNum=${challengeNum}`,
+        url: `https://pizzaboy.shop/api/challengeDetail?challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -70,7 +70,7 @@ const deleteCallengeDB = (challengeNum, userId) => {
     try {
       await axios({
         method: "delete",
-        url: `https://soldierchallengers.link/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
+        url: `https://pizzaboy.shop/api/challengeout?userId=${userId}&challengeNum=${challengeNum}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

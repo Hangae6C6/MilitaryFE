@@ -25,7 +25,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
     try {
       await axios({
         method: "post",
-        url: "https://soldierchallengers.link/api/signUp",
+        url: "https://pizzaboy.shop/api/signUp",
         data: {
           userId: userId,
           userPw: userPw,
@@ -47,7 +47,7 @@ const loginDB = (userId, password) => {
     try {
       await axios({
         method: "post",
-        url: "https://soldierchallengers.link/api/login",
+        url: "https://pizzaboy.shop/api/login",
         data: {
           userId,
           userPw: password,
@@ -69,7 +69,7 @@ const loginCheckDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "https://soldierchallengers.link/api/loginCheck",
+      url: "https://pizzaboy.shop/api/loginCheck",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },
@@ -87,7 +87,7 @@ const loginCheckDB = () => {
 const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get(`https://soldierchallengers.link/api/auth/kakao/callback?code=${code}`)
+      .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);
