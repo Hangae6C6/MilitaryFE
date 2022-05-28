@@ -97,7 +97,7 @@ const kakaoLogin = (code) => {
       })
       .catch((err) => {
         window.alert("소셜 로그인에 실패하였습니다.", err);
-        //  window.location.pathname="/login";
+        window.location.pathname="/login";
       });
   };
 };
