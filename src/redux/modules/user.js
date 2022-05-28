@@ -105,6 +105,7 @@ const logoutDB = (userId) => {
     deleteCookie("token");
     localStorage.removeItem("userId");
     dispatch(logout());
+    window.location.pathname='/';
   };
 };
 
