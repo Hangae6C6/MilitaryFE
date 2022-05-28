@@ -106,7 +106,7 @@ function App() {
               element={<ResultPage />}
             ></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
-            <Route exact path="/link/:challengeId" element={<Link />}></Route>
+            <Route exact path="/link/:challengeId,:userId" element={<Link />}></Route>
             <Route
               exact
               path="/myPage/userProfile/edit/:userId"

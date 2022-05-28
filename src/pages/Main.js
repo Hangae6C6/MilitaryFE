@@ -73,7 +73,7 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : token && !userInfo ? (
           <div id="main-title">
-           {user.userId} 님!
+           {user.userNick} 님!
           </div>
         ) :
         <div id="main-title">
