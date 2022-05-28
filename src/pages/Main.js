@@ -69,11 +69,11 @@ const Main = () => {
   return (
     <Container>
       <div id="top-box">
-        {!token ? (
+        {!userInfo ? (
           <div id="main-title">충성! 안녕하십니까!</div>
-        ) : (
+        ) :  (
           <div id="main-title">
-            {user.userNick | userInfo.rank ? `${user.userNick}` `${userInfo.rank}` : "훈련병" }님!
+           {user.userNick} {userInfo.rank} 님!
           </div>
         )}
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
