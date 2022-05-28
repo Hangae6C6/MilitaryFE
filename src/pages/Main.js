@@ -81,7 +81,7 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
-           {user.userNick}님!
+           {user.userNick} {userInfo.rank}님!
           </div>
         )}
 

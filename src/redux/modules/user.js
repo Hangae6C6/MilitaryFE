@@ -86,7 +86,7 @@ const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     console.log(code);
     axios
-      .get(`http://54.180.107.198/api/auth/kakao/callback?code=${code}`)
+      .get(`https://pizzaboy/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         let userId = res.data.userId;
@@ -94,7 +94,7 @@ const kakaoLogin = (code) => {
         window.location.pathname = `/signupdata/${userId}`;
       })
       .catch((err) => {
-        window.alert("소셜 로그인에 실패하였습니다.", err);
+        // window.alert("소셜 로그인에 실패하였습니다.", err);
         window.location.pathname = "/login";
       });
   };
