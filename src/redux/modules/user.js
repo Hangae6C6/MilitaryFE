@@ -83,10 +83,10 @@ const loginCheckDB = () => {
   };
 };
 
-const kakaoLogin = (code) => {
+const kakaoLogin = () => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
+      .get("https://pizzaboy.shop/api/auth/kakao/callback`")
       .then((res) => {
         const token = res.data.token;
         let userId = res.data.userId;

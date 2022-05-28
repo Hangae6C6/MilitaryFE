@@ -89,7 +89,8 @@ const Login = () => {
             alt="kakao"
             width="60"
             onClick={() => {
-              window.location.href = KAKAO_AUTH_URL;
+              dispatch(userActions.kakaoLogin());
+              // window.location.href = KAKAO_AUTH_URL;
             }}
           />
         </SocialLogin>
