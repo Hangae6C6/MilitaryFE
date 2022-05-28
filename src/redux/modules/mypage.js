@@ -10,12 +10,12 @@ const getUserProfile = createAction(GET_USER_PROFILE, (userProfile) => ({ userPr
 const initialState = {
   mypage:{
     User: {
-      userNick:""
+      userNick:"훈련병"
     },
-    rank:"훈련병",
-    armyCategory:"",
-    startDate:"",
-    endDate:"",
+    rank:"이병",
+    armyCategory:"훈련소",
+    startDate:"01-01-2022",
+    endDate:"01-02-2023",
   },
   userdata: [],
   testResult: "",
