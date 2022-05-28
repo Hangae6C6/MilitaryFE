@@ -89,8 +89,7 @@ const Login = () => {
             alt="kakao"
             width="60"
             onClick={() => {
-              alert('오류를 수정중입니다...')
-              // window.location.href = KAKAO_AUTH_URL;
+              window.location.href = KAKAO_AUTH_URL;
             }}
           />
         </SocialLogin>

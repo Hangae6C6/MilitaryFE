@@ -32,7 +32,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then(() => {
-        window.location.pathname=`/signupData/${userId}`;
+        window.location.pathname = `/signupData/${userId}`;
       });
     } catch (err) {
       console.log(err);
@@ -52,12 +52,10 @@ const loginDB = (userId, password) => {
           userPw: password,
         },
       }).then((res) => {
-        
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
         window.location.pathname = "/";
-
       });
     } catch (err) {
       console.log(err);
@@ -76,7 +74,6 @@ const loginCheckDB = () => {
     })
       .then((res) => {
         dispatch(getUser(res.data.user));
-
       })
       .catch((err) => {
         console.log(err);
@@ -85,29 +82,27 @@ const loginCheckDB = () => {
 };
 
 const kakaoLogin = (code) => {
-  console.log(code)
+  console.log(code);
   return async function (dispatch, getState, { history }) {
-    console.log(code)
+    console.log(code);
     axios
-      .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
+      .get(`http://54.180.107.198/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
+        let userId = res.data.userId;
         setCookie("token", token);
-        console.log(res)
-        dispatch(loginCheckDB());
-        window.location.pathname = "/";
+        window.location.pathname = `/signupdata/${userId}`;
       })
       .catch((err) => {
         window.alert("소셜 로그인에 실패하였습니다.", err);
-        window.location.pathname="/login";
+        window.location.pathname = "/login";
       });
   };
 };
 
-
 const logoutDB = (userId) => {
   return function (dispatch) {
-    deleteCookie("token"); 
+    deleteCookie("token");
     localStorage.removeItem("userId");
     dispatch(logout());
   };
