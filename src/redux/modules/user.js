@@ -15,7 +15,7 @@ const initialState = {
   user: {
     userId: "",
     userPw: "",
-    userNick: "훈련병",
+    userNick: "",
   },
   is_login: false,
 };
