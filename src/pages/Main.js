@@ -60,14 +60,14 @@ const Main = () => {
 
   let testViewCount = 1;
   const testHandler = () => {
-    if (token) {
+    if (userId) {
       dispatch(postActions.addTestCountDB(testViewCount));
       setTimeout(() => {
-        window.location.pathname = `/main/preTest`;
+        window.location.pathname = '/main/preTest';
       }, 500);
     } else {
       window.location.pathname = "/login";
-    }
+    } 
   };
 
   return (
@@ -85,7 +85,7 @@ const Main = () => {
        </div> 
       }
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        {token && userInfo ? (
+        {token && userId ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}

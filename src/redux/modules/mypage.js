@@ -62,7 +62,6 @@ const addTestResultDB = (userId, result) => {
           Authorization: `Bearer ${getCookie("token")}`,
         },
       }).then((response) => {
-        console.log(response);
         window.location.pathname='/';
       });
     } catch (err) {
