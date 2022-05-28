@@ -20,7 +20,6 @@ import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
 import KakaoAuth from "./socialLogin/KakaoAuth";
-import NaverAuth from "./socialLogin/NaverAuth";
 import Search from "../pages/Search";
 import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
@@ -81,23 +80,18 @@ function App() {
             <Route
               exact
               path="/signupdata/:id"
-              element={<SignupData />}
+              element={<SignupData/>}
             ></Route>
             <Route exact path="/signupdone" element={<SignupDone />}></Route>
             <Route
               path="/api/auth/kakao/callback"
               exact
-              element={<KakaoAuth />}
+              element={<KakaoAuth/>}
             />
-            <Route
-              path="/api/auth/naver/callback"
-              exact
-              element={<NaverAuth />}
-            ></Route>
             <Route
               exact
               path="/detail/chat/:challengeId"
-              element={<Chat />}
+              element={<Chat/>}
             ></Route>
             <Route exact path="/main/preTest/" element={<BeginPage />}></Route>
             <Route exact path="/search/" element={<Search />}></Route>

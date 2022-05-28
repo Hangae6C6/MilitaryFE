@@ -69,7 +69,7 @@ const loginCheckDB = () => {
   return function (dispatch) {
     axios({
       method: "get",
-      url: "https://pizzaboy.shop/api/loginCheck",
+      url: "https://pizzaboy.shop/api/logincheck",
       headers: {
         Authorization: `Bearer ${getCookie("token")}`,
       },

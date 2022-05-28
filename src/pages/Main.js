@@ -82,7 +82,7 @@ const Main = () => {
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}
-              {userInfo.rank}님은 {userInfo.testResult}이 딱! 입니다
+              {userInfo.rank}님은 {userInfo.testResult}! 딱! 입니다
             </div>
           </div>
         ) : (
