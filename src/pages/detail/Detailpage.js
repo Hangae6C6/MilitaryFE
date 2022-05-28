@@ -366,7 +366,7 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -2px;
-  padding: 32px 149px;
+  padding: 32px 157px;
   border: none;
   outline: none;
   color: #ffffff;
