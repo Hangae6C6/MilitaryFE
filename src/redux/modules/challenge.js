@@ -27,7 +27,7 @@ const addChallengeDB = (challenges, userId) => {
     try {
       await axios({
         method: "post",
-        url: "https://pizzaboy.shop/api/challenge",
+        url: `ttps://pizzaboy.shop/api/challenge?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },

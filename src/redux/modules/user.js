@@ -2,7 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
@@ -91,9 +91,8 @@ const kakaoLogin = (code) => {
         const token = res.data.token;
         let userId = res.data.userId;
         let check = res.data.userDataCheck;
-        console.log(check)
         setCookie("token", token);
-        if (check === false) {
+        if (!check) {
           window.location.pathname = `/signupdata/${userId}`;
         } else {
           window.location.pathname = "/";

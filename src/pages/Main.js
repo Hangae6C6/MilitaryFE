@@ -54,7 +54,7 @@ const Main = () => {
   React.useEffect(() => {
     let num=1
     dispatch(postActions.addNavCheckedDB(num));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   
 
