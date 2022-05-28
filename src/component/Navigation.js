@@ -30,9 +30,6 @@ const Navigation = () => {
     }
   }, [dispatch, userId]);
 
-  // const navBarCheckedHandler = (num) => {
-  //   dispatch(navBarActions.addNavCheckedDB(num, userId));
-  // };
 
   return (
     <Nav>

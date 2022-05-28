@@ -7,7 +7,6 @@ import { ActionCreators as userActions } from "../redux/modules/user";
 import { KAKAO_AUTH_URL } from "../shared/socialLogin/auth";
 import gobackIcon from "../shared/icons/arrowWhite.png";
 import kakao from "../shared/images/kakao_login_small.png";
-import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -44,9 +43,6 @@ const Login = () => {
     dispatch(userActions.loginDB(id, password));
   };
 
-  const navBarCheckedHandler = (num) => {
-    dispatch(navBarActions.addNavCheckedDB(num));
-  };
 
   return (
     <Container>
@@ -54,7 +50,7 @@ const Login = () => {
         <div
           className="arrow"
           onClick={() => {
-            navBarCheckedHandler(1);
+            window.location.pathname='/';
           }}
         >
           <img src={gobackIcon} alt="goback" width="20" height="18" />

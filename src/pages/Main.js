@@ -81,7 +81,7 @@ const Main = () => {
           </div>
         ) :
         <div id="main-title">
-        {user.userNick} {userInfo.rank} 님!
+        {user.userNick} {userInfo.rank}님!
        </div> 
       }
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>

@@ -2,7 +2,6 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
-import { ActionCreators as navBarActions } from "../../redux/modules/main";
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
@@ -108,11 +107,9 @@ const kakaoLogin = (code) => {
 
 const logoutDB = (userId) => {
   return function (dispatch) {
-    let num = 1;
     deleteCookie("token"); 
     localStorage.removeItem("userId");
     dispatch(logout());
-    // dispatch(navBarActions.addNavCheckedDB(num, userId));
   };
 };
 
