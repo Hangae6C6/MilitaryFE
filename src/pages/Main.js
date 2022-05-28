@@ -85,7 +85,7 @@ const Main = () => {
        </div> 
       }
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        {token&&userInfo.testResult ? (
+        {token && userInfo ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}
