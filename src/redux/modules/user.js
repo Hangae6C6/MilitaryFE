@@ -83,14 +83,15 @@ const loginCheckDB = () => {
   };
 };
 
-const kakaoLogin = () => {
+const kakaoLogin = (code) => {
   return async function (dispatch, getState, { history }) {
     axios
-      .get("https://pizzaboy.shop/api/auth/kakao/callback")
+      .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
         let userId = res.data.userId;
         let check = res.data.userDataCheck;
+        console.log(check)
         setCookie("token", token);
         if (!check) {
           window.location.pathname = `/signupdata/${userId}`;

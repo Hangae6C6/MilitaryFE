@@ -2,7 +2,6 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
-import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
 const GET_ONE_CHALLENGE = "GET_ONE_CHALLENGE";
 
