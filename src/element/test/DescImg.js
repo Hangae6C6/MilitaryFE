@@ -17,7 +17,6 @@ const DescImg = (props, {children}) => {
 
 const DescriptImage = styled.div`
 height:214px;
-width: 100%;
 background-image: url("${(props) => props.src}");
 background-color: ${(props) => props.bgc};
 background-size: cover;

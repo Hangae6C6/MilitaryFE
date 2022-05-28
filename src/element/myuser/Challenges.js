@@ -109,6 +109,7 @@ const Wrap = styled.div`
     }
   }
 `;
-const ChalLi = styled.div``;
+const ChalLi = styled.div`
+`;
 
 export default Challenges;

@@ -45,7 +45,7 @@ const Question = () => {
           />
           <Progress width={step} />
         </ProgressBar>
-        <img height="238.5px" src={qnaList[num - 1].image} />
+        <img height="236px" src={qnaList[num - 1].image} />
         <QText>
           <div className="question">{qnaList[num - 1].q}</div>
         </QText>
