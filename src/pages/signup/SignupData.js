@@ -4,7 +4,6 @@ import { useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import { ActionCreators as searchActions } from "../../redux/modules/mypage";
 import { Select, DateInput } from "grommet";
-import gobackIcon from "../../shared/icons/arrowWhite.png";
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 

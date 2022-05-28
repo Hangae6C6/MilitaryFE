@@ -2,6 +2,8 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
+import { toast, ToastContainer } from "react-toastify";
+
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
@@ -90,12 +92,19 @@ const kakaoLogin = (code) => {
       .then((res) => {
         const token = res.data.token;
         let userId = res.data.userId;
+        let check = res.data.userDataCheck;
         setCookie("token", token);
-        window.location.pathname = `/signupdata/${userId}`;
+        if (check === false) {
+          window.location.pathname = `/signupdata/${userId}`;
+        } else {
+          window.location.pathname = "/";
+        }
       })
       .catch((err) => {
-        // window.alert("소셜 로그인에 실패하였습니다.", err);
-        window.location.pathname = "/login";
+        toast.warn("소셜로그인에 실패했어요...", {
+          position: "top-center",
+        });
+        return;
       });
   };
 };
@@ -105,7 +114,7 @@ const logoutDB = (userId) => {
     deleteCookie("token");
     localStorage.removeItem("userId");
     dispatch(logout());
-    window.location.pathname='/';
+    window.location.pathname = "/";
   };
 };
 
