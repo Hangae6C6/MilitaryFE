@@ -51,7 +51,7 @@ const ChallengeName = styled.div`
 `;
 
 const Astep = styled.div`
-  width: 375px;
+  width: 100%;
   height: 62px;
   border-bottom: 2px solid #151419;
   display: flex;

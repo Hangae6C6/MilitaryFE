@@ -16,7 +16,7 @@ const Chat = () => {
 
 const Wrap = styled.div`
 height: 100%;
-  width: 375px;
+  width: 100%;
   border: 2px solid #151419;
   background-color: #fff;
 `;

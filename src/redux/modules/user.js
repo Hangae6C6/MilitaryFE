@@ -85,7 +85,9 @@ const loginCheckDB = () => {
 };
 
 const kakaoLogin = (code) => {
+  console.log(code)
   return async function (dispatch, getState, { history }) {
+    console.log(code)
     axios
       .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
       .then((res) => {

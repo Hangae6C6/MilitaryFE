@@ -176,7 +176,7 @@ const Container = styled.div`
   
   .top {
     height: 100px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
 

@@ -48,7 +48,7 @@ height: 100%;
   background-color: #ffffff;
   border-top: 2px solid black;
   .top {
-    width: 375px;
+    width: 100%;
     height: 100px;
   }
 

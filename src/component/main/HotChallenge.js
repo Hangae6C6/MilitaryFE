@@ -157,13 +157,13 @@ height: 100%;
 `;
 
 const UpperBox = styled.div`
-  width: 375px;
+  width: 100%;
   height: 79px;
   background-color: #ffffff;
   border-bottom: 2px solid #151419;
   #title {
     display: flex;
-    width: 375px;
+    width: 100%;
     padding: 30px 0 0 20px;
     #title-text {
       color: #A01414;

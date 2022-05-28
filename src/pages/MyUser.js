@@ -33,8 +33,10 @@ const MyUser = () => {
   return (
     <Wrap>
       <Mine userId={id} userInfo={userInfo} />
-      <Challenges userId={id} myChallengeList={myChallengeList} />
-      <Footer />
+      <Overflow>
+        <Challenges userId={id} myChallengeList={myChallengeList} />
+        <Footer />
+      </Overflow>
       <Navigation />
     </Wrap>
   );
@@ -50,6 +52,11 @@ const Wrap = styled.div`
   max-height: 100%;
   height: 100%;
   border: 2px solid #151419;
+`;
+
+const Overflow = styled.div`
+  overflow: scroll;
+  padding: 0 0 79px 0;
 `;
 
 export default MyUser;

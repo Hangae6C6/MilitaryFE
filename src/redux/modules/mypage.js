@@ -12,7 +12,7 @@ const initialState = {
     User: {
       userNick:""
     },
-    rank:"",
+    rank:"훈련병",
     armyCategory:"",
     startDate:"",
     endDate:"",
