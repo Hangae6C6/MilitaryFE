@@ -91,7 +91,7 @@ const kakaoLogin = (code) => {
       .then((res) => {
         const token = res.data.token;
         setCookie("token", token);
-
+        console.log(res)
         dispatch(loginCheckDB());
         window.location.pathname = "/";
       })
