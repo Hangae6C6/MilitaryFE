@@ -69,15 +69,19 @@ const Main = () => {
   return (
     <Container>
       <div id="top-box">
-        {!userInfo ? (
+        {!token ? (
           <div id="main-title">충성! 안녕하십니까!</div>
-        ) :  (
+        ) : token && !userInfo ? (
           <div id="main-title">
-           {user.userNick} {userInfo.rank} 님!
+           {user.userId} 님!
           </div>
-        )}
+        ) :
+        <div id="main-title">
+        {user.userNick} {userInfo.rank} 님!
+       </div> 
+      }
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
-        {userInfo ? (
+        {token&&userInfo ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { ActionCreators as navBarActions } from "../redux/modules/main";
+import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 
 import {
   myPageIcon,
@@ -17,10 +18,16 @@ const Navigation = () => {
   const router = useSelector((state) => state.router.location.pathname);
   const userId = useSelector((state) => state.user.user.userId);
   const navBar = useSelector((state) => state.card.navBar);
-
+  const userInfo = useSelector((state) => state.mypage.mypage);
   React.useEffect(() => {
     dispatch(navBarActions.getNavCheckedDB());
   }, [dispatch, router]);
+
+  React.useEffect(() => {
+    if (userId) {
+      dispatch(userProfileActions.getUserProfileDB(userId));
+    }
+  }, [dispatch, userId]);
 
   const navBarCheckedHandler = (num) => {
     dispatch(navBarActions.addNavCheckedDB(num, userId));
@@ -54,6 +61,9 @@ const Navigation = () => {
             onClick={() => {
               if(!userId){
                 window.location.pathname='/login';
+              }
+              if(userId && !userInfo){
+                window.location.pathname=`signupdata/${userId}`;
               }
               navBarCheckedHandler(3);
             }}
