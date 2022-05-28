@@ -18,7 +18,6 @@ const Main = () => {
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const userInfo = useSelector((state) => state.mypage.mypage);
-
   const myChallenges = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.answer
   );
@@ -74,7 +73,7 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
-            {user.userNick} {userInfo.rank}님!
+            {user.userNick | userInfo.rank ? `${user.userNick}` `${userInfo.rank}` : "훈련병" }님!
           </div>
         )}
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
