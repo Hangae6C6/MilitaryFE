@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as userChallengeDataActions } from "../redux/modules/detail";
 import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
-import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
@@ -25,11 +24,6 @@ const MyUser = () => {
       dispatch(userProfileActions.getUserProfileDB(id));
     }
   }, [dispatch, id]);
-
-  React.useEffect(() => {
-    let num=3
-    dispatch(navBarActions.addNavCheckedDB(num));
-  }, [dispatch]);
 
 
   React.useEffect(() => {

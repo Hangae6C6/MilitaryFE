@@ -51,11 +51,6 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 
-  React.useEffect(() => {
-    let num=1
-    dispatch(postActions.addNavCheckedDB(num));
-  }, [dispatch, userId]);
-
   
 
   const testHandler = () => {

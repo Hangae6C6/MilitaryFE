@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as searchActions } from "../redux/modules/search";
 import { ActionCreators as postActions } from "../redux/modules/main";
-import { ActionCreators as navBarActions } from "../redux/modules/main";
 
 import Navigation from "../component/Navigation";
 import searchIcon from "../shared/icons/SearchIcon.png";
@@ -33,10 +32,6 @@ const Nav = () => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
-  React.useEffect(() => {
-    let num=2
-    dispatch(navBarActions.addNavCheckedDB(num));
-  }, [dispatch]);
 
   const searchHandler = () => {
     if (

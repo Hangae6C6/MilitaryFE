@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { ActionCreators as navBarActions } from "../redux/modules/main";
 import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 
 import {
@@ -17,12 +16,9 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
   const userId = useSelector((state) => state.user.user.userId);
-  const navBar = useSelector((state) => state.card.navBar);
   const userInfo = useSelector((state) => state.mypage.mypage);
 
-  React.useEffect(() => {
-    dispatch(navBarActions.getNavCheckedDB());
-  }, [dispatch, router]);
+
 
   React.useEffect(() => {
     if (userId) {
@@ -36,7 +32,7 @@ const Navigation = () => {
       <Wrap>
         <Home>
           <HomeIcn
-            src={navBar.home === 1 ? clickedHomeIcon : homeIcon}
+            src={router === "/" ? clickedHomeIcon : homeIcon}
             onClick={() => {
               window.location.pathname='/';
             }}
@@ -45,7 +41,7 @@ const Navigation = () => {
         </Home>
         <Home>
           <SearchIcn
-            src={navBar.search === 1 ? clickedSearchIcon : searchIcon}
+            src={router === "/search" ? clickedSearchIcon : searchIcon}
             onClick={() => {
               window.location.pathname='/search';
             }}
@@ -55,7 +51,7 @@ const Navigation = () => {
         <Home>
           <MypageIcn
             primary
-            src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
+            src={router.includes("mypage") ? clickedPageIcon : myPageIcon}
             onClick={() => {
               if(!userId){
                 window.location.pathname='/login';
