@@ -145,12 +145,12 @@ const Container = styled.div`
   max-width: 375px;
   border: 2px solid #151419;
   border-bottom: none;
-
+  display: flex;
+  flex-direction: column;
   #top-box {
     display: flex;
     flex-direction: column;
     background-color: #151419;
-    height: 224px;
     border-top: 4px solid #ffffff;
 
     #main-title {
@@ -219,50 +219,18 @@ const Container = styled.div`
     }
   }
 
-  @media screen and (min-width:576px) {
-/* 스마트폰 가로 */
-}
-
-@media screen and (min-width:768px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 100vh;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 50%;
-  }
-}
 
 .challengeContainer {
+  flex: 1;
     overflow: scroll;
-    height: 67%;
+    height: 100%;
   }
   .challengeContainerIn {
+    flex: 1;
     overflow-y:scroll !important;
-    height: 65%;
+    height: 100%;
   }
-  @media screen and (min-height:1000px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 71%;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 69%;
-  }
-}
 
-@media screen and (min-height:1200px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 76%;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 75%;
-  }
-}
 
   
 `;

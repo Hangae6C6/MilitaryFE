@@ -57,6 +57,7 @@ const Wrap = styled.div`
 `;
 
 const Overflow = styled.div`
+flex:1;
   overflow: scroll;
   padding: 0 0 79px 0;
 `;

@@ -154,6 +154,7 @@ export default HotChallenge;
 
 const Container = styled.div`
 height: 100%;
+width: 100%;
 `;
 
 const UpperBox = styled.div`

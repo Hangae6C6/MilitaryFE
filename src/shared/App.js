@@ -220,7 +220,8 @@ const DivBox = styled.div`
     max-height: 935px;
   }
   width: 375px;
-  max-height: 94%;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   background-color: #fff;
 `;

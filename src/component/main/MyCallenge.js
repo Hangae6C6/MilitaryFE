@@ -179,7 +179,6 @@ const Container = styled.div`
   }
 `;
 const AddButton = styled.div`
-  height: 85px;
   border-bottom: 2px solid #151419;
   border-top: ${props => props.primary? "2px solid #151419" : "2px solid #3f3f3f"};
   margin-top: -2px;

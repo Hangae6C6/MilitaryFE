@@ -81,9 +81,7 @@ const Wrap = styled.div`
   max-width: 371px;
   width: 100%;
   height: 83px;
-  position: fixed;
   background-color: whitesmoke;
-  bottom: 0.25em;
   z-index: 9;
   display: grid;
   border: 2px solid #151419;

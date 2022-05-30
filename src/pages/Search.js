@@ -174,6 +174,8 @@ const Container = styled.div`
   width: 100%;
   border: 2px solid #151419;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   
   .top {
     height: 100px;
@@ -216,7 +218,7 @@ const Container = styled.div`
 `;
 
 const MiddleBox = styled.div`
-  display: flexbox;
+  display: flex;
   height: 47px;
   border-bottom: #151419 2px solid;
   overflow: hidden;
@@ -242,6 +244,7 @@ const LowerBox = styled.div`
   flex-wrap: wrap;
   justify-content: start;
   width: 378px;
+  flex:1;
   overflow: scroll;
   
   #box {
