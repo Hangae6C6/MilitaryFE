@@ -80,6 +80,10 @@ export default Plan;
 
 const Container = styled.div`
 height: 100%;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+flex: 1;
   .arrow {
     position: absolute;
     margin: 15px 0px 0px 10px;
@@ -125,7 +129,6 @@ height: 100%;
   }
 
   .boxes {
-    display: flex;
     width: 100%;
     height: 127px;
     border-bottom: 2px solid #3f3f3f;
@@ -185,7 +188,7 @@ height: 100%;
 `;
 
 const Wrap = styled.div`
-
-  overflow: auto;
-  height: 60%;
+flex: 1;
+  overflow: scroll;
+  height: 100%;
 `;

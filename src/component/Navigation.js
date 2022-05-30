@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { ActionCreators as navBarActions } from "../redux/modules/main";
+import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
 
 import {
   myPageIcon,
@@ -16,33 +16,34 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const router = useSelector((state) => state.router.location.pathname);
   const userId = useSelector((state) => state.user.user.userId);
-  const navBar = useSelector((state) => state.card.navBar);
+  const userInfo = useSelector((state) => state.mypage.mypage);
+
+
 
   React.useEffect(() => {
-    dispatch(navBarActions.getNavCheckedDB());
-  }, [dispatch, router]);
+    if (userId) {
+      dispatch(userProfileActions.getUserProfileDB(userId));
+    }
+  }, [dispatch, userId]);
 
-  const navBarCheckedHandler = (num) => {
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
-  };
 
   return (
     <Nav>
       <Wrap>
         <Home>
           <HomeIcn
-            src={navBar.home === 1 ? clickedHomeIcon : homeIcon}
+            src={router === "/" ? clickedHomeIcon : homeIcon}
             onClick={() => {
-              navBarCheckedHandler(1);
+              window.location.pathname='/';
             }}
           />
           <P>홈</P>
         </Home>
         <Home>
           <SearchIcn
-            src={navBar.search === 1 ? clickedSearchIcon : searchIcon}
+            src={router === "/search" ? clickedSearchIcon : searchIcon}
             onClick={() => {
-              navBarCheckedHandler(2);
+              window.location.pathname='/search';
             }}
           />
           <P>챌린지검색</P>
@@ -50,12 +51,16 @@ const Navigation = () => {
         <Home>
           <MypageIcn
             primary
-            src={navBar.mypage === 1 ? clickedPageIcon : myPageIcon}
+            src={router.includes("mypage") ? clickedPageIcon : myPageIcon}
             onClick={() => {
               if(!userId){
                 window.location.pathname='/login';
               }
-              navBarCheckedHandler(3);
+              else if(userId && !userInfo){
+                window.location.pathname=`signupdata/${userId}`;
+              }else if(userId && userInfo){
+                window.location.pathname=`mypage/${userId}`;
+              }
             }}
           />
           <P>마이페이지</P>
@@ -76,9 +81,7 @@ const Wrap = styled.div`
   max-width: 371px;
   width: 100%;
   height: 83px;
-  position: fixed;
   background-color: whitesmoke;
-  bottom: 0.25em;
   z-index: 9;
   display: grid;
   border: 2px solid #151419;

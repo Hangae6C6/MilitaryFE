@@ -111,7 +111,7 @@
 // background-color: #fff;
 // height:100%;
 //   max-width: 375px;
-//   width: 375px;
+//   width: 100%;
 // `;
 
 // const ChatBody = styled.div`

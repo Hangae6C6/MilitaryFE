@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
-
+import Event from "./banner";
 import logo from "./icons/handlogo11.png";
 import mainlogo from "./icons/mainlogo.png";
 import baemin from "../image/Baemin.png";
@@ -50,48 +50,7 @@ function App() {
           <div id="titleText">전역하고 뭐하지</div>
         </div>
         <div id="mainImage">
-          <Banner>
-            <What>
-              전역하고 뭐하지? 이벤트 참여하지!
-              <div className="event">
-                이벤트 기간 | 5월 27일(금) - 6월 4일 (토)
-              </div>
-            </What>
-            <Icon>
-              <div className="alignNoBorder">
-                <img className="baemin" width="75px" src={baemin} />
-                <p className="coupon_p">배달의민족 쿠폰</p>
-                <div className="first">
-                  제일 먼저 챌린지 개설하고
-                  <br />
-                  배달의민족 시켜먹자!
-                  <br />
-                  챌린지 조회수 1위 달성해도! <br />
-                  챌린지 참여자수 1위 달성해도!
-                  <div className="people">전우 5명</div>
-                </div>
-              </div>
-              <div className="align">
-                <img className="ameri" width="155px" src={americano} />
-                <p className="coupon_p">스타벅스 아이스 아메리카노</p>
-                <div className="second">
-                  설문조사 참여하고
-                  <br />
-                  기프티콘 받기!
-                </div>
-
-                <div
-                  className="survey"
-                  onClick={() => {
-                    window.open("https://jaimemin.tistory.com/1449", "_blank");
-                  }}
-                >
-                  설문조사 참여하기 <img src={go} />
-                </div><br />
-                <div className="people">전우 10명</div>
-              </div>
-            </Icon>
-          </Banner>
+          <Event />
           <img
             id="logo"
             src={mainImage}
@@ -151,7 +110,7 @@ function App() {
               element={<ResultPage />}
             ></Route>
             <Route exact path="/myPage/:id" element={<MyUser />}></Route>
-            <Route exact path="/link/:challengeId" element={<Link />}></Route>
+            <Route exact path="/link/:challengeId,:userId" element={<Link />}></Route>
             <Route
               exact
               path="/myPage/userProfile/edit/:userId"
@@ -366,7 +325,8 @@ const DivBox = styled.div`
     max-height: 935px;
   }
   width: 375px;
-  max-height: 94%;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   background-color: #fff;
 `;

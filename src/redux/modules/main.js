@@ -52,7 +52,6 @@ const initialState = {
 };
 
 const getPostDB = () => {
-console.log("hello")
   return async function (dispatch) {
     try {
       await axios({
@@ -139,13 +138,7 @@ const addNavCheckedDB = (navNum, userId) => {
         method: "post",
         url: `https://pizzaboy.shop/api/main/iconclick?btnNum=${navNum}`,
       }).then((response) => {
-        if (navNum === 1) {
-          window.location.pathname = "/";
-        } else if (navNum === 2) {
-          window.location.pathname = "/search";
-        } else {
-          window.location.pathname = `/mypage/${userId}`;
-        }
+  
       });
     } catch (err) {
       console.log(err);
@@ -167,6 +160,23 @@ const getNavCheckedDB = () => {
     }
   };
 };
+
+const checkUserdataDB = () => {
+  return async function (dispatch) {
+    try{
+      await axios ({
+        method: "post",
+        url: "https://pizzaboy.shop/api/main/preTest1",
+      }).then((response) => {
+        console.log(response)
+       
+            });
+      }catch (err) {
+        console.log(err);
+      }
+    };
+  };
+
 
 export default handleActions(
   {
@@ -198,6 +208,7 @@ const ActionCreators = {
   getTestCountDB,
   getNavCheckedDB,
   addNavCheckedDB,
+  checkUserdataDB,
 };
 
 export { ActionCreators };

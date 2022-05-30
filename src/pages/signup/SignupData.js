@@ -4,7 +4,6 @@ import { useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import { ActionCreators as searchActions } from "../../redux/modules/mypage";
 import { Select, DateInput } from "grommet";
-import gobackIcon from "../../shared/icons/arrowWhite.png";
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -67,14 +66,7 @@ const UserData = () => {
     <Container>
      
       <div className="top">
-        <div
-          className="arrow"
-          onClick={() => {
-            window.location.pathname = "/";
-          }}
-        >
-          <img src={gobackIcon} alt="goback" width="20" height="18" />
-        </div>
+     
       </div>
       <div id="title-box">
         <p id="p">솔저챌린저스</p>
@@ -153,11 +145,7 @@ const Container = styled.div`
     border-top: 4px solid #ffffff;
     background-color: #151419;
   }
-  .arrow {
-    position: absolute;
-    margin: 17px 0px 0px 20px;
-    cursor: pointer;
-  }
+ 
   #title-box {
     width: 100%;
     height: 159px;

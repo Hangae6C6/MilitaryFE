@@ -32,6 +32,7 @@ const Nav = () => {
     dispatch(postActions.getPostDB());
   }, [dispatch]);
 
+
   const searchHandler = () => {
     if (
       keyword === "" 
@@ -95,7 +96,9 @@ const Nav = () => {
           );
         })}
       </MiddleBox>
-      <LowerBox>
+      <LowerBoxWrap>
+
+<LowerBox>
         {results.map((card, idx) => {
           return (
             <div
@@ -158,6 +161,9 @@ const Nav = () => {
           />
         </ImgSearchWhite>
       </LowerBox>
+
+      </LowerBoxWrap>
+      
       <Navigation />
       <ToastContainer />
 
@@ -172,11 +178,13 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   border: 2px solid #151419;
+  border-bottom: none;
   overflow: hidden;
-  
+  display: flex;
+  flex-direction: column;
   .top {
     height: 100px;
-    width: 375px;
+    width: 100%;
     border-top: 4px solid #ffffff;
     background-color: #151419;
 
@@ -215,7 +223,8 @@ const Container = styled.div`
 `;
 
 const MiddleBox = styled.div`
-  display: flexbox;
+  display: flex;
+  width: fit-content;
   height: 47px;
   border-bottom: #151419 2px solid;
   overflow: hidden;
@@ -236,13 +245,18 @@ const MiddleBox = styled.div`
   }
 `;
 
+const LowerBoxWrap = styled.div`
+  overflow: scroll;
+  height: 100%;
+  flex: 1;
+`;
+
 const LowerBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
   width: 378px;
-  overflow: scroll;
-  
+
   #box {
     text-align: center;
     height: 167px;

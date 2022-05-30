@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as userChallengeDataActions } from "../redux/modules/detail";
 import { ActionCreators as userProfileActions } from "../redux/modules/mypage";
+
 import Footer from "../component/Footer";
 import Navigation from "../component/Navigation";
 import { useParams } from "react-router-dom";
@@ -24,6 +25,7 @@ const MyUser = () => {
     }
   }, [dispatch, id]);
 
+
   React.useEffect(() => {
     if (id) {
       dispatch(userChallengeDataActions.getUserChallengeDetailDB(id));
@@ -34,28 +36,32 @@ const MyUser = () => {
     <Wrap>
       <Mine userId={id} userInfo={userInfo} />
       <Overflow>
-      <Challenges userId={id} myChallengeList={myChallengeList} />
-      <Footer />
+        <Challenges userId={id} myChallengeList={myChallengeList} />
+        <Footer />
       </Overflow>
       <Navigation />
     </Wrap>
   );
 };
 const Wrap = styled.div`
-  max-width: 375px;
   width: 100%;
+  height: 100%;
   background-color: #fff;
   border: 2px solid #151419;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  max-height: 100%;
-  height: 100%;
+  border: 2px solid #151419;
+  border-bottom: none;
+
+  overflow: hidden;
 `;
 
 const Overflow = styled.div`
-overflow: scroll;
-padding: 0 0 60px 0;
-`
+flex:1;
+  overflow: scroll;
+  height: 100%;
+`;
+
 
 export default MyUser;

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 background-color: #fff;
 height:93vh;
   max-width: 375px;
-  width: 375px;
+  width: 100%;
   border: 2px solid #151419;
   box-sizing: border-box;
 `

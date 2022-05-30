@@ -89,7 +89,7 @@ const Container = styled.div`
 
   .top {
     height: 69px;
-    width: 375px;
+    width: 100%;
 
     border-bottom: 2px solid #151419;
     .arrow {
@@ -107,11 +107,12 @@ const Container = styled.div`
 
 const ChallengeName = styled.div`
   #top {
-    width: 375px;
+    width: 100%;
     height: 80px;
     border-bottom: 2px solid #151419;
     #title {
       color: #151419;
+
       font-size: 24px;
       font-family: Gmarket SansBold;
       padding: 35px 0 0 36px;
@@ -129,7 +130,6 @@ const Astep = styled.div`
     width: ${(props) => props.width};
     height: 62px;
     display: flex;
-    border-right: ${(props) => props.width === 0 ? "none" : "2px solid black"};
    
     #rank {
       margin: 20px 0 0 39px;

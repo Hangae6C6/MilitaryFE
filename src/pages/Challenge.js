@@ -24,7 +24,7 @@ const Challenge = () => {
   const [steps, setSteps] = React.useState([]);
 
   const isTitle = (title) => {
-    let pattern = /^([a-zA-Z0-9|가-힣]).{3,10}$/;
+    let pattern = /^([a-zA-Z0-9|가-힣]).{2,10}$/;
     return pattern.test(title);
   };
   const isParticipant = (participant) => {
@@ -118,7 +118,7 @@ const Challenge = () => {
         });
         return;
       }
-      if (startDate === endDate | startDate > endDate) {
+      if ((startDate === endDate) | (startDate > endDate)) {
         toast.error("종료일은 시작일 이후로 설정해주세요", {
           position: "top-center",
         });
@@ -180,13 +180,14 @@ const Challenge = () => {
         />
       )}
 
-      <NextButton
-        onClick={() => {
-          challengeHandler();
-        }}
-      >
-        다음
-      </NextButton>
+        <NextButton
+          onClick={() => {
+            challengeHandler();
+          }}
+        >
+          다음
+        </NextButton>
+
       <ToastContainer />
     </Container>
   );
@@ -202,13 +203,14 @@ const Container = styled.div`
   border: 2px solid #151419;
   background-color: #ffffff;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 `;
 
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 0.2em;
-  margin-left: -2px;
-  padding: 32px 172px;
+  z-index: 9;
+  height: 83px;
+width: 100%;
   border: none;
   outline: none;
   color: #ffffff;

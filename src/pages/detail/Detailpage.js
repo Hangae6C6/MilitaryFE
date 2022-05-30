@@ -13,7 +13,6 @@ import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import personImg from "../../shared/images/icnPersonGray36.png";
 import joinIcon from "../../shared/icons/joinmemicon.png";
 import ddayIcon from "../../shared/icons/ddayicon.png";
-import { ActionCreators as navBarActions } from "../../redux/modules/main";
 import { getCookie } from "../../shared/cookie";
 
 import {
@@ -80,9 +79,7 @@ const Detail = () => {
     );
   };
 
-  const navBarCheckedHandler = (num) => {
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
-  };
+
 
   let isJoined = false;
   myChallengeStep.filter((cur) => {
@@ -97,7 +94,7 @@ const Detail = () => {
         <div
           className="arrow"
           onClick={() => {
-            navBarCheckedHandler(1);
+            window.location.pathname='/';
           }}
         >
           <img src={gobackIcon} alt="goback" />
@@ -120,9 +117,9 @@ const Detail = () => {
         <>
           <TitleBox>
             <div id="title">
-              <div id="title-up">마리톤 완주!</div>
+              <div id="title-up">로그인해주세요!</div>
               <div id="title-down">
-                <div id="type">운동</div>
+                <div id="type">가즈아!!</div>
               </div>
             </div>
             <div id="typeIcons">
@@ -273,6 +270,8 @@ const Container = styled.div`
   border: 2px solid #151419;
   background-color: #ffffff;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   .top {
     height: 69px;
     width: 100%;
@@ -361,15 +360,15 @@ const ChallengeRoom = styled.div`
 `;
 
 const ScrollWrap = styled.div`
-  overflow: auto;
+flex: 1;
+  overflow: scroll;
   height: 100%;
 `;
 
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 0.2em;
-  margin-left: -2px;
-  padding: 32px 157px;
+ z-index: 9;
+  height: 83px;
+width: 100%;
   border: none;
   outline: none;
   color: #ffffff;

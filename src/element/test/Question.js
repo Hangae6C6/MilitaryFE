@@ -26,11 +26,7 @@ const Question = () => {
   const resultNum = type.indexOf(Math.max(...type));
 
   if (num === 10) {
-    history.push({
-      pathname: `/main/preTest/${resultNum}`,
-      state: { resultNum },
-    });
-    window.location.reload();
+    window.location.pathname = `/main/preTest/${resultNum}`;
   }
 
   return (

@@ -2,7 +2,8 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie, setCookie, deleteCookie } from "../../shared/cookie";
-import { ActionCreators as navBarActions } from "../../redux/modules/main";
+import { toast } from "react-toastify";
+
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const SET_USER = "SET_USER";
@@ -25,7 +26,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
     try {
       await axios({
         method: "post",
-        url: "https://pizzaboy.shop/api/signUp",
+        url: "https://pizzaboy.shop/api/signup",
         data: {
           userId: userId,
           userPw: userPw,
@@ -33,7 +34,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
           userPwCheck: userPwCheck,
         },
       }).then(() => {
-        window.location.pathname=`/signupData/${userId}`;
+        window.location.pathname = `/signupData/${userId}`;
       });
     } catch (err) {
       console.log(err);
@@ -53,11 +54,10 @@ const loginDB = (userId, password) => {
           userPw: password,
         },
       }).then((res) => {
-        let num = 1;
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        dispatch(navBarActions.addNavCheckedDB(num));
+        window.location.pathname = "/";
       });
     } catch (err) {
       console.log(err);
@@ -76,7 +76,6 @@ const loginCheckDB = () => {
     })
       .then((res) => {
         dispatch(getUser(res.data.user));
-
       })
       .catch((err) => {
         console.log(err);
@@ -90,26 +89,31 @@ const kakaoLogin = (code) => {
       .get(`https://pizzaboy.shop/api/auth/kakao/callback?code=${code}`)
       .then((res) => {
         const token = res.data.token;
+        let userId = res.data.userId;
+        let check = res.data.userDataCheck;
+        console.log(check)
         setCookie("token", token);
-
-        dispatch(loginCheckDB());
-        window.location.pathname = "/";
+        if (!check) {
+          window.location.pathname = `/signupdata/${userId}`;
+        } else {
+          window.location.pathname = "/";
+        }
       })
       .catch((err) => {
-        window.alert("소셜 로그인에 실패하였습니다.", err);
-        //  window.location.pathname="/login";
+        toast.warn("소셜로그인에 실패했어요...", {
+          position: "top-center",
+        });
+        return;
       });
   };
 };
 
-
 const logoutDB = (userId) => {
   return function (dispatch) {
-    let num = 1;
-    deleteCookie("token"); 
+    deleteCookie("token");
     localStorage.removeItem("userId");
     dispatch(logout());
-    dispatch(navBarActions.addNavCheckedDB(num, userId));
+    window.location.pathname = "/";
   };
 };
 

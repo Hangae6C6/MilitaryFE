@@ -1,13 +1,20 @@
 import React from "react";
-import {useParams} from "react-router-dom"
+import {useParams, } from "react-router-dom"
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { ActionCreators as userChallengeDataActions } from "../redux/modules/detail";
+import { useDispatch } from "react-redux";
 
 const Link = () => {
-const {challengeId} = useParams();
+  const dispatch = useDispatch();
+const {challengeId, userId} = useParams();
+console.log(challengeId, userId);
 
+React.useEffect(() => {
+  dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
+}, [dispatch, challengeId, userId]);
 
   return (
     <Container>

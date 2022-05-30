@@ -6,7 +6,7 @@ const KakaoAuth = (props) => {
   const dispatch = useDispatch();
 
   let code = new URL(window.location.href).searchParams.get("code");
-  console.log(code);
+
   React.useEffect(() => {
      dispatch(userActions.kakaoLogin(code));
   }, [dispatch, code]);

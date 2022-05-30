@@ -2,7 +2,6 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/cookie";
-import { ActionCreators as userChallengeDataActions } from "../../redux/modules/detail";
 
 const GET_ONE_CHALLENGE = "GET_ONE_CHALLENGE";
 
@@ -27,7 +26,7 @@ const addChallengeDB = (challenges, userId) => {
     try {
       await axios({
         method: "post",
-        url: "https://pizzaboy.shop/api/challenge",
+        url: `https://pizzaboy.shop/api/challenge?userId=${userId}`,
         headers: {
           Authorization: `Bearer ${getCookie("token")}`,
         },
@@ -36,10 +35,8 @@ const addChallengeDB = (challenges, userId) => {
         },
       }).then((response) => {
         const challengeId = response.data.challengeNum;
-        dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
-        setTimeout(()=>{
-          window.location.pathname = `/link/${challengeId}`;
-        },1000); 
+        // dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
+        window.location.pathname = `/link/${challengeId},${userId}`;
       });
     } catch (err) {
       console.log(err);

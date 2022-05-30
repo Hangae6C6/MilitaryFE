@@ -103,7 +103,7 @@ const DetailpageProgress = ({
 export default DetailpageProgress;
 
 const Container = styled.div`
-  width: 375px;
+  width: 100%;
   height: 245px;
   background-color: #151419;
   #firstBox {

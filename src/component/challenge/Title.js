@@ -56,7 +56,7 @@ export default Title;
 
 const Container = styled.div`
 
- 
+flex: 1; 
   .arrow {
     position: absolute;
     margin:15px 0px 0px 10px;

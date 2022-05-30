@@ -18,7 +18,6 @@ const Main = () => {
   const cards = useSelector((state) => state.card.cards);
   const user = useSelector((state) => state.user.user);
   const userInfo = useSelector((state) => state.mypage.mypage);
-
   const myChallenges = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.answer
   );
@@ -52,19 +51,22 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 
-
   
 
-  let testViewCount = 1;
   const testHandler = () => {
-    if (token) {
+    dispatch(postActions.checkUserdataDB());
+    
+    let testViewCount = 1;
+    if (userId) {
       dispatch(postActions.addTestCountDB(testViewCount));
       setTimeout(() => {
-        window.location.pathname = `/main/preTest`;
+        window.location.pathname = '/main/preTest';
       }, 500);
     } else {
       window.location.pathname = "/login";
-    }
+    } 
+
+    
   };
 
   return (
@@ -74,9 +76,10 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
-            {user.userNick} {userInfo.rank}님!
+           {user.userNick} {userInfo.rank}님!
           </div>
         )}
+
         <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
         {userInfo.testResult ? (
           <div id="test-wrapdone">
@@ -142,12 +145,12 @@ const Container = styled.div`
   max-width: 375px;
   border: 2px solid #151419;
   border-bottom: none;
-
+  display: flex;
+  flex-direction: column;
   #top-box {
     display: flex;
     flex-direction: column;
     background-color: #151419;
-    height: 224px;
     border-top: 4px solid #ffffff;
 
     #main-title {
@@ -216,50 +219,18 @@ const Container = styled.div`
     }
   }
 
-  @media screen and (min-width:576px) {
-/* 스마트폰 가로 */
-}
-
-@media screen and (min-width:768px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 100vh;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 50%;
-  }
-}
 
 .challengeContainer {
+  flex: 1;
     overflow: scroll;
-    height: 67%;
+    height: 100%;
   }
   .challengeContainerIn {
+    flex: 1;
     overflow-y:scroll !important;
-    height: 65%;
+    height: 100%;
   }
-  @media screen and (min-height:1000px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 71%;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 69%;
-  }
-}
 
-@media screen and (min-height:1200px) {
-  .challengeContainer {
-    overflow: scroll;
-    height: 76%;
-  }
-  .challengeContainerIn {
-    overflow-y:scroll !important;
-    height: 75%;
-  }
-}
 
   
 `;
