@@ -61,7 +61,6 @@ const Overflow = styled.div`
 flex:1;
   overflow: scroll;
   height: 100%;
-  /* padding: 0 0 79px 0; */
 `;
 
 export default MyUser;
