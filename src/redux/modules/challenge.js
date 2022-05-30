@@ -9,14 +9,14 @@ const addChallenge = createAction(GET_ONE_CHALLENGE, (challenge) => challenge);
 
 const initialState = {
     challenges:{
-      challengeCnt: 0,
+      challengeCnt: "",
       challengeEndDate:"",
-      challengeLimitNum: 0,
-      challengeNum: 0,
+      challengeLimitNum: "",
+      challengeNum: "",
       challengeProgress: "",
       challengeTitle:"",
       challengeType: "",
-      challengeViewCnt: 0,
+      challengeViewCnt: "",
       steps: []
     }
 }

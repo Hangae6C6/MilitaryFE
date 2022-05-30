@@ -26,17 +26,17 @@ const getNavChecked = createAction(GET_NAV_CHECKED, (navBar) => ({
 const initialState = {
   cards: [
     {
-      challengeCnt: 0,
+      challengeCnt: "",
       challengeEndDate: "",
-      challengeLimitNum: 0,
-      challengeNum: 0,
+      challengeLimitNum: "",
+      challengeNum: "",
       challengeProgress: "",
       challengeTitle: "",
       challengeType: "",
-      challengeViewCnt: 0,
+      challengeViewCnt: "",
       steps: [
         {
-          stepNum: 0,
+          stepNum: "",
           isChecked: false,
           stepContent: "",
         },

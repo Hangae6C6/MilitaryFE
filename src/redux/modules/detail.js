@@ -26,14 +26,14 @@ const initialState = {
   userChallengeDetail: {
     answer: [
       {
-        challengeCnt: 0,
+        challengeCnt: "",
         challengeEndDate: "",
         challengeLimitNum: "",
-        challengeNum: 0,
+        challengeNum: "",
         challengeProgress: "",
         challengeTitle: "",
         challengeType: "",
-        challengeViewCnt: 0,
+        challengeViewCnt: "",
         steps: [
           {
             stepNum: 0,
@@ -63,7 +63,7 @@ const initialState = {
     {
       userId: "",
       userNick:"",
-      progress: 0,
+      progress: "",
 
     },
   ],
