@@ -261,10 +261,10 @@ const LeftSide = styled.div`
 const Banner = styled.div`
   border-left: 2px solid black;
   width: 420px;
-  height: 323px;
+  height: 312px;
   position: absolute;
   top: 195px;
-  left: 580px;
+  left: 730px;
 `;
 
 const What = styled.div`
@@ -287,7 +287,7 @@ const Icon = styled.div`
     display: space-around;
     width: 170px;
     padding: 10px;
-    height: 200px;
+    height: 250px;
     .baemin {
       width: 45px;
       padding: 25px;
