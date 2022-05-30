@@ -87,7 +87,7 @@ function App() {
                   }}
                 >
                   설문조사 참여하기 <img src={go} />
-                </div>
+                </div><br />
                 <div className="people">전우 10명</div>
               </div>
             </Icon>
@@ -285,9 +285,9 @@ const Icon = styled.div`
   display: flex;
   .alignNoBorder {
     display: space-around;
-    width: 200px;
+    width: 170px;
     padding: 10px;
-    height: 230px;
+    height: 200px;
     .baemin {
       width: 45px;
       padding: 25px;
@@ -295,7 +295,7 @@ const Icon = styled.div`
     .coupon_p {
       padding: 0 0 10px 0px;
       margin: 0;
-      font-size: 14pxx;
+      font-size: 14px;
       font-weight: 600;
     }
     .first {
