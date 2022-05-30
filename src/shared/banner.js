@@ -38,7 +38,7 @@ const Event = () => {
                 <div
                   className="survey"
                   onClick={() => {
-                    window.open("https://jaimemin.tistory.com/1449", "_blank");
+                    window.open("https://docs.google.com/forms/d/e/1FAIpQLScObzk9zCM0E_oLXtMpvyWc4qWoUbf3R-bUnlVX7lvyeydxfA/viewform", "_blank");
                   }}
                 >
                   설문조사 참여하기 <img src={go} alt="go" />
