@@ -55,7 +55,7 @@ const Wrap = styled.div`
 
 const Overflow = styled.div`
 overflow: scroll;
-padding: 0 0 79px 0;
+padding: 0 0 60px 0;
 `
 
 export default MyUser;
