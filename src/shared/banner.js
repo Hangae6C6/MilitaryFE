@@ -54,11 +54,12 @@ export default Event;
 
 const Banner = styled.div`
   border-left: 2px solid black;
+  border-right: 2px solid black;
   width: 420px;
-  height: 312px;
+  height: 366px;
   position: absolute;
   top: 195px;
-  left: 730px;
+  left: 620px;
 `;
 
 const What = styled.div`
@@ -81,7 +82,7 @@ const Icon = styled.div`
     display: space-around;
     width: 250px;
     padding: 10px;
-    height: 230px;
+    height: 250px;
     .baemin {
       width: 45px;
       padding: 25px;
