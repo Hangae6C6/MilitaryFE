@@ -44,22 +44,24 @@ const MyUser = () => {
   );
 };
 const Wrap = styled.div`
-  max-width: 375px;
   width: 100%;
+  height: 100%;
   background-color: #fff;
   border: 2px solid #151419;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  max-height: 100%;
-  height: 100%;
   border: 2px solid #151419;
+  border-bottom: none;
+
+  overflow: hidden;
 `;
 
 const Overflow = styled.div`
 flex:1;
   overflow: scroll;
-  padding: 0 0 79px 0;
+  height: 100%;
+  /* padding: 0 0 79px 0; */
 `;
 
 export default MyUser;

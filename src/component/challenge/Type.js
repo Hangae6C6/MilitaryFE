@@ -77,7 +77,7 @@ const Type = ({ onBack, onTypeChange }) => {
 export default Type;
 
 const Container = styled.div`
-
+flex: 1;
  
   .arrow {
     position: absolute;

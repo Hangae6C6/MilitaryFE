@@ -34,7 +34,7 @@ const dispatch = useDispatch();
 export default DetailpageStep;
 
 const ChallengeName = styled.div`
-  height: 100vh;
+  height: 100%;
   #top {  
     width: 100%;
     height: 80px;

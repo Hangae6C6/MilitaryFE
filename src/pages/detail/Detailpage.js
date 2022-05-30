@@ -270,6 +270,8 @@ const Container = styled.div`
   border: 2px solid #151419;
   background-color: #ffffff;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   .top {
     height: 69px;
     width: 100%;
@@ -358,15 +360,15 @@ const ChallengeRoom = styled.div`
 `;
 
 const ScrollWrap = styled.div`
-  overflow: auto;
+flex: 1;
+  overflow: scroll;
   height: 100%;
 `;
 
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 0.2em;
-  margin-left: -2px;
-  padding: 32px 157px;
+ z-index: 9;
+  height: 83px;
+width: 100%;
   border: none;
   outline: none;
   color: #ffffff;

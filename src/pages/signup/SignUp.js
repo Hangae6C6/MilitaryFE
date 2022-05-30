@@ -83,21 +83,21 @@ const SignUp = () => {
       <Box2>
         <LoginInput
           value={id}
-          placeholder="아이디 (한/영/숫자 4-12자)"
+          placeholder="아이디 (4-12자)"
           onChange={(e) => {
             setId(e.target.value);
           }}
         />
         <LoginInput
           value={nickname}
-          placeholder="닉네임 (한/영/숫자 최대 5자)"
+          placeholder="닉네임 (최대 5자)"
           onChange={(e) => {
             setNickname(e.target.value);
           }}
         />
         <LoginInput
           value={password}
-          placeholder="비밀번호 (한/영/숫자 최소 8자)"
+          placeholder="비밀번호 (영문/숫자 최소 8자)"
           type="password"
           onChange={(e) => {
             setPassword(e.target.value);
@@ -105,7 +105,7 @@ const SignUp = () => {
         />
         <LoginInput
           value={passwordCheck}
-          placeholder="비밀번호 확인 (한/영/숫자 최소 8자)"
+          placeholder="비밀번호 확인 (영문/숫자 최소 8자)"
           type="password"
           onChange={(e) => {
             setPasswordCheck(e.target.value);

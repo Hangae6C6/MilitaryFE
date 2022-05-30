@@ -26,7 +26,7 @@ const signupDB = (userId, userPw, userNick, userPwCheck) => {
     try {
       await axios({
         method: "post",
-        url: "https://pizzaboy.shop/api/signUp",
+        url: "https://pizzaboy.shop/api/signup",
         data: {
           userId: userId,
           userPw: userPw,
