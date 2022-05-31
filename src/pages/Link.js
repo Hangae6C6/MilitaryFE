@@ -51,7 +51,7 @@ const Link = () => {
       <CopyToClipboard onClick={onCopy} text={state.value}>
         <NextButton1
           onClick={() => {
-            toast.success("복사 완료!", { position: "top-center" });
+            toast.success("챌린지 링크 복사 완료!", { position: "top-center" });
             return;
           }}
         >
