@@ -24,7 +24,7 @@ API:Axios<br />
 CD:Amplify
 
 <h3>🛠 사용 Tool</h3>
-Editor : VSCode<br />
+VSCode<br />
 Git<br />
 AWS-Route53, Amplify
 
