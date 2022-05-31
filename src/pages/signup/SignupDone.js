@@ -21,7 +21,7 @@ const SignupDone = () => {
         <img id="pic" src={img} alt="img" width="245" height="330" />
       <NextButton
         onClick={() => {
-          window.location.pathname = "/";
+          window.location.pathname = "/guide";
         }}
       >
         홈으로

@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
+import ChatSocket from "../../element/chat/ChatSocket";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";
@@ -32,17 +33,14 @@ const Detail = () => {
   let { challengeId } = useParams();
   const card = useSelector((state) => state.challenge.challenges);
   const userId = useSelector((state) => state.user.user.userId);
+  const userNick = useSelector((state)=>state.user.user.userNick);
+  const router = useSelector((state) => state.router.location.pathname);
   const myChallengeDetail = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.answer
   );
   const myChallengeStep = useSelector(
     (state) => state.challengeDetail.userChallengeDetail.joinlist_id
   );
-
-  const userNickName = useSelector(
-    (state) => state.challengeDetail.userChallengeDetail.usernicklist1
-  );
-
   const token = getCookie("token");
   const spots = card.challengeLimitNum - card.challengeCnt;
 
@@ -89,11 +87,12 @@ const Detail = () => {
   });
 
   return (
+    <>
     <Container>
       <div className="top">
         <div
           className="arrow"
-          onClick={() => {
+          onClick={()=>{
             window.location.pathname='/';
           }}
         >
@@ -216,7 +215,7 @@ const Detail = () => {
               thisChallenge={card}
               myChallengeDetail={myChallengeDetail}
               myChallengeStep={myChallengeStep}
-              userNickName={userNickName}
+              userNickName={userNick}
             />
             <DetailpageStep
               challengeNum={challengeId}
@@ -242,7 +241,7 @@ const Detail = () => {
               position: "top-center",
             });
             return;
-            // window.location.pathname = `/detail/chat/${challengeId}`;
+            // window.location.pathname = `/chatsocket/${challengeId},${userNick}`;
           }}
         >
           채팅하기
@@ -258,6 +257,11 @@ const Detail = () => {
       )}
       <ToastContainer />
     </Container>
+    {router.includes("chatsocket") ? 
+    <ChatSocket /> : null }
+    
+  </>
+    
   );
 };
 

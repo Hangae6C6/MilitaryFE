@@ -11,11 +11,13 @@ import mainlogo from "./icons/mainlogo.png";
 
 import Main from "../pages/Main";
 import Detailpage from "../pages/detail/Detailpage";
+import Guide from "../pages/Guide";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/signup/SignUp";
 import SignupDone from "../pages/signup/SignupDone";
 import MyUser from "../pages/MyUser";
 import Chat from "../pages/Chat";
+import ChatSocket from "../element/chat/ChatSocket";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
@@ -71,7 +73,9 @@ function App() {
       <DivBox>
         <Logo>
           <img id="logo" src={logo} alt="img" height="53" />
-          <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
+          <img onClick={()=>{
+            window.location.pathname='/';
+          }} id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
         </Logo>
         <Router>
           <Routes>
@@ -129,6 +133,9 @@ function App() {
               element={<DetailpageLink />}
             ></Route>
             <Route exact path="/challenge" element={<Challenge />} />
+            <Route exact path="/chatsocket/:challengeId,:userNick" element={<ChatSocket />} />
+            <Route exact path="/guide" element={<Guide />} />
+            
           </Routes>
         </Router>
       </DivBox>

@@ -1,9 +1,9 @@
 // import React, { useCallback, useEffect, useState, useRef } from "react";
 // import styled from "styled-components";
-// // import io from "socket.io-client";
+// import io from "socket.io-client";
 // import TextBoxes from "./TextBoxes";
 
-// // const socket = io.connect("https://pizzaboy.shop/");
+// const socket = io.connect("https://pizzaboy.shop");
 
 // const TextField = (props) => {
 //   const [userName, setUsername] = useState("");
@@ -20,7 +20,7 @@
 //     }
 //   };
 
-//   return (
+//   return (  
 //     <>
 //       {!showChat ? (
 //         <div>
