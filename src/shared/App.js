@@ -235,6 +235,7 @@ const DivBox = styled.div`
 `;
 
 const Logo = styled.div`
+    cursor: pointer;
     max-width: 379px;
     height: 44px;
     background-color: #151419;

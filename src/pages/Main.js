@@ -51,22 +51,18 @@ const Main = () => {
     }
   }, [dispatch, userId]);
 
-  
-
   const testHandler = () => {
     dispatch(postActions.checkUserdataDB());
-    
+
     let testViewCount = 1;
     if (userId) {
       dispatch(postActions.addTestCountDB(testViewCount));
       setTimeout(() => {
-        window.location.pathname = '/main/preTest';
+        window.location.pathname = "/main/preTest";
       }, 500);
     } else {
       window.location.pathname = "/login";
-    } 
-
-    
+    }
   };
 
   return (
@@ -76,11 +72,25 @@ const Main = () => {
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
-           {user.userNick} {userInfo.rank}님!
+            {user.userNick} {userInfo.rank}님!
           </div>
         )}
+        <div id="sub-title-wrap">
+          <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
+          <div id="guideWrap" onClick={()=>{
+            window.location.pathname='/guide';
+          }}>
+            <span id="guide">사용가이드</span>{" "}
+            <img
+              id="arrow-right"
+              src={rightArrow}
+              alt="icon"
+              height="16"
+              width="16"
+            />
+          </div>
+        </div>
 
-        <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
         {userInfo.testResult ? (
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
@@ -160,19 +170,43 @@ const Container = styled.div`
       color: #ffffff;
       font-family: Gmarket SansBold;
     }
-    #sub-title {
-      padding: 10px 17px;
-      height: 20px;
-      font-size: 16px;
-      color: #ffffff;
-      font-family: Gmarket Sansmedium;
+
+    #sub-title-wrap {
+      display: flex;
+      padding: 20px 0px;
+      #sub-title {
+        margin-left: 16px;
+        height: 20px;
+        font-size: 16px;
+        color: #ffffff;
+        font-family: Gmarket Sansmedium;
+      }
+      #guideWrap {
+        display: flex;
+        #guide {
+          margin: 0 8px;
+          height: 18px;
+          width: 98px;
+          font-size: 16px;
+          color: #151419;
+          background-color: #ffffff;
+          cursor: pointer;
+          font-family: Gmarket SansMedium;
+        }
+
+        #arrow-right {
+          position: absolute;
+          margin-left:88px;
+        }
+      }
     }
+
     #test-wrap {
       display: flex;
       #test {
         margin: 0 17px;
-      height: 20px;
-      width: 290px;
+        height: 20px;
+        width: 290px;
         font-size: 18px;
         color: #151419;
         background-color: #ffffff;
@@ -195,9 +229,7 @@ const Container = styled.div`
         cursor: pointer;
         font-family: Gmarket SansMedium;
       }
-    
     }
-
 
     #progressText {
       padding: 35px 0 0 260px;
@@ -219,20 +251,16 @@ const Container = styled.div`
     }
   }
 
-
-.challengeContainer {
-  flex: 1;
+  .challengeContainer {
+    flex: 1;
     overflow: scroll;
     height: 100%;
   }
   .challengeContainerIn {
     flex: 1;
-    overflow-y:scroll !important;
+    overflow-y: scroll !important;
     height: 100%;
   }
-
-
-  
 `;
 
 const ProgressBarWrap = styled.div`
