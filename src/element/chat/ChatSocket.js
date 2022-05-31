@@ -1,52 +1,64 @@
 import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
 import styled from "styled-components";
 import { history } from "../../redux/configureStore";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import moment from "moment";
 import { useParams } from "react-router";
-
-const socket = io.connect("");
+import io from "socket.io-client";
 
 const ChatSocket = () => {
-    const {challengeId, userNick} = useParams();
-  const [message, setMessage] = useState("");
-  const [messageReceived, setMessageReceived] = useState("");
-  const time = moment().format("kk:mm");
-  
-  const sendMessage = () => {
-      if (message !== ""){
-        return;
-      }
+  const socket = io.connect("https://pizzaboy.shop");
 
-      let messageData = {
-          userNick,
-          challengeId,
-          message,
-          time, 
-      }
-    socket.emit("send_message", { message: { message },  });
+  const chatRef = React.useRef(null);
+  const { challengeId, userNick } = useParams();
+  const [message, setMessage] = useState("");
+  const [messageReceived, setMessageReceived] = useState([]);
+  const time = moment().format("kk:mm");
+
+  const sendMessage = () => {
+    if (message === "") {
+      return;
+    }
+    const currentMessage = {
+      message,
+      time,
+      userNick,
+      room: challengeId,
+    };
+    socket.emit("send_message", currentMessage);
+    setMessage("");
   };
 
+  const onKeyPress = (event) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  };
 
   const joinRoom = () => {
-    if (userNick !== "" && challengeId!== "") {
+    if (userNick !== "" && challengeId !== "") {
       socket.emit("join_room", challengeId);
-      console.log(userNick, challengeId);
     }
   };
 
   useEffect(() => {
-      if(userNick&&challengeId){
-          joinRoom();
-      }
-  },[])
+    if (userNick && challengeId) {
+      joinRoom();
+    }
+  }, []);
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessageReceived(data.message);
+      setMessageReceived((list) => [...list, data]);
     });
   }, [socket]);
+
+  const scrollToBottom = () => {
+    chatRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  React.useEffect(scrollToBottom, [messageReceived]);
+
   return (
     <Container>
       <div className="top">
@@ -60,20 +72,38 @@ const ChatSocket = () => {
         </div>
       </div>
       <TextArea>
-        <span>{messageReceived}</span>
+        {messageReceived.map((cur, idx) => (
+          <div
+            id={userNick === cur.userNick ? "myMessage" : "others"}
+            key={cur + idx}
+          >
+            <span id="message-box">{cur.message}</span>
+            <div>
+              <span id="userNick-box">{cur.userNick}</span>
+              <span id="time-box">{cur.time}</span>
+            </div>
+          </div>
+        ))}
+        <div ref={chatRef} />
       </TextArea>
       <BottomWrap>
         <input
           id="inputArea"
           inputtype="text"
-          placeholder="Message..."
+          value={message}
+          onKeyPress={onKeyPress}
           onChange={(event) => {
             setMessage(event.target.value);
           }}
         />
-        <button id="sendBtn" onClick={sendMessage}>
+        <button
+          id="sendBtn"
+          onClick={() => {
+            sendMessage();
+          }}
+        >
           {" "}
-          Send Message
+          보내기
         </button>
       </BottomWrap>
     </Container>
@@ -112,6 +142,47 @@ const TextArea = styled.span`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  #myMessage {
+    margin: 3px;
+    text-align: right;
+    #userNick-box {
+      font-size: 12px;
+      font-family: NanumSquareMedium;
+    }
+    #message-box {
+      text-align: right;
+      position: relative;
+      background-color: #1fb57e;
+      border: 1px solid;
+      padding: 10px;
+      display: inline-block;
+    }
+    #time-box {
+      font-size: 10px;
+      font-family: NanumSquareMedium;
+    }
+  }
+  #others {
+    margin: 3px;
+    text-align: left;
+    #message-box {
+      text-align: left;
+      position: relative;
+      background-color: #ffffff;
+      border: 1px solid;
+      padding: 10px;
+      display: inline-block;
+    }
+    #userNick-box {
+      font-size: 12px;
+      font-family: NanumSquareMedium;
+    }
+    #time-box {
+      font-size: 10px;
+      font-family: NanumSquareMedium;
+    }
+  }
 `;
 
 const BottomWrap = styled.div`
@@ -138,15 +209,12 @@ const BottomWrap = styled.div`
     font-family: NanumSquareMedium;
   }
   #sendBtn {
+    width: 70px;
     border: none;
     border-left: 2px solid #151419;
-    padding: 5px 5px;
     background-color: #6dbb91;
     font-size: 16px;
     font-family: NanumSquareMedium;
     cursor: pointer;
-    &:hover {
-      background-color: #fff;
-    }
   }
 `;

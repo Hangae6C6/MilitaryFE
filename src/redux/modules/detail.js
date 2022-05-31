@@ -8,7 +8,6 @@ const GET_ALL_USER_STEPS = "GET_ALL_USER_STEPS";
 const EDIT_STEP = "EDIT_STEP";
 const GET_RANK_DETAIL = "GET_RANK_DETAIL";
 
-
 const getUserChallengeDetail = createAction(GET_USER_DETAIL, (challenges) => ({
   challenges,
 }));
@@ -22,8 +21,10 @@ const editStepDetail = createAction(EDIT_STEP, (challenges) => ({
   challenges,
 }));
 
+
 const initialState = {
   userChallengeDetail: {
+    
     answer: [
       {
         challengeCnt: "",
@@ -182,6 +183,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.challengeDetail = action.payload.challenges;
       }),
+ 
   },
   initialState
 );
