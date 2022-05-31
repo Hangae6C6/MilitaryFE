@@ -35,7 +35,6 @@ const addChallengeDB = (challenges, userId) => {
         },
       }).then((response) => {
         const challengeId = response.data.challengeNum;
-        // dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
         window.location.pathname = `/link/${challengeId},${userId}`;
       });
     } catch (err) {
