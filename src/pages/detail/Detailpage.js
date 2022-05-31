@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import DetailpageStep from "../../component/detailpage/DetailpageStep";
-import ChatSocket from "../../element/chat/ChatSocket";
+import ChatSocket from "../ChatSocket";
 import DetailpageProgress from "../../component/detailpage/DetailpageProgress";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
 import shareIcon from "../../shared/icons/icnShareBlack35.png";

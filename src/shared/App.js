@@ -16,8 +16,7 @@ import Login from "../pages/LogIn";
 import SignUp from "../pages/signup/SignUp";
 import SignupDone from "../pages/signup/SignupDone";
 import MyUser from "../pages/MyUser";
-import Chat from "../pages/Chat";
-import ChatSocket from "../element/chat/ChatSocket";
+import ChatSocket from "../pages/ChatSocket";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
@@ -93,11 +92,7 @@ function App() {
               exact
               element={<KakaoAuth/>}
             />
-            <Route
-              exact
-              path="/detail/chat/:challengeId"
-              element={<Chat/>}
-            ></Route>
+           
             <Route exact path="/main/preTest/" element={<BeginPage />}></Route>
             <Route exact path="/search/" element={<Search />}></Route>
             <Route

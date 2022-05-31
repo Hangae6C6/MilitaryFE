@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { history } from "../../redux/configureStore";
-import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
+import { history } from "../redux/configureStore";
+import gobackIcon from "../shared/icons/icnBackNormalBlack35.svg";
 import moment from "moment";
 import { useParams } from "react-router";
 import io from "socket.io-client";
@@ -118,7 +118,6 @@ const Container = styled.div`
   max-width: 375px;
   border: 2px solid #151419;
   background-color: #ffffff;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -126,7 +125,6 @@ const Container = styled.div`
     height: 69px;
     width: 100%;
     border-bottom: 2px solid #151419;
-
     .arrow {
       position: absolute;
       margin: 17px 0px 0px 20px;
@@ -139,7 +137,6 @@ const TextArea = styled.span`
   flex: 1;
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -151,6 +148,7 @@ const TextArea = styled.span`
       font-family: NanumSquareMedium;
     }
     #message-box {
+      margin-right: 1px;
       text-align: right;
       position: relative;
       background-color: #1fb57e;
@@ -159,6 +157,7 @@ const TextArea = styled.span`
       display: inline-block;
     }
     #time-box {
+      padding-left: 5px;
       font-size: 10px;
       font-family: NanumSquareMedium;
     }
@@ -174,12 +173,15 @@ const TextArea = styled.span`
       padding: 10px;
       display: inline-block;
     }
-    #userNick-box {
-      font-size: 12px;
+
+    #time-box {
+    
+      font-size: 10px;
       font-family: NanumSquareMedium;
     }
-    #time-box {
-      font-size: 10px;
+    #userNick-box {
+      padding-right: 5px;
+      font-size: 12px;
       font-family: NanumSquareMedium;
     }
   }
