@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
 import rank3 from "../../shared/icons/rank3_small.png";
-import rank1 from "../../shared/icons/smallRank1.png"
-import rank2 from "../../shared/icons/smallRank2.png"
-import rankNull from "../../shared/icons/joinmemicon.png"
+import rank1 from "../../shared/icons/smallRank1.png";
+import rank2 from "../../shared/icons/smallRank2.png";
+import rankNull from "../../shared/icons/joinmemicon.png";
 
 const DetailpageRank = () => {
   const dispatch = useDispatch();
@@ -22,11 +22,10 @@ const DetailpageRank = () => {
   }, [dispatch, challengeId]);
 
   const ranks = [...joinList];
-   const rank = ranks.sort((a,b)=> (b.progress - a.progress));
+  const rank = ranks.sort((a, b) => b.progress - a.progress);
 
   return (
     <Container>
-   
       <div className="top">
         <div
           className="arrow"
@@ -44,25 +43,33 @@ const DetailpageRank = () => {
       <ChallengeName>
         <div id="top">
           <div id="title">챌린지 랭킹</div>
-        </div>
+        </div>{" "}
+      </ChallengeName>
+      <Wrap>
         {rank?.map((cur, idx) => (
           <Astep key={cur + idx} width={cur.progress + "%"}>
             <div id="progressBar">
               <div id="rank">{idx + 1}</div>
               <div id="nickname">{cur.userNick}</div>
-              <img src={
-            idx === 0
-              ? rank1
-              : idx === 1
-              ? rank2
-              : idx === 2
-              ? rank3 
-              : rankNull
-          } alt="rank" id="icon" width="28" height="36" />
+              <img
+                src={
+                  idx === 0
+                    ? rank1
+                    : idx === 1
+                    ? rank2
+                    : idx === 2
+                    ? rank3
+                    : rankNull
+                }
+                alt="rank"
+                id="icon"
+                width="28"
+                height="36"
+              />
             </div>
           </Astep>
         ))}
-      </ChallengeName>
+      </Wrap>
 
       <NextButton
         onClick={() => {
@@ -78,15 +85,15 @@ const DetailpageRank = () => {
 export default DetailpageRank;
 
 const Container = styled.div`
-  display: block;
   box-sizing: border-box;
-  max-height: 100vh;
   max-width: 375px;
   height: 100%;
   width: 100%;
   border: 2px solid #151419;
-
-
+  border-bottom: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   .top {
     height: 69px;
     width: 100%;
@@ -105,6 +112,11 @@ const Container = styled.div`
   }
 `;
 
+const Wrap = styled.div`
+  height: 100%;
+  /* overflow: scroll; */
+  flex: 1;
+`;
 const ChallengeName = styled.div`
   #top {
     width: 100%;
@@ -112,7 +124,6 @@ const ChallengeName = styled.div`
     border-bottom: 2px solid #151419;
     #title {
       color: #151419;
-
       font-size: 24px;
       font-family: Gmarket SansBold;
       padding: 35px 0 0 36px;
@@ -121,16 +132,18 @@ const ChallengeName = styled.div`
 `;
 
 const Astep = styled.div`
+  display: flex;
+  height: 64px;
   background-color: #ffffff;
   width: 100%;
-  height: 100%;
   border-bottom: 2px solid #151419;
+
   #progressBar {
     background-color: #1fb57e;
     width: ${(props) => props.width};
-    height: 62px;
+    height: 100%;
     display: flex;
-   
+
     #rank {
       margin: 20px 0 0 39px;
       font-size: 18px;
@@ -144,12 +157,12 @@ const Astep = styled.div`
       height: 22px;
       margin: 20px 0 0 100px;
       position: fixed;
+      
     }
     #icon {
       margin: 13px 0 0 300px;
       position: fixed;
     }
-  
   }
 `;
 const NextButton = styled.button`
