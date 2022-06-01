@@ -1,11 +1,27 @@
 import React from "react";
 import { history } from "../../redux/configureStore";
+import { useParams } from "react-router";
 import styled from "styled-components";
 import img from "../../shared/images/imgChallengeCompleted335.png";
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const DetailpageLink = () => {
+  const {challengeId} = useParams();
+  const [state, setState] = React.useState({
+    value: "https://soldierchallengers.com",
+    copied: false,
+  });
+  
+
+React.useEffect(()=>{
+  setState({value: `https://soldierchallengers.com/detailpage/${challengeId}`});
+},[challengeId])
+
+  const onCopy = () => {
+    this.setState({ copied: true });
+  };
 
   return (
     <Container>
@@ -26,10 +42,16 @@ const DetailpageLink = () => {
       <div className="fourth-box">
         친구, 연인, 부대원들과 함께 하는 건 어때요?
       </div>
-  
-      <NextButton1 onClick={()=>{
-       toast.error("곧 찾아 뵙겠습니다!", { position:"top-center" });
-       return;}}>링크 복사하기</NextButton1>
+      <CopyToClipboard onClick={onCopy} text={state.value}>
+        <NextButton1
+          onClick={() => {
+            toast.success("챌린지 링크 복사 완료!", { position: "top-center" });
+            return;
+          }}
+        >
+          링크 복사하기
+        </NextButton1>
+      </CopyToClipboard>
       <ToastContainer/>
 
     </Container>
@@ -140,7 +162,7 @@ const NextButton1 = styled.button`
    position: fixed;
   bottom: 0.2em;
   margin-left: -4px;
-  padding: 32px 139px;
+  padding: 32px 138px;
   border: none;
   outline: none;
   color: #ffffff;

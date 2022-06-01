@@ -1,20 +1,34 @@
 import React from "react";
-import {useParams, } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import img from "../shared/images/imgChallengeCompleted335.png";
-import { toast, ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ActionCreators as userChallengeDataActions } from "../redux/modules/detail";
 import { useDispatch } from "react-redux";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Link = () => {
   const dispatch = useDispatch();
-const {challengeId, userId} = useParams();
-console.log(challengeId, userId);
+  const { challengeId, userId } = useParams();
 
-React.useEffect(() => {
-  dispatch(userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId));
-}, [dispatch, challengeId, userId]);
+  const [state, setState] = React.useState({
+    value: "https://soldierchallengers.com/",
+    copied: false,
+  });
+  React.useEffect(()=>{
+    setState({value: `https://soldierchallengers.com/detailpage/${challengeId}`});
+  },[challengeId]);
+  
+  const onCopy = () => {
+    this.setState({ copied: true });
+  };
+
+  React.useEffect(() => {
+    dispatch(
+      userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId)
+    );
+  }, [dispatch, challengeId, userId]);
 
   return (
     <Container>
@@ -34,11 +48,18 @@ React.useEffect(() => {
       <div className="fourth-box">
         친구, 연인, 부대원들과 함께 하는 건 어때요?
       </div>
-      <NextButton1 onClick={()=>{
-       toast.error("곧 찾아 뵙겠습니다!", { position:"top-center" });
-       return;
-      }}>링크 복사하기</NextButton1>
-      <ToastContainer/>
+      <CopyToClipboard onClick={onCopy} text={state.value}>
+        <NextButton1
+          onClick={() => {
+            toast.success("챌린지 링크 복사 완료!", { position: "top-center" });
+            return;
+          }}
+        >
+          링크 복사하기
+        </NextButton1>
+      </CopyToClipboard>
+
+      <ToastContainer />
     </Container>
   );
 };
@@ -46,9 +67,9 @@ React.useEffect(() => {
 export default Link;
 
 const Container = styled.div`
-box-sizing: border-box;
-overflow: hidden;
-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
   max-width: 379px;
   width: 100%;
   border: 4px solid black;
@@ -69,7 +90,7 @@ height: 100%;
     margin: 70px 45px 0px;
   }
   .third-box {
-    margin: 30px -5px
+    margin: 30px -5px;
   }
   .fourth-box {
     width: 200px;
@@ -146,7 +167,7 @@ const NextButton = styled.button`
 const NextButton1 = styled.button`
   position: fixed;
   bottom: 0.2em;
-  width: 379px;
+  width: 375px;
   height: 85px;
   border: none;
   outline: none;
@@ -158,4 +179,3 @@ const NextButton1 = styled.button`
   background-color: #151419;
   cursor: pointer;
 `;
-

@@ -14,6 +14,14 @@ const Plan = ({
   deleteStepHandler,
   onBack,
 }) => {
+  const bottom = React.useRef(null);
+
+  const scrollToBottom = () => {
+    bottom.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  React.useEffect(scrollToBottom, [addStepHandler]);
+
   return (
     <Container>
       <div className="arrow" onClick={onBack}>
@@ -71,6 +79,7 @@ const Plan = ({
             </div>
           );
         })}
+        <div ref={bottom} />
       </Wrap>
     </Container>
   );

@@ -14,11 +14,12 @@ import go from "../image/Go.png";
 
 import Main from "../pages/Main";
 import Detailpage from "../pages/detail/Detailpage";
+import Guide from "../pages/Guide";
 import Login from "../pages/LogIn";
 import SignUp from "../pages/signup/SignUp";
 import SignupDone from "../pages/signup/SignupDone";
 import MyUser from "../pages/MyUser";
-import Chat from "../pages/Chat";
+import ChatSocket from "../pages/ChatSocket";
 import BeginPage from "../pages/test/BeginPage";
 import QuestionPage from "../pages/test/QuestionPage";
 import ResultPage from "../pages/test/ResultPage";
@@ -74,7 +75,9 @@ function App() {
       <DivBox>
         <Logo>
           <img id="logo" src={logo} alt="img" height="53" />
-          <img id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
+          <img onClick={()=>{
+            window.location.pathname='/';
+          }} id="mainlogo" src={mainlogo} alt="img" height="23" width="130" />
         </Logo>
         <Router>
           <Routes>
@@ -92,11 +95,7 @@ function App() {
               exact
               element={<KakaoAuth />}
             />
-            <Route
-              exact
-              path="/detail/chat/:challengeId"
-              element={<Chat />}
-            ></Route>
+           
             <Route exact path="/main/preTest/" element={<BeginPage />}></Route>
             <Route exact path="/search/" element={<Search />}></Route>
             <Route
@@ -132,6 +131,9 @@ function App() {
               element={<DetailpageLink />}
             ></Route>
             <Route exact path="/challenge" element={<Challenge />} />
+            <Route exact path="/chatsocket/:challengeId,:userNick" element={<ChatSocket />} />
+            <Route exact path="/guide" element={<Guide />} />
+            
           </Routes>
         </Router>
       </DivBox>
@@ -332,17 +334,18 @@ const DivBox = styled.div`
 `;
 
 const Logo = styled.div`
-  max-width: 379px;
-  height: 44px;
-  background-color: #151419;
-  #logo {
-    margin: 15px 0 0 20px;
-    width: 140px;
-    position: absolute;
-  }
-  #mainlogo {
-    margin: 10px 0 30px 220px;
-  }
+    cursor: pointer;
+    max-width: 379px;
+    height: 44px;
+    background-color: #151419;
+    #logo {
+      margin: 15px 0 0 20px;
+      width: 140px;
+      position: absolute;
+    }
+    #mainlogo {
+      margin: 10px 0 30px 220px;
+    }
 `;
 
 export default App;

@@ -144,12 +144,4 @@ const Icon = styled.div`
   }
 `;
 
-const People = styled.p`
-  display: inline-block;
-  background-color: black;
-  color: #fff;
-  font-weight: 600;
-  margin-left: 8px;
-  font-weight: 600;
-  font-size: 12px;
-`;
+

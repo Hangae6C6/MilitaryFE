@@ -19,6 +19,7 @@
     "immer": "^9.0.12",
     "moment": "^2.29.3",
     "react": "^18.0.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.0.0",
     "react-redux": "^8.0.1",
     "react-router": "^6.3.0",
@@ -32,7 +33,9 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
+    "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",
+    "swiper": "^8.1.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
