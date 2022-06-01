@@ -108,7 +108,7 @@ const Detail = () => {
             />
           </div>
         </div>
-        {!token ? (
+        {!userId ? (
           <>
             <TitleBox>
               <div id="title">

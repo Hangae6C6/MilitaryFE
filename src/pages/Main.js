@@ -137,7 +137,7 @@ const Main = () => {
           <></>
         )}
 
-        <MyCallenge user={user} cards={myChallenges} token={token} />
+        <MyCallenge user={user} cards={myChallenges} userId={userId} />
         <HotChallenge cards={cards} />
       </div>
       <Navigation />
