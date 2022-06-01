@@ -57,6 +57,7 @@ const HeaderDiv = styled.div`
 `;
 const TestImg = styled.img`
   height: 363px;
+  width: 100%;
   border-top: 2px solid #151419;
 `;
 
