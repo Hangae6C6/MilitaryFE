@@ -68,7 +68,7 @@ const Main = () => {
   return (
     <Container>
       <div id="top-box">
-        {!token ? (
+        {!userId ? (
           <div id="main-title">충성! 안녕하십니까!</div>
         ) : (
           <div id="main-title">
@@ -115,7 +115,7 @@ const Main = () => {
 
         <span id="progressText">전체 진행율(%)</span>
       </div>
-      {!token ? (
+      {!userId ? (
         <></>
       ) : (
         <>
@@ -128,7 +128,7 @@ const Main = () => {
           </ProgressBarWrap>
         </>
       )}
-      <div className={!token ? "challengeContainer" : "challengeContainerIn"}>
+      <div className={!userId ? "challengeContainer" : "challengeContainerIn"}>
         {token ? (
           <div id="my-challenge">
             <p id="p">내가 진행중인 챌린지</p>
