@@ -114,7 +114,7 @@ const Container = styled.div`
 
 const Wrap = styled.div`
   height: 100%;
-  /* overflow: scroll; */
+  overflow: scroll;
   flex: 1;
 `;
 const ChallengeName = styled.div`
