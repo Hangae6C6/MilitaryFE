@@ -43,7 +43,7 @@ const DetailpageRank = () => {
       <ChallengeName>
         <div id="top">
           <div id="title">챌린지 랭킹</div>
-        </div>{" "}
+        </div>
       </ChallengeName>
       <Wrap>
         {rank?.map((cur, idx) => (
@@ -133,7 +133,7 @@ const ChallengeName = styled.div`
 
 const Astep = styled.div`
   display: flex;
-  height: 64px;
+  height: 63px;
   background-color: #ffffff;
   width: 100%;
   border-bottom: 2px solid #151419;
@@ -141,8 +141,8 @@ const Astep = styled.div`
   #progressBar {
     background-color: #1fb57e;
     width: ${(props) => props.width};
-    height: 100%;
-    display: flex;
+    height: 64px;
+    display: grid;
 
     #rank {
       margin: 20px 0 0 39px;
@@ -155,13 +155,12 @@ const Astep = styled.div`
       font-size: 16px;
       width: 280px;
       height: 22px;
-      margin: 20px 0 0 100px;
-      position: fixed;
-      
+      margin: -25px 0 0 100px;
     }
     #icon {
-      margin: 13px 0 0 300px;
-      position: fixed;
+      margin: -40px 0 0 300px;
+      /* position: absolute; */
+      float: right;
     }
   }
 `;
