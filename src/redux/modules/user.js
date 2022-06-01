@@ -57,7 +57,7 @@ const loginDB = (userId, password) => {
         const accessToken = res.data.loginToken;
         setCookie("token", `${accessToken}`);
         dispatch(setUser(res));
-        window.location.pathname = "/";
+        window.location.pathname = "/video";
       });
     } catch (err) {
       console.log(err);
@@ -96,7 +96,7 @@ const kakaoLogin = (code) => {
         if (!check) {
           window.location.pathname = `/signupdata/${userId}`;
         } else {
-          window.location.pathname = "/";
+          window.location.pathname = "/video";
         }
       })
       .catch((err) => {
