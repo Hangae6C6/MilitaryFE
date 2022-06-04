@@ -7,9 +7,6 @@
 url : https://soldierchallengers.com/<br />
 notion : https://www.notion.so/9bcf0f86055e4ccdb3e8cdd7ab811a03
 
-<h3>🎥 시연 영상</h3>
-시연영상 보러가기 : 
-
 <h3>🧑‍💻 개발기간</h3>
 2022.04.22 ~ 2022.06.02<br />
 FrontEnd : 한유정, 이성영 (React)<br />
