@@ -18,7 +18,7 @@ import {
   foreignLanguageBlack,
 } from "../../shared/icons/icons";
 
-const MyCallenge = ({ user, cards, token }) => {
+const MyCallenge = ({ user, cards, userId }) => {
   const dispatch = useDispatch();
 
   const veiwCountHandler = (challengeId, challengeCnt) => {
@@ -28,7 +28,7 @@ const MyCallenge = ({ user, cards, token }) => {
   };
   return (
     <>
-      {!token ? (
+      {!userId ? (
         <AddButton>
           <div
             id="button"

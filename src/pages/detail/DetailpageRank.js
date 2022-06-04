@@ -156,19 +156,18 @@ const Astep = styled.div`
       width: 280px;
       height: 22px;
       margin: -25px 0 0 100px;
+      
     }
     #icon {
       margin: -40px 0 0 300px;
-      /* position: absolute; */
       float: right;
     }
   }
 `;
 const NextButton = styled.button`
-  position: fixed;
-  bottom: 0.2em;
-  margin-left: -2px;
-  padding: 32px 157px;
+   margin-left: -2px;
+  width: 374px;
+  height: 83px;
   border: none;
   outline: none;
   color: #ffffff;

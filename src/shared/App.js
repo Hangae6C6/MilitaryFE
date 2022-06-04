@@ -29,6 +29,7 @@ import SignupData from "../pages/signup/SignupData";
 import Challenge from "../pages/Challenge";
 import DetailpageRank from "../pages/detail/DetailpageRank";
 import DetailpageLink from "../pages/detail/DetailpageLink";
+import Video from "../component/Video";
 import Link from "../pages/Link";
 import MyEdit from "../pages/MyEdit";
 import mainImage from "../shared/images/imgWebMainSoliderGreen640.png";
@@ -133,7 +134,7 @@ function App() {
             <Route exact path="/challenge" element={<Challenge />} />
             <Route exact path="/chatsocket/:challengeId,:userNick" element={<ChatSocket />} />
             <Route exact path="/guide" element={<Guide />} />
-            
+            <Route exact path="/video" element={<Video />} />
           </Routes>
         </Router>
       </DivBox>

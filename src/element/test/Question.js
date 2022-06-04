@@ -98,7 +98,7 @@ const BackIcon = styled.img`
 
 const QText = styled.div`
   padding: 60px 0 0 10px;
-  height: 119px;
+  height: 97px;
   width: 350px;
   background-color: #ffffff;
   font-size: 26px;
