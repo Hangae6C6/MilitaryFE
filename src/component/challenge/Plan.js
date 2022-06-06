@@ -42,7 +42,7 @@ const Plan = ({
 
       <div className="title">
         <div id="type">{type}</div>
-        <div className="title-text">목표를 위한 STEP</div>
+        <div className="title-text">STEPS</div>
 
         <span className="sub-title">
          쉽게 시작할수 있는 할일을 저고 실천한다면

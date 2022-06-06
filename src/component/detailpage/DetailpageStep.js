@@ -13,7 +13,7 @@ const dispatch = useDispatch();
   return (
     <ChallengeName>
       <div id="top">
-        <div id="title">목표를 위한 Step</div>
+        <div id="title">STEPS</div>
       </div>
       {steps && steps.map((step, idx) => (
           <Astep key={step+idx}>

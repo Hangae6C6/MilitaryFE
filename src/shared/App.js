@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
-import Event from "./banner";
 import logo from "./icons/handlogo11.png";
 import mainlogo from "./icons/mainlogo.png";
 
@@ -46,10 +45,9 @@ function App() {
     <Background>
       <LeftSide>
         <div id="title">
-          <div id="titleText">전역하고 뭐하지</div>
+          <div id="titleText">Soldier Challengers</div>
         </div>
         <div id="mainImage">
-          <Event />
           <img
             id="logo"
             src={mainImage}
@@ -60,12 +58,12 @@ function App() {
         </div>
         <div id="lowerBox">
           <div id="upperText">SOLDIER CHALLENGERS</div>
-          <div id="lowerText">솔저 챌린저스</div>
-          <span id="lowerText">해야지</span>
+          <div id="lowerText">FOR VETERANS</div>
+          <span id="lowerText"></span>
         </div>
         <div id="bottomBox">
           <div id="bottomText">
-            운동/ 독서/ 스터디/ 자기개발/ 취업/ 외국어/ 진로고민/ 자격증
+            training / skill / education / discipline / language / job
           </div>
         </div>
       </LeftSide>
@@ -174,7 +172,7 @@ const LeftSide = styled.div`
     #titleText {
       width: 630px;
       height: 100px;
-      font-size: 88px;
+      font-size: 69px;
       font-family: Gmarket SansBold;
     }
   }
@@ -203,7 +201,7 @@ const LeftSide = styled.div`
     #lowerText {
       display: flex;
       box-sizing: border-box;
-      font-size: 60px;
+      font-size: 45px;
       font-family: Gmarket SansBold;
     }
   }

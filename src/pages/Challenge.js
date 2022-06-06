@@ -185,7 +185,7 @@ const Challenge = () => {
             challengeHandler();
           }}
         >
-          다음
+          NEXT
         </NextButton>
 
       <ToastContainer />

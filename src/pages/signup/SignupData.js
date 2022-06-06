@@ -69,10 +69,10 @@ const UserData = () => {
      
       </div>
       <div id="title-box">
-        <p id="p">솔저챌린저스</p>
+        <p id="p">Soldier Challegners</p>
       </div>
       <Box2>
-        <div id="p">입대일</div>
+        <div id="p">Enlisted Date</div>
         <Wrap>
           <DateInput
             id="input"
@@ -83,7 +83,7 @@ const UserData = () => {
             
           />
         </Wrap>
-        <div id="p">전역일</div>
+        <div id="p">Discharged Date</div>
         <Wrap>
           <DateInput
             id="input"
@@ -96,7 +96,7 @@ const UserData = () => {
         <Wrap>
           <Select
             id="inputs"
-            placeholder="소속부대를 선택해주세요"
+            placeholder="Please select your unit"
             value={milCategory}
             options={options}
             onChange={({ value: nextValue }) => onMilCategoryChange(nextValue)}
@@ -107,7 +107,7 @@ const UserData = () => {
         <Wrap>
           <Select
             id="inputs"
-            placeholder="계급을 선택해주세요"
+            placeholder="Please select your rank"
             value={rank}
             options={ranks}
             onChange={({ value: nextValue }) => onRankChange(nextValue)}
@@ -116,7 +116,7 @@ const UserData = () => {
         </Wrap>
         <Empty/>
       </Box2>
-      <NextButton onClick={signupDataHandler}>회원가입</NextButton>
+      <NextButton onClick={signupDataHandler}>signup</NextButton>
       <ToastContainer/>
     </Container>
   );
@@ -156,7 +156,7 @@ const Container = styled.div`
     #p {
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 35px auto;
+      margin: 15px 70px;
       color: #ffffff;
     }
   }
@@ -201,7 +201,7 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -2px;
-  padding: 32px 157px;
+  padding: 32px 159px;
   border: none;
   outline: none;
   color: #ffffff;

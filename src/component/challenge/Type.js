@@ -50,7 +50,7 @@ const Type = ({ onBack, onTypeChange }) => {
         />
       </div>
       <div className="title">
-        <div className="title-text">챌린지 주제</div>
+        <div className="title-text">Type</div>
         <span className="sub-title">
          이번 챌린지의 주제를 아래에서 
          <br/>선택합니다!

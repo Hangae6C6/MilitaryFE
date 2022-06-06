@@ -26,14 +26,14 @@ const HotChallenge = ({ cards, types }) => {
         <Container>
           <UpperBox>
             <div id="title">
-              <div id="title-text"> HOT 챌린지</div>
+              <div id="title-text"> HOT Challenges</div>
               <div id={list===false ?"viewCnt" : "viewCntUnChecked"} onClick={()=>{
                 setList(true);
-              }}>조회순</div>
+              }}>View</div>
               
               <div id={list===true ? "joinMember" : "joinMemberUnChecked"} onClick={()=>{
                 setList(false);
-              }}>참여순</div>
+              }}>Participants</div>
             </div>
           </UpperBox>
          
@@ -165,37 +165,38 @@ const UpperBox = styled.div`
   #title {
     display: flex;
     width: 100%;
-    padding: 30px 0 0 20px;
+    padding: 15px 0 0 20px;
     #title-text {
+      width: 100px;
       color: #A01414;
-      font-size: 26px;
+      font-size: 22px;
       font-family: Gmarket SansBold;
     }
     #viewCnt {
       color: #151419;
       font-size: 18px;
       font-family: NanumSquare;
-      margin: 10px 0 0 80px;
+      margin: 30px 0 0 90px;
       cursor: pointer;
     }
     #viewCntUnChecked {
       color: #151419;
       font-size: 18px;
       font-family: NanumSquareBold;
-      margin: 10px 0 0 80px;
+      margin: 30px 0 0 90px;
       cursor: pointer;
     }
     #joinMember {
       color: #151419;
       font-size: 18px;
-      margin: 10px 0px 0 10px;
+      margin: 30px 0px 0 10px;
       font-family: NanumSquare;
       cursor: pointer;
     }
     #joinMemberUnChecked {
       color: #151419;
       font-size: 18px;
-      margin: 10px 0px 0 10px;
+      margin: 30px 0px 0 10px;
       font-family: NanumSquareBold;
       cursor: pointer;
     }

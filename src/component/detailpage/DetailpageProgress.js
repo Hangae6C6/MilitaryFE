@@ -48,7 +48,7 @@ const DetailpageProgress = ({
                 window.location.pathname = "/login";
               }}
             >
-              내 실력보여주기{" "}
+              Do you want to show who you are?{" "}
             </div>
             <img
               id="i"
@@ -67,8 +67,8 @@ const DetailpageProgress = ({
         >
           <div id="firstBox">
             <div id="titleBox">
-              <div id="title">{userNickName}님!</div>
-              <div id="subTitle">전진! 앞으로!</div>
+              <div id="title">{userNickName}!</div>
+              <div id="subTitle">You can do it!</div>
             </div>
 
             <div id="stepNum">
@@ -85,7 +85,7 @@ const DetailpageProgress = ({
           </ProgressBarWrap>
 
           <div id="secBox">
-            <div id="p">랭킹보러가기 </div>
+            <div id="p">Ranking </div>
             <img
               id="i"
               src={rightArrow}
@@ -139,16 +139,16 @@ const Container = styled.div`
     }
   }
   #secBox {
-    width: 300px;
+    width: 270px;
     height: 50px;
-    margin: 10px 0 0 37px;
+    margin: 10px 0 0 77px;
     display: flex;
     justify-content: space-between;
     color: #ffffff;
     font-family: Gmarket SansBold;
     #p {
       cursor: pointer;
-      width: 200px;
+      width: 180px;
       font-size: ${(props) => (props.primary ? "26px" : "24px")};
       padding: ${(props) =>
         props.primary ? "10px 0 0 10px" : "13px 0 0 55px"};

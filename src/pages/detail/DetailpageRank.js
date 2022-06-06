@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import gobackIcon from "../../shared/icons/icnBackNormalBlack35.svg";
-import shareIcon from "../../shared/icons/icnShareBlack35.png";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators as getUserChallengeActions } from "../../redux/modules/detail";
@@ -36,13 +35,13 @@ const DetailpageRank = () => {
           <img src={gobackIcon} alt="goback" />
         </div>
         <div id="share-icon">
-          <img src={shareIcon} alt="shareIcon" />
+     
         </div>
       </div>
 
       <ChallengeName>
         <div id="top">
-          <div id="title">챌린지 랭킹</div>
+          <div id="title">Ranking</div>
         </div>{" "}
       </ChallengeName>
       <Wrap>

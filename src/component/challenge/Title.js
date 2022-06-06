@@ -29,7 +29,7 @@ const Title = ({ title, onChange }) => {
         />
       </div>
       <div className="title">
-        <div className="title-text">챌린지 이름</div>
+        <div className="title-text">Title</div>
         <span className="sub-title">
          다른이의 시선을 사로잡을수 있는 
          <br/>챌린지 이름은 최대한 간결하게! (최대10자)

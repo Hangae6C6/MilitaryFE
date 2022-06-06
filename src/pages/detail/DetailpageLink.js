@@ -31,16 +31,16 @@ React.useEffect(()=>{
         <NextButton
          onClick={history.back}
         >
-          뒤로가기
+          Back
         </NextButton>
       </div>
 
-      <div className="second-box">챌린지 공유하기</div>
+      <div className="second-box">Let's share!</div>
       <div className="third-box">
         <img src={img} alt="img" width="390" height="340" />
       </div>
       <div className="fourth-box">
-        친구, 연인, 부대원들과 함께 하는 건 어때요?
+      How about sharing this challenge with your friends? 
       </div>
       <CopyToClipboard onClick={onCopy} text={state.value}>
         <NextButton1
@@ -49,7 +49,7 @@ React.useEffect(()=>{
             return;
           }}
         >
-          링크 복사하기
+          Share
         </NextButton1>
       </CopyToClipboard>
       <ToastContainer/>
@@ -87,12 +87,12 @@ height: 100%;
     margin: 30px -5px
   }
   .fourth-box {
-    width: 200px;
+    width: 280px;
     height: 31px;
     font-family: Gmarket SansMedium;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    margin: 16px 90px 0px;
+    margin: 20px 40px 0px;
   }
   .link-box {
     width: 336px;
@@ -162,7 +162,7 @@ const NextButton1 = styled.button`
    position: fixed;
   bottom: 0.2em;
   margin-left: -4px;
-  padding: 32px 138px;
+  padding: 32px 163px;
   border: none;
   outline: none;
   color: #ffffff;

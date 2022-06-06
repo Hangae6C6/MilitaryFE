@@ -20,7 +20,7 @@ const Guide = (props) => {
             window.location.pathname = '/';
           }}
         >
-          홈으로
+          HOME
         </NextButton>
       <Box>
         <Swiper

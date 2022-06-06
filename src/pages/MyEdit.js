@@ -47,7 +47,6 @@ const MyEdit = () => {
     setRank(e);
   };
 
-  // 닉네임 조건
   const isNickname = (nickName) => {
     let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
     return pattern.test(nickName); // 맞으면 true, 틀리면 false반환
@@ -99,13 +98,13 @@ const MyEdit = () => {
                 dispatch(logoutActions.logoutDB(userId));
               }}
             >
-              로그아웃
+              Logout
             </span>
           </BackDiv>
         </MyP>
       </MyPage>
-      <PersonalEdit>&nbsp;&nbsp;&nbsp;개인정보 수정</PersonalEdit>
-      <Nick>&nbsp;&nbsp;&nbsp;&nbsp;닉네임</Nick>
+      <PersonalEdit>&nbsp;&nbsp;&nbsp;Edit</PersonalEdit>
+      <Nick>&nbsp;&nbsp;&nbsp;&nbsp;Name</Nick>
       <InputTitle>
         <textarea
           className="input-area"
@@ -117,7 +116,7 @@ const MyEdit = () => {
         ></textarea>
       </InputTitle>
       <Box2>
-        <div id="p">입대일</div>
+        <div id="p">Enlisted Date</div>
         <Box1>
           <DateInput
             id="input"
@@ -128,7 +127,7 @@ const MyEdit = () => {
             defaultValue="string"
           />
         </Box1>
-        <div id="p">전역일</div>
+        <div id="p">Discharged Date</div>
         <Box1>
           <DateInput
             id="input"
@@ -162,7 +161,7 @@ const MyEdit = () => {
         </Box1>
         <Empty />
       </Box2>
-      <NextButton onClick={editUserDataHandler}>저장하기</NextButton>
+      <NextButton onClick={editUserDataHandler}>SAVE</NextButton>
       <ToastContainer />
     </Wrap>
   );
@@ -288,7 +287,7 @@ const NextButton = styled.button`
   position: fixed;
   bottom: 0.2em;
   margin-left: -2px;
-  padding: 32px 157px;
+  padding: 32px 164px;
   border: none;
   outline: none;
   color: #ffffff;

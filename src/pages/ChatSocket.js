@@ -103,7 +103,7 @@ const ChatSocket = () => {
           }}
         >
           {" "}
-          보내기
+          Send
         </button>
       </BottomWrap>
     </Container>

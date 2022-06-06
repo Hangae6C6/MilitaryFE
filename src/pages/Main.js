@@ -69,18 +69,18 @@ const Main = () => {
     <Container>
       <div id="top-box">
         {!userId ? (
-          <div id="main-title">충성! 안녕하십니까!</div>
+          <div id="main-title">HELLO! </div>
         ) : (
           <div id="main-title">
             {user.userNick} {userInfo.rank}님!
           </div>
         )}
         <div id="sub-title-wrap">
-          <div id="sub-title">오늘도 한번 달려보시렵니까?</div>
+          <div id="sub-title">ARE YOU READY?</div>
           <div id="guideWrap" onClick={()=>{
             window.location.pathname='/guide';
           }}>
-            <span id="guide">사용가이드</span>{" "}
+            <span id="guide"> Guide</span>{" "}
             <img
               id="arrow-right"
               src={rightArrow}
@@ -95,13 +95,13 @@ const Main = () => {
           <div id="test-wrapdone">
             <div id="test" onClick={testHandler}>
               {user.userNick}
-              {userInfo.rank}님은 {userInfo.testResult}! 딱! 입니다
+              {userInfo.rank} 님은 {userInfo.testResult}! 딱! 입니다. 
             </div>
           </div>
         ) : (
           <div id="test-wrap">
             <div id="test" onClick={testHandler}>
-              전역하고 뭐하지? 테스트하러가기
+              Carrer-Aptitude TEST
             </div>
             <img
               id="arrow-right"
@@ -113,7 +113,7 @@ const Main = () => {
           </div>
         )}
 
-        <span id="progressText">전체 진행율(%)</span>
+        <span id="progressText">Total Progress(%)</span>
       </div>
       {!userId ? (
         <></>
@@ -131,7 +131,7 @@ const Main = () => {
       <div className={!userId ? "challengeContainer" : "challengeContainerIn"}>
         {token ? (
           <div id="my-challenge">
-            <p id="p">내가 진행중인 챌린지</p>
+            <p id="p">My Challenges</p>
           </div>
         ) : (
           <></>
@@ -184,9 +184,9 @@ const Container = styled.div`
       #guideWrap {
         display: flex;
         #guide {
-          margin: 0 8px;
+          margin: 0 7px;
           height: 18px;
-          width: 98px;
+          width: 74px;
           font-size: 16px;
           color: #151419;
           background-color: #ffffff;
@@ -196,7 +196,7 @@ const Container = styled.div`
 
         #arrow-right {
           position: absolute;
-          margin-left:88px;
+          margin-left:64px;
         }
       }
     }
@@ -206,7 +206,7 @@ const Container = styled.div`
       #test {
         margin: 0 17px;
         height: 20px;
-        width: 290px;
+        width: 240px;
         font-size: 18px;
         color: #151419;
         background-color: #ffffff;
@@ -215,7 +215,7 @@ const Container = styled.div`
       }
       #arrow-right {
         position: absolute;
-        margin: -1px 0 0 284px;
+        margin: -1px 0 0 236px;
       }
     }
     #test-wrapdone {
@@ -232,7 +232,8 @@ const Container = styled.div`
     }
 
     #progressText {
-      padding: 35px 0 0 260px;
+      padding: 35px 0 0 220px;
+      width: 160px;
       height: 20px;
       font-size: 14px;
       color: #ffffff;

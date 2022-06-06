@@ -31,7 +31,7 @@ const Day = ({startDate, endDate, participant, onStartChange, onEndChange, onPar
           />
         </div>
         <div className="title">
-          <div className="title-text">참여 인원수 <span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}>(최대99명까지)</span></div>
+          <div className="title-text">Participant <span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}>(최대99명까지)</span></div>
           <textarea
             className="titleInput"
             value={participant}
@@ -43,7 +43,7 @@ const Day = ({startDate, endDate, participant, onStartChange, onEndChange, onPar
           <div className="small-text">명</div>
         </div>
         <div className="title">
-          <div className="title-text">시작일<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span>
+          <div className="title-text">Start<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span>
           </div>
           <textarea
             className="titleInput"
@@ -58,7 +58,7 @@ const Day = ({startDate, endDate, participant, onStartChange, onEndChange, onPar
           <div className="from-text">부터</div>
         </div>
         <div className="title">
-          <div className="title-text">종료일<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span></div>
+          <div className="title-text">End<span style={{fontSize: "16px", fontFamily: "Gmarket Sans"}}> ({now} 이후부터)</span></div>
           <textarea
             className="titleInput"
             value={endDate}

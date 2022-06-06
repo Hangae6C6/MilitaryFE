@@ -15,16 +15,16 @@ const Video = ({playList, index}) => {
               window.location.pathname = "/";
             }}
           >
-              메인으로
+              Main
           </div>
        
         </div>
-            <h2 id='title'>동기부여 영상
+            <h2 id='title'>Motivational video
             </h2>
             <div className='player-wrapper'>
                 <ReactPlayer
                     className='react-player'
-                    url={'https://youtu.be/Qd1MBEhkWU8'}  
+                    url={'https://youtu.be/wnHW6o8WMas'}  
                     width='375px'         
                     height='500px'       
                     playing={true}       

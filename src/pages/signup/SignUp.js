@@ -20,7 +20,7 @@ const SignUp = () => {
   };
 
   const isNickname = (nickname) => {
-    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,5}$/;
+    let pattern = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,6}$/;
     return pattern.test(nickname); 
   };
 
@@ -36,27 +36,27 @@ const SignUp = () => {
       password === "" ||
       passwordCheck === ""
     ) {
-      toast.error("빈칸을 입력해주세요.", { position:"top-center" });
+      toast.error("Please fill in the blanks.", { position:"top-center" });
       return;
     }
 
     if (!isId(id)) {
-      toast.error("잘못된 아이디 형식입니다.", { position:"top-center" });
+      toast.error("Invalid ID format.", { position:"top-center" });
       return;
     }
 
     if (!isNickname(nickname)) {
-      toast.error("잘못된 닉네임 형식입니다.", { position:"top-center" });
+      toast.error("Invalid Name format.", { position:"top-center" });
       return;
     }
 
     if (!isPwd(password)) {
-      toast.error("잘못된 비밀번호 형식입니다.", { position:"top-center" });
+      toast.error("Invalid Password format.", { position:"top-center" });
       return;
     }
 
     if (password !== passwordCheck) {
-      toast.error("비밀번호가 다릅니다.", { position:"top-center" });
+      toast.error("Password is incorrect", { position:"top-center" });
       return;
     }
 
@@ -78,26 +78,26 @@ const SignUp = () => {
         </div>
       </div>
       <div id="title-box">
-        <p id="p">솔저챌린저스</p>
+        <p id="p">Soldier Challegners</p>
       </div>
       <Box2>
         <LoginInput
           value={id}
-          placeholder="아이디 (4-12자)"
+          placeholder="Id"
           onChange={(e) => {
             setId(e.target.value);
           }}
         />
         <LoginInput
           value={nickname}
-          placeholder="닉네임 (최대 5자)"
+          placeholder="Name"
           onChange={(e) => {
             setNickname(e.target.value);
           }}
         />
         <LoginInput
           value={password}
-          placeholder="비밀번호 (영문/숫자 최소 8자)"
+          placeholder="Password"
           type="password"
           onChange={(e) => {
             setPassword(e.target.value);
@@ -105,7 +105,7 @@ const SignUp = () => {
         />
         <LoginInput
           value={passwordCheck}
-          placeholder="비밀번호 확인 (영문/숫자 최소 8자)"
+          placeholder="Password Check"
           type="password"
           onChange={(e) => {
             setPasswordCheck(e.target.value);
@@ -119,7 +119,7 @@ const SignUp = () => {
           signup();
         }}
       >
-        회원가입
+        Signup
       </NextButton>
       <ToastContainer />
     </Container>
@@ -157,7 +157,7 @@ const Container = styled.div`
     #p {
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 35px auto;
+      margin: 15px 70px;
       color: #ffffff;
     }
   }

@@ -112,9 +112,9 @@ const Detail = () => {
           <>
             <TitleBox>
               <div id="title">
-                <div id="title-up">로그인해주세요!</div>
+                <div id="title-up">Please Login!</div>
                 <div id="title-down">
-                  <div id="type">가즈아!!</div>
+                  <div id="type">Let's go!!</div>
                 </div>
               </div>
               <div id="typeIcons">
@@ -127,22 +127,22 @@ const Detail = () => {
                 <div id="imgWrap">
                   <img src={joinIcon} alt="personImg" width="36" height="36" />
                 </div>
-                <div id="roomInfo">0명</div>
-                <div id="Infodetail">현재 참가자</div>
+                <div id="roomInfo">0</div>
+                <div id="Infodetail">Challegners</div>
               </div>
               <div className="box">
                 <div id="imgWrap">
                   <img src={ddayIcon} alt="typeImg" width="36" height="36" />
                 </div>
                 <div id="roomInfo">D-0</div>
-                <div id="Infodetail">남은 기간</div>
+                <div id="Infodetail">D-day</div>
               </div>
               <div className="box">
                 <div id="imgWrap">
                   <img src={personImg} alt="typeImg" width="36" height="36" />
                 </div>
-                <div id="roomInfo">0자리</div>
-                <div id="Infodetail">남은 자리</div>
+                <div id="roomInfo">0</div>
+                <div id="Infodetail">Open Spots</div>
               </div>
             </ChallengeRoom>
           </>
@@ -193,8 +193,8 @@ const Detail = () => {
                       height="36"
                     />
                   </div>
-                  <div id="roomInfo">{card.challengeCnt}명</div>
-                  <div id="Infodetail">현재 참가자</div>
+                  <div id="roomInfo">{card.challengeCnt}</div>
+                  <div id="Infodetail">Challegners</div>
                 </div>
                 <div className="box">
                   <div id="imgWrap">
@@ -203,16 +203,16 @@ const Detail = () => {
                   <div id="roomInfo">
                     {dDay <= 0 ? "기간만료" : "D-" + dDay}
                   </div>
-                  <div id="Infodetail">남은 기간</div>
+                  <div id="Infodetail">D-day</div>
                 </div>
                 <div className="box">
                   <div id="imgWrap">
                     <img src={personImg} alt="typeImg" width="36" height="36" />
                   </div>
                   <div id="roomInfo">
-                    {spots <= 0 ? "FULL" : spots + "자리"}
+                    {spots <= 0 ? "FULL" : spots}
                   </div>
-                  <div id="Infodetail">남은 자리</div>
+                  <div id="Infodetail">Open Spots</div>
                 </div>
               </ChallengeRoom>{" "}
               <DetailpageProgress
@@ -237,7 +237,7 @@ const Detail = () => {
               window.location.pathname = "/login";
             }}
           >
-            참여하기
+            Join
           </NextButton>
         ) : isJoined ? (
           <NextButton
@@ -245,7 +245,7 @@ const Detail = () => {
               window.location.pathname = `/chatsocket/${challengeId},${userNick}`;
             }}
           >
-            채팅하기
+            Chat
           </NextButton>
         ) : (
           <NextButton
@@ -253,7 +253,7 @@ const Detail = () => {
               userChallengeDataHandler();
             }}
           >
-            참여하기
+            Join
           </NextButton>
         )}
         <ToastContainer />

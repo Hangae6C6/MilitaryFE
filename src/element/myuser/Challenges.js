@@ -43,7 +43,7 @@ const Challenges = ({ userId, myChallengeList }) => {
 
               <div className="day">
                 <div className="start">
-                  기간: {chal.challengeStartDate} - {chal.challengeEndDate}
+                  Period: {chal.challengeStartDate} - {chal.challengeEndDate}
                 </div>
               </div>
             </Wrap>

@@ -37,7 +37,7 @@ const Navigation = () => {
               window.location.pathname='/';
             }}
           />
-          <P>홈</P>
+          <P>HOME</P>
         </Home>
         <Home>
           <SearchIcn
@@ -46,7 +46,7 @@ const Navigation = () => {
               window.location.pathname='/search';
             }}
           />
-          <P>챌린지검색</P>
+          <P>SEARCH</P>
         </Home>
         <Home>
           <MypageIcn
@@ -63,7 +63,7 @@ const Navigation = () => {
               }
             }}
           />
-          <P>마이페이지</P>
+          <P>MY PAGE</P>
         </Home>
       </Wrap>
     </Nav>

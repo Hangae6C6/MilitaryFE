@@ -36,7 +36,7 @@ const MyCallenge = ({ user, cards, userId }) => {
               window.location.pathname = "/login";
             }}
           >
-            챌린지 개설하기
+            Create a Challenge
           </div>
         </AddButton>
       ) : (
@@ -108,7 +108,7 @@ const MyCallenge = ({ user, cards, userId }) => {
                 }
               }}
             >
-              챌린지 개설하기
+              Create a Challenge
             </div>
           </AddButton>
         </>

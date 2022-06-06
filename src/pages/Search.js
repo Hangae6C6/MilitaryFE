@@ -37,7 +37,7 @@ const Nav = () => {
     if (
       keyword === "" 
     ) {
-      toast.error("키워드를 입력해주세요.", { position:"top-center" });
+      toast.error("Please enter keywords", { position:"top-center" });
       return;
     }
     dispatch(searchActions.searchDB(keyword));
@@ -59,13 +59,13 @@ const Nav = () => {
    
       <div className="top">
   
-        <div id="title">검색</div>
+        <div id="title">Search</div>
       </div>
       <div id="upperbox">
         <input
           id="inputBox"
           value={keyword}
-          placeholder="| 키워드를 입력하세요"
+          placeholder="| Please enter keyword"
           onChange={(e) => {
             setKeyword(e.target.value);
           }}

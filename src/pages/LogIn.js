@@ -26,17 +26,17 @@ const Login = () => {
 
   const login = () => {
     if (id === "" || password === "") {
-      toast.error("빈칸을 입력해주세요.", { position: "top-center" });
+      toast.error("Please fill in the blanks.", { position: "top-center" });
       return;
     }
 
     if (!isId(id)) {
-      toast.error("잘못된 아이디 형식입니다.", { position: "top-center" });
+      toast.error("Invalid ID format.", { position: "top-center" });
       return;
     }
 
     if (!isPwd(password)) {
-      toast.error("비밀번호가 틀렸습니다.", { position: "top-center" });
+      toast.error("Invalid Password format.", { position: "top-center" });
       return;
     }
 
@@ -57,19 +57,19 @@ const Login = () => {
         </div>
       </div>
       <div id="title-box">
-        <p id="p">솔저챌린저스</p>
+        <p id="p">Soldier Challengers</p>
       </div>
       <Box2>
         <LoginInput
           value={id}
-          placeholder="아이디를 입력하세요"
+          placeholder="ID"
           onChange={(e) => {
             setId(e.target.value);
           }}
         />
         <LoginInput
           value={password}
-          placeholder="비밀번호를 입력하세요"
+          placeholder="PASSWORD"
           type="password"
           onChange={(e) => {
             setPassword(e.target.value);
@@ -80,7 +80,7 @@ const Login = () => {
             login();
           }}
         >
-          로그인
+          Login
         </LoginButton>
         <SocialLogin>
           <img
@@ -100,7 +100,7 @@ const Login = () => {
         }}
       >
         {" "}
-        회원가입
+        Signup
       </NextButton>
       <ToastContainer />
     </Container>
@@ -137,7 +137,7 @@ const Container = styled.div`
     #p {
       font-size: 34px;
       font-family: Gmarket SansBold;
-      margin: 35px auto;
+      margin: 15px 70px;
       color: #ffffff;
     }
   }

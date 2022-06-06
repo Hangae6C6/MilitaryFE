@@ -24,38 +24,35 @@ const Link = () => {
     this.setState({ copied: true });
   };
 
-  React.useEffect(() => {
-    dispatch(
-      userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId)
-    );
-  }, [dispatch, challengeId, userId]);
+ const postHandler = () => {
+   userChallengeDataActions.postUserChallengeDetailDB(userId, challengeId)
+ }
+   
 
   return (
     <Container>
       <div className="top">
         <NextButton
-          onClick={() => {
-            window.location.pathname = `/detailPage/${challengeId}`;
-          }}
+          onClick={postHandler}
         >
-          시작하기
+          Begin
         </NextButton>
       </div>
-      <div className="second-box">챌린지가 개설되었어요!</div>
+      <div className="second-box">Challenge Created!</div>
       <div className="third-box">
         <img src={img} alt="img" width="390" height="340" />
       </div>
       <div className="fourth-box">
-        친구, 연인, 부대원들과 함께 하는 건 어때요?
+        How about sharing this challenge with your friends? 
       </div>
       <CopyToClipboard onClick={onCopy} text={state.value}>
         <NextButton1
           onClick={() => {
-            toast.success("챌린지 링크 복사 완료!", { position: "top-center" });
+            toast.success("copied!", { position: "top-center" });
             return;
           }}
         >
-          링크 복사하기
+          share
         </NextButton1>
       </CopyToClipboard>
 
@@ -81,24 +78,24 @@ const Container = styled.div`
   }
 
   .second-box {
-    width: 287px;
+    width: 330px;
     height: 50px;
     font-family: Gmarket SansBold;
     font-size: 28px;
     color: #3f3f3f;
     font-weight: bold;
-    margin: 70px 45px 0px;
+    margin: 70px 25px 0px;
   }
   .third-box {
     margin: 30px -5px;
   }
   .fourth-box {
-    width: 200px;
+    width: 280px;
     height: 31px;
     font-family: Gmarket SansMedium;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    margin: 16px 90px 0px;
+    margin: 20px 40px 0px;
   }
   .link-box {
     width: 336px;

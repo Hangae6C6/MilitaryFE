@@ -14,7 +14,7 @@ const Mine = ({ userId, userInfo }) => {
   return (
     <>
       <MyPage>
-        <MyP>마이페이지</MyP>
+        <MyP>My Page</MyP>
         <Link to={`/myPage/userProfile/edit/${userId}`}>
           <Write />
         </Link>
