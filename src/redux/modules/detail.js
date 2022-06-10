@@ -92,6 +92,7 @@ const changeMyStepDB = (challengeNum, userId, stepNum) => {
 
 
 const postUserChallengeDetailDB = (userId, challengeId) => {
+  console.log(userId, challengeId)
   return async function (dispatch) {
     try {
       await axios({

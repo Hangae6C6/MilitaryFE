@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ActionCreators as userActions } from "../redux/modules/user";
 import { getCookie } from "./cookie";
-import Event from "./banner";
 import logo from "./icons/handlogo11.png";
 import mainlogo from "./icons/mainlogo.png";
 
@@ -49,7 +48,7 @@ function App() {
           <div id="titleText">전역하고 뭐하지</div>
         </div>
         <div id="mainImage">
-          <Event />
+         
           <img
             id="logo"
             src={mainImage}
